@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
+		E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */; };
+		E9335C621BFA7EBC002DD9C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C611BFA7EBC002DD9C6 /* ViewController.m */; };
+		E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335C631BFA7EBC002DD9C6 /* Main.storyboard */; };
+		E9335C671BFA7EBC002DD9C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */; };
+		E9335C6A1BFA7EBC002DD9C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */; };
+		E9335C751BFA7EBD002DD9C6 /* harpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C741BFA7EBD002DD9C6 /* harpyTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E9335C711BFA7EBD002DD9C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9335C4F1BFA7EBC002DD9C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E9335C561BFA7EBC002DD9C6;
+			remoteInfo = harpy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E9335C571BFA7EBC002DD9C6 /* harpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9335C5B1BFA7EBC002DD9C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E9335C5D1BFA7EBC002DD9C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E9335C601BFA7EBC002DD9C6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E9335C611BFA7EBC002DD9C6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E9335C641BFA7EBC002DD9C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E9335C691BFA7EBC002DD9C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E9335C6B1BFA7EBC002DD9C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9335C701BFA7EBD002DD9C6 /* harpyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = harpyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9335C741BFA7EBD002DD9C6 /* harpyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = harpyTests.m; sourceTree = "<group>"; };
+		E9335C761BFA7EBD002DD9C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E9335C541BFA7EBC002DD9C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9335C6D1BFA7EBD002DD9C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E9335C4E1BFA7EBC002DD9C6 = {
+			isa = PBXGroup;
+			children = (
+				E9335C591BFA7EBC002DD9C6 /* harpy */,
+				E9335C731BFA7EBD002DD9C6 /* harpyTests */,
+				E9335C581BFA7EBC002DD9C6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E9335C581BFA7EBC002DD9C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9335C571BFA7EBC002DD9C6 /* harpy.app */,
+				E9335C701BFA7EBD002DD9C6 /* harpyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E9335C591BFA7EBC002DD9C6 /* harpy */ = {
+			isa = PBXGroup;
+			children = (
+				E9335C5D1BFA7EBC002DD9C6 /* AppDelegate.h */,
+				E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */,
+				E9335C601BFA7EBC002DD9C6 /* ViewController.h */,
+				E9335C611BFA7EBC002DD9C6 /* ViewController.m */,
+				E9335C631BFA7EBC002DD9C6 /* Main.storyboard */,
+				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
+				E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */,
+				E9335C6B1BFA7EBC002DD9C6 /* Info.plist */,
+				E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */,
+			);
+			path = harpy;
+			sourceTree = "<group>";
+		};
+		E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E9335C5B1BFA7EBC002DD9C6 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E9335C731BFA7EBD002DD9C6 /* harpyTests */ = {
+			isa = PBXGroup;
+			children = (
+				E9335C741BFA7EBD002DD9C6 /* harpyTests.m */,
+				E9335C761BFA7EBD002DD9C6 /* Info.plist */,
+			);
+			path = harpyTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E9335C561BFA7EBC002DD9C6 /* harpy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9335C791BFA7EBD002DD9C6 /* Build configuration list for PBXNativeTarget "harpy" */;
+			buildPhases = (
+				E9335C531BFA7EBC002DD9C6 /* Sources */,
+				E9335C541BFA7EBC002DD9C6 /* Frameworks */,
+				E9335C551BFA7EBC002DD9C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = harpy;
+			productName = harpy;
+			productReference = E9335C571BFA7EBC002DD9C6 /* harpy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E9335C6F1BFA7EBD002DD9C6 /* harpyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9335C7C1BFA7EBD002DD9C6 /* Build configuration list for PBXNativeTarget "harpyTests" */;
+			buildPhases = (
+				E9335C6C1BFA7EBD002DD9C6 /* Sources */,
+				E9335C6D1BFA7EBD002DD9C6 /* Frameworks */,
+				E9335C6E1BFA7EBD002DD9C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E9335C721BFA7EBD002DD9C6 /* PBXTargetDependency */,
+			);
+			name = harpyTests;
+			productName = harpyTests;
+			productReference = E9335C701BFA7EBD002DD9C6 /* harpyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E9335C4F1BFA7EBC002DD9C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = teamFloppyDisk;
+				TargetAttributes = {
+					E9335C561BFA7EBC002DD9C6 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					E9335C6F1BFA7EBD002DD9C6 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = E9335C561BFA7EBC002DD9C6;
+					};
+				};
+			};
+			buildConfigurationList = E9335C521BFA7EBC002DD9C6 /* Build configuration list for PBXProject "harpy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E9335C4E1BFA7EBC002DD9C6;
+			productRefGroup = E9335C581BFA7EBC002DD9C6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E9335C561BFA7EBC002DD9C6 /* harpy */,
+				E9335C6F1BFA7EBD002DD9C6 /* harpyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E9335C551BFA7EBC002DD9C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9335C6A1BFA7EBC002DD9C6 /* LaunchScreen.storyboard in Resources */,
+				E9335C671BFA7EBC002DD9C6 /* Assets.xcassets in Resources */,
+				E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9335C6E1BFA7EBD002DD9C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E9335C531BFA7EBC002DD9C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9335C621BFA7EBC002DD9C6 /* ViewController.m in Sources */,
+				E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */,
+				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9335C6C1BFA7EBD002DD9C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9335C751BFA7EBD002DD9C6 /* harpyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E9335C721BFA7EBD002DD9C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E9335C561BFA7EBC002DD9C6 /* harpy */;
+			targetProxy = E9335C711BFA7EBD002DD9C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E9335C631BFA7EBC002DD9C6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9335C641BFA7EBC002DD9C6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9335C691BFA7EBC002DD9C6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E9335C771BFA7EBD002DD9C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E9335C781BFA7EBD002DD9C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E9335C7A1BFA7EBD002DD9C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = harpy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = teamFloppyDisk.harpy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E9335C7B1BFA7EBD002DD9C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = harpy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = teamFloppyDisk.harpy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E9335C7D1BFA7EBD002DD9C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = harpyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = teamFloppyDisk.harpyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/harpy.app/harpy";
+			};
+			name = Debug;
+		};
+		E9335C7E1BFA7EBD002DD9C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = harpyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = teamFloppyDisk.harpyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/harpy.app/harpy";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E9335C521BFA7EBC002DD9C6 /* Build configuration list for PBXProject "harpy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9335C771BFA7EBD002DD9C6 /* Debug */,
+				E9335C781BFA7EBD002DD9C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9335C791BFA7EBD002DD9C6 /* Build configuration list for PBXNativeTarget "harpy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9335C7A1BFA7EBD002DD9C6 /* Debug */,
+				E9335C7B1BFA7EBD002DD9C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E9335C7C1BFA7EBD002DD9C6 /* Build configuration list for PBXNativeTarget "harpyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9335C7D1BFA7EBD002DD9C6 /* Debug */,
+				E9335C7E1BFA7EBD002DD9C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E9335C4F1BFA7EBC002DD9C6 /* Project object */;
+}

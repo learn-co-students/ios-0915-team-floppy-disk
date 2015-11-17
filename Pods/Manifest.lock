@@ -1,0 +1,23 @@
+PODS:
+  - Bolts/Tasks (1.5.0)
+  - GoogleMaps (1.10.5)
+  - Parse (1.9.1):
+    - Bolts/Tasks (>= 1.4.0)
+  - Spotify-iOS-SDK (0.12.0)
+
+DEPENDENCIES:
+  - GoogleMaps
+  - Parse
+  - Spotify-iOS-SDK (from `Spotify-iOS-SDK.podspec.json`)
+
+EXTERNAL SOURCES:
+  Spotify-iOS-SDK:
+    :podspec: Spotify-iOS-SDK.podspec.json
+
+SPEC CHECKSUMS:
+  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
+  GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
+  Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
+  Spotify-iOS-SDK: 15371134d2b17f5bab26a992043401b59cfbdfb1
+
+COCOAPODS: 0.39.0

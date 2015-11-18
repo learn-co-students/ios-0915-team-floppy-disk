@@ -16,6 +16,12 @@
 		E9335C6A1BFA7EBC002DD9C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */; };
 		E9335C751BFA7EBD002DD9C6 /* harpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C741BFA7EBD002DD9C6 /* harpyTests.m */; };
 		E938010F1BFBE23F004CC8A2 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E938010E1BFBE23F004CC8A2 /* Keys.plist */; settings = {ASSET_TAGS = (); }; };
+		E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801141BFBE9C8004CC8A2 /* HRPSpotifyViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801171BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */; settings = {ASSET_TAGS = (); }; };
+		E938011E1BFC2406004CC8A2 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E938011D1BFC2406004CC8A2 /* CLLocationManager+Shared.m */; settings = {ASSET_TAGS = (); }; };
+		E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +52,18 @@
 		E9335C741BFA7EBD002DD9C6 /* harpyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = harpyTests.m; sourceTree = "<group>"; };
 		E9335C761BFA7EBD002DD9C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E938010E1BFBE23F004CC8A2 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		E93801101BFBE956004CC8A2 /* HRPMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPMapsViewController.h; sourceTree = "<group>"; };
+		E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPMapsViewController.m; sourceTree = "<group>"; };
+		E93801131BFBE9C8004CC8A2 /* HRPSpotifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSpotifyViewController.h; sourceTree = "<group>"; };
+		E93801141BFBE9C8004CC8A2 /* HRPSpotifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSpotifyViewController.m; sourceTree = "<group>"; };
+		E93801161BFBEB97004CC8A2 /* HRPLoginRedirectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPLoginRedirectViewController.h; sourceTree = "<group>"; };
+		E93801171BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPLoginRedirectViewController.m; sourceTree = "<group>"; };
+		E93801191BFC23A7004CC8A2 /* HRPLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPLocationManager.h; sourceTree = "<group>"; };
+		E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPLocationManager.m; sourceTree = "<group>"; };
+		E938011C1BFC2406004CC8A2 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
+		E938011D1BFC2406004CC8A2 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
+		E93801221BFC2B90004CC8A2 /* HRPSpotifySearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSpotifySearchViewController.h; sourceTree = "<group>"; };
+		E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSpotifySearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +129,18 @@
 				E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */,
 				E9335C601BFA7EBC002DD9C6 /* ViewController.h */,
 				E9335C611BFA7EBC002DD9C6 /* ViewController.m */,
+				E93801161BFBEB97004CC8A2 /* HRPLoginRedirectViewController.h */,
+				E93801171BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m */,
+				E93801131BFBE9C8004CC8A2 /* HRPSpotifyViewController.h */,
+				E93801141BFBE9C8004CC8A2 /* HRPSpotifyViewController.m */,
+				E93801101BFBE956004CC8A2 /* HRPMapsViewController.h */,
+				E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */,
+				E93801191BFC23A7004CC8A2 /* HRPLocationManager.h */,
+				E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */,
+				E93801221BFC2B90004CC8A2 /* HRPSpotifySearchViewController.h */,
+				E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */,
+				E938011C1BFC2406004CC8A2 /* CLLocationManager+Shared.h */,
+				E938011D1BFC2406004CC8A2 /* CLLocationManager+Shared.m */,
 				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
 				E9335C631BFA7EBC002DD9C6 /* Main.storyboard */,
 				E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */,
@@ -290,8 +320,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,
+				E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */,
+				E938011E1BFC2406004CC8A2 /* CLLocationManager+Shared.m in Sources */,
 				E9335C621BFA7EBC002DD9C6 /* ViewController.m in Sources */,
 				E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */,
+				E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */,
+				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
+				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -117,23 +117,9 @@
     NSLog(@"didFailWithError: %@", error);
     
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
-}
-
-#pragma mark - UIAlertView (should update to viewController)
-
-// Called to send the user to the Settings for this app
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1)
-    {
-        NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-        [[UIApplication sharedApplication] openURL:settingsURL];
-    }
-}
-
-- (void)doSomethingWithAlerts
-{
-    //    UIAlertController *
+    
+    // This should be uncommented when we use actual devices to test GPS.
+//    [self presentViewController:errorAlerts animated:YES completion:nil];
 }
 
 #pragma mark - GMSMapViewDelegate

@@ -148,7 +148,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
  @see -currentPlaybackPosition
  */
 -(void)seekToOffset:(NSTimeInterval)offset callback:(SPTErrorableOperationCallback)block;
-
+#pragma mark Puase Song
 /** Set the "playing" status of the receiver.
 
  @param playing Pass `YES` to resume playback, or `NO` to pause it.
@@ -157,7 +157,7 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
  @see -isPlaying
  */
 -(void)setIsPlaying:(BOOL)playing callback:(SPTErrorableOperationCallback)block;
-
+#pragma mark Play Song
 /** Play a Spotify URI.
  
  Supported URI types: Tracks, Albums and Playlists
@@ -354,20 +354,20 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
  @param block The callback block to be executed when the queue is empty or an `NSError` object if an error ocurred.
  */
 -(void)queueClear:(SPTErrorableOperationCallback)block DEPRECATED_ATTRIBUTE;
-
+#pragma mark Stop Song
 /** Stop playback and clear the queue and list of tracks.
  
  @param block The callback block to be executed when playback stopped empty or an `NSError` object if an error ocurred.
  */
 -(void)stop:(SPTErrorableOperationCallback)block;
-
+#pragma mark Skip song
 /** Go to the next track in the queue.
  
  @param block The callback block to be executed when the command has been
  received, which will pass back an `NSError` object if an error ocurred.
  */
 -(void)skipNext:(SPTErrorableOperationCallback)block;
-
+#pragma mark Previous song
 /** Go to the previous track in the queue
  
  @param block The callback block to be executed when the command has been
@@ -439,13 +439,13 @@ FOUNDATION_EXPORT NSString * const SPTAudioStreamingMetadataTrackDuration DEPREC
 
 /** Returns `YES` if the receiver expects repeated playback, otherwise `NO`. */
 @property (nonatomic, readwrite) BOOL repeat;
-
+#pragma mark playback time
 /** Returns the current approximate playback position of the current track. */
 @property (nonatomic, readonly) NSTimeInterval currentPlaybackPosition;
-
+#pragma mark duration
 /** Returns the length of the current track. */
 @property (nonatomic, readonly) NSTimeInterval currentTrackDuration;
-
+#pragma mark song URI
 /** Returns the current track URI, playing or not. */
 @property (nonatomic, readonly) NSURL *currentTrackURI;
 

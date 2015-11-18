@@ -132,27 +132,11 @@
                     <view key="view" contentMode="scaleToFill" id="ftd-W2-h1j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EAd-wy-brK">
-                                <rect key="frame" x="0.0" y="12" width="414" height="44"/>
-                                <animations/>
-                                <items>
-                                    <navigationItem title="Title" id="xAv-kx-iW7">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hZd-pA-8lS">
-                                            <connections>
-                                                <action selector="addMarkerButtonTapped:" destination="9Aa-Xs-jo2" id="JEp-2A-3so"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems>
                         <barButtonItem title="Back" id="Lho-tX-1md"/>
-                        <barButtonItem title="Item" id="Whu-6m-VYB"/>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>

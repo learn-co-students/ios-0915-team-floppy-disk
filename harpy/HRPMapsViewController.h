@@ -6,9 +6,8 @@
 //  Copyright © 2015 teamFloppyDisk. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "HRPLocationManager.h"
 #import <UIKit/UIKit.h>
+#import "HRPLocationManager.h"
 
 @interface HRPMapsViewController : UIViewController <CLLocationManagerDelegate>
 
@@ -17,8 +16,5 @@
 
 /// The location manager used to receive location updates.
 @property (nonatomic,strong) CLLocationManager *locationManager;
-
-/// An alert view used to notify the user of errors.
-@property (nonatomic,strong) UIAlertController *alertView;
 
 @end

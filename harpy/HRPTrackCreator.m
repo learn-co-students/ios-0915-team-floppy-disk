@@ -45,19 +45,18 @@
             [HRPTrackCreator getSingleTrackDataFromURI:url WithCompletion:^(NSDictionary *trackInfo) {
                 
                 NSString *songName = trackInfo[@"name"];
-                NSString *artistName = trackInfo[@"artists"][@"name"];
+                NSString *artistName = trackInfo[@"artists"][0][@"name"];
                 NSString *albumName = trackInfo[@"album"][@"name"];
                 NSURL *spotifyURL = trackInfo[@"uri"];
                 NSNumber *songPopularity = trackInfo[@"popularity"];
                 
                 NSDictionary *coverArtURLLocation = trackInfo[@"album"][@"images"][1];
-                NSURL *coverArtURL = coverArtURLLocation[@"url"];
+                NSURL *coverArtURL = [NSURL URLWithString: coverArtURLLocation[@"url"]];
                 NSData *coverArt = [[NSData alloc] initWithContentsOfURL:coverArtURL];
                 
                 HRPTrack *newTrack = [[HRPTrack alloc] initWithSongTitle:songName artistName:artistName albumName:albumName spotifyURL:spotifyURL coverArt:coverArt songPopularity:songPopularity];
                 [songDataArray addObject:newTrack];
                 if (songDataArray.count == trackList.count) {
-                    NSLog(@"%@", songDataArray);
                     completion(songDataArray);
                 }
             }];

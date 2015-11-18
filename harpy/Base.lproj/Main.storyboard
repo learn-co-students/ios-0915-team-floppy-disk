@@ -161,7 +161,6 @@
         <!--Login Redirect View Controller-->
         <scene sceneID="lri-ap-vwM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZDK-VL-VxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Ag2-No-dKb" customClass="HRPLoginRedirectViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iDg-Hp-EsN"/>
@@ -178,13 +177,13 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZDK-VL-VxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1186" y="253"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="d1S-a3-Pd5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R4A-jw-sEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FNE-Ya-BDr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -197,6 +196,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="QXk-R5-9hX"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R4A-jw-sEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="174" y="177"/>
         </scene>

@@ -121,7 +121,7 @@
             </objects>
             <point key="canvasLocation" x="1674" y="253"/>
         </scene>
-        <!--Maps View Controller-->
+        <!--Your Location-->
         <scene sceneID="JoB-5U-OUf">
             <objects>
                 <viewController id="9Aa-Xs-jo2" customClass="HRPMapsViewController" sceneMemberID="viewController">
@@ -138,6 +138,13 @@
                     <toolbarItems>
                         <barButtonItem title="Back" id="Lho-tX-1md"/>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" title="Your Location" id="lNS-aD-vOJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XIi-RP-ZD9">
+                            <connections>
+                                <action selector="addMarkerButtonTapped:" destination="9Aa-Xs-jo2" id="DFZ-C6-gBO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>

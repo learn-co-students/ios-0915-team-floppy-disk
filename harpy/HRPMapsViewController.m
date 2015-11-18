@@ -131,6 +131,11 @@
     }
 }
 
+- (void)doSomethingWithAlerts
+{
+    //    UIAlertController *
+}
+
 #pragma mark - GMSMapViewDelegate
 
 - (void)mapView:(GMSMapView *)delegateMapView didChangeCameraPosition:(GMSCameraPosition *)position
@@ -163,6 +168,16 @@
                                                   longitude:self.endingLongitude
                                                   zoom:delegateMapView.camera.zoom]];
     }
+}
+
+- (IBAction)addMarkerButtonTapped:(id)sender
+{
+    CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
+    
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+    marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+    marker.map = mapView_;
 }
 
 @end

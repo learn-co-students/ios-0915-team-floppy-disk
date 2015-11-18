@@ -16,6 +16,7 @@
 @interface HRPMapsViewController () <GMSMapViewDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
+
 @property (nonatomic, assign) CGFloat startingLatitude;
 @property (nonatomic, assign) CGFloat startingLongitude;
 @property (nonatomic, assign) CGFloat endingLatitude;

@@ -6,9 +6,8 @@
 //  Copyright © 2015 teamFloppyDisk. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "HRPLocationManager.h"
 #import <UIKit/UIKit.h>
+#import "HRPLocationManager.h"
 
 @interface HRPMapsViewController : UIViewController <CLLocationManagerDelegate>
 

@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [HRPLoginRedirect launchSpotify];
+    //[HRPLoginRedirect launchSpotify];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -31,18 +31,6 @@
 
 - (void)viewDidLoad
 {
-    self.startingLatitude = 40.693487;
-    self.startingLongitude = -74.036034;
-    self.endingLatitude = 40.886095;
-    self.endingLongitude = -73.877143;
-    
-    float cameraPositionLatitude = (self.startingLatitude + self.endingLatitude) / 2.0;
-    float cameraPositionLongitide = (self.startingLongitude + self.endingLongitude) / 2.0;
-    
-    //this is not working the way I want it to
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:cameraPositionLatitude longitude:cameraPositionLongitide zoom:12];
-    
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.delegate = self;
     
     self.locationManager = [CLLocationManager sharedManager];
@@ -96,9 +84,10 @@
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
     // Create a GMSCameraPosition that tells the map to display
+    // this determines the zoom of the camera as soon as the map opens
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude
                                                             longitude:coordinate.longitude
-                                                                 zoom:17];
+                                                                 zoom:18];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     self.view = mapView_;
     [mapView_ setMinZoom:12 maxZoom:mapView_.maxZoom];
@@ -113,52 +102,22 @@
     NSLog(@"didFailWithError: %@", error);
     
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
-}
-
-#pragma mark - UIAlertView (should update to viewController)
-
-// Called to send the user to the Settings for this app
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1)
-    {
-        NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-        [[UIApplication sharedApplication] openURL:settingsURL];
-    }
+    
+    // This should be uncommented when we use actual devices to test GPS.
+    //    [self presentViewController:errorAlerts animated:YES completion:nil];
 }
 
 #pragma mark - GMSMapViewDelegate
 
-- (void)mapView:(GMSMapView *)delegateMapView didChangeCameraPosition:(GMSCameraPosition *)position
+
+- (IBAction)addMarkerButtonTapped:(id)sender
 {
-    if(delegateMapView.camera.target.latitude > self.startingLatitude)
-    {
-        [delegateMapView animateToCameraPosition:[GMSCameraPosition
-                                                  cameraWithLatitude:self.startingLatitude
-                                                  longitude:delegateMapView.camera.target.longitude
-                                                  zoom:delegateMapView.camera.zoom]];
-    }
-    if(delegateMapView.camera.target.latitude < self.endingLatitude)
-    {
-        [delegateMapView animateToCameraPosition:[GMSCameraPosition
-                                                  cameraWithLatitude:self.endingLatitude
-                                                  longitude:delegateMapView.camera.target.longitude
-                                                  zoom:delegateMapView.camera.zoom]];
-    }
-    if(delegateMapView.camera.target.longitude < self.startingLongitude)
-    {
-        [delegateMapView animateToCameraPosition:[GMSCameraPosition
-                                                  cameraWithLatitude:delegateMapView.camera.target.latitude
-                                                  longitude:self.startingLongitude
-                                                  zoom:delegateMapView.camera.zoom]];
-    }
-    if(delegateMapView.camera.target.longitude > self.endingLongitude)
-    {
-        [delegateMapView animateToCameraPosition:[GMSCameraPosition
-                                                  cameraWithLatitude:delegateMapView.camera.target.latitude
-                                                  longitude:self.endingLongitude
-                                                  zoom:delegateMapView.camera.zoom]];
-    }
+    CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
+    
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+    marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+    marker.map = mapView_;
 }
 
 @end

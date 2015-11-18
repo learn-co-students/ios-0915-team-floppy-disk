@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>googleMapAPIKey</key>
+	<string>AIzaSyBVkrrCSRjVvz1B0PnC9OJi6JE-mKmXy0s</string>
+	<key>spotifyClientId</key>
+	<string>d6f6e2673958407a96ff8f444a3c2462</string>
+	<key>spotifyClientSecret</key>
+	<string>feff38a442bf4c01a8fcc003bfeaf75e</string>
+	<key>parseApplicationKey</key>
+	<string>rVNOP6zGJ4i9SMb4ONhxxHzSui6UuEiSYzQqMILR</string>
+	<key>parseClientKey</key>
+	<string>1thWpZNaRGyrTxOLuWFT0Auq8pgaNA5LJJeurjlg</string>
+</dict>
+</plist>

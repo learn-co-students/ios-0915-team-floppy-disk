@@ -10,6 +10,9 @@
 #import <Spotify/Spotify.h>
 #import <AVFoundation/AVFoundation.h> // Required for Spotify
 #import <Parse/Parse.h>
+#import "HRPTrackCreator.h"
+#import "HRPTrack.h"
+
 @import GoogleMaps;
 
 @interface AppDelegate ()
@@ -24,73 +27,76 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    
+    
     // Get API Key from key.plist (hidden by .gitignore)
-    NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
-    
-    NSString *googleMapAPIKey = [plistDictionary objectForKey:@"googleMapAPIKey"];
-    NSLog(@"googleMapAPIKey: %@", googleMapAPIKey);
-    [GMSServices provideAPIKey:googleMapAPIKey];
-    
-    NSString *spotifyClientId = [plistDictionary objectForKey:@"spotifyClientId"];
-    self.spotifyClientId = spotifyClientId;
-    NSLog(@"spotifyClientId: %@", self.spotifyClientId);
-    NSString *spotifyClientSecret = [plistDictionary objectForKey:@"spotifyClientSecret"];
-    NSLog(@"spotifyClientSecret: %@", spotifyClientSecret);
-
-    NSString *parseApplicationKey = [plistDictionary objectForKey:@"parseApplicationKey"];
-    NSLog(@"parseApplicationKey: %@", parseApplicationKey);
-    NSString *parseClientKey = [plistDictionary objectForKey:@"parseClientKey"];
-    NSLog(@"parseClientKey: %@", parseClientKey);
-    [Parse enableLocalDatastore];
-    [Parse setApplicationId:@"parseApplicationKey"
-                  clientKey:@"parseClientKey"];
-    
-    
-    NSString *redirect = [NSString stringWithFormat:@"harpy-app://authorize"];
-     NSURL *redirectURL = [NSURL URLWithString:redirect];
-    [[SPTAuth defaultInstance] setClientID:spotifyClientId];
-    [[SPTAuth defaultInstance] setRedirectURL:redirectURL];
-    [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope]];
-    
-    NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
-    [application performSelector:@selector(openURL:) withObject:loginURL afterDelay:0.1];
-    
+//    NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
+//    
+//    NSString *googleMapAPIKey = [plistDictionary objectForKey:@"googleMapAPIKey"];
+//    NSLog(@"googleMapAPIKey: %@", googleMapAPIKey);
+//    [GMSServices provideAPIKey:googleMapAPIKey];
+//    
+//    NSString *spotifyClientId = [plistDictionary objectForKey:@"spotifyClientId"];
+//    self.spotifyClientId = spotifyClientId;
+//    NSLog(@"spotifyClientId: %@", self.spotifyClientId);
+//    NSString *spotifyClientSecret = [plistDictionary objectForKey:@"spotifyClientSecret"];
+//    NSLog(@"spotifyClientSecret: %@", spotifyClientSecret);
+//
+//    NSString *parseApplicationKey = [plistDictionary objectForKey:@"parseApplicationKey"];
+//    NSLog(@"parseApplicationKey: %@", parseApplicationKey);
+//    NSString *parseClientKey = [plistDictionary objectForKey:@"parseClientKey"];
+//    NSLog(@"parseClientKey: %@", parseClientKey);
+//    [Parse enableLocalDatastore];
+//    [Parse setApplicationId:@"parseApplicationKey"
+//                  clientKey:@"parseClientKey"];
+//    
+//    
+//    NSString *redirect = [NSString stringWithFormat:@"harpy-app://authorize"];
+//     NSURL *redirectURL = [NSURL URLWithString:redirect];
+//    [[SPTAuth defaultInstance] setClientID:spotifyClientId];
+//    [[SPTAuth defaultInstance] setRedirectURL:redirectURL];
+//    [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope]];
+//    
+//    NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
+//    [application performSelector:@selector(openURL:) withObject:loginURL afterDelay:0.1];
+//    
     return YES;
 }
--(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    
-    if ([[SPTAuth defaultInstance] canHandleURL:url]) {
-        [[SPTAuth defaultInstance] handleAuthCallbackWithTriggeredAuthURL:url callback:^(NSError *error, SPTSession *session) {
-            if (error != nil) {
-                NSLog(@"***Auth Error: %@", error);
-                return;
-            }
-            [self playUsingSession:session];
-        }];
-        return YES;
-    }
-    return NO;
-}
--(void)playUsingSession:(SPTSession *)session {
-    
-    if (self.player == nil) {
-        self.player = [[SPTAudioStreamingController alloc] initWithClientId:[SPTAuth defaultInstance].clientID];
-    }
-    
-    [self.player loginWithSession:session callback:^(NSError *error) {
-        if (error != nil) {
-            NSLog(@"*** Logging in got error: %@", error);
-            return;
-        }
-        NSURL *trackURI = [NSURL URLWithString:@"spotify:track:5veIeQ8tk07IlIp34NeI8s"];
-        [self.player playURIs:@[ trackURI ] fromIndex:0 callback:^(NSError *error) {
-            if (error != nil) {
-                NSLog(@"*** Starting playback got error: %@", error);
-                return;
-            }
-        }];
-    }];
-}
+//-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+//    
+//    if ([[SPTAuth defaultInstance] canHandleURL:url]) {
+//        [[SPTAuth defaultInstance] handleAuthCallbackWithTriggeredAuthURL:url callback:^(NSError *error, SPTSession *session) {
+//            if (error != nil) {
+//                NSLog(@"***Auth Error: %@", error);
+//                return;
+//            }
+//            [self playUsingSession:session];
+//        }];
+//        return YES;
+//    }
+//    return NO;
+//}
+//-(void)playUsingSession:(SPTSession *)session {
+//    
+//    if (self.player == nil) {
+//        self.player = [[SPTAudioStreamingController alloc] initWithClientId:[SPTAuth defaultInstance].clientID];
+//    }
+//    
+//    [self.player loginWithSession:session callback:^(NSError *error) {
+//        if (error != nil) {
+//            NSLog(@"*** Logging in got error: %@", error);
+//            return;
+//        }
+//        NSURL *trackURI = [NSURL URLWithString:@"spotify:track:5veIeQ8tk07IlIp34NeI8s"];
+//        [self.player playURIs:@[ trackURI ] fromIndex:0 callback:^(NSError *error) {
+//            if (error != nil) {
+//                NSLog(@"*** Starting playback got error: %@", error);
+//                return;
+//            }
+//        }];
+//    }];
+//}
 
 
 @end

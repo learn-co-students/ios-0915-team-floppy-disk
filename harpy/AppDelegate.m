@@ -25,6 +25,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Get API Key from key.plist (hidden by .gitignore)
+    NSLog(@"API KEYS FROM KEYS.PLIST");
     NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
     
     NSString *googleMapAPIKey = [plistDictionary objectForKey:@"googleMapAPIKey"];
@@ -44,16 +45,7 @@
     [Parse enableLocalDatastore];
     [Parse setApplicationId:@"parseApplicationKey"
                   clientKey:@"parseClientKey"];
-    
-    
-    NSString *redirect = [NSString stringWithFormat:@"harpy-app://authorize"];
-     NSURL *redirectURL = [NSURL URLWithString:redirect];
-    [[SPTAuth defaultInstance] setClientID:spotifyClientId];
-    [[SPTAuth defaultInstance] setRedirectURL:redirectURL];
-    [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope]];
-    
-    NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
-    [application performSelector:@selector(openURL:) withObject:loginURL afterDelay:0.1];
+    NSLog(@"____________________________________");
     
     return YES;
 }

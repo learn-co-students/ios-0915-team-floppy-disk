@@ -7,8 +7,8 @@
 //
 
 #import "HRPLoginRedirectViewController.h"
+#import "HRPLoginRedirect.h"
 #import "AppDelegate.h"
-#import <Spotify/Spotify.h>
 
 @interface HRPLoginRedirectViewController ()
 
@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [HRPLoginRedirect launchSpotify];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

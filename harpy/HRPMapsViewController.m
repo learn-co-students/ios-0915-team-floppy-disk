@@ -31,15 +31,18 @@
 
 - (void)viewDidLoad
 {
+    //coordinates bounding NYC
     self.startingLatitude = 40.693487;
     self.startingLongitude = -74.036034;
     self.endingLatitude = 40.886095;
     self.endingLongitude = -73.877143;
     
+    //for the method directly below
     float cameraPositionLatitude = (self.startingLatitude + self.endingLatitude) / 2.0;
     float cameraPositionLongitide = (self.startingLongitude + self.endingLongitude) / 2.0;
     
     //this is not working the way I want it to
+    //it's basically a duplicate method as the one in updateMapWithCurrentLocation, which does work
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:cameraPositionLatitude longitude:cameraPositionLongitide zoom:12];
     
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
@@ -96,9 +99,10 @@
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
     // Create a GMSCameraPosition that tells the map to display
+    // this determines the zoom of the camera as soon as the map opens
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude
                                                             longitude:coordinate.longitude
-                                                                 zoom:17];
+                                                                 zoom:18];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     self.view = mapView_;
     [mapView_ setMinZoom:12 maxZoom:mapView_.maxZoom];

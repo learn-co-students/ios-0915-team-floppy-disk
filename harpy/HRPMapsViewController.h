@@ -17,7 +17,4 @@
 /// The location manager used to receive location updates.
 @property (nonatomic,strong) CLLocationManager *locationManager;
 
-/// An alert view used to notify the user of errors.
-@property (nonatomic,strong) UIAlertController *alertView;
-
 @end

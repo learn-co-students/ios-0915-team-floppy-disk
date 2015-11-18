@@ -31,21 +31,6 @@
 
 - (void)viewDidLoad
 {
-    //coordinates bounding NYC
-    self.startingLatitude = 40.693487;
-    self.startingLongitude = -74.036034;
-    self.endingLatitude = 40.886095;
-    self.endingLongitude = -73.877143;
-    
-    //for the method directly below
-    float cameraPositionLatitude = (self.startingLatitude + self.endingLatitude) / 2.0;
-    float cameraPositionLongitide = (self.startingLongitude + self.endingLongitude) / 2.0;
-    
-    //this is not working the way I want it to
-    //it's basically a duplicate method as the one in updateMapWithCurrentLocation, which does work
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:cameraPositionLatitude longitude:cameraPositionLongitide zoom:12];
-    
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.delegate = self;
     
     self.locationManager = [CLLocationManager sharedManager];
@@ -119,42 +104,11 @@
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
     
     // This should be uncommented when we use actual devices to test GPS.
-//    [self presentViewController:errorAlerts animated:YES completion:nil];
+    //    [self presentViewController:errorAlerts animated:YES completion:nil];
 }
 
 #pragma mark - GMSMapViewDelegate
 
-- (void)mapView:(GMSMapView *)delegateMapView didChangeCameraPosition:(GMSCameraPosition *)position
-{
-    if(delegateMapView.camera.target.latitude > self.startingLatitude)
-    {
-        [delegateMapView animateToCameraPosition:[GMSCameraPosition
-                                                  cameraWithLatitude:self.startingLatitude
-                                                  longitude:delegateMapView.camera.target.longitude
-                                                  zoom:delegateMapView.camera.zoom]];
-    }
-    if(delegateMapView.camera.target.latitude < self.endingLatitude)
-    {
-        [delegateMapView animateToCameraPosition:[GMSCameraPosition
-                                                  cameraWithLatitude:self.endingLatitude
-                                                  longitude:delegateMapView.camera.target.longitude
-                                                  zoom:delegateMapView.camera.zoom]];
-    }
-    if(delegateMapView.camera.target.longitude < self.startingLongitude)
-    {
-        [delegateMapView animateToCameraPosition:[GMSCameraPosition
-                                                  cameraWithLatitude:delegateMapView.camera.target.latitude
-                                                  longitude:self.startingLongitude
-                                                  zoom:delegateMapView.camera.zoom]];
-    }
-    if(delegateMapView.camera.target.longitude > self.endingLongitude)
-    {
-        [delegateMapView animateToCameraPosition:[GMSCameraPosition
-                                                  cameraWithLatitude:delegateMapView.camera.target.latitude
-                                                  longitude:self.endingLongitude
-                                                  zoom:delegateMapView.camera.zoom]];
-    }
-}
 
 - (IBAction)addMarkerButtonTapped:(id)sender
 {

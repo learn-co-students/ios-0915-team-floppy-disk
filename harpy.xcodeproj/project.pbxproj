@@ -10,6 +10,7 @@
 		0C1A58203BF13D8D1931530C /* libPods-harpy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0453F870576313A0151B46 /* libPods-harpy.a */; };
 		3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */; settings = {ASSET_TAGS = (); }; };
 		3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73241BFD24420010A257 /* HRPTrack.m */; settings = {ASSET_TAGS = (); }; };
+		3DCD8A441BFCDC3B007E8842 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DCD8A431BFCDC3B007E8842 /* Keys.plist */; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
 		E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */; };
 		E9335C621BFA7EBC002DD9C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C611BFA7EBC002DD9C6 /* ViewController.m */; };
@@ -24,6 +25,18 @@
 		E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */; settings = {ASSET_TAGS = (); }; };
 		E938011E1BFC2406004CC8A2 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E938011D1BFC2406004CC8A2 /* CLLocationManager+Shared.m */; settings = {ASSET_TAGS = (); }; };
 		E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801261BFCCA50004CC8A2 /* HRPLoginRedirect.m */; settings = {ASSET_TAGS = (); }; };
+		E93801291BFCEADF004CC8A2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E93801281BFCEADF004CC8A2 /* Login.storyboard */; settings = {ASSET_TAGS = (); }; };
+		E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E938012B1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m */; settings = {ASSET_TAGS = (); }; };
+		E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */; settings = {ASSET_TAGS = (); }; };
+		E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801331BFD1764004CC8A2 /* HRPUser.m */; settings = {ASSET_TAGS = (); }; };
+		E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */; };
+		E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801141BFBE9C8004CC8A2 /* HRPSpotifyViewController.m */; };
+		E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801171BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m */; };
+		E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */; };
+		E938011E1BFC2406004CC8A2 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E938011D1BFC2406004CC8A2 /* CLLocationManager+Shared.m */; };
+		E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */; };
+		E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801261BFCCA50004CC8A2 /* HRPLoginRedirect.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +55,7 @@
 		3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTrackCreator.m; sourceTree = "<group>"; };
 		3B0A73231BFD24420010A257 /* HRPTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPTrack.h; sourceTree = "<group>"; };
 		3B0A73241BFD24420010A257 /* HRPTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTrack.m; sourceTree = "<group>"; };
+		3DCD8A431BFCDC3B007E8842 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		6DB65EC059DFF1DB09801C30 /* Pods-harpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-harpy/Pods-harpy.release.xcconfig"; sourceTree = "<group>"; };
 		8A0453F870576313A0151B46 /* libPods-harpy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harpy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335C571BFA7EBC002DD9C6 /* harpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +71,6 @@
 		E9335C701BFA7EBD002DD9C6 /* harpyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = harpyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335C741BFA7EBD002DD9C6 /* harpyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = harpyTests.m; sourceTree = "<group>"; };
 		E9335C761BFA7EBD002DD9C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E938010E1BFBE23F004CC8A2 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		E93801101BFBE956004CC8A2 /* HRPMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPMapsViewController.h; sourceTree = "<group>"; };
 		E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPMapsViewController.m; sourceTree = "<group>"; };
 		E93801131BFBE9C8004CC8A2 /* HRPSpotifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSpotifyViewController.h; sourceTree = "<group>"; };
@@ -70,6 +83,15 @@
 		E938011D1BFC2406004CC8A2 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		E93801221BFC2B90004CC8A2 /* HRPSpotifySearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSpotifySearchViewController.h; sourceTree = "<group>"; };
 		E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSpotifySearchViewController.m; sourceTree = "<group>"; };
+		E93801251BFCCA50004CC8A2 /* HRPLoginRedirect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPLoginRedirect.h; sourceTree = "<group>"; };
+		E93801261BFCCA50004CC8A2 /* HRPLoginRedirect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPLoginRedirect.m; sourceTree = "<group>"; };
+		E93801281BFCEADF004CC8A2 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		E938012A1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPLoginOrSignupVC.h; sourceTree = "<group>"; };
+		E938012B1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPLoginOrSignupVC.m; sourceTree = "<group>"; };
+		E938012F1BFD1703004CC8A2 /* HRPParseNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPParseNetworkService.h; sourceTree = "<group>"; };
+		E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPParseNetworkService.m; sourceTree = "<group>"; };
+		E93801321BFD1764004CC8A2 /* HRPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPUser.h; sourceTree = "<group>"; };
+		E93801331BFD1764004CC8A2 /* HRPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,14 +157,8 @@
 				E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */,
 				E9335C601BFA7EBC002DD9C6 /* ViewController.h */,
 				E9335C611BFA7EBC002DD9C6 /* ViewController.m */,
-				E93801161BFBEB97004CC8A2 /* HRPLoginRedirectViewController.h */,
-				E93801171BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m */,
 				E93801131BFBE9C8004CC8A2 /* HRPSpotifyViewController.h */,
 				E93801141BFBE9C8004CC8A2 /* HRPSpotifyViewController.m */,
-				E93801101BFBE956004CC8A2 /* HRPMapsViewController.h */,
-				E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */,
-				E93801191BFC23A7004CC8A2 /* HRPLocationManager.h */,
-				E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */,
 				E93801221BFC2B90004CC8A2 /* HRPSpotifySearchViewController.h */,
 				E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */,
 				E938011C1BFC2406004CC8A2 /* CLLocationManager+Shared.h */,
@@ -151,8 +167,15 @@
 				3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */,
 				3B0A73231BFD24420010A257 /* HRPTrack.h */,
 				3B0A73241BFD24420010A257 /* HRPTrack.m */,
+				E93801321BFD1764004CC8A2 /* HRPUser.h */,
+				E93801331BFD1764004CC8A2 /* HRPUser.m */,
+				E938012F1BFD1703004CC8A2 /* HRPParseNetworkService.h */,
+				E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */,
+				E938012E1BFCEF6C004CC8A2 /* Maps */,
+				E938012D1BFCEF58004CC8A2 /* Login */,
 				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
 				E9335C631BFA7EBC002DD9C6 /* Main.storyboard */,
+				E93801281BFCEADF004CC8A2 /* Login.storyboard */,
 				E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */,
 				E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */,
 			);
@@ -162,7 +185,7 @@
 		E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E938010E1BFBE23F004CC8A2 /* Keys.plist */,
+				3DCD8A431BFCDC3B007E8842 /* Keys.plist */,
 				E9335C6B1BFA7EBC002DD9C6 /* Info.plist */,
 				E9335C5B1BFA7EBC002DD9C6 /* main.m */,
 			);
@@ -176,6 +199,32 @@
 				E9335C761BFA7EBD002DD9C6 /* Info.plist */,
 			);
 			path = harpyTests;
+			sourceTree = "<group>";
+		};
+		E938012D1BFCEF58004CC8A2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E93801161BFBEB97004CC8A2 /* HRPLoginRedirectViewController.h */,
+				E93801171BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m */,
+				E93801251BFCCA50004CC8A2 /* HRPLoginRedirect.h */,
+				E93801261BFCCA50004CC8A2 /* HRPLoginRedirect.m */,
+				E938012A1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.h */,
+				E938012B1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		E938012E1BFCEF6C004CC8A2 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				E93801101BFBE956004CC8A2 /* HRPMapsViewController.h */,
+				E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */,
+				E93801191BFC23A7004CC8A2 /* HRPLocationManager.h */,
+				E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */,
+				E938011C1BFC2406004CC8A2 /* CLLocationManager+Shared.h */,
+				E938011D1BFC2406004CC8A2 /* CLLocationManager+Shared.m */,
+			);
+			name = Maps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +310,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E938010F1BFBE23F004CC8A2 /* Keys.plist in Resources */,
 				E9335C6A1BFA7EBC002DD9C6 /* LaunchScreen.storyboard in Resources */,
 				E9335C671BFA7EBC002DD9C6 /* Assets.xcassets in Resources */,
+				E93801291BFCEADF004CC8A2 /* Login.storyboard in Resources */,
 				E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */,
+				3DCD8A441BFCDC3B007E8842 /* Keys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,13 +383,17 @@
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
 				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,
 				E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */,
+				E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */,
 				E938011E1BFC2406004CC8A2 /* CLLocationManager+Shared.m in Sources */,
+				E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */,
 				E9335C621BFA7EBC002DD9C6 /* ViewController.m in Sources */,
 				E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */,
 				E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */,
+				E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */,
 				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
 				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
 				3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */,
+				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

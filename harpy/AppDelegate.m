@@ -36,7 +36,7 @@
     [GMSServices provideAPIKey:googleMapAPIKey];
     
     NSString *spotifyClientId = [plistDictionary objectForKey:@"spotifyClientId"];
-    self.spotifyClientId = spotifyClientId;
+    self.spotifyClientId = @"51e5656ef4d34b6ea99023766c0c39b8";
     NSLog(@"spotifyClientId: %@", self.spotifyClientId);
     NSString *spotifyClientSecret = [plistDictionary objectForKey:@"spotifyClientSecret"];
     NSLog(@"spotifyClientSecret: %@", spotifyClientSecret);
@@ -51,6 +51,41 @@
     NSLog(@"____________________________________");
     
     return YES;
+}
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    if ([[SPTAuth defaultInstance] canHandleURL:url]) {
+        [[SPTAuth defaultInstance] handleAuthCallbackWithTriggeredAuthURL:url callback:^(NSError *error, SPTSession *session) {
+            if (error != nil) {
+                NSLog(@"***Auth Error: %@", error);
+                return;
+            }
+            [self playUsingSession:session];
+        }];
+        return YES;
+    }
+    return NO;
+}
+
+-(void)playUsingSession:(SPTSession *)session {
+    
+    if (self.player == nil) {
+        self.player = [[SPTAudioStreamingController alloc] initWithClientId:[SPTAuth defaultInstance].clientID];
+    }
+    
+    [self.player loginWithSession:session callback:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"*** Logging in got error: %@", error);
+            return;
+        }
+        NSURL *trackURI = [NSURL URLWithString:@"spotify:track:5veIeQ8tk07IlIp34NeI8s"];
+        [self.player playURIs:@[ trackURI ] fromIndex:0 callback:^(NSError *error) {
+            if (error != nil) {
+                NSLog(@"*** Starting playback got error: %@", error);
+                return;
+            }
+        }];
+    }];
 }
 
 @end

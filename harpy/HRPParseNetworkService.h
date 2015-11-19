@@ -14,8 +14,7 @@
 
 +(id)sharedService;
 
--(void)loginApp:(NSString *)username AndPassword:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler;
--(void)createUserWithEmail:(NSString *)email completionHandler:(void (^)(HRPUser *user))completionHandler;
-//-(void)createUser:(NSString *)username AndPassword:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler;
+-(void)loginApp:(NSString *)username password:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler;
+-(void)createUser:(NSString *)username email:(NSString *)email password:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler;
 
 @end

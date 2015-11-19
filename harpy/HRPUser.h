@@ -15,7 +15,7 @@
 
 @property (strong,nonatomic) NSString *userID; // Called property objectId by parse
 @property (strong,nonatomic) NSString *userName;
-@property (strong,nonatomic) NSString *password; // Not in init method
+@property (strong,nonatomic) NSString *password;
 @property (strong,nonatomic) NSString *email;
 @property (strong,nonatomic) NSDate *createAt;
 @property (strong,nonatomic) NSMutableArray *HRPUsersfollowers;
@@ -28,6 +28,7 @@
 
 -(instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName email:(NSString *)email createAt:(NSDate *)createAt HRPUsersfollowers:(NSMutableArray *)HRPUsersfollowers HRPFans:(NSMutableArray *)HRPFans profileImage:(UIImage *)profileImage HRPPosts:(NSArray *)HRPPosts HRPPostLikes:(NSArray *)HRPPostLikes spotifyID:(NSString *)spotifyID spotifyPremium:(BOOL *)spotifyPremium;
 
--(instancetype)initWithUserID:(NSString *)userID UserName:(NSString *)userName email:(NSString *)email;
+-(instancetype)initWithUsername:(NSString *)userName password:(NSString *)password;
+-(instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName email:(NSString *)email password:(NSString *)password;
 
 @end

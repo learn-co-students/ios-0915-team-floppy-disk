@@ -8,6 +8,13 @@
 
 #import "HRPTrack.h"
 
+@interface HRPTrack ()
+
+
+
+
+@end
+
 @implementation HRPTrack
 
 -(instancetype)initWithSongTitle:(NSString *)title artistName:(NSString *)artist albumName:(NSString *)album spotifyURL:(NSURL *)url coverArt:(NSData *)cover songPopularity:(NSNumber *)popularity {
@@ -22,5 +29,18 @@
     }
     return self;
 }
+
+-(void)trackDidStartPlayback{
+    
+    
+}
+
+//-(void)trackDidPausePlayback;
+//
+//-(void)songDidStopPlayback;
+//
+//-(void)songDidSkipForwards;
+//
+//-(void)songDidSkipBackwards;
 
 @end

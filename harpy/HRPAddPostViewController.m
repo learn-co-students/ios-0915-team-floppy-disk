@@ -16,18 +16,50 @@
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic,strong) CLLocationManager *locationManager;
 
+//from Google Places API Guide
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
 @end
 
 @implementation HRPAddPostViewController
 {
     GMSMapView *mapView_;
+    GMSPlacesClient *_placesClient;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    _placesClient = [[GMSPlacesClient alloc] init];
+    
     self.currentLocation = self.locationManager.location;
+}
+
+- (IBAction)getCurrentPlace:(UIButton *)sender
+{
+    [_placesClient currentPlaceWithCallback:^(GMSPlaceLikelihoodList *placeLikelihoodList, NSError *error){
+        if (error != nil)
+        {
+            NSLog(@"Pick Place error %@", [error localizedDescription]);
+            return;
+        }
+        
+        self.nameLabel.text = @"No current place";
+        self.addressLabel.text = @"";
+        
+        if (placeLikelihoodList != nil)
+        {
+            GMSPlace *place = [[[placeLikelihoodList likelihoods] firstObject] place];
+            if (place != nil)
+            {
+                self.nameLabel.text = place.name;
+                self.addressLabel.text = [[place.formattedAddress componentsSeparatedByString:@", "]
+                                          componentsJoinedByString:@"\n"];
+            }
+        }
+    }];
 }
 
 - (IBAction)submitButtonTapped:(id)sender

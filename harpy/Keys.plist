@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>googlePlacesAPIKey</key>
+	<string>AIzaSyBVkrrCSRjVvz1B0PnC9OJi6JE-mKmXy0s</string>
 	<key>googleMapAPIKey</key>
 	<string>AIzaSyBVkrrCSRjVvz1B0PnC9OJi6JE-mKmXy0s</string>
 	<key>spotifyClientId</key>

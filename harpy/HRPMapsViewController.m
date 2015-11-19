@@ -43,6 +43,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    //because of this, the marker i've added disappears.  this reloads the view, in a way, by calling the startUpdatingLocation method
     [super viewDidAppear:animated];
     [self.locationManager startUpdatingLocation];
 }
@@ -108,9 +109,21 @@
     //    [self presentViewController:errorAlerts animated:YES completion:nil];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    HRPAddPostViewController *addPostDVC = segue.destinationViewController;
+    addPostDVC.delegate = self;
+}
+
 - (void)addPostViewController:(id)viewController didFinishWithLocation:(CLLocation *)location
 {
-    //maybe the marking method implementation should go here, based on the location chosen?
+    CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
+    
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+    marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+    marker.map = mapView_;
+    
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 

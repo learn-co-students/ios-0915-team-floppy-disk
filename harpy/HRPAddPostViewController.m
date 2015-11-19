@@ -8,8 +8,6 @@
 
 #import "HRPAddPostViewController.h"
 //#import "HRPMapsViewController.h"
-#import "HRPLocationManager.h"
-#import "CLLocationManager+Shared.h"
 #import <MapKit/MapKit.h>
 @import GoogleMaps;
 
@@ -40,15 +38,13 @@
         marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
         marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
         marker.map = mapView_;
+    
+    [self.delegate addPostViewController:self didFinishWithLocation:self.currentLocation]; //we might not actually need to know the location, this can always be adjusted later
 }
 
 - (IBAction)cancelButtonTapped:(id)sender
 {
-    
+    [self.delegate addPostViewControllerDidCancel:self];
 }
-
-
-
-
 
 @end

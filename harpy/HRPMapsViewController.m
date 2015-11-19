@@ -9,11 +9,12 @@
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 #import "HRPMapsViewController.h"
+#import "HRPAddPostViewController.h"
 #import "CLLocationManager+Shared.h"
 #import <MapKit/MapKit.h>
 @import GoogleMaps;
 
-@interface HRPMapsViewController () <GMSMapViewDelegate>
+@interface HRPMapsViewController () <GMSMapViewDelegate, HRPAddPostViewControllerDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
 
@@ -105,6 +106,17 @@
     
     // This should be uncommented when we use actual devices to test GPS.
     //    [self presentViewController:errorAlerts animated:YES completion:nil];
+}
+
+- (void)addPostViewController:(id)viewController didFinishWithLocation:(CLLocation *)location
+{
+    //maybe the marking method implementation should go here, based on the location chosen?
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addPostViewControllerDidCancel:(HRPAddPostViewController *)viewController
+{
+    [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -37,7 +37,7 @@
                 NSLog(@"about to show a dialog requesting permission");
             }
             
-            instance = [[CLLocationManager alloc] init];
+            instance = [[HRPLocationManager alloc] init];
             instance.clLocationManager = [[CLLocationManager alloc] init];
             instance.clLocationManager.delegate = instance;
             instance.clLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;

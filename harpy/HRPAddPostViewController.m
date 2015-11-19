@@ -32,13 +32,6 @@
 
 - (IBAction)submitButtonTapped:(id)sender
 {
-        CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
-    
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-        marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
-        marker.map = mapView_;
-    
     [self.delegate addPostViewController:self didFinishWithLocation:self.currentLocation]; //we might not actually need to know the location, this can always be adjusted later
 }
 

@@ -21,49 +21,40 @@
     return mySharedService;
 }
 
--(void)loginApp:(NSString *)username AndPassword:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler {
+-(void)loginApp:(NSString *)username password:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler {
     NSError *error;
     [PFUser logInWithUsername:username password:password error:&error];
     if (error) {
         // Do Something
     } else {
         PFUser *currentUser = [PFUser currentUser];
-        HRPUser *user = [[HRPUser alloc]initWithUserID:currentUser.objectId UserName:currentUser.username email:currentUser.email];
+        HRPUser *user = [[HRPUser alloc]initWithUsername:currentUser.username password:currentUser.password];
         [[NSOperationQueue mainQueue]addOperationWithBlock:^{
             completionHandler(user);
         }];
     }
 }
 
--(void)createUserWithEmail:(NSString *)email completionHandler:(void (^)(HRPUser *user))completionHandler {
+-(void)createUser:(NSString *)username email:(NSString *)email password:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler {
     NSError *error;
     PFUser *user = [[PFUser alloc]init];
+    user.username = username;
     user.email = email;
+    user.password = password;
     if (error) {
         // Do Something
     } else {
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         PFUser *currentUser = [PFUser currentUser];
-        HRPUser *user = [[HRPUser alloc]initWithUserID:currentUser.objectId UserName:nil email:currentUser.email];
+        HRPUser *user = [[HRPUser alloc]initWithUserID:currentUser.objectId
+                                              userName:currentUser.username
+                                                 email:currentUser.email
+                                              password:currentUser.password];
         [[NSOperationQueue mainQueue]addOperationWithBlock:^{
             completionHandler(user);
         }];
     }];
     }
 }
-
-
-//-(void)createUser:(NSString *)username AndPassword:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler {
-//    PFUser *user = [[PFUser alloc]init];
-//    user.username = username;
-//    user.password = password;
-//    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        PFUser *currentUser = [PFUser currentUser];
-//        HRPUser *user = [[HRPUser alloc]initWithUserID:currentUser.objectId UserName:nil email:currentUser.email];
-//        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-//            completionHandler(user);
-//        }];
-//    }];
-//}
 
 @end

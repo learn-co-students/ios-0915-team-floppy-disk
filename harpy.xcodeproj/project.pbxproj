@@ -29,6 +29,8 @@
 		E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */; settings = {ASSET_TAGS = (); }; };
 		E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801331BFD1764004CC8A2 /* HRPUser.m */; settings = {ASSET_TAGS = (); }; };
 		E9E211141BFD3E2500739143 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9E211131BFD3E2500739143 /* Keys.plist */; settings = {ASSET_TAGS = (); }; };
+		E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E211161BFD76B700739143 /* HRPValidationManager.m */; settings = {ASSET_TAGS = (); }; };
+		E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,10 @@
 		E93801321BFD1764004CC8A2 /* HRPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPUser.h; sourceTree = "<group>"; };
 		E93801331BFD1764004CC8A2 /* HRPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPUser.m; sourceTree = "<group>"; };
 		E9E211131BFD3E2500739143 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		E9E211151BFD76B700739143 /* HRPValidationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPValidationManager.h; sourceTree = "<group>"; };
+		E9E211161BFD76B700739143 /* HRPValidationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPValidationManager.m; sourceTree = "<group>"; };
+		E9F8CE701BFE1F3800979181 /* HRPSignupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSignupVC.h; sourceTree = "<group>"; };
+		E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSignupVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +206,10 @@
 				E93801261BFCCA50004CC8A2 /* HRPLoginRedirect.m */,
 				E938012A1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.h */,
 				E938012B1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m */,
+				E9F8CE701BFE1F3800979181 /* HRPSignupVC.h */,
+				E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */,
+				E9E211151BFD76B700739143 /* HRPValidationManager.h */,
+				E9E211161BFD76B700739143 /* HRPValidationManager.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -371,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
+				E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */,
 				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,
 				E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */,
 				E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */,
@@ -379,6 +390,7 @@
 				E9335C621BFA7EBC002DD9C6 /* ViewController.m in Sources */,
 				E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */,
 				E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */,
+				E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */,
 				E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */,
 				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
 				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,

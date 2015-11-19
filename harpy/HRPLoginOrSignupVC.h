@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ENUM(NSUInteger, HRPViewControllerTags) {
+    HRPViewControllerUsernameTextFieldTag = 1,
+    HRPViewControllerEmailTextFieldTag = 2,
+    HRPViewControllerPasswordTextFieldTag = 3
+};
+
 @interface HRPLoginOrSignupVC : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *displayMessage;

@@ -107,17 +107,4 @@
     //    [self presentViewController:errorAlerts animated:YES completion:nil];
 }
 
-#pragma mark - GMSMapViewDelegate
-
-
-- (IBAction)addMarkerButtonTapped:(id)sender
-{
-    CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
-    
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-    marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
-    marker.map = mapView_;
-}
-
 @end

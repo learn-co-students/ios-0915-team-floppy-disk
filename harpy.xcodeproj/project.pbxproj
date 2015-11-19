@@ -12,6 +12,7 @@
 		3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73241BFD24420010A257 /* HRPTrack.m */; };
 		3D34D7C11BFE1F2300C86BF3 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C01BFE1F2300C86BF3 /* Keys.plist */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
+		3DAC61ED1BFE27D9002BAB02 /* HRPAddPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC61EC1BFE27D9002BAB02 /* HRPAddPostViewController.m */; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
 		E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */; };
 		E9335C621BFA7EBC002DD9C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C611BFA7EBC002DD9C6 /* ViewController.m */; };
@@ -50,6 +51,8 @@
 		3B0A73241BFD24420010A257 /* HRPTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTrack.m; sourceTree = "<group>"; };
 		3D34D7C01BFE1F2300C86BF3 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		3DAC61EB1BFE27D9002BAB02 /* HRPAddPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPAddPostViewController.h; sourceTree = "<group>"; };
+		3DAC61EC1BFE27D9002BAB02 /* HRPAddPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPAddPostViewController.m; sourceTree = "<group>"; };
 		6DB65EC059DFF1DB09801C30 /* Pods-harpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-harpy/Pods-harpy.release.xcconfig"; sourceTree = "<group>"; };
 		8A0453F870576313A0151B46 /* libPods-harpy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harpy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335C571BFA7EBC002DD9C6 /* harpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +217,8 @@
 			children = (
 				E93801101BFBE956004CC8A2 /* HRPMapsViewController.h */,
 				E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */,
+				3DAC61EB1BFE27D9002BAB02 /* HRPAddPostViewController.h */,
+				3DAC61EC1BFE27D9002BAB02 /* HRPAddPostViewController.m */,
 				E93801191BFC23A7004CC8A2 /* HRPLocationManager.h */,
 				E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */,
 			);
@@ -387,6 +392,7 @@
 				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
 				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
 				3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */,
+				3DAC61ED1BFE27D9002BAB02 /* HRPAddPostViewController.m in Sources */,
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,
 			);

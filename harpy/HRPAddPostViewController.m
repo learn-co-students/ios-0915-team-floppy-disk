@@ -65,6 +65,7 @@
 
 - (IBAction)pickPlace:(UIButton *)sender
 {
+    //this works even when there is no designated location, which is why the places picked are so far away
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);

@@ -203,5 +203,18 @@
     NSLog(@"%@ isValid: %@", textField.text, valid ? @"YES" : @"NO");
     return valid;
 }
+-(void)callUsernameFailAlertController {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Invalid Username" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alertController addAction:okayAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 
 @end

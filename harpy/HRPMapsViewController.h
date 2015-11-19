@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HRPLocationManager.h"
+#import "CLLocationManager+Shared.h"
 
 @interface HRPMapsViewController : UIViewController <CLLocationManagerDelegate>
 

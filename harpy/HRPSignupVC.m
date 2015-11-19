@@ -98,6 +98,9 @@
         valid = [validationManager validateValue:textField.text forKey:kHRPValidationManagerPasswordKey];
     }
     if ([self.passwordNew isEqual:self.passwordNew]) {
+        
+        // Popup to confim password
+        // Popup to ask for spofity connection
         [self.parseService createUser:self.userNameNew.text email:self.email.text password:self.passwordNew.text completionHandler:^(HRPUser *user) {
         
         }];
@@ -106,5 +109,7 @@
     NSLog(@"%@ isValid: %@", textField.text, valid ? @"YES" : @"NO");
     return valid;
 }
+
+
 
 @end

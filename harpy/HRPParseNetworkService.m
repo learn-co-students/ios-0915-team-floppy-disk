@@ -57,18 +57,4 @@
     }
 }
 
-
-//-(void)createUser:(NSString *)username AndPassword:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler {
-//    PFUser *user = [[PFUser alloc]init];
-//    user.username = username;
-//    user.password = password;
-//    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        PFUser *currentUser = [PFUser currentUser];
-//        HRPUser *user = [[HRPUser alloc]initWithUserID:currentUser.objectId UserName:nil email:currentUser.email];
-//        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-//            completionHandler(user);
-//        }];
-//    }];
-//}
-
 @end

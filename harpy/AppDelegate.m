@@ -46,8 +46,8 @@
     NSString *parseClientKey = [plistDictionary objectForKey:@"parseClientKey"];
     NSLog(@"parseClientKey: %@", parseClientKey);
     [Parse enableLocalDatastore];
-    [Parse setApplicationId:@"parseApplicationKey"
-                  clientKey:@"parseClientKey"];
+    [Parse setApplicationId:parseApplicationKey
+                  clientKey:parseClientKey];
     NSLog(@"____________________________________");
     
     return YES;

@@ -192,17 +192,9 @@
 }
 -(void)loginButtonClicked:(UIButton *)sender
 {
-    
     NSLog(@"CLICKED: login button");
     if ((self.userName.text.length == 0)  || (self.password.text.length ==  0)){
-        NSLog(@"RESULT is not a valid entry");
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                                            message:@"Please enter values for username and password fields"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        // show alert
-        [alertView show];
+        [self callLoginInvalid];
     }
     else {
         // TODO: Catch failed login return
@@ -263,6 +255,16 @@
     
     [alertController addAction:okayAction];
     [self presentViewController:alertController animated:YES completion:nil];
+}
+- (void)callLoginInvalid{
+    NSLog(@"RESULT is not a valid entry");
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                        message:@"Please enter values for username and password fields"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    // show alert
+    [alertView show];
 }
 
 

@@ -8,6 +8,6 @@
 
 #import "ViewController.h"
 
-@interface HRPSpotifyViewController : ViewController
+@interface HRPSpotifyViewController : UIViewController
 
 @end

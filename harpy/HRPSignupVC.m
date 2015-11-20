@@ -10,11 +10,13 @@
 #import "HRPLoginRedirect.h"
 #import "HRPValidationManager.h"
 #import "HRPParseNetworkService.h"
+#import "UIViewController+PresentViewController.h"
 
 #import <Spotify/Spotify.h>
 #import "HRPSpotifyViewController.h"
 #import "HRPLoginRedirect.h"
 
+@import SafariServices;
 @interface HRPSignupVC () <SPTAuthViewDelegate>
 
 @property (nonatomic) UITextField *passwordNew;
@@ -24,6 +26,7 @@
 
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 @property (atomic, readwrite) SPTAuthViewController *authViewController;
+@property (strong, nonatomic) UIViewController *spotifySignupRedirect ;
 
 @end
 
@@ -176,6 +179,7 @@
     
     UIAlertAction *noAccountAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self.spotifyPremium = NO;
+        [self spotifySignupPopup];
     }];
     
     [alertController addAction:confirmAction];
@@ -189,12 +193,13 @@
     
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self.spotifyPremium = YES;
-        [self openLogInPage];
+        [self spotifyLoginPopup];
         [self callParse];
     }];
     
     UIAlertAction *noAccountAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self.spotifyPremium = NO;
+        [self spotifySignupPopup];
     }];
     
     [alertController addAction:confirmAction];
@@ -209,18 +214,24 @@
 
 # pragma mark - Spotify
 
--(void)openLogInPage {
+-(void)spotifyLoginPopup{
     
-    self.authViewController = [SPTAuthViewController authenticationViewController];
-    self.authViewController.delegate = self;
-    self.authViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [HRPLoginRedirect launchSpotify];
+}
+-(void)spotifySignupPopup{
     
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    self.definesPresentationContext = YES;
+    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.spotify.com/signup/"]];
+    [self presentViewController:safariVC animated:YES];
+}
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error {
     
-    [self presentViewController:self.authViewController animated:NO completion:nil];
 }
 
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session {
+
+}
+
+-(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController {
+}
 
 @end

@@ -36,8 +36,8 @@
     [GMSServices provideAPIKey:googleMapAPIKey];
     
     NSString *spotifyClientId = [plistDictionary objectForKey:@"spotifyClientId"];
-    self.spotifyClientId = @"51e5656ef4d34b6ea99023766c0c39b8";
-    NSLog(@"spotifyClientId: %@", self.spotifyClientId);
+    self.spotifyClientId = spotifyClientId;
+    NSLog(@"spotifyClientId: %@", spotifyClientId);
     NSString *spotifyClientSecret = [plistDictionary objectForKey:@"spotifyClientSecret"];
     NSLog(@"spotifyClientSecret: %@", spotifyClientSecret);
 

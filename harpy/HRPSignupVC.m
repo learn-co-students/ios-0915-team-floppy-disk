@@ -29,6 +29,7 @@
     
     NSLog(@"self.userNameNew (%@) and self.email (%@) were passed!", self.userNameNew.text, self.email.text);
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.passwordNew];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.passwordConfirm];
 
     // Set parse and user shared instance
@@ -77,6 +78,11 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    
+    NSLog(@"textField return:%@", textField);
+    if (textField.tag == 3) {
+        [self isTextFieldValid:textField];
+    }
     
     return YES;
 }
@@ -134,7 +140,6 @@
     
     UIAlertAction *noAccountAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self.spotifyPremium = NO;
-        [self callSpotifyLogInAlertController]; // CHANGE
     }];
     
     [alertController addAction:confirmAction];

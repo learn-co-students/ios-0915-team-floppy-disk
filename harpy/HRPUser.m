@@ -10,22 +10,6 @@
 
 @implementation HRPUser
 
--(instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName email:(NSString *)email createAt:(NSDate *)createAt HRPUsersfollowers:(NSMutableArray *)HRPUsersfollowers HRPFans:(NSMutableArray *)HRPFans profileImage:(UIImage *)profileImage HRPPosts:(NSArray *)HRPPosts HRPPostLikes:(NSArray *)HRPPostLikes spotifyID:(NSString *)spotifyID spotifyPremium:(BOOL *)spotifyPremium{
-    if (self == [super init]) {
-        _userName = userName;
-        _email = email;
-        _createAt = createAt;
-        _HRPUsersfollowers = HRPUsersfollowers;
-        _HRPFans = HRPFans;
-        _profileImage = profileImage;
-        _HRPPosts = HRPPosts;
-        _HRPPostLikes = HRPPostLikes;
-        _spotifyID = spotifyID;
-        _spotifyPremium = spotifyPremium;
-    }
-    return self;
-}
-
 -(instancetype)initWithUsername:(NSString *)userName password:(NSString *)password {
     if (self == [super init]) {
         _userName = userName;
@@ -43,5 +27,6 @@
     }
     return self;
 }
+
 
 @end

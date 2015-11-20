@@ -11,13 +11,19 @@
 #import "HRPValidationManager.h"
 #import "HRPParseNetworkService.h"
 
-@interface HRPSignupVC ()
+#import <Spotify/Spotify.h>
+#import "HRPSpotifyViewController.h"
+#import "HRPLoginRedirect.h"
+
+@interface HRPSignupVC () <SPTAuthViewDelegate>
 
 @property (nonatomic) UITextField *passwordNew;
 @property (nonatomic) UITextField *passwordConfirm;
 @property (nonatomic) BOOL spotifyPremium;
+@property (nonatomic) UIButton *signup;
 
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
+@property (atomic, readwrite) SPTAuthViewController *authViewController;
 
 @end
 
@@ -27,11 +33,8 @@
     [super viewDidLoad];
     [self setupInputView];
     
-    NSLog(@"self.userNameNew (%@) and self.email (%@) were passed!", self.userNameNew.text, self.email.text);
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.passwordNew];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.passwordConfirm];
-
+    
     // Set parse and user shared instance
     self.parseService = [HRPParseNetworkService sharedService];
 }
@@ -43,7 +46,7 @@
     int fieldHeight = 30;
     
     self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, fieldHeight)];
-//    self.email.placeholder = self.email.text;
+    //    self.email.placeholder = self.email.text;
     self.email.text = self.emailString;
     self.email.textAlignment = NSTextAlignmentCenter;
     self.email.font = [UIFont fontWithName:@"helvetica-neue" size:14.0];
@@ -74,15 +77,42 @@
     self.passwordConfirm.delegate = self;
     self.passwordConfirm.secureTextEntry = YES;
     [self.inputView addSubview:self.passwordConfirm];
+    
+    self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.signup addTarget:self action:@selector(signupButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.signup setFrame:CGRectMake(40, 120, 215, 40)];
+    [self.signup setTitle:@"Signup" forState:UIControlStateNormal];
+    [self.signup setExclusiveTouch:YES];
+    [self.inputView addSubview:self.signup];
+}
+-(void)signupButtonClicked:(UIButton *)sender
+{
+    NSLog(@"CLICKED: signup button");
+    BOOL valid = [self isTextFieldValid:self.passwordConfirm];
+    
+    if ([self.passwordNew.text isEqual:self.passwordConfirm.text] && valid == YES) {
+        NSLog(@"PASSWORDS: match and are valid.");
+        [self callEmailCheckAlertController];
+    }
+    else if ([self.passwordNew.text isEqual:self.passwordConfirm.text] == NO && (valid == YES)) {
+        NSLog(@"PASSWORDS: do not match but are valid.");
+        [self callPasswordValidationAlertController];
+    }
+    else if ([self.passwordNew.text isEqual:self.passwordConfirm.text] && valid == NO) {
+        NSLog(@"PASSWORDS: match but are not valid.");
+        [self callPasswordStrengthValidationAlertController];
+    }
+    else if ([self.passwordNew.text isEqual:self.passwordConfirm.text] == NO && (valid == NO)) {
+        NSLog(@"PASSWORDS: do not match and are not valid.");
+        [self callPasswordValidationAlertController];
+    }
+    else {
+        NSLog(@"PASSWORDS: case not considered.");
+    }
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    
-    NSLog(@"textField return:%@", textField);
-    if (textField.tag == 3) {
-        [self isTextFieldValid:textField];
-    }
     
     return YES;
 }
@@ -106,24 +136,30 @@
         valid = [validationManager validateValue:textField.text forKey:kHRPValidationManagerPasswordKey];
     }
     if ([self.passwordNew isEqual:self.passwordNew]) {
-        NSLog(@"spotifyPremium: %id", self.spotifyPremium);
-        [self callEmailCheckAlertController];
     }
-    else if (![self.passwordNew isEqual:self.passwordNew]) {
-        [self callPasswordValidationAlertController];
-    }
-
+    
     NSLog(@"%@ isValid: %@", textField.text, valid ? @"YES" : @"NO");
     return valid;
+}
+-(void)callPasswordStrengthValidationAlertController {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"That password isnt strong enough. :[" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alertController addAction:okayAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 -(void)callPasswordValidationAlertController {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Those passwords don't match" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-
+        
     }];
-
+    
     [alertController addAction:okayAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
@@ -153,7 +189,7 @@
     
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self.spotifyPremium = YES;
-        [HRPLoginRedirect launchSpotify];
+        [self openLogInPage];
         [self callParse];
     }];
     
@@ -169,6 +205,21 @@
     [self.parseService createUser:self.userNameNew.text email:self.email.text password:self.passwordNew.text completionHandler:^(HRPUser *user) {
         NSLog(@"Created user: %@.", user);
     }];
+}
+
+# pragma mark - Spotify
+
+-(void)openLogInPage {
+    
+    self.authViewController = [SPTAuthViewController authenticationViewController];
+    self.authViewController.delegate = self;
+    self.authViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.definesPresentationContext = YES;
+    
+    [self presentViewController:self.authViewController animated:NO completion:nil];
 }
 
 

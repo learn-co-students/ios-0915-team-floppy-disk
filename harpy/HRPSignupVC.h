@@ -15,6 +15,7 @@
 @property (nonatomic) UITextField *email;
 
 @property (weak, nonatomic) IBOutlet UIView *inputView;
+
 @property (nonatomic, strong) NSString *emailString;
 
 @end

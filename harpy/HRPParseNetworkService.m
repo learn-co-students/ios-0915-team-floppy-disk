@@ -9,6 +9,11 @@
 #import "HRPParseNetworkService.h"
 #import "HRPUser.h"
 
+@interface HRPParseNetworkService ( )
+
+
+@end
+
 @implementation HRPParseNetworkService
 
 +(id)sharedService {

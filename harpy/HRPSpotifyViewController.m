@@ -36,6 +36,8 @@
     if (self.navigationController.topViewController == self) {
         SPTAuth *auth = [SPTAuth defaultInstance];
         if (auth.session && [auth.session isValid]) {
+            
+            
             [self performSegueWithIdentifier:@"playerSegue" sender:nil];
         }
     }

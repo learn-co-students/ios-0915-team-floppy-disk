@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @class HRPUser;
 
 @interface HRPParseNetworkService : NSObject
+
+@property (nonatomic) HRPUser *user;
 
 +(id)sharedService;
 

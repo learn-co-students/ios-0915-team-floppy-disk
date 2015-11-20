@@ -8,7 +8,6 @@
 
 #import "HRPParseNetworkService.h"
 #import "HRPUser.h"
-#import <Parse/Parse.h>
 
 @implementation HRPParseNetworkService
 
@@ -25,7 +24,7 @@
     NSError *error;
     [PFUser logInWithUsername:username password:password error:&error];
     if (error) {
-        // Do Something
+        NSLog(@"ERROR: %@ %@", error, [error userInfo]);
     } else {
         PFUser *currentUser = [PFUser currentUser];
         HRPUser *user = [[HRPUser alloc]initWithUsername:currentUser.username password:currentUser.password];
@@ -42,7 +41,7 @@
     user.email = email;
     user.password = password;
     if (error) {
-        // Do Something
+        NSLog(@"ERROR: %@ %@", error, [error userInfo]);
     } else {
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         PFUser *currentUser = [PFUser currentUser];

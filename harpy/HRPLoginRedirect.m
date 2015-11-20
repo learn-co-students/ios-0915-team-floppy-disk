@@ -17,7 +17,7 @@
     
     // Get API key from sharedApplication AppDelegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSString *redirectString = @"olutosin123://returnafterlogin";
+    NSString *redirectString = @"harpy-app://authorize";
     NSURL *redirectURL = [NSURL URLWithString:redirectString];
     NSString *spotifyClientId = appDelegate.spotifyClientId;
     

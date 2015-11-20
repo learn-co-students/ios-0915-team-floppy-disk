@@ -37,6 +37,7 @@
 		E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E211161BFD76B700739143 /* HRPValidationManager.m */; };
 		E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */; };
 		E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */; settings = {ASSET_TAGS = (); }; };
+		E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,8 @@
 		E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSignupVC.m; sourceTree = "<group>"; };
 		E9F8CE791BFE622F00979181 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
+		E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PresentViewController.h"; sourceTree = "<group>"; };
+		E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PresentViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +175,8 @@
 				3BAC250F1BFE7EF3004C6790 /* CLLocationManager+Shared.m */,
 				3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */,
 				3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */,
+				E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */,
+				E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */,
 				E9335C5D1BFA7EBC002DD9C6 /* AppDelegate.h */,
 				E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */,
 				E9335C601BFA7EBC002DD9C6 /* ViewController.h */,
@@ -430,6 +435,7 @@
 				E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */,
 				3DAC61ED1BFE27D9002BAB02 /* HRPAddPostViewController.m in Sources */,
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
+				E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -48,16 +48,16 @@
     if (error) {
         NSLog(@"ERROR: %@ %@", error, [error userInfo]);
     } else {
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        PFUser *currentUser = [PFUser currentUser];
-        HRPUser *user = [[HRPUser alloc]initWithUserID:currentUser.objectId
-                                              userName:currentUser.username
-                                                 email:currentUser.email
-                                              password:currentUser.password];
-        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-            completionHandler(user);
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            PFUser *currentUser = [PFUser currentUser];
+            HRPUser *user = [[HRPUser alloc]initWithUserID:currentUser.objectId
+                                                  userName:currentUser.username
+                                                     email:currentUser.email
+                                                  password:currentUser.password];
+            [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+                completionHandler(user);
+            }];
         }];
-    }];
     }
 }
 

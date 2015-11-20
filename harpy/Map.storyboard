@@ -15,6 +15,14 @@
                     <view key="view" contentMode="scaleToFill" id="OQI-PZ-qK3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cey-M4-euM">
+                                <rect key="frame" x="0.0" y="515" width="320" height="45"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Post a Song"/>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -81,14 +89,6 @@
                                 <state key="normal" title="Get Current Place"/>
                                 <connections>
                                     <action selector="getCurrentPlace:" destination="Aw4-Xc-siq" eventType="touchUpInside" id="f1w-14-BrC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uW8-N7-dKt">
-                                <rect key="frame" x="111" y="283" width="99" height="43"/>
-                                <animations/>
-                                <state key="normal" title="Places Nearby"/>
-                                <connections>
-                                    <action selector="pickPlace:" destination="Aw4-Xc-siq" eventType="touchUpInside" id="lM4-w7-N9d"/>
                                 </connections>
                             </button>
                         </subviews>

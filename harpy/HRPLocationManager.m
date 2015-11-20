@@ -16,61 +16,68 @@
 
 @implementation HRPLocationManager
 
-+ (HRPLocationManager *)sharedInstance {
-    
++ (HRPLocationManager *)sharedInstance
+{
     static HRPLocationManager *instance = nil;
-    
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        if(instance == nil){
-            if (![CLLocationManager locationServicesEnabled]){
+        if(instance == nil)
+        {
+            if (![CLLocationManager locationServicesEnabled])
+            {
                 NSLog(@"location services are disabled");
             }
-            if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied){
+            if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
+            {
                 NSLog(@"location services are blocked by the user");
             }
-            if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways){
+            if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways)
+            {
                 NSLog(@"location services are enabled");
             }
-            if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
+            if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
+            {
                 NSLog(@"about to show a dialog requesting permission");
             }
-            
-            instance = [[CLLocationManager alloc] init];
+            instance = [[HRPLocationManager alloc] init];
             instance.clLocationManager = [[CLLocationManager alloc] init];
             instance.clLocationManager.delegate = instance;
             instance.clLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
             instance.clLocationManager.distanceFilter = 100.0f;
             instance.clLocationManager.headingFilter = 5;
-            if ([instance.clLocationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            if ([instance.clLocationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+            {
                 [instance.clLocationManager requestWhenInUseAuthorization];
             }
-            if ([CLLocationManager locationServicesEnabled]){
+            if ([CLLocationManager locationServicesEnabled])
+            {
                 [instance.clLocationManager startUpdatingLocation];
             }
         }
     });
-    
     return instance;
-    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied){
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
+    {
         NSLog(@"User has denied location services");
-    } else {
+    } else
+    {
         NSLog(@"Location manager did fail with error: %@", error.localizedFailureReason);
     }
 }
 
 - (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations {
+     didUpdateLocations:(NSArray *)locations
+{
     self.location = [locations lastObject];
     NSDate *date = [NSDate date];
     [date dateByAddingTimeInterval:-60*1];
-    if ([self.location.timestamp compare:date] == NSOrderedDescending) {
+    if ([self.location.timestamp compare:date] == NSOrderedDescending)
+    {
         [self.clLocationManager stopUpdatingLocation];
     }
     self.clLocationManager.desiredAccuracy = kCLLocationAccuracyBest;

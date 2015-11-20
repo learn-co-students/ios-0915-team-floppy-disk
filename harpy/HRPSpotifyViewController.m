@@ -33,13 +33,13 @@
 
 //segues to player if notification center revceives an update on renewed session
 -(void)sessionUpdatedNotification:(NSNotification *)notification {
-    if (self.navigationController.topViewController == self) {
+    //if (self.navigationController.topViewController == self) {
         SPTAuth *auth = [SPTAuth defaultInstance];
         if (auth.session && [auth.session isValid]) {
             
             
             [self performSegueWithIdentifier:@"playerSegue" sender:nil];
-        }
+        //}
     }
 }
 
@@ -90,18 +90,15 @@
     
     if (auth.session == nil) {
         NSLog(@"entered first if statement");
-        NSLog(@"%@", auth.clientID);
         return;
     }
     
     if ([auth.session isValid] && self.firstLoad) {
         NSLog(@"entered second if statement");
-        NSLog(@"%@", auth.clientID);
         [self showSegue];
     }
     
-    if (auth.hasTokenRefreshService) {
-        NSLog(@"%@", auth.clientID);
+    if (![auth.session isValid] && auth.hasTokenRefreshService) {
         NSLog(@"entered third if statement");
 
         [self renewTokenAndSegue];

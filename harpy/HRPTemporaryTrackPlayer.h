@@ -1,13 +1,13 @@
 //
-//  HRPGooglePlacesAPIClient.h
+//  HRPTemporaryTrackPlayer.h
 //  harpy
 //
-//  Created by Amy Joscelyn on 11/19/15.
+//  Created by Phil Milot on 11/20/15.
 //  Copyright © 2015 teamFloppyDisk. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface HRPGooglePlacesAPIClient : NSObject
+@interface HRPTemporaryTrackPlayer : NSObject
 
 @end

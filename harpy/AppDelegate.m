@@ -53,7 +53,10 @@
     auth.redirectURL = [NSURL URLWithString:@"harpy-app://authorize"];
     auth.tokenSwapURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/swap"];
     auth.tokenRefreshURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/refresh"];
-    //auth.sessionUserDefaultsKey
+    
+    //canonical username needs to be saved so that different users can have persistent sessions
+    // phils cononical username \/
+    auth.sessionUserDefaultsKey = @"125204578";
     
     return YES;
 }

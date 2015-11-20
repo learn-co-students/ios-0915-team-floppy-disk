@@ -20,7 +20,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cey-M4-euM">
                                 <rect key="frame" x="0.0" y="515" width="320" height="45"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <state key="normal" title="Post a Song"/>
                                 <connections>
                                     <action selector="postSongButtonTapped:" destination="vQb-cv-L16" eventType="touchUpInside" id="8cV-HW-Mlj"/>
@@ -37,6 +37,7 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="yRa-kE-mpk" firstAttribute="centerX" secondItem="OQI-PZ-qK3" secondAttribute="centerX" id="cOW-HU-mCo"/>
                             <constraint firstItem="yRa-kE-mpk" firstAttribute="centerY" secondItem="OQI-PZ-qK3" secondAttribute="centerY" id="oDD-yg-moh"/>

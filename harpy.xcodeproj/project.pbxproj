@@ -12,7 +12,11 @@
 		3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73241BFD24420010A257 /* HRPTrack.m */; };
 		3B0A73281BFE30550010A257 /* HRPPlaybackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73271BFE30550010A257 /* HRPPlaybackController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC25101BFE7EF3004C6790 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC250F1BFE7EF3004C6790 /* CLLocationManager+Shared.m */; settings = {ASSET_TAGS = (); }; };
+		3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */; };
+		3D34D7C11BFE1F2300C86BF3 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C01BFE1F2300C86BF3 /* Keys.plist */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
+		3DAC61ED1BFE27D9002BAB02 /* HRPAddPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC61EC1BFE27D9002BAB02 /* HRPAddPostViewController.m */; };
+		3DAC61F01BFE55C0002BAB02 /* HRPGooglePlacesAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC61EF1BFE55C0002BAB02 /* HRPGooglePlacesAPIClient.m */; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
 		E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */; };
 		E9335C621BFA7EBC002DD9C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C611BFA7EBC002DD9C6 /* ViewController.m */; };
@@ -24,7 +28,6 @@
 		E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801141BFBE9C8004CC8A2 /* HRPSpotifyViewController.m */; };
 		E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801171BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m */; };
 		E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */; };
-		E938011E1BFC2406004CC8A2 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E938011D1BFC2406004CC8A2 /* CLLocationManager+Shared.m */; };
 		E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */; };
 		E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801261BFCCA50004CC8A2 /* HRPLoginRedirect.m */; };
 		E93801291BFCEADF004CC8A2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E93801281BFCEADF004CC8A2 /* Login.storyboard */; };
@@ -34,6 +37,10 @@
 		E9E211141BFD3E2500739143 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9E211131BFD3E2500739143 /* Keys.plist */; settings = {ASSET_TAGS = (); }; };
 		E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E211161BFD76B700739143 /* HRPValidationManager.m */; settings = {ASSET_TAGS = (); }; };
 		E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */; settings = {ASSET_TAGS = (); }; };
+		E9E211141BFD3E2500739143 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9E211131BFD3E2500739143 /* Keys.plist */; };
+		E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E211161BFD76B700739143 /* HRPValidationManager.m */; };
+		E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +63,14 @@
 		3B0A73271BFE30550010A257 /* HRPPlaybackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPlaybackController.m; sourceTree = "<group>"; };
 		3BAC250E1BFE7EF3004C6790 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = SOURCE_ROOT; };
 		3BAC250F1BFE7EF3004C6790 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = SOURCE_ROOT; };
+		3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
+		3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
+		3D34D7C01BFE1F2300C86BF3 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		3DAC61EB1BFE27D9002BAB02 /* HRPAddPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPAddPostViewController.h; sourceTree = "<group>"; };
+		3DAC61EC1BFE27D9002BAB02 /* HRPAddPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPAddPostViewController.m; sourceTree = "<group>"; };
+		3DAC61EE1BFE55C0002BAB02 /* HRPGooglePlacesAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGooglePlacesAPIClient.h; sourceTree = "<group>"; };
+		3DAC61EF1BFE55C0002BAB02 /* HRPGooglePlacesAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGooglePlacesAPIClient.m; sourceTree = "<group>"; };
 		6DB65EC059DFF1DB09801C30 /* Pods-harpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-harpy/Pods-harpy.release.xcconfig"; sourceTree = "<group>"; };
 		8A0453F870576313A0151B46 /* libPods-harpy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harpy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335C571BFA7EBC002DD9C6 /* harpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +111,8 @@
 		E9E211161BFD76B700739143 /* HRPValidationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPValidationManager.m; sourceTree = "<group>"; };
 		E9F8CE701BFE1F3800979181 /* HRPSignupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSignupVC.h; sourceTree = "<group>"; };
 		E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSignupVC.m; sourceTree = "<group>"; };
+		E9F8CE791BFE622F00979181 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
+		E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +176,8 @@
 			children = (
 				3BAC250E1BFE7EF3004C6790 /* CLLocationManager+Shared.h */,
 				3BAC250F1BFE7EF3004C6790 /* CLLocationManager+Shared.m */,
+				3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */,
+				3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */,
 				E9335C5D1BFA7EBC002DD9C6 /* AppDelegate.h */,
 				E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */,
 				E9335C601BFA7EBC002DD9C6 /* ViewController.h */,
@@ -229,10 +247,16 @@
 		E938012E1BFCEF6C004CC8A2 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				E9F8CE791BFE622F00979181 /* CLLocationManager+Shared.h */,
+				E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */,
 				E93801101BFBE956004CC8A2 /* HRPMapsViewController.h */,
 				E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */,
+				3DAC61EB1BFE27D9002BAB02 /* HRPAddPostViewController.h */,
+				3DAC61EC1BFE27D9002BAB02 /* HRPAddPostViewController.m */,
 				E93801191BFC23A7004CC8A2 /* HRPLocationManager.h */,
 				E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */,
+				3DAC61EE1BFE55C0002BAB02 /* HRPGooglePlacesAPIClient.h */,
+				3DAC61EF1BFE55C0002BAB02 /* HRPGooglePlacesAPIClient.m */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -395,19 +419,22 @@
 				E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */,
 				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,
 				3BAC25101BFE7EF3004C6790 /* CLLocationManager+Shared.m in Sources */,
+				3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */,
 				E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */,
 				E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */,
-				E938011E1BFC2406004CC8A2 /* CLLocationManager+Shared.m in Sources */,
 				E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */,
 				E9335C621BFA7EBC002DD9C6 /* ViewController.m in Sources */,
 				3B0A73281BFE30550010A257 /* HRPPlaybackController.m in Sources */,
 				E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */,
 				E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */,
+				3DAC61F01BFE55C0002BAB02 /* HRPGooglePlacesAPIClient.m in Sources */,
 				E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */,
 				E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */,
 				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
 				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
 				3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */,
+				E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */,
+				3DAC61ED1BFE27D9002BAB02 /* HRPAddPostViewController.m in Sources */,
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,
 			);

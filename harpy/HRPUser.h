@@ -26,9 +26,9 @@
 @property (strong,nonatomic) NSString *spotifyID;
 @property (nonatomic) BOOL spotifyPremium;
 
--(instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName email:(NSString *)email createAt:(NSDate *)createAt HRPUsersfollowers:(NSMutableArray *)HRPUsersfollowers HRPFans:(NSMutableArray *)HRPFans profileImage:(UIImage *)profileImage HRPPosts:(NSArray *)HRPPosts HRPPostLikes:(NSArray *)HRPPostLikes spotifyID:(NSString *)spotifyID spotifyPremium:(BOOL *)spotifyPremium;
-
 -(instancetype)initWithUsername:(NSString *)userName password:(NSString *)password;
 -(instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName email:(NSString *)email password:(NSString *)password;
+
+
 
 @end

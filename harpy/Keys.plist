@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>googlePlacesAPIKey</key>
+	<string>AIzaSyBVkrrCSRjVvz1B0PnC9OJi6JE-mKmXy0s</string>
 	<key>googleMapAPIKey</key>
 	<string>AIzaSyBVkrrCSRjVvz1B0PnC9OJi6JE-mKmXy0s</string>
 	<key>spotifyClientId</key>
@@ -9,8 +11,8 @@
 	<key>spotifyClientSecret</key>
 	<string>6aaf82e1387c4c3399fb1c2b771f63a8</string>
 	<key>parseApplicationKey</key>
-	<string>rVNOP6zGJ4i9SMb4ONhxxHzSui6UuEiSYzQqMILR</string>
+	<string>C4jvsJziaR7Dc3wpFuGGImYIlBFQDYYOv2SUFzFl</string>
 	<key>parseClientKey</key>
-	<string>1thWpZNaRGyrTxOLuWFT0Auq8pgaNA5LJJeurjlg</string>
+	<string>UuSEfRsrU4Wvjn0wNdEoyjkvwfu4BeGDESiE7yyB</string>
 </dict>
 </plist>

@@ -10,6 +10,8 @@
 		0C1A58203BF13D8D1931530C /* libPods-harpy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0453F870576313A0151B46 /* libPods-harpy.a */; };
 		3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */; };
 		3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73241BFD24420010A257 /* HRPTrack.m */; };
+		3B0A73281BFE30550010A257 /* HRPPlaybackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73271BFE30550010A257 /* HRPPlaybackController.m */; settings = {ASSET_TAGS = (); }; };
+		3BAC25101BFE7EF3004C6790 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC250F1BFE7EF3004C6790 /* CLLocationManager+Shared.m */; settings = {ASSET_TAGS = (); }; };
 		3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
 		3DAC61ED1BFE27D9002BAB02 /* HRPAddPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC61EC1BFE27D9002BAB02 /* HRPAddPostViewController.m */; };
@@ -52,6 +54,10 @@
 		3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTrackCreator.m; sourceTree = "<group>"; };
 		3B0A73231BFD24420010A257 /* HRPTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPTrack.h; sourceTree = "<group>"; };
 		3B0A73241BFD24420010A257 /* HRPTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTrack.m; sourceTree = "<group>"; };
+		3B0A73261BFE30550010A257 /* HRPPlaybackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPPlaybackController.h; sourceTree = "<group>"; };
+		3B0A73271BFE30550010A257 /* HRPPlaybackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPlaybackController.m; sourceTree = "<group>"; };
+		3BAC250E1BFE7EF3004C6790 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = SOURCE_ROOT; };
+		3BAC250F1BFE7EF3004C6790 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = SOURCE_ROOT; };
 		3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
@@ -80,6 +86,7 @@
 		E93801171BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPLoginRedirectViewController.m; sourceTree = "<group>"; };
 		E93801191BFC23A7004CC8A2 /* HRPLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPLocationManager.h; sourceTree = "<group>"; };
 		E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPLocationManager.m; sourceTree = "<group>"; };
+		E938011D1BFC2406004CC8A2 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		E93801221BFC2B90004CC8A2 /* HRPSpotifySearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSpotifySearchViewController.h; sourceTree = "<group>"; };
 		E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSpotifySearchViewController.m; sourceTree = "<group>"; };
 		E93801251BFCCA50004CC8A2 /* HRPLoginRedirect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPLoginRedirect.h; sourceTree = "<group>"; };
@@ -159,6 +166,8 @@
 		E9335C591BFA7EBC002DD9C6 /* harpy */ = {
 			isa = PBXGroup;
 			children = (
+				3BAC250E1BFE7EF3004C6790 /* CLLocationManager+Shared.h */,
+				3BAC250F1BFE7EF3004C6790 /* CLLocationManager+Shared.m */,
 				3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */,
 				3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */,
 				E9335C5D1BFA7EBC002DD9C6 /* AppDelegate.h */,
@@ -177,6 +186,8 @@
 				E93801331BFD1764004CC8A2 /* HRPUser.m */,
 				E938012F1BFD1703004CC8A2 /* HRPParseNetworkService.h */,
 				E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */,
+				3B0A73261BFE30550010A257 /* HRPPlaybackController.h */,
+				3B0A73271BFE30550010A257 /* HRPPlaybackController.m */,
 				E938012E1BFCEF6C004CC8A2 /* Maps */,
 				E938012D1BFCEF58004CC8A2 /* Login */,
 				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
@@ -397,11 +408,13 @@
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
 				E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */,
 				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,
+				3BAC25101BFE7EF3004C6790 /* CLLocationManager+Shared.m in Sources */,
 				3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */,
 				E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */,
 				E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */,
 				E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */,
 				E9335C621BFA7EBC002DD9C6 /* ViewController.m in Sources */,
+				3B0A73281BFE30550010A257 /* HRPPlaybackController.m in Sources */,
 				E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */,
 				E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */,
 				E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */,

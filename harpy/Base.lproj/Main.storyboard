@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FNE-Ya-BDr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FNE-Ya-BDr">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -83,28 +83,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyg-Xv-VY8">
-                                <rect key="frame" x="44" y="195" width="60" height="40"/>
-                                <animations/>
-                                <state key="normal" title="Play"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNw-gv-GRe">
+                                <rect key="frame" x="142" y="353" width="130" height="30"/>
+                                <color key="backgroundColor" red="0.18062407089999999" green="0.60669191919999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Log in to Spotify">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="play:" destination="BrP-JT-HgS" eventType="touchUpInside" id="BoM-6b-kaF"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFu-dc-SgM">
-                                <rect key="frame" x="112" y="195" width="60" height="40"/>
-                                <animations/>
-                                <state key="normal" title="Pause"/>
-                                <connections>
-                                    <action selector="pause:" destination="BrP-JT-HgS" eventType="touchUpInside" id="GJQ-pY-5ID"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOe-Bf-5hU">
-                                <rect key="frame" x="177" y="195" width="60" height="40"/>
-                                <animations/>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="stop:" destination="BrP-JT-HgS" eventType="touchUpInside" id="OC9-Jk-otM"/>
+                                    <action selector="logInClicked:" destination="BrP-JT-HgS" eventType="touchUpInside" id="Ign-yb-5Hw"/>
+                                    <segue destination="S5O-Mv-cyt" kind="show" identifier="playerSegue" id="nKe-v9-bYA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -119,7 +106,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMU-mC-2Of" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1674" y="253"/>
+            <point key="canvasLocation" x="1668" y="-561"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kpv-G1-j33">
+            <objects>
+                <viewController id="S5O-Mv-cyt" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vZq-GC-zRL"/>
+                        <viewControllerLayoutGuide type="bottom" id="D76-BZ-D04"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="beg-pp-hGc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8G0-pQ-azR">
+                                <rect key="frame" x="20" y="98" width="374" height="209"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PL-0n-UEQ">
+                                <rect key="frame" x="118" y="124" width="206" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbf-jN-Tyc">
+                                <rect key="frame" x="118" y="153" width="206" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V32-ZX-L1d">
+                                <rect key="frame" x="118" y="182" width="206" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0r-fT-9NM">
+                                <rect key="frame" x="31" y="124" width="79" height="76.5"/>
+                                <color key="backgroundColor" red="0.18062407089999999" green="0.60669191919999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CkR-7b-RbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2180" y="-561"/>
         </scene>
         <!--Map-->
         <scene sceneID="7kk-UR-9Na">

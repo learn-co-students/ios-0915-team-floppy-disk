@@ -127,26 +127,41 @@
 - (IBAction)postSongButtonTapped:(id)sender
 {
     NSString *enterPostSongOverlay = @"Post a Song";
-    NSString *postSongHere = @"Post Song Here";
+    NSString *pinSongHere = @"Pin Track";
     
 //    [self.defaultMarkerImage.bottomAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
 //    [self.defaultMarkerImage.centerYAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    self.defaultMarkerImage.hidden = NO;
-    
+    if (self.defaultMarkerImage.hidden)
+    {
+        self.defaultMarkerImage.hidden = NO;
+    }
+    else
+    {
+        self.defaultMarkerImage.hidden = YES;
+    }
     if ([self.postSongButton.titleLabel.text isEqualToString:enterPostSongOverlay])
     {
-        [self.postSongButton setTitle:postSongHere forState:UIControlStateNormal];
+        [self.postSongButton setTitle:pinSongHere forState:UIControlStateNormal];
         [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.postSongButton setBackgroundColor:[UIColor blackColor]];
         self.postSongButton.alpha = 0.5;
     }
-    else if ([self.postSongButton.titleLabel.text isEqualToString:postSongHere])
+    else if ([self.postSongButton.titleLabel.text isEqualToString:pinSongHere])
     {
         [self.postSongButton setTitle:enterPostSongOverlay forState:UIControlStateNormal];
         [self.postSongButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.postSongButton setBackgroundColor:[UIColor lightGrayColor]];
         self.postSongButton.alpha = 0.6;
         
+        [self presentConfirmPinAlertController];
+    }
+}
+
+- (void)presentConfirmPinAlertController
+{
+    UIAlertController *confirmPinAlert = [UIAlertController alertControllerWithTitle:@"Confirm Pin" message:@"Post song here?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         CGPoint point = mapView_.center;
         CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
         
@@ -154,7 +169,13 @@
         marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
         marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
         marker.map = mapView_;
-    }
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    [confirmPinAlert addAction:confirmAction];
+    [confirmPinAlert addAction:cancelAction];
+    
+    [self presentViewController:confirmPinAlert animated:YES completion:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

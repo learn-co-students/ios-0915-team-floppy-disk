@@ -35,6 +35,7 @@
 		E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801331BFD1764004CC8A2 /* HRPUser.m */; };
 		E9E211141BFD3E2500739143 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9E211131BFD3E2500739143 /* Keys.plist */; };
 		E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E211161BFD76B700739143 /* HRPValidationManager.m */; };
+		E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */; settings = {ASSET_TAGS = (); }; };
 		E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */; };
 		E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */; };
 		E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -104,6 +105,7 @@
 		E9E211131BFD3E2500739143 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		E9E211151BFD76B700739143 /* HRPValidationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPValidationManager.h; sourceTree = "<group>"; };
 		E9E211161BFD76B700739143 /* HRPValidationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPValidationManager.m; sourceTree = "<group>"; };
+		E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
 		E9F8CE701BFE1F3800979181 /* HRPSignupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSignupVC.h; sourceTree = "<group>"; };
 		E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSignupVC.m; sourceTree = "<group>"; };
 		E9F8CE791BFE622F00979181 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				E938012E1BFCEF6C004CC8A2 /* Maps */,
 				E938012D1BFCEF58004CC8A2 /* Login */,
 				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
+				E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */,
 				E9335C631BFA7EBC002DD9C6 /* Main.storyboard */,
 				3D34D7C21BFE226C00C86BF3 /* Map.storyboard */,
 				E93801281BFCEADF004CC8A2 /* Login.storyboard */,
@@ -345,6 +348,7 @@
 			files = (
 				E9E211141BFD3E2500739143 /* Keys.plist in Resources */,
 				E9335C6A1BFA7EBC002DD9C6 /* LaunchScreen.storyboard in Resources */,
+				E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */,
 				E9335C671BFA7EBC002DD9C6 /* Assets.xcassets in Resources */,
 				E93801291BFCEADF004CC8A2 /* Login.storyboard in Resources */,
 				E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */,

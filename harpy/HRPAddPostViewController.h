@@ -14,7 +14,6 @@
 @protocol HRPAddPostViewControllerDelegate <NSObject>
 
 - (void)addPostViewControllerDidCancel: (HRPAddPostViewController *)viewController;
-
 - (void)addPostViewController:(id)viewController didFinishWithLocation: (CLLocation *)location;
 
 @end

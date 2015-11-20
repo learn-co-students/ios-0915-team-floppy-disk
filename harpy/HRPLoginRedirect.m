@@ -12,9 +12,10 @@
 
 @implementation HRPLoginRedirect
 
-#pragma mark Spotify
-+ (void)launchSpotify{
-    
+#pragma mark - Spotify
+
++ (void)launchSpotify
+{    
     // Get API key from sharedApplication AppDelegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *redirectString = @"harpy-app://authorize";

@@ -10,7 +10,6 @@
 
 @interface HRPLoginRedirect : NSObject
 
-#pragma mark Spotify
 + (void)launchSpotify;
 
 @end

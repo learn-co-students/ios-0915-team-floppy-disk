@@ -28,6 +28,8 @@
     GMSMapView *mapView_;
 }
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad
 {
     self.locationManager = [CLLocationManager sharedManager];
@@ -42,12 +44,10 @@
     [self.postSongButton setBackgroundColor:[UIColor lightGrayColor]];
     self.postSongButton.alpha = 0.6;
 }
-
 -(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position
 {
     self.postSongButton.hidden = NO;
 }
-
 - (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture
 {
     if (self.buttonShouldDisappear)
@@ -55,7 +55,6 @@
         self.postSongButton.hidden = YES;
     }
 }
-
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -85,7 +84,6 @@
         }
     }
 }
-
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
     NSLog(@"FOUND YOU: %@", self.locationManager.location);
@@ -94,7 +92,6 @@
     [manager stopUpdatingLocation];
     [self updateMapWithCurrentLocation];
 }
-
 - (void)updateMapWithCurrentLocation
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
@@ -129,6 +126,8 @@
     //    [self presentViewController:errorAlerts animated:YES completion:nil];
 }
 
+#pragma mark - Action Methods
+
 - (IBAction)postSongButtonTapped:(id)sender
 {
     NSString *enterPostSongOverlay = @"Post a Song";
@@ -162,7 +161,6 @@
         [self presentConfirmPinAlertController];
     }
 }
-
 - (void)handlePans
 {
     self.postSongButton.hidden = YES;
@@ -189,11 +187,15 @@
     [self presentViewController:confirmPinAlert animated:YES completion:nil];
 }
 
+#pragma mark - Navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     HRPAddPostViewController *addPostDVC = segue.destinationViewController;
     addPostDVC.delegate = self;
 }
+
+#pragma mark - Modal View Controller
 
 // the methods below are for use with the modal view controller (+) button on top of the maps view
 - (void)addPostViewController:(id)viewController didFinishWithLocation:(CLLocation *)location

@@ -10,6 +10,8 @@
 
 @implementation HRPPlaybackController
 
+#pragma mark - Singleton Methods
+
 +(id)sharedController {
     static HRPPlaybackController *_sharedController;
     static dispatch_once_t onceToken;

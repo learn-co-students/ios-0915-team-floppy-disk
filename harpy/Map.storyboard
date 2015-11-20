@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vQb-cv-L16">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1rk-sK-M4k">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--Maps View Controller-->
+        <!--Current Location-->
         <scene sceneID="M8A-ng-CdC">
             <objects>
                 <viewController id="vQb-cv-L16" customClass="HRPMapsViewController" sceneMemberID="viewController">
@@ -18,9 +18,110 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Current Location" id="NjL-wP-bPr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9iU-qM-S92">
+                            <connections>
+                                <segue destination="Aw4-Xc-siq" kind="presentation" id="EHs-hQ-0b7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUG-Vo-6zZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1039" y="231"/>
+        </scene>
+        <!--Add Post View Controller-->
+        <scene sceneID="BGl-IL-fe5">
+            <objects>
+                <viewController id="Aw4-Xc-siq" customClass="HRPAddPostViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MXl-Ah-DQH"/>
+                        <viewControllerLayoutGuide type="bottom" id="qhN-oG-K49"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OsR-6Z-VaI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujn-oj-8aN">
+                                <rect key="frame" x="83" y="110" width="155" height="50"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGD-NT-kgx">
+                                <rect key="frame" x="59" y="162" width="202" height="64"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CKA-Qa-Iu4">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <animations/>
+                                <items>
+                                    <navigationItem title="Post A Song!" id="nbb-zK-sLG">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hFT-gI-P2r">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="Aw4-Xc-siq" id="Fey-aO-isX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="nJX-Ow-pXY">
+                                            <connections>
+                                                <action selector="submitButtonTapped:" destination="Aw4-Xc-siq" id="7yF-9H-Y4q"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxg-am-BtP">
+                                <rect key="frame" x="99" y="234" width="122" height="41"/>
+                                <animations/>
+                                <state key="normal" title="Get Current Place"/>
+                                <connections>
+                                    <action selector="getCurrentPlace:" destination="Aw4-Xc-siq" eventType="touchUpInside" id="f1w-14-BrC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uW8-N7-dKt">
+                                <rect key="frame" x="111" y="283" width="99" height="43"/>
+                                <animations/>
+                                <state key="normal" title="Places Nearby"/>
+                                <connections>
+                                    <action selector="pickPlace:" destination="Aw4-Xc-siq" eventType="touchUpInside" id="lM4-w7-N9d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="wGD-NT-kgx" id="DSb-7o-OJu"/>
+                        <outlet property="nameLabel" destination="ujn-oj-8aN" id="nGb-aG-nRK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c2f-dm-vw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1476" y="231"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hjw-uP-gFi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1rk-sK-M4k" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hyc-SK-Smo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vQb-cv-L16" kind="relationship" relationship="rootViewController" id="DDa-2Q-l5D"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RnZ-7R-uP8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="227" y="231"/>
         </scene>

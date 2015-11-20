@@ -9,10 +9,12 @@
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 #import "HRPMapsViewController.h"
+#import "HRPLocationManager.h"
+#import "HRPAddPostViewController.h"
 #import <MapKit/MapKit.h>
 @import GoogleMaps;
 
-@interface HRPMapsViewController () <GMSMapViewDelegate>
+@interface HRPMapsViewController () <GMSMapViewDelegate, HRPAddPostViewControllerDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
 
@@ -41,6 +43,8 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    //because of this, the marker i've added disappears.  this reloads the view, in a way, by calling the startUpdatingLocation method
+    //if the marker were a property on parse, it could be sustained
     [super viewDidAppear:animated];
     [self.locationManager startUpdatingLocation];
 }
@@ -83,7 +87,7 @@
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
     // Create a GMSCameraPosition that tells the map to display
-    // this determines the zoom of the camera as soon as the map opens
+    // this determines the zoom of the camera as soon as the map opens; the higher the number, the more detail we see on the map
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude
                                                             longitude:coordinate.longitude
                                                                  zoom:18];
@@ -101,15 +105,21 @@
     NSLog(@"didFailWithError: %@", error);
     
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
-    
     // This should be uncommented when we use actual devices to test GPS.
-    //    [self presentViewController:errorAlerts animated:YES completion:nil];
+//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+//    
+//    [errorAlerts addAction:okAction];
+//    
+//    [self presentViewController:errorAlerts animated:YES completion:nil];
 }
 
-#pragma mark - GMSMapViewDelegate
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    HRPAddPostViewController *addPostDVC = segue.destinationViewController;
+    addPostDVC.delegate = self;
+}
 
-
-- (IBAction)addMarkerButtonTapped:(id)sender
+- (void)addPostViewController:(id)viewController didFinishWithLocation:(CLLocation *)location
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
@@ -117,6 +127,13 @@
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
     marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
     marker.map = mapView_;
+    
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addPostViewControllerDidCancel:(HRPAddPostViewController *)viewController
+{
+    [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

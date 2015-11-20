@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [HRPTrackCreator generateTracksFromSearch:@"Stainless" WithCompletion:^(NSArray *tracks) {
+    [HRPTrackCreator generateTracksFromSearch:@"Flashing Lights" WithCompletion:^(NSArray *tracks) {
         self.trackForTable = [NSMutableArray arrayWithArray:tracks];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.tableView reloadData];

@@ -33,12 +33,17 @@
     self.coverArtView.image = [UIImage imageWithData:self.track.albumCoverArt];
     self.playbackURI = [NSString stringWithFormat:self.track.spotifyURI];
     
-//    [self.coverArtView addSubview:self.songNameLabel];
-//    [self.coverArtView addSubview:self.artistNameLabel];
-//    [self.coverArtView addSubview:self.albumNameLabel];
-//    [self.coverArtView addSubview:self.playPauseButton];
+    [self.playPauseButton setTitle:@"Play" forState:UIControlStateNormal];
     
     [self handleNewSession];
+    NSURL *url = [NSURL URLWithString:self.playbackURI];
+
+    [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
+        NSLog(@"%@", error);
+        [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+
+    }];
+
     
 }
 
@@ -55,16 +60,19 @@
         
         NSLog(@"%@", error);
     }];
+    
+    
 }
 
 - (IBAction)playPauseButtonTapped:(UIButton *)sender {
     
-    
-    NSURL *url = [NSURL URLWithString:self.playbackURI];
-    [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
-        NSLog(@"%@", error);
-    }];
     [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+    
+    if ([self.playPauseButton.titleLabel.text isEqual:@"Play"]) {
+        [self.playPauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+    } else if ([self.playPauseButton.titleLabel.text isEqual:@"Pause"]) {
+        [self.playPauseButton setTitle:@"Play" forState:UIControlStateNormal];
+    }
     NSLog(@"Button Tapped!");
     
 }

@@ -17,6 +17,8 @@
 @interface HRPMapsViewController () <GMSMapViewDelegate, HRPAddPostViewControllerDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
+@property (weak, nonatomic) IBOutlet UIButton *postSongButton;
 
 @property (nonatomic, assign) CGFloat startingLatitude;
 @property (nonatomic, assign) CGFloat startingLongitude;
@@ -114,6 +116,28 @@
 //    [errorAlerts addAction:okAction];
 //    
 //    [self presentViewController:errorAlerts animated:YES completion:nil];
+}
+
+- (IBAction)postSongButtonTapped:(id)sender
+{
+//    [self.defaultMarkerImage.bottomAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
+    
+    
+    if ([self.postSongButton.titleLabel.text isEqualToString:@"Post a Song"])
+    {
+        self.postSongButton.titleLabel.text = @"Post Song Here";
+        self.postSongButton.backgroundColor = [UIColor blueColor];
+    }
+    else if ([self.postSongButton.titleLabel.text isEqualToString:@"Post Song Here"])
+    {
+        CGPoint point = mapView_.center;
+        CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
+        
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+        marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
+        marker.map = mapView_;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

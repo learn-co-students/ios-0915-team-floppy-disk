@@ -185,16 +185,11 @@
 				E93801141BFBE9C8004CC8A2 /* HRPSpotifyViewController.m */,
 				E93801221BFC2B90004CC8A2 /* HRPSpotifySearchViewController.h */,
 				E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */,
-				3B0A73201BFCD58E0010A257 /* HRPTrackCreator.h */,
-				3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */,
-				3B0A73231BFD24420010A257 /* HRPTrack.h */,
-				3B0A73241BFD24420010A257 /* HRPTrack.m */,
 				E93801321BFD1764004CC8A2 /* HRPUser.h */,
 				E93801331BFD1764004CC8A2 /* HRPUser.m */,
 				E938012F1BFD1703004CC8A2 /* HRPParseNetworkService.h */,
 				E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */,
-				3B0A73261BFE30550010A257 /* HRPPlaybackController.h */,
-				3B0A73271BFE30550010A257 /* HRPPlaybackController.m */,
+				E9EE0EB91BFFCB4000C4F1DE /* Spotify */,
 				E938012E1BFCEF6C004CC8A2 /* Maps */,
 				E938012D1BFCEF58004CC8A2 /* Login */,
 				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
@@ -261,6 +256,19 @@
 				E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */,
 			);
 			name = Maps;
+			sourceTree = "<group>";
+		};
+		E9EE0EB91BFFCB4000C4F1DE /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+				3B0A73201BFCD58E0010A257 /* HRPTrackCreator.h */,
+				3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */,
+				3B0A73231BFD24420010A257 /* HRPTrack.h */,
+				3B0A73241BFD24420010A257 /* HRPTrack.m */,
+				3B0A73261BFE30550010A257 /* HRPPlaybackController.h */,
+				3B0A73271BFE30550010A257 /* HRPPlaybackController.m */,
+			);
+			name = Spotify;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

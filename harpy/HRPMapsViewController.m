@@ -19,11 +19,7 @@
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
 @property (weak, nonatomic) IBOutlet UIButton *postSongButton;
-
-@property (nonatomic, assign) CGFloat startingLatitude;
-@property (nonatomic, assign) CGFloat startingLongitude;
-@property (nonatomic, assign) CGFloat endingLatitude;
-@property (nonatomic, assign) CGFloat endingLongitude;
+@property (nonatomic) BOOL buttonShouldDisappear;
 
 @end
 
@@ -34,8 +30,6 @@
 
 - (void)viewDidLoad
 {
-    mapView_.delegate = self;
-    
     self.locationManager = [CLLocationManager sharedManager];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.delegate = self;
@@ -49,10 +43,21 @@
     self.postSongButton.alpha = 0.6;
 }
 
+-(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position
+{
+    self.postSongButton.hidden = NO;
+}
+
+- (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture
+{
+    if (self.buttonShouldDisappear)
+    {
+        self.postSongButton.hidden = YES;
+    }
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
-    //because of this, the marker i've added disappears.  this reloads the view, in a way, by calling the startUpdatingLocation method
-    //if the marker were a property on parse, it could be sustained
     [super viewDidAppear:animated];
     [self.locationManager startUpdatingLocation];
 }
@@ -96,14 +101,14 @@
     
     // Create a GMSCameraPosition that tells the map to display
     // this determines the zoom of the camera as soon as the map opens; the higher the number, the more detail we see on the map
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude
-                                                            longitude:coordinate.longitude
-                                                                 zoom:18];
-    //    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    //    self.view = mapView_;
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:18];
     
     mapView_ = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
+    
     [self.view insertSubview:mapView_ atIndex:0];
+    
+    mapView_.delegate = self;
+    
     [mapView_ setMinZoom:12 maxZoom:mapView_.maxZoom];
     
     mapView_.myLocationEnabled = YES;
@@ -128,9 +133,8 @@
 {
     NSString *enterPostSongOverlay = @"Post a Song";
     NSString *pinSongHere = @"Pin Track";
+    self.buttonShouldDisappear = YES;
     
-//    [self.defaultMarkerImage.bottomAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
-//    [self.defaultMarkerImage.centerYAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     if (self.defaultMarkerImage.hidden)
     {
         self.defaultMarkerImage.hidden = NO;
@@ -148,6 +152,8 @@
     }
     else if ([self.postSongButton.titleLabel.text isEqualToString:pinSongHere])
     {
+        self.buttonShouldDisappear = NO;
+        
         [self.postSongButton setTitle:enterPostSongOverlay forState:UIControlStateNormal];
         [self.postSongButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.postSongButton setBackgroundColor:[UIColor lightGrayColor]];
@@ -155,6 +161,11 @@
         
         [self presentConfirmPinAlertController];
     }
+}
+
+- (void)handlePans
+{
+    self.postSongButton.hidden = YES;
 }
 
 - (void)presentConfirmPinAlertController
@@ -184,6 +195,7 @@
     addPostDVC.delegate = self;
 }
 
+// the methods below are for use with the modal view controller (+) button on top of the maps view
 - (void)addPostViewController:(id)viewController didFinishWithLocation:(CLLocation *)location
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];

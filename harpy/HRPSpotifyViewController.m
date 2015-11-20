@@ -62,7 +62,7 @@
     
     self.authViewController = [SPTAuthViewController authenticationViewController];
     self.authViewController.delegate = self;
-    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.authViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     self.authViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
@@ -82,19 +82,29 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    
+    NSLog(@"VIEW APPEARED");
     SPTAuth *auth = [SPTAuth defaultInstance];
     
     if (auth.session == nil) {
-        
+        NSLog(@"entered first if statement");
+        NSLog(@"%@", auth.clientID);
+        return;
     }
     
     if ([auth.session isValid] && self.firstLoad) {
+        NSLog(@"entered second if statement");
+        NSLog(@"%@", auth.clientID);
         [self showSegue];
     }
     
     if (auth.hasTokenRefreshService) {
+        NSLog(@"%@", auth.clientID);
+        NSLog(@"entered third if statement");
+
         [self renewTokenAndSegue];
     }
+    
 }
 - (IBAction)logInClicked:(UIButton *)sender {
     [self openLogInPage];

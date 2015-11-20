@@ -41,6 +41,12 @@
     self.locationManager.delegate = self;
     
     [self locationManagerPermissions];
+    
+    self.defaultMarkerImage.hidden = YES;
+    
+    [self.postSongButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.postSongButton setBackgroundColor:[UIColor lightGrayColor]];
+    self.postSongButton.alpha = 0.6;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -93,8 +99,8 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude
                                                             longitude:coordinate.longitude
                                                                  zoom:18];
-//    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-//    self.view = mapView_;
+    //    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    //    self.view = mapView_;
     
     mapView_ = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
     [self.view insertSubview:mapView_ atIndex:0];
@@ -111,25 +117,36 @@
     
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
     // This should be uncommented when we use actual devices to test GPS.
-//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-//    
-//    [errorAlerts addAction:okAction];
-//    
-//    [self presentViewController:errorAlerts animated:YES completion:nil];
+    //    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    //
+    //    [errorAlerts addAction:okAction];
+    //
+    //    [self presentViewController:errorAlerts animated:YES completion:nil];
 }
 
 - (IBAction)postSongButtonTapped:(id)sender
 {
+    NSString *enterPostSongOverlay = @"Post a Song";
+    NSString *postSongHere = @"Post Song Here";
+    
 //    [self.defaultMarkerImage.bottomAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
+//    [self.defaultMarkerImage.centerYAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    self.defaultMarkerImage.hidden = NO;
     
-    
-    if ([self.postSongButton.titleLabel.text isEqualToString:@"Post a Song"])
+    if ([self.postSongButton.titleLabel.text isEqualToString:enterPostSongOverlay])
     {
-        self.postSongButton.titleLabel.text = @"Post Song Here";
-        self.postSongButton.backgroundColor = [UIColor blueColor];
+        [self.postSongButton setTitle:postSongHere forState:UIControlStateNormal];
+        [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.postSongButton setBackgroundColor:[UIColor blackColor]];
+        self.postSongButton.alpha = 0.5;
     }
-    else if ([self.postSongButton.titleLabel.text isEqualToString:@"Post Song Here"])
+    else if ([self.postSongButton.titleLabel.text isEqualToString:postSongHere])
     {
+        [self.postSongButton setTitle:enterPostSongOverlay forState:UIControlStateNormal];
+        [self.postSongButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.postSongButton setBackgroundColor:[UIColor lightGrayColor]];
+        self.postSongButton.alpha = 0.6;
+        
         CGPoint point = mapView_.center;
         CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
         

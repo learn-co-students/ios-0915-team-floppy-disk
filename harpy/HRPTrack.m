@@ -10,12 +10,11 @@
 
 @interface HRPTrack ()
 
-
-
-
 @end
 
 @implementation HRPTrack
+
+#pragma mark - Initialization Methods
 
 -(instancetype)initWithSongTitle:(NSString *)title artistName:(NSString *)artist albumName:(NSString *)album spotifyURL:(NSURL *)url coverArt:(NSData *)cover songPopularity:(NSNumber *)popularity {
     self = [super init];
@@ -29,18 +28,5 @@
     }
     return self;
 }
-
--(void)trackDidStartPlayback{
-    
-    
-}
-
-//-(void)trackDidPausePlayback;
-//
-//-(void)songDidStopPlayback;
-//
-//-(void)songDidSkipForwards;
-//
-//-(void)songDidSkipBackwards;
 
 @end

@@ -19,18 +19,11 @@
 @property (nonatomic, strong) NSData *albumCoverArt;
 @property (nonatomic, strong) NSNumber *songPopularity;
 
-
-
 -(instancetype)initWithSongTitle:(NSString *)title artistName:(NSString *)artist albumName:(NSString *)album spotifyURL:(NSURL *)url coverArt:(NSData *)cover songPopularity:(NSNumber *)popularity;
-
 -(void)trackDidStartPlayback;
-
 -(void)trackDidPausePlayback;
-
 -(void)songDidStopPlayback;
-
 -(void)songDidSkipForwards;
-
 -(void)songDidSkipBackwards;
 
 @end

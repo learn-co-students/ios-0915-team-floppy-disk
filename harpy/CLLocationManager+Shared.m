@@ -10,6 +10,8 @@
 
 @implementation CLLocationManager (Shared)
 
+#pragma mark Singleton Methods
+
 + (CLLocationManager *)sharedManager;
 {
     static CLLocationManager *_sharedManager;

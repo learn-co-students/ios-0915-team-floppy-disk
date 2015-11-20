@@ -8,8 +8,9 @@
 
 #import "UIViewController+PresentViewController.h"
 
-
 @implementation UIViewController (PresentViewController)
+
+#pragma mark - Modal Animation
 
 - (UIViewController *)topViewController
 {

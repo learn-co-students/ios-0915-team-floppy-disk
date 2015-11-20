@@ -11,12 +11,14 @@
 
 @interface HRPParseNetworkService ( )
 
-
 @end
 
 @implementation HRPParseNetworkService
 
-+(id)sharedService {
+#pragma mark - Singleton Methods
+
++(id)sharedService
+{
     static HRPParseNetworkService *mySharedService = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -25,12 +27,17 @@
     return mySharedService;
 }
 
--(void)loginApp:(NSString *)username password:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler {
+#pragma mark - Instance Methods
+
+-(void)loginApp:(NSString *)username password:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler
+{
     NSError *error;
     [PFUser logInWithUsername:username password:password error:&error];
-    if (error) {
+    if (error)
+    {
         NSLog(@"ERROR: %@ %@", error, [error userInfo]);
-    } else {
+    } else
+    {
         PFUser *currentUser = [PFUser currentUser];
         HRPUser *user = [[HRPUser alloc]initWithUsername:currentUser.username password:currentUser.password];
         [[NSOperationQueue mainQueue]addOperationWithBlock:^{
@@ -39,16 +46,20 @@
     }
 }
 
--(void)createUser:(NSString *)username email:(NSString *)email password:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler {
+-(void)createUser:(NSString *)username email:(NSString *)email password:(NSString *)password completionHandler:(void (^)(HRPUser *user))completionHandler
+    {
     NSError *error;
     PFUser *user = [[PFUser alloc]init];
     user.username = username;
     user.email = email;
     user.password = password;
-    if (error) {
+    if (error)
+    {
         NSLog(@"ERROR: %@ %@", error, [error userInfo]);
-    } else {
-        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    } else
+    {
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+        {
             PFUser *currentUser = [PFUser currentUser];
             HRPUser *user = [[HRPUser alloc]initWithUserID:currentUser.objectId
                                                   userName:currentUser.username

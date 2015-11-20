@@ -29,6 +29,8 @@
     GMSPlacePicker *_placePicker;
 }
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,6 +39,8 @@
     
     self.currentLocation = self.locationManager.location;
 }
+
+#pragma mark - Action Methods
 
 - (IBAction)getCurrentPlace:(UIButton *)sender
 {

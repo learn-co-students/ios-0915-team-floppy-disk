@@ -21,7 +21,7 @@ NSString * const kHRPValidationManagerPasswordKey = @"kMQValidationManagerPasswo
 
 @implementation HRPValidationManager
 
-#pragma mark - Lifecycle
+#pragma mark - Singleton Methods
 
 + (instancetype)sharedManager
 {
@@ -33,37 +33,7 @@ NSString * const kHRPValidationManagerPasswordKey = @"kMQValidationManagerPasswo
     return sharedManager;
 }
 
-#pragma mark - Private methods
-
-- (BOOL)validateValue:(NSString *)value forKey:(NSString *)key
-{
-    if (!value || value.length == 0) {
-        return NO;
-    }
-    BOOL valid = NO;
-    NSRegularExpression *regex;
-    if ([key isEqualToString:kHRPValidationManagerUsernameKey]) {
-        // Username.
-         regex = [[NSRegularExpression alloc] initWithPattern:[[self class] usernameRegex] options:NSRegularExpressionCaseInsensitive error:nil];
-    } else if ([key isEqualToString:kHRPValidationManagerEmailAddressKey]) {
-        // Email Address.
-        regex = [[NSRegularExpression alloc] initWithPattern:[[self class] emailAddressRegex] options:NSRegularExpressionCaseInsensitive error:nil];
-    } else if ([key isEqualToString:kHRPValidationManagerPasswordKey]) {
-        // Password.
-        regex = [[NSRegularExpression alloc] initWithPattern:[[self class] passwordRegex] options:NSRegularExpressionCaseInsensitive error:nil];
-    } else {
-        // Invalid key.
-        return NO;
-    }
-    NSUInteger results = [regex numberOfMatchesInString:value options:0 range:NSMakeRange(0, value.length)];
-    if (results > 0) {
-        valid = YES;
-    }
-    
-    return valid;
-}
-
-#pragma mark - Public methods
+#pragma mark - Class methods
 
 + (NSString *)usernameRegex
 {
@@ -78,5 +48,35 @@ NSString * const kHRPValidationManagerPasswordKey = @"kMQValidationManagerPasswo
     return @"^(?=.*\\d+)(?=.*[A-Za-z])[0-9a-zA-Z!@#$%^&*()]{6,20}$";
 }
 
+#pragma mark - Instance Methods
+
+- (BOOL)validateValue:(NSString *)value forKey:(NSString *)key
+{
+    if (!value || value.length == 0) {
+        return NO;
+    }
+    BOOL valid = NO;
+    NSRegularExpression *regex;
+    if ([key isEqualToString:kHRPValidationManagerUsernameKey])
+    {
+        regex = [[NSRegularExpression alloc] initWithPattern:[[self class] usernameRegex] options:NSRegularExpressionCaseInsensitive error:nil];
+    } else if ([key isEqualToString:kHRPValidationManagerEmailAddressKey])
+    {
+        regex = [[NSRegularExpression alloc] initWithPattern:[[self class] emailAddressRegex] options:NSRegularExpressionCaseInsensitive error:nil];
+    } else if ([key isEqualToString:kHRPValidationManagerPasswordKey])
+    {
+        regex = [[NSRegularExpression alloc] initWithPattern:[[self class] passwordRegex] options:NSRegularExpressionCaseInsensitive error:nil];
+    } else
+    {
+        return NO;
+    }
+    NSUInteger results = [regex numberOfMatchesInString:value options:0 range:NSMakeRange(0, value.length)];
+    if (results > 0)
+    {
+        valid = YES;
+    }
+    
+    return valid;
+}
 
 @end

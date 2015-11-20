@@ -91,8 +91,11 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude
                                                             longitude:coordinate.longitude
                                                                  zoom:18];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    self.view = mapView_;
+//    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+//    self.view = mapView_;
+    
+    mapView_ = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
+    [self.view insertSubview:mapView_ atIndex:0];
     [mapView_ setMinZoom:12 maxZoom:mapView_.maxZoom];
     
     mapView_.myLocationEnabled = YES;

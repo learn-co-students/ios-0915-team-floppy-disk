@@ -7,6 +7,7 @@
 //
 
 #import "HRPSignupVC.h"
+#import "HRPLoginRedirect.h"
 #import "HRPValidationManager.h"
 #import "HRPParseNetworkService.h"
 
@@ -14,6 +15,7 @@
 
 @property (nonatomic) UITextField *passwordNew;
 @property (nonatomic) UITextField *passwordConfirm;
+@property (nonatomic) BOOL spotifyPremium;
 
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
@@ -27,6 +29,7 @@
     
     NSLog(@"self.userNameNew (%@) and self.email (%@) were passed!", self.userNameNew.text, self.email.text);
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.passwordNew];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.passwordConfirm];
 
     // Set parse and user shared instance
@@ -76,6 +79,11 @@
 {
     [textField resignFirstResponder];
     
+    NSLog(@"textField return:%@", textField);
+    if (textField.tag == 3) {
+        [self isTextFieldValid:textField];
+    }
+    
     return YES;
 }
 -(void)textFieldTextDidChange:(NSNotification *)notification
@@ -98,18 +106,70 @@
         valid = [validationManager validateValue:textField.text forKey:kHRPValidationManagerPasswordKey];
     }
     if ([self.passwordNew isEqual:self.passwordNew]) {
-        
-        // Popup to confim password
-        // Popup to ask for spofity connection
-        [self.parseService createUser:self.userNameNew.text email:self.email.text password:self.passwordNew.text completionHandler:^(HRPUser *user) {
-        
-        }];
+        NSLog(@"spotifyPremium: %id", self.spotifyPremium);
+        [self callEmailCheckAlertController];
     }
-    
+    else if (![self.passwordNew isEqual:self.passwordNew]) {
+        [self callPasswordValidationAlertController];
+    }
+
     NSLog(@"%@ isValid: %@", textField.text, valid ? @"YES" : @"NO");
     return valid;
 }
+-(void)callPasswordValidationAlertController {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Those passwords don't match" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 
+    }];
+
+    [alertController addAction:okayAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+-(void)callEmailCheckAlertController {
+    
+    NSString *string = @"You entered your email as:";
+    NSString *message = [NSString stringWithFormat:@"%@\n%@", string, self.email.text];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Is this correct?" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.spotifyPremium = YES;
+        [self callSpotifyLogInAlertController];
+    }];
+    
+    UIAlertAction *noAccountAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.spotifyPremium = NO;
+    }];
+    
+    [alertController addAction:confirmAction];
+    [alertController addAction:noAccountAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+-(void)callSpotifyLogInAlertController {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Thanks!" message:@"Do you have a Spotify account?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.spotifyPremium = YES;
+        [HRPLoginRedirect launchSpotify];
+        [self callParse];
+    }];
+    
+    UIAlertAction *noAccountAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.spotifyPremium = NO;
+    }];
+    
+    [alertController addAction:confirmAction];
+    [alertController addAction:noAccountAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+- (void)callParse{
+    [self.parseService createUser:self.userNameNew.text email:self.email.text password:self.passwordNew.text completionHandler:^(HRPUser *user) {
+        NSLog(@"Created user: %@.", user);
+    }];
+}
 
 
 @end

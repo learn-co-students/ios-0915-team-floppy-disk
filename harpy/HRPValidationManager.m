@@ -7,10 +7,17 @@
 //
 
 #import "HRPValidationManager.h"
+#import <Parse/Parse.h>
 
 NSString * const kHRPValidationManagerUsernameKey = @"kMQValidationManagerUsernameKey";
 NSString * const kHRPValidationManagerEmailAddressKey = @"kMQValidationManagerEmailAddressKey";
 NSString * const kHRPValidationManagerPasswordKey = @"kMQValidationManagerPasswordKey";
+
+@interface HRPValidationManager ()
+
+@property (nonatomic) BOOL parseQueryUsers;
+
+@end
 
 @implementation HRPValidationManager
 
@@ -37,7 +44,7 @@ NSString * const kHRPValidationManagerPasswordKey = @"kMQValidationManagerPasswo
     NSRegularExpression *regex;
     if ([key isEqualToString:kHRPValidationManagerUsernameKey]) {
         // Username.
-        regex = [[NSRegularExpression alloc] initWithPattern:[[self class] usernameRegex] options:NSRegularExpressionCaseInsensitive error:nil];
+         regex = [[NSRegularExpression alloc] initWithPattern:[[self class] usernameRegex] options:NSRegularExpressionCaseInsensitive error:nil];
     } else if ([key isEqualToString:kHRPValidationManagerEmailAddressKey]) {
         // Email Address.
         regex = [[NSRegularExpression alloc] initWithPattern:[[self class] emailAddressRegex] options:NSRegularExpressionCaseInsensitive error:nil];
@@ -48,7 +55,6 @@ NSString * const kHRPValidationManagerPasswordKey = @"kMQValidationManagerPasswo
         // Invalid key.
         return NO;
     }
-    
     NSUInteger results = [regex numberOfMatchesInString:value options:0 range:NSMakeRange(0, value.length)];
     if (results > 0) {
         valid = YES;

@@ -40,9 +40,8 @@
     
     self.defaultMarkerImage.hidden = YES;
     
-    [self.postSongButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.postSongButton setBackgroundColor:[UIColor lightGrayColor]];
-    self.postSongButton.alpha = 0.6;
+    [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
 }
 -(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position
 {
@@ -100,8 +99,10 @@
     // this determines the zoom of the camera as soon as the map opens; the higher the number, the more detail we see on the map
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:18];
     
-    mapView_ = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
-    NSLog(@"bounds of view: %@", NSStringFromCGRect(self.view.bounds));
+    CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - (self.view.bounds.size.height * 0.08));
+    
+    mapView_ = [GMSMapView mapWithFrame:rect camera:camera];
+    NSLog(@"bounds of view: %@", NSStringFromCGRect(rect));
     
     [self.view insertSubview:mapView_ atIndex:0];
     
@@ -109,8 +110,8 @@
     mapView_.indoorEnabled = NO;
     mapView_.settings.scrollGestures = NO;
     
-    //    [mapView_ setMinZoom:12 maxZoom:mapView_.maxZoom];
-    // we will need this again if we turn scrollGestures back on
+    [mapView_ setMinZoom:13 maxZoom:mapView_.maxZoom];
+    
     
     mapView_.myLocationEnabled = YES;
     mapView_.settings.myLocationButton = YES;
@@ -149,18 +150,14 @@
     if ([self.postSongButton.titleLabel.text isEqualToString:enterPostSongOverlay])
     {
         [self.postSongButton setTitle:pinSongHere forState:UIControlStateNormal];
-        [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.postSongButton setBackgroundColor:[UIColor blackColor]];
-        self.postSongButton.alpha = 0.5;
     }
     else if ([self.postSongButton.titleLabel.text isEqualToString:pinSongHere])
     {
         self.buttonShouldDisappear = NO;
         
         [self.postSongButton setTitle:enterPostSongOverlay forState:UIControlStateNormal];
-        [self.postSongButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self.postSongButton setBackgroundColor:[UIColor lightGrayColor]];
-        self.postSongButton.alpha = 0.6;
+        [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
         
         [self presentConfirmPinAlertController];
     }

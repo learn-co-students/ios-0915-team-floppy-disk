@@ -42,6 +42,7 @@
 		E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */; settings = {ASSET_TAGS = (); }; };
 		E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */; settings = {ASSET_TAGS = (); }; };
 		E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,8 @@
 		E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrackViews.storyboard; sourceTree = "<group>"; };
 		E9FA64D91C03BD90008DDE69 /* HRPProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPProfileVC.h; sourceTree = "<group>"; };
 		E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPProfileVC.m; sourceTree = "<group>"; };
+		E9FA64E01C03CA0F008DDE69 /* HRPSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSettingsVC.h; sourceTree = "<group>"; };
+		E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSettingsVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +289,8 @@
 				E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */,
 				E9FA64D91C03BD90008DDE69 /* HRPProfileVC.h */,
 				E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */,
+				E9FA64E01C03CA0F008DDE69 /* HRPSettingsVC.h */,
+				E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */,
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
 				E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */,
 				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,

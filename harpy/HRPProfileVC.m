@@ -1,18 +1,18 @@
 //
-//  ProfileVC.m
+//  HRPProfileVC.m
 //  harpy
 //
 //  Created by Kiara Robles on 11/23/15.
 //  Copyright © 2015 teamFloppyDisk. All rights reserved.
 //
 
-#import "ProfileVC.h"
+#import "HRPProfileVC.h"
 
-@interface ProfileVC ()
+@interface HRPProfileVC ()
 
 @end
 
-@implementation ProfileVC
+@implementation HRPProfileVC
 
 - (void)viewDidLoad
 {

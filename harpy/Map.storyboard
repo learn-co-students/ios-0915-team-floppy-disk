@@ -56,7 +56,7 @@
                         <barButtonItem key="rightBarButtonItem" image="menu" id="9iU-qM-S92">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Aw4-Xc-siq" kind="presentation" id="EHs-hQ-0b7"/>
+                                <segue destination="Zn9-Nw-Eau" kind="show" identifier="sendToUserProfile" id="0hJ-fw-pEZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -70,71 +70,13 @@
             </objects>
             <point key="canvasLocation" x="1039" y="231"/>
         </scene>
-        <!--Add Post View Controller-->
-        <scene sceneID="BGl-IL-fe5">
+        <!--UserProfile-->
+        <scene sceneID="6Fy-AO-ank">
             <objects>
-                <viewController id="Aw4-Xc-siq" customClass="HRPAddPostViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MXl-Ah-DQH"/>
-                        <viewControllerLayoutGuide type="bottom" id="qhN-oG-K49"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OsR-6Z-VaI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujn-oj-8aN">
-                                <rect key="frame" x="83" y="110" width="155" height="50"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGD-NT-kgx">
-                                <rect key="frame" x="59" y="162" width="202" height="64"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CKA-Qa-Iu4">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <animations/>
-                                <items>
-                                    <navigationItem title="Post A Song!" id="nbb-zK-sLG">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hFT-gI-P2r">
-                                            <connections>
-                                                <action selector="cancelButtonTapped:" destination="Aw4-Xc-siq" id="Fey-aO-isX"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="nJX-Ow-pXY">
-                                            <connections>
-                                                <action selector="submitButtonTapped:" destination="Aw4-Xc-siq" id="7yF-9H-Y4q"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxg-am-BtP">
-                                <rect key="frame" x="99" y="234" width="122" height="41"/>
-                                <animations/>
-                                <state key="normal" title="Get Current Place"/>
-                                <connections>
-                                    <action selector="getCurrentPlace:" destination="Aw4-Xc-siq" eventType="touchUpInside" id="f1w-14-BrC"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="addressLabel" destination="wGD-NT-kgx" id="DSb-7o-OJu"/>
-                        <outlet property="nameLabel" destination="ujn-oj-8aN" id="nGb-aG-nRK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c2f-dm-vw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="UserProfile" id="Zn9-Nw-Eau" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0g-u8-bMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1480" y="231"/>
+            <point key="canvasLocation" x="1358" y="231"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hjw-uP-gFi">

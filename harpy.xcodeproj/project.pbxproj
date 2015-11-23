@@ -41,7 +41,7 @@
 		E9FA64D41C039E43008DDE69 /* HRPManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */; settings = {ASSET_TAGS = (); }; };
 		E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */; settings = {ASSET_TAGS = (); }; };
-		E9FA64DB1C03BD90008DDE69 /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64DA1C03BD90008DDE69 /* ProfileVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,8 +117,8 @@
 		E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPManagerViewController.m; sourceTree = "<group>"; };
 		E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrackViews.storyboard; sourceTree = "<group>"; };
-		E9FA64D91C03BD90008DDE69 /* ProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileVC.h; sourceTree = "<group>"; };
-		E9FA64DA1C03BD90008DDE69 /* ProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileVC.m; sourceTree = "<group>"; };
+		E9FA64D91C03BD90008DDE69 /* HRPProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPProfileVC.h; sourceTree = "<group>"; };
+		E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPProfileVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,8 +284,8 @@
 			isa = PBXGroup;
 			children = (
 				E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */,
-				E9FA64D91C03BD90008DDE69 /* ProfileVC.h */,
-				E9FA64DA1C03BD90008DDE69 /* ProfileVC.m */,
+				E9FA64D91C03BD90008DDE69 /* HRPProfileVC.h */,
+				E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -463,7 +463,7 @@
 				E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */,
 				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
 				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
-				E9FA64DB1C03BD90008DDE69 /* ProfileVC.m in Sources */,
+				E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */,
 				3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */,
 				E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */,
 				3DAC61ED1BFE27D9002BAB02 /* HRPAddPostViewController.m in Sources */,

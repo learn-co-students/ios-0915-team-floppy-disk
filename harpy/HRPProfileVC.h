@@ -1,5 +1,5 @@
 //
-//  ProfileVC.h
+//  HRPProfileVC.h
 //  harpy
 //
 //  Created by Kiara Robles on 11/23/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileVC : UIViewController
+@interface HRPProfileVC : UIViewController
 
 @end

@@ -39,6 +39,8 @@
 		E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */; };
 		E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E9FA64D41C039E43008DDE69 /* HRPManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */; settings = {ASSET_TAGS = (); }; };
+		E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,8 @@
 		E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PresentViewController.m"; sourceTree = "<group>"; };
 		E9FA64D21C039E43008DDE69 /* HRPManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPManagerViewController.h; sourceTree = "<group>"; };
 		E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPManagerViewController.m; sourceTree = "<group>"; };
+		E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrackViews.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,9 +194,11 @@
 				E938012D1BFCEF58004CC8A2 /* Login */,
 				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
 				E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */,
-				E9335C631BFA7EBC002DD9C6 /* Main.storyboard */,
-				3D34D7C21BFE226C00C86BF3 /* Map.storyboard */,
 				E93801281BFCEADF004CC8A2 /* Login.storyboard */,
+				3D34D7C21BFE226C00C86BF3 /* Map.storyboard */,
+				E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */,
+				E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */,
+				E9335C631BFA7EBC002DD9C6 /* Main.storyboard */,
 				E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */,
 				E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */,
 				3BAC251A1BFF87EF004C6790 /* HRPTempTableViewController.h */,
@@ -359,6 +365,8 @@
 				E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */,
 				E9335C671BFA7EBC002DD9C6 /* Assets.xcassets in Resources */,
 				E93801291BFCEADF004CC8A2 /* Login.storyboard in Resources */,
+				E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */,
+				E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */,
 				E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */,
 				3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */,
 			);

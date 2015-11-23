@@ -35,12 +35,12 @@
 {
     [super didReceiveMemoryWarning];
 }
-
-- (void)showLoginsStoryboard {
+- (void)showLoginsStoryboard
+{
     [self performSegueWithIdentifier:@"sendToLogins" sender:self];
 }
-
-- (void)showMapsStoryboard {
+- (void)showMapsStoryboard
+{
     [self performSegueWithIdentifier:@"sendToMaps" sender:self];
 }
 

@@ -54,6 +54,7 @@
                         <outlet property="displayMessage" destination="lkI-Kd-mFn" id="UYM-q1-WxY"/>
                         <outlet property="inputView" destination="EHt-Oq-Y8C" id="yzT-8k-xz9"/>
                         <segue destination="XFD-b9-zSJ" kind="show" identifier="sendToSignup" id="XQZ-5N-lWl"/>
+                        <segue destination="x7X-MU-eMV" kind="show" identifier="sendToMaps" id="Wvz-6f-f07"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsX-1A-SPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -104,7 +105,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgO-zv-YOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="927" y="203"/>
+            <point key="canvasLocation" x="891" y="51"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="tE2-lS-WVO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="x7X-MU-eMV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="And-L8-kMp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="891" y="557"/>
         </scene>
     </scenes>
 </document>

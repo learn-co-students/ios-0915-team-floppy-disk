@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cNf-SP-bO5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--User Profile-->
+        <!--ProfileVC-->
         <scene sceneID="OrC-QT-U3k">
             <objects>
-                <viewController id="C0a-CR-bU2" customClass="HRPUserProfile" sceneMemberID="viewController">
+                <viewController id="C0a-CR-bU2" customClass="HRPProfileVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pb1-mO-Aqd"/>
                         <viewControllerLayoutGuide type="bottom" id="EU0-Np-qFi"/>
@@ -17,12 +17,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Settings" id="3Ig-pX-UYg"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="EIy-1h-741"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="settingsButton" destination="3Ig-pX-UYg" id="Avg-G0-PVv"/>
+                        <segue destination="Ozf-ZG-XMv" kind="show" id="RKP-ZJ-6kF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5T-88-61l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1155" y="337"/>
+        </scene>
+        <!--SettingsVC-->
+        <scene sceneID="il2-Rz-x7w">
+            <objects>
+                <viewController id="Ozf-ZG-XMv" customClass="HRPSettingsVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UkL-oc-fZp"/>
+                        <viewControllerLayoutGuide type="bottom" id="BuE-8r-LTM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J8m-T8-q9U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NCk-be-eKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1662" y="337"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yJg-mI-Hz0">

@@ -1,5 +1,5 @@
 //
-//  HRPProfileVC.h
+//  HRPSettingsVC.h
 //  harpy
 //
 //  Created by Kiara Robles on 11/23/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPProfileVC : UIViewController
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
+@interface HRPSettingsVC : UIViewController
 
 @end

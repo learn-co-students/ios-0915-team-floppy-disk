@@ -110,8 +110,10 @@
     
     mapView_.delegate = self;
     mapView_.indoorEnabled = NO;
+    mapView_.settings.scrollGestures = NO;
     
-    [mapView_ setMinZoom:12 maxZoom:mapView_.maxZoom];
+    //    [mapView_ setMinZoom:12 maxZoom:mapView_.maxZoom];
+    // we will need this again if we turn scrollGestures back on
     
     mapView_.myLocationEnabled = YES;
     mapView_.settings.myLocationButton = YES;
@@ -123,12 +125,12 @@
     NSLog(@"didFailWithError: %@", error);
     
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
-
+    
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     
-        [errorAlerts addAction:okAction];
+    [errorAlerts addAction:okAction];
     
-        [self presentViewController:errorAlerts animated:YES completion:nil];
+    [self presentViewController:errorAlerts animated:YES completion:nil];
 }
 
 - (IBAction)postSongButtonTapped:(id)sender

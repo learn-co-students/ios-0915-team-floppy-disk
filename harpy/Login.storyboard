@@ -7,7 +7,7 @@
         <!--Login Or SignupVC-->
         <scene sceneID="3bd-mZ-qGf">
             <objects>
-                <viewController storyboardIdentifier="sendToLogins" id="oby-cU-EOK" customClass="HRPLoginOrSignupVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sendToLogins" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oby-cU-EOK" customClass="HRPLoginOrSignupVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UUE-N1-8Lr"/>
                         <viewControllerLayoutGuide type="bottom" id="kGa-Yp-Ouc"/>

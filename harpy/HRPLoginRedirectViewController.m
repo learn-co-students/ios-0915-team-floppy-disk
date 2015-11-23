@@ -16,13 +16,13 @@
 
 @implementation HRPLoginRedirectViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    //[HRPLoginRedirect launchSpotify];
 }
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    
 }
 
 @end

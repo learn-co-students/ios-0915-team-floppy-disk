@@ -10,7 +10,10 @@
 
 @implementation HRPUser
 
--(instancetype)initWithUsername:(NSString *)userName password:(NSString *)password {
+#pragma mark - Initialization Methods
+
+-(instancetype)initWithUsername:(NSString *)userName password:(NSString *)password
+{
     if (self == [super init]) {
         _userName = userName;
         _password = password;
@@ -18,7 +21,8 @@
     return self;
 }
 
--(instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName email:(NSString *)email password:(NSString *)password {
+-(instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName email:(NSString *)email password:(NSString *)password
+{
     if (self == [super init]) {
         _userID = userID;
         _userName = userName;

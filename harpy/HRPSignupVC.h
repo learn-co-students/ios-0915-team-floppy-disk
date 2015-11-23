@@ -10,11 +10,9 @@
 
 @interface HRPSignupVC : UIViewController
 
-// Passed from HRPLoginOrSignupVC
 @property (nonatomic) UITextField *userNameNew;
 @property (nonatomic) UITextField *email;
-
-@property (weak, nonatomic) IBOutlet UIView *inputView;
 @property (nonatomic, strong) NSString *emailString;
+@property (weak, nonatomic) IBOutlet UIView *inputView;
 
 @end

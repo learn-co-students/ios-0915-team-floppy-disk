@@ -16,6 +16,8 @@
 
 @implementation HRPLocationManager
 
+#pragma mark - Singleton Methods
+
 + (HRPLocationManager *)sharedInstance
 {
     static HRPLocationManager *instance = nil;
@@ -58,6 +60,8 @@
     });
     return instance;
 }
+
+#pragma mark - Instance Methods
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {

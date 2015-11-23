@@ -125,12 +125,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2f-dm-vw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1476" y="231"/>
+            <point key="canvasLocation" x="1480" y="231"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hjw-uP-gFi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1rk-sK-M4k" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="sendToMaps" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1rk-sK-M4k" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hyc-SK-Smo">
@@ -145,7 +145,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RnZ-7R-uP8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="227" y="231"/>
+            <point key="canvasLocation" x="577" y="231"/>
         </scene>
     </scenes>
     <resources>

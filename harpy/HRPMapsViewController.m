@@ -104,10 +104,12 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:18];
     
     mapView_ = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
+    NSLog(@"bounds of view: %@", NSStringFromCGRect(self.view.bounds));
     
     [self.view insertSubview:mapView_ atIndex:0];
     
     mapView_.delegate = self;
+    mapView_.indoorEnabled = NO;
     
     [mapView_ setMinZoom:12 maxZoom:mapView_.maxZoom];
     
@@ -121,12 +123,12 @@
     NSLog(@"didFailWithError: %@", error);
     
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
-    // This should be uncommented when we use actual devices to test GPS.
-    //    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    //
-    //    [errorAlerts addAction:okAction];
-    //
-    //    [self presentViewController:errorAlerts animated:YES completion:nil];
+
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    
+        [errorAlerts addAction:okAction];
+    
+        [self presentViewController:errorAlerts animated:YES completion:nil];
 }
 
 - (IBAction)postSongButtonTapped:(id)sender
@@ -195,7 +197,7 @@
     addPostDVC.delegate = self;
 }
 
-// the methods below are for use with the modal view controller (+) button on top of the maps view
+// the methods below are for use with the modal view controller (+) button on top of the maps view.  it's all connected to the delegate and protocol of the HRPAddPostViewController class
 - (void)addPostViewController:(id)viewController didFinishWithLocation:(CLLocation *)location
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];

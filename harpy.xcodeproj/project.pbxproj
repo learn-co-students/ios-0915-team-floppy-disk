@@ -192,16 +192,12 @@
 				E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */,
 				E9FA64D21C039E43008DDE69 /* HRPManagerViewController.h */,
 				E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */,
+				E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */,
 				E9FA64DC1C03BD9D008DDE69 /* Profile */,
 				E9EE0EB91BFFCB4000C4F1DE /* Spotify */,
 				E938012E1BFCEF6C004CC8A2 /* Maps */,
 				E938012D1BFCEF58004CC8A2 /* Login */,
 				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
-				E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */,
-				E93801281BFCEADF004CC8A2 /* Login.storyboard */,
-				3D34D7C21BFE226C00C86BF3 /* Map.storyboard */,
-				E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */,
-				E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */,
 				E9335C631BFA7EBC002DD9C6 /* Main.storyboard */,
 				E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */,
 				E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */,
@@ -235,6 +231,7 @@
 		E938012D1BFCEF58004CC8A2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				E93801281BFCEADF004CC8A2 /* Login.storyboard */,
 				E938012F1BFD1703004CC8A2 /* HRPParseNetworkService.h */,
 				E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */,
 				E93801321BFD1764004CC8A2 /* HRPUser.h */,
@@ -256,6 +253,7 @@
 		E938012E1BFCEF6C004CC8A2 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				3D34D7C21BFE226C00C86BF3 /* Map.storyboard */,
 				E9F8CE791BFE622F00979181 /* CLLocationManager+Shared.h */,
 				E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */,
 				E93801101BFBE956004CC8A2 /* HRPMapsViewController.h */,
@@ -271,6 +269,7 @@
 		E9EE0EB91BFFCB4000C4F1DE /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
+				E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */,
 				3B0A73201BFCD58E0010A257 /* HRPTrackCreator.h */,
 				3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */,
 				3B0A73231BFD24420010A257 /* HRPTrack.h */,
@@ -284,6 +283,7 @@
 		E9FA64DC1C03BD9D008DDE69 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */,
 				E9FA64D91C03BD90008DDE69 /* ProfileVC.h */,
 				E9FA64DA1C03BD90008DDE69 /* ProfileVC.m */,
 			);

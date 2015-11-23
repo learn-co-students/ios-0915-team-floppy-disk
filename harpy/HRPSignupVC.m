@@ -230,8 +230,15 @@
 
 - (void)callParse
 {
-    [self.parseService createUser:self.userNameNew.text email:self.email.text password:self.passwordNew.text completionHandler:^(HRPUser *user) {
-        NSLog(@"Created user: %@.", user);
+    [self.parseService createUser:self.userNameNew.text email:self.email.text password:self.passwordNew.text completionHandler:^(HRPUser *user, NSError *error) {
+        if (user)
+        {
+            NSLog(@"Created user: %@.", user);
+        }
+        else
+        {
+            // Error handeling
+        }
     }];
 }
 

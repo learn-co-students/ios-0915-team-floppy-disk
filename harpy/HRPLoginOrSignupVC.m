@@ -195,6 +195,7 @@
             if (user)
             {
                 NSLog(@"RESULT user %@ is logged in.", user);
+                [self performSelector:@selector(showMapsStoryboard) withObject:nil afterDelay:0];
             }
             else
             {
@@ -246,6 +247,9 @@
         vc.userNameNew = self.userNameNew;
         vc.emailString = self.email.text;
     }
+}
+- (void)showMapsStoryboard {
+    [self performSegueWithIdentifier:@"sendToMaps" sender:self];
 }
 
 #pragma mark - Instance Methods

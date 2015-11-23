@@ -102,7 +102,26 @@
     if ([self.passwordNew.text isEqual:self.passwordConfirm.text] && valid == YES)
     {
         NSLog(@"PASSWORDS: match and are valid.");
-        [self callEmailCheckAlertController];
+        [self.parseService createUser:self.userNameNew.text email:self.email.text password:self.passwordConfirm.text completionHandler:^(HRPUser *user, NSError *error) {
+            if (user)
+            {
+                NSLog(@"CREATED: %@.", user);
+                [self callEmailCheckAlertController];
+            }
+            else
+            {
+                UIAlertController *alert;
+                alert = [UIAlertController alertControllerWithTitle:@"That username or email address is already taken." message:nil preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *errorAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                              {
+                                                  [alert dismissViewControllerAnimated:YES completion:nil];
+                                              }];
+                
+                [alert addAction:errorAction];
+                
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+        }];
     }
     else if ([self.passwordNew.text isEqual:self.passwordConfirm.text] == NO && (valid == YES))
     {
@@ -193,11 +212,13 @@
     
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self.spotifyPremium = YES;
+        NSLog(@"EMAIL: is confirmed.");
         [self callSpotifyLogInAlertController];
     }];
     
     UIAlertAction *noAccountAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self.spotifyPremium = NO;
+        NSLog(@"SPOTIFY: is confirmed.");
         [self spotifySignupPopup];
     }];
     
@@ -213,7 +234,6 @@
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self.spotifyPremium = YES;
         [self spotifyLoginPopup];
-        [self callParse];
     }];
     
     UIAlertAction *noAccountAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -226,21 +246,6 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-# pragma mark - Parse
-
-- (void)callParse
-{
-    [self.parseService createUser:self.userNameNew.text email:self.email.text password:self.passwordNew.text completionHandler:^(HRPUser *user, NSError *error) {
-        if (user)
-        {
-            NSLog(@"Created user: %@.", user);
-        }
-        else
-        {
-            // Error handeling
-        }
-    }];
-}
 
 # pragma mark - Spotify
 

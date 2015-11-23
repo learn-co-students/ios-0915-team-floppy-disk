@@ -41,37 +41,11 @@
         }
         else if ([error.domain isEqual: @"Parse"] && error.code == (int)101)
         {
-            NSLog(@"ERROR: %@ %@", error, [error userInfo]);
             completionHandler(nil, error);
+             NSLog(@"ERROR: %@ %@", error, [error userInfo]);
         }
     }];
 }
-    
-//    NSError *error;
-//    [PFUser logInWithUsername:username password:password error:&error];
-//    if () {
-//        <#statements#>
-//    }
-//    
-//    
-//    
-//    if (error)
-//    {
-//        NSLog(@"ERROR: %@ %@", error, [error userInfo]);
-//        
-//        if ([error.domain isEqual: @"Parse"] && error.code == (int)101)
-//        {
-//            [self callBadLoginAlertController];
-//        }
-//    }
-//    else
-//    {
-//        PFUser *currentUser = [PFUser currentUser];
-//        HRPUser *user = [[HRPUser alloc]initWithUsername:currentUser.username password:currentUser.password];
-//        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-//            completionHandler(user);
-//        }];
-//    }
 
 -(void)createUser:(NSString *)username email:(NSString *)email password:(NSString *)password completionHandler:(void (^)(HRPUser *user, NSError *error))completionHandler
 {
@@ -89,7 +63,7 @@
                                                       email:currentUser.email
                                                    password:currentUser.password];
              [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                 completionHandler(user, error);
+                 completionHandler(user, nil);
              }];
          }
          else

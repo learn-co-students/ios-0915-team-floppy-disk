@@ -192,14 +192,13 @@
     {
         [self.parseService loginApp:self.userName.text password:self.password.text completionHandler:^(HRPUser *user, NSError *error)
         {
-            
-            UIAlertController *alert;
             if (user)
             {
                 NSLog(@"RESULT user %@ is logged in.", user);
             }
             else
             {
+                UIAlertController *alert;
                 alert = [UIAlertController alertControllerWithTitle:@"That login doesnt seem to work\n try again." message:nil preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *errorAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
                                               {

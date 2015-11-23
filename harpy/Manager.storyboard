@@ -19,8 +19,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <segue destination="1ei-Yk-iyH" kind="show" identifier="sendToLogins" id="815-vK-6Ro"/>
-                        <segue destination="4KD-Rx-pLD" kind="show" identifier="sendToMaps" id="QhV-Sm-dWU"/>
+                        <segue destination="1ei-Yk-iyH" kind="show" identifier="sendToLogins" animates="NO" id="815-vK-6Ro"/>
+                        <segue destination="4KD-Rx-pLD" kind="show" identifier="sendToMaps" animates="NO" id="QhV-Sm-dWU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVA-Fu-yZo" userLabel="First Responder" sceneMemberID="firstResponder"/>

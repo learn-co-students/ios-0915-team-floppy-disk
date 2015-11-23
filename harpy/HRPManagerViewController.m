@@ -23,11 +23,11 @@
     
     if (![PFUser currentUser ])
     {
-        [self performSelector:@selector(showLoginsStoryboard) withObject:nil afterDelay:1.0];
+        [self performSelector:@selector(showLoginsStoryboard) withObject:nil afterDelay:0];
     }
     else
     {
-        [self performSelector:@selector(showMapsStoryboard) withObject:nil afterDelay:1.0];
+        [self performSelector:@selector(showMapsStoryboard) withObject:nil afterDelay:0];
     }
 }
 

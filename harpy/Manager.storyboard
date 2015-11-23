@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zXL-r4-mL0">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Manager View Controller-->
+        <scene sceneID="NhU-eE-a31">
+            <objects>
+                <viewController id="zXL-r4-mL0" customClass="HRPManagerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WU5-px-Wz2"/>
+                        <viewControllerLayoutGuide type="bottom" id="pLC-QI-Svd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XDG-x7-hFf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <segue destination="1ei-Yk-iyH" kind="show" identifier="sendToLogins" animates="NO" id="815-vK-6Ro"/>
+                        <segue destination="4KD-Rx-pLD" kind="show" identifier="sendToMaps" animates="NO" id="QhV-Sm-dWU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iVA-Fu-yZo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="781" y="-134"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="ADP-3c-TNb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="1ei-Yk-iyH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fhx-c6-7TA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="590.5" y="405"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="mOX-HN-6lh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="4KD-Rx-pLD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wnh-iE-nqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="959" y="405"/>
+        </scene>
+    </scenes>
 </document>

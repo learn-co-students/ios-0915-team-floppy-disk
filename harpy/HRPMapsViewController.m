@@ -169,7 +169,6 @@
 {
     self.postSongButton.hidden = YES;
 }
-
 - (void)presentConfirmPinAlertController
 {
     UIAlertController *confirmPinAlert = [UIAlertController alertControllerWithTitle:@"Confirm Pin" message:@"Post song here?" preferredStyle:UIAlertControllerStyleAlert];
@@ -213,7 +212,6 @@
     
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
-
 - (void)addPostViewControllerDidCancel:(HRPAddPostViewController *)viewController
 {
     [viewController dismissViewControllerAnimated:YES completion:nil];

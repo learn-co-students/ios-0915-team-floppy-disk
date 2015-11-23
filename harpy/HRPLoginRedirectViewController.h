@@ -6,8 +6,8 @@
 //  Copyright © 2015 teamFloppyDisk. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface HRPLoginRedirectViewController : ViewController
+@interface HRPLoginRedirectViewController : UIViewController
 
 @end

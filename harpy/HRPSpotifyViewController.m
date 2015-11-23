@@ -19,50 +19,85 @@
 
 @implementation HRPSpotifyViewController
 
-- (void)viewDidLoad {
+#pragma mark - Lifecycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    //[HRPLoginRedirect launchSpotify];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionUpdatedNotification:) name:@"sessionUpdated" object:nil];
     self.firstLoad = YES;
 }
-
--(BOOL)prefersStatusBarHidden {
-    return YES;
-}
-
-//segues to player if notification center revceives an update on renewed session
--(void)sessionUpdatedNotification:(NSNotification *)notification {
-    if (self.navigationController.topViewController == self) {
-        SPTAuth *auth = [SPTAuth defaultInstance];
-        if (auth.session && [auth.session isValid]) {
-            [self performSegueWithIdentifier:@"playerSegue" sender:nil];
-        }
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"VIEW APPEARED");
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    
+    if (auth.session == nil)
+    {
+        NSLog(@"entered first if statement");
+        return;
+    }
+    
+    if ([auth.session isValid] && self.firstLoad)
+    {
+        NSLog(@"entered second if statement");
+        [self showSegue];
+    }
+    
+    if (![auth.session isValid] && auth.hasTokenRefreshService)
+    {
+        NSLog(@"entered third if statement");
+        [self renewTokenAndSegue];
     }
 }
 
-//segue to player
--(void)showSegue {
+#pragma mark - Overrides
+
+-(BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+#pragma mark - Navigation
+
+- (IBAction)logInClicked:(UIButton *)sender
+{
+    [self openLogInPage];
+}
+-(void)showSegue
+{
     self.firstLoad = NO;
     [self performSegueWithIdentifier:@"playerSegue" sender:nil];
 }
+-(void)sessionUpdatedNotification:(NSNotification *)notification
+{
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    if (auth.session && [auth.session isValid])
+    {
+        [self performSegueWithIdentifier:@"playerSegue" sender:nil];
+    }
+}
 
--(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error {
+#pragma mark - Spotify Authorization
+
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
+{
     
 }
-
--(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session {
-    //segue to initial app view
-}
-
--(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController {
-}
-
--(void)openLogInPage {
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
+{
     
+}
+-(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
+{
+    
+}
+-(void)openLogInPage
+{
     self.authViewController = [SPTAuthViewController authenticationViewController];
     self.authViewController.delegate = self;
-    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.authViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     self.authViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
@@ -70,8 +105,8 @@
     
     [self presentViewController:self.authViewController animated:NO completion:nil];
 }
-
--(void)renewTokenAndSegue {
+-(void)renewTokenAndSegue
+{
     SPTAuth *auth = [SPTAuth defaultInstance];
     
     [auth renewSession:auth.session callback:^(NSError *error, SPTSession *session) {
@@ -81,23 +116,5 @@
     }];
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    SPTAuth *auth = [SPTAuth defaultInstance];
-    
-    if (auth.session == nil) {
-        
-    }
-    
-    if ([auth.session isValid] && self.firstLoad) {
-        [self showSegue];
-    }
-    
-    if (auth.hasTokenRefreshService) {
-        [self renewTokenAndSegue];
-    }
-}
-- (IBAction)logInClicked:(UIButton *)sender {
-    [self openLogInPage];
-}
 
 @end

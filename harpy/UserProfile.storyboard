@@ -26,10 +26,10 @@
                                         <rect key="frame" x="0.0" y="10" width="374" height="184"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9Zj-md-RCZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="163" height="184"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="166" height="184"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBy-4X-gNf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="163" height="163"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="166" height="166"/>
                                                         <animations/>
                                                         <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -39,9 +39,9 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMC-o8-0dn">
-                                                        <rect key="frame" x="0.0" y="163" width="163" height="21"/>
+                                                        <rect key="frame" x="0.0" y="166" width="166" height="18"/>
                                                         <animations/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -49,27 +49,27 @@
                                                 <animations/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-Gq-0cW">
-                                                <rect key="frame" x="163" y="0.0" width="211" height="184"/>
+                                                <rect key="frame" x="166" y="0.0" width="208" height="184"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3Xp-Kc-tzb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="211" height="21"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="21"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAs-LE-qWL">
-                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="69" height="21"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Juv-w1-gIc">
-                                                                <rect key="frame" x="70" y="0.0" width="71" height="21"/>
+                                                                <rect key="frame" x="69" y="0.0" width="70" height="21"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Fans" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUo-a8-9tf">
-                                                                <rect key="frame" x="141" y="0.0" width="70" height="21"/>
+                                                                <rect key="frame" x="139" y="0.0" width="69" height="21"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -79,19 +79,19 @@
                                                         <animations/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eBw-lt-Qdj">
-                                                        <rect key="frame" x="0.0" y="163" width="211" height="21"/>
+                                                        <rect key="frame" x="0.0" y="166" width="208" height="18"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Table View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaS-DA-Fft">
-                                                                <rect key="frame" x="0.0" y="0.0" width="106" height="21"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="104" height="18"/>
                                                                 <animations/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Map View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRR-tf-mZj">
-                                                                <rect key="frame" x="106" y="0.0" width="105" height="21"/>
+                                                                <rect key="frame" x="104" y="0.0" width="104" height="18"/>
                                                                 <animations/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -252,6 +252,9 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="A5p-nX-Ojg" kind="show" id="wcQ-lS-4qJ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="     ACCOUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmA-AO-TSU">
                                 <rect key="frame" x="-5" y="100" width="419" height="50"/>
@@ -331,7 +334,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCk-be-eKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2908" y="337"/>
+            <point key="canvasLocation" x="2900" y="337"/>
+        </scene>
+        <!--Edit ProfileVC-->
+        <scene sceneID="IFd-5c-FvZ">
+            <objects>
+                <viewController id="A5p-nX-Ojg" customClass="HRPEditProfileVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GC9-y7-hXD"/>
+                        <viewControllerLayoutGuide type="bottom" id="qHU-B6-DP7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cNd-h4-i0B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rfb-o5-Cos" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3458" y="-2"/>
         </scene>
         <!--PASSWORD-->
         <scene sceneID="VkC-39-C6N">
@@ -382,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBH-x2-132" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3418" y="337"/>
+            <point key="canvasLocation" x="3458" y="801"/>
         </scene>
         <!--Login-->
         <scene sceneID="HPG-Pe-atf">
@@ -445,8 +467,8 @@
         <image name="back-Small" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L2a-8U-7gt"/>
-        <segue reference="gjQ-1f-1OJ"/>
         <segue reference="Zg6-FY-q22"/>
+        <segue reference="gjQ-1f-1OJ"/>
+        <segue reference="OR8-6g-Zdv"/>
     </inferredMetricsTieBreakers>
 </document>

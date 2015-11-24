@@ -33,6 +33,9 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    [self setupNavBar];
+    
     self.locationManager = [CLLocationManager sharedManager];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.delegate = self;
@@ -59,6 +62,15 @@
 {
     [super viewDidAppear:animated];
     [self.locationManager startUpdatingLocation];
+}
+
+#pragma mark - Setup methods
+
+-(void)setupNavBar
+{
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18.0f],
+                                                            }];
 }
 
 #pragma mark - CLLocationManagerDelegate

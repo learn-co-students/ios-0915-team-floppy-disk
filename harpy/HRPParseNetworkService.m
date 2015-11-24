@@ -76,4 +76,9 @@
      }];
 }
 
+- (void)logout
+{
+    [PFUser logOutInBackground];
+}
+
 @end

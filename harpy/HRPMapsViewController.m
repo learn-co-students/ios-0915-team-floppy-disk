@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
 @property (weak, nonatomic) IBOutlet UIButton *postSongButton;
 @property (nonatomic) BOOL buttonShouldDisappear;
+@property (strong, nonatomic) GMSMarker *defaultMarker;
 
 @end
 
@@ -106,12 +107,19 @@
     
     [self.view insertSubview:mapView_ atIndex:0];
     
+    self.defaultMarker = [[GMSMarker alloc] init];
+    self.defaultMarker.icon = [GMSMarker markerImageWithColor:[UIColor greenColor]];
+    self.defaultMarker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+    self.defaultMarker.map = mapView_;
+    [self.defaultMarker setDraggable:true];
+    // Use some kind of data to identify each marker, marker does not have 'tag' but 'userData' that is an 'id' type
+    //    [self.defaultMarker setUserData:<#(id)#>];
+    
     mapView_.delegate = self;
     mapView_.indoorEnabled = NO;
     mapView_.settings.scrollGestures = NO;
     
     [mapView_ setMinZoom:13 maxZoom:mapView_.maxZoom];
-    
     
     mapView_.myLocationEnabled = YES;
     mapView_.settings.myLocationButton = YES;

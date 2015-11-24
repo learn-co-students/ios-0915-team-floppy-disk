@@ -21,7 +21,7 @@
 {
     [super viewDidLoad];
     
-    if (![PFUser currentUser ])
+    if (![PFUser currentUser])
     {
         [self performSelector:@selector(showLoginsStoryboard) withObject:nil afterDelay:0];
     }

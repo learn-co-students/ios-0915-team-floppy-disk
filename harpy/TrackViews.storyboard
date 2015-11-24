@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="101" y="222"/>
         </scene>
-        <!--View Controller-->
+        <!--Post Preview View Controller-->
         <scene sceneID="0Gg-cr-Grp">
             <objects>
-                <viewController id="qmp-pb-MEz" sceneMemberID="viewController">
+                <viewController id="qmp-pb-MEz" customClass="HRPPostPreviewViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2ce-r9-Swi"/>
                         <viewControllerLayoutGuide type="bottom" id="jgq-7B-hTN"/>
@@ -95,7 +95,11 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Create Post" id="LJl-ub-pFF">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DOa-m5-8Ay"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DOa-m5-8Ay">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="qmp-pb-MEz" id="RBH-uJ-ma7"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -114,6 +118,9 @@
                                 <state key="normal" title="Upload/Take Photo">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="uploadPhotoButtonTapped:" destination="qmp-pb-MEz" eventType="touchUpInside" id="54S-9g-Aeh"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ4-6d-FnU">
                                 <rect key="frame" x="220" y="83" width="194" height="21"/>
@@ -139,11 +146,17 @@
                                 <state key="normal" title="Post Track">
                                     <color key="titleColor" red="0.98883364899797976" green="0.9481044314175705" blue="0.86913021001252677" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="postTrackButtonTapped:" destination="qmp-pb-MEz" eventType="touchUpInside" id="7bj-nz-yET"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEg-oe-gnk">
                                 <rect key="frame" x="220" y="178" width="148" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Add Location"/>
+                                <connections>
+                                    <action selector="addLocationButtonTapped:" destination="qmp-pb-MEz" eventType="touchUpInside" id="cio-CE-RXU"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location (if created)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YH-uc-rg9">
                                 <rect key="frame" x="220" y="207" width="194" height="21"/>
@@ -155,6 +168,14 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="albumArtImageView" destination="hmL-Ua-R5A" id="MD3-qc-ndk"/>
+                        <outlet property="albumNameLabel" destination="y83-1q-Vj3" id="eTf-yc-imo"/>
+                        <outlet property="artistNameLabel" destination="FY1-u9-jg6" id="CNb-6t-dqY"/>
+                        <outlet property="locationLabel" destination="2YH-uc-rg9" id="94z-EL-M6S"/>
+                        <outlet property="postCaptionTextView" destination="wFB-rZ-828" id="VBy-ea-0cw"/>
+                        <outlet property="songTitleLabel" destination="qQ4-6d-FnU" id="3Ye-ci-VwJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08D-my-Bu1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

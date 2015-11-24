@@ -14,6 +14,7 @@
 		3BAC251C1BFF87EF004C6790 /* HRPTempTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC251B1BFF87EF004C6790 /* HRPTempTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC251F1BFF8810004C6790 /* HRPTempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC251E1BFF8810004C6790 /* HRPTempViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25211C04B381004C6790 /* HRPTrackSearchViewController.m */; settings = {ASSET_TAGS = (); }; };
+		3BAC25251C050D41004C6790 /* HRPPostPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
 		3DAC61ED1BFE27D9002BAB02 /* HRPAddPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC61EC1BFE27D9002BAB02 /* HRPAddPostViewController.m */; };
@@ -44,6 +45,7 @@
 		E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */; settings = {ASSET_TAGS = (); }; };
 		E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9FA64E51C04BC63008DDE69 /* HRPChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		3BAC251E1BFF8810004C6790 /* HRPTempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTempViewController.m; sourceTree = "<group>"; };
 		3BAC25201C04B381004C6790 /* HRPTrackSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPTrackSearchViewController.h; sourceTree = "<group>"; };
 		3BAC25211C04B381004C6790 /* HRPTrackSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTrackSearchViewController.m; sourceTree = "<group>"; };
+		3BAC25231C050D41004C6790 /* HRPPostPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPPostPreviewViewController.h; sourceTree = "<group>"; };
+		3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPostPreviewViewController.m; sourceTree = "<group>"; };
 		3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 		E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPProfileVC.m; sourceTree = "<group>"; };
 		E9FA64E01C03CA0F008DDE69 /* HRPSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSettingsVC.h; sourceTree = "<group>"; };
 		E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSettingsVC.m; sourceTree = "<group>"; };
+		E9FA64E31C04BC63008DDE69 /* HRPChangePasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPChangePasswordVC.h; sourceTree = "<group>"; };
+		E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPChangePasswordVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,8 @@
 				E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */,
 				E9FA64D21C039E43008DDE69 /* HRPManagerViewController.h */,
 				E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */,
+				E938012F1BFD1703004CC8A2 /* HRPParseNetworkService.h */,
+				E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */,
 				E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */,
 				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
 				E9FA64DC1C03BD9D008DDE69 /* Profile */,
@@ -238,8 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				E93801281BFCEADF004CC8A2 /* Login.storyboard */,
-				E938012F1BFD1703004CC8A2 /* HRPParseNetworkService.h */,
-				E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */,
 				E93801321BFD1764004CC8A2 /* HRPUser.h */,
 				E93801331BFD1764004CC8A2 /* HRPUser.m */,
 				E93801161BFBEB97004CC8A2 /* HRPLoginRedirectViewController.h */,
@@ -284,6 +290,8 @@
 				3B0A73271BFE30550010A257 /* HRPPlaybackController.m */,
 				3BAC25201C04B381004C6790 /* HRPTrackSearchViewController.h */,
 				3BAC25211C04B381004C6790 /* HRPTrackSearchViewController.m */,
+				3BAC25231C050D41004C6790 /* HRPPostPreviewViewController.h */,
+				3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */,
 			);
 			name = Spotify;
 			sourceTree = "<group>";
@@ -296,6 +304,8 @@
 				E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */,
 				E9FA64E01C03CA0F008DDE69 /* HRPSettingsVC.h */,
 				E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */,
+				E9FA64E31C04BC63008DDE69 /* HRPChangePasswordVC.h */,
+				E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -471,6 +481,7 @@
 				E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */,
 				E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */,
 				E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */,
+				3BAC25251C050D41004C6790 /* HRPPostPreviewViewController.m in Sources */,
 				E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */,
 				3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */,
 				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
@@ -480,6 +491,7 @@
 				E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */,
 				3DAC61ED1BFE27D9002BAB02 /* HRPAddPostViewController.m in Sources */,
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
+				E9FA64E51C04BC63008DDE69 /* HRPChangePasswordVC.m in Sources */,
 				E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */,
 				3BAC251C1BFF87EF004C6790 /* HRPTempTableViewController.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,
@@ -609,6 +621,7 @@
 			baseConfigurationReference = 1439F6BDFBB4367B82653AF1 /* Pods-harpy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = harpy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = teamFloppyDisk.harpy;
@@ -621,6 +634,7 @@
 			baseConfigurationReference = 6DB65EC059DFF1DB09801C30 /* Pods-harpy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = harpy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = teamFloppyDisk.harpy;

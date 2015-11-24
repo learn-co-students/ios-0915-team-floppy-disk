@@ -16,7 +16,7 @@
 
 #pragma mark - Initialization Methods
 
--(instancetype)initWithSongTitle:(NSString *)title artistName:(NSString *)artist albumName:(NSString *)album spotifyURL:(NSURL *)url coverArt:(NSData *)cover songPopularity:(NSNumber *)popularity {
+-(instancetype)initWithSongTitle:(NSString *)title artistName:(NSString *)artist albumName:(NSString *)album spotifyURL:(NSURL *)url coverArt:(NSData *)cover songPopularity:(NSNumber *)popularity spotifyLogo:(UIImage *)logo {
     self = [super init];
     if (self) {
         _songTitle = title;
@@ -25,6 +25,7 @@
         _spotifyURI = url;
         _albumCoverArt = cover;
         _songPopularity = popularity;
+        _spotifyLogo = logo;
     }
     return self;
 }

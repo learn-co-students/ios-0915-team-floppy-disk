@@ -19,6 +19,12 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="EIy-1h-741">
+                        <barButtonItem key="leftBarButtonItem" image="back-Small" id="hh6-mo-JVj">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="PzG-Dy-ryI" kind="show" id="NTj-lU-mJE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="3Ig-pX-UYg">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -84,6 +90,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyE-BP-CfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1187" y="337"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="ff1-rb-n0b">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="PzG-Dy-ryI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G4O-rh-qdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1187" y="-201"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2PN-EX-bcR">

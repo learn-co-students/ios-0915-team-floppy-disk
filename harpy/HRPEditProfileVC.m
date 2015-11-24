@@ -14,14 +14,25 @@
 
 @implementation HRPEditProfileVC
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupNavBar];
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Setup methods
+
+-(void)setupNavBar
+{
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18.0f],
+                                                            }];
 }
 
 @end

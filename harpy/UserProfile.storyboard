@@ -42,7 +42,7 @@
             </objects>
             <point key="canvasLocation" x="1875" y="337"/>
         </scene>
-        <!--SettingsVC-->
+        <!--OPTIONS-->
         <scene sceneID="il2-Rz-x7w">
             <objects>
                 <viewController id="Ozf-ZG-XMv" customClass="HRPSettingsVC" sceneMemberID="viewController">
@@ -82,6 +82,9 @@
                                 <state key="normal" title="     Change Password">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="7Cp-GL-eIi" kind="show" id="tbN-tb-0EM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Uu-KA-FgK">
                                 <rect key="frame" x="-5" y="250" width="419" height="50"/>
@@ -122,7 +125,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="eVO-YV-dmL">
+                    <navigationItem key="navigationItem" title="OPTIONS" id="eVO-YV-dmL">
                         <barButtonItem key="backBarButtonItem" title="Back" id="DJs-Ml-eKL"/>
                         <barButtonItem key="leftBarButtonItem" image="back-Small" id="wFO-xA-69u">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -135,11 +138,59 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <segue destination="L9j-td-ouA" kind="show" identifier="sendToLogins" id="77y-AL-tH0"/>
+                        <segue destination="7Cp-GL-eIi" kind="show" id="Zg6-FY-q22"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCk-be-eKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2908" y="337"/>
+        </scene>
+        <!--PASSWORD-->
+        <scene sceneID="VkC-39-C6N">
+            <objects>
+                <viewController id="7Cp-GL-eIi" customClass="HRPChangePasswordVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O2n-5U-elD"/>
+                        <viewControllerLayoutGuide type="bottom" id="HWT-FL-M2E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="diR-4C-wcx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Current password" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9BL-Nt-Gde">
+                                <rect key="frame" x="20" y="100" width="280" height="30"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="New password" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4w-nw-HQ2">
+                                <rect key="frame" x="20" y="180" width="280" height="30"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="New password confirm" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YGU-ba-cLm">
+                                <rect key="frame" x="20" y="220" width="280" height="30"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="PASSWORD" id="K8o-La-gFe">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="TAV-Ar-x3l"/>
+                        <barButtonItem key="leftBarButtonItem" image="back-Small" id="hYM-1i-qWa">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="Ozf-ZG-XMv" kind="show" id="gjQ-1f-1OJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="AKO-xk-zli"/>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qBH-x2-132" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3418" y="337"/>
         </scene>
         <!--Login-->
         <scene sceneID="HPG-Pe-atf">
@@ -147,11 +198,12 @@
                 <viewControllerPlaceholder storyboardName="Login" id="L9j-td-ouA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXT-pd-bE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3266.5" y="496"/>
+            <point key="canvasLocation" x="2908.5" y="904"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DTO-TB-Ae0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wyE-BP-CfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xEc-KJ-4VB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -164,7 +216,6 @@
                         <segue destination="C0a-CR-bU2" kind="relationship" relationship="rootViewController" id="L2a-8U-7gt"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wyE-BP-CfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1187" y="337"/>
         </scene>
@@ -179,6 +230,7 @@
         <!--Navigation Controller-->
         <scene sceneID="2PN-EX-bcR">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zOn-5w-MQ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="17A-f3-K6D" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -191,7 +243,6 @@
                         <segue destination="Ozf-ZG-XMv" kind="relationship" relationship="rootViewController" id="18c-oH-FKA"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zOn-5w-MQ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2398" y="337"/>
         </scene>
@@ -201,5 +252,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OR8-6g-Zdv"/>
+        <segue reference="gjQ-1f-1OJ"/>
+        <segue reference="Zg6-FY-q22"/>
     </inferredMetricsTieBreakers>
 </document>

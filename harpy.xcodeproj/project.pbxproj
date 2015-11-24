@@ -44,6 +44,7 @@
 		E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9FA64E51C04BC63008DDE69 /* HRPChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9FA65191C05065B008DDE69 /* HRPEditProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA65181C05065B008DDE69 /* HRPEditProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,8 @@
 		E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSettingsVC.m; sourceTree = "<group>"; };
 		E9FA64E31C04BC63008DDE69 /* HRPChangePasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPChangePasswordVC.h; sourceTree = "<group>"; };
 		E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPChangePasswordVC.m; sourceTree = "<group>"; };
+		E9FA65171C05065B008DDE69 /* HRPEditProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPEditProfileVC.h; sourceTree = "<group>"; };
+		E9FA65181C05065B008DDE69 /* HRPEditProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPEditProfileVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +295,8 @@
 				E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */,
 				E9FA64D91C03BD90008DDE69 /* HRPProfileVC.h */,
 				E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */,
+				E9FA65171C05065B008DDE69 /* HRPEditProfileVC.h */,
+				E9FA65181C05065B008DDE69 /* HRPEditProfileVC.m */,
 				E9FA64E01C03CA0F008DDE69 /* HRPSettingsVC.h */,
 				E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */,
 				E9FA64E31C04BC63008DDE69 /* HRPChangePasswordVC.h */,
@@ -469,6 +474,7 @@
 				3BAC251F1BFF8810004C6790 /* HRPTempViewController.m in Sources */,
 				3B0A73281BFE30550010A257 /* HRPPlaybackController.m in Sources */,
 				E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */,
+				E9FA65191C05065B008DDE69 /* HRPEditProfileVC.m in Sources */,
 				E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */,
 				E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */,
 				E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */,

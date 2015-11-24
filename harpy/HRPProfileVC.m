@@ -17,7 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.settingsButton.title = @"\u2699";
 }
 
 - (void)didReceiveMemoryWarning

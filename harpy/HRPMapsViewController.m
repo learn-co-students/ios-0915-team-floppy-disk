@@ -111,7 +111,7 @@
     self.defaultMarker.icon = [GMSMarker markerImageWithColor:[UIColor greenColor]];
     self.defaultMarker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
     self.defaultMarker.map = mapView_;
-    [self.defaultMarker setDraggable:YES];
+    [self.defaultMarker setDraggable:true];
     // Use some kind of data to identify each marker, marker does not have 'tag' but 'userData' that is an 'id' type
     //    [self.defaultMarker setUserData:<#(id)#>];
     

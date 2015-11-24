@@ -24,12 +24,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupNavBar];
     
     self.parseService = [HRPParseNetworkService sharedService];
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Setup methods
+
+-(void)setupNavBar
+{
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+        NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18.0f],
+    }];
 }
 
 #pragma mark - Action methods

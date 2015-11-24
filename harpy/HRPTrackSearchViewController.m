@@ -71,7 +71,7 @@
     UIImageView *coverArt = (UIImageView *)[cell viewWithTag:4];
     if (track.spotifyLogo == nil) {
         coverArt.image = [UIImage imageWithData:track.albumCoverArt];
-    } else if (track.albumCoverArt == nil) {
+    } else {
         coverArt.image = track.spotifyLogo;
     }
     

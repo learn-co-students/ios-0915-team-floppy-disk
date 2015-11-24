@@ -52,7 +52,7 @@
                 NSURL *spotifyURL = trackInfo[@"uri"];
                 NSNumber *songPopularity = trackInfo[@"popularity"];
                 NSData *coverArt = [[NSData alloc]init];
-                UIImage *logo = [UIImage imageNamed:@"spotify2"];
+                UIImage *logo = [UIImage imageNamed:@"spotify"];
                 NSArray *URLArray = trackInfo[@"album"][@"images"];
                 HRPTrack *newTrack = [[HRPTrack alloc]init];
                 

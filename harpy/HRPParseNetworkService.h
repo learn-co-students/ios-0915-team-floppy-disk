@@ -19,5 +19,6 @@
 
 -(void)loginApp:(NSString *)username password:(NSString *)password completionHandler:(void (^)(HRPUser *user, NSError *error))completionHandler;
 -(void)createUser:(NSString *)username email:(NSString *)email password:(NSString *)password completionHandler:(void (^)(HRPUser *user, NSError *error))completionHandler;
+- (void)logout;
 
 @end

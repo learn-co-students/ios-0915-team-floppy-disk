@@ -9,6 +9,7 @@
 #import "HRPTrackSearchViewController.h"
 #import "HRPTrack.h"
 #import "HRPTrackCreator.h"
+#import "HRPPostPreviewViewController.h"
 
 @interface HRPTrackSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
@@ -31,6 +32,11 @@
 
     [self initializeEmptySongArray];
 
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self.songTableView deselectRowAtIndexPath:[self.songTableView indexPathForSelectedRow] animated:animated];
+    [super viewWillAppear:animated];
 }
 
 -(void)initializeEmptySongArray {
@@ -85,7 +91,6 @@
         [self.songTableView reloadData];
     }
     
-    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.songTitle contains[cd] %@) OR (SELF.artistName BEGINSWITH[cd] %@", searchText, searchText];
     [HRPTrackCreator generateTracksFromSearch:searchText WithCompletion:^(NSArray *tracks) {
         self.filteredSongArray = [NSMutableArray arrayWithArray:tracks];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -109,14 +114,15 @@
     [searchBar resignFirstResponder];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    HRPPostPreviewViewController *destinVC = segue.destinationViewController;
+    NSIndexPath *indexPath = self.songTableView.indexPathForSelectedRow;
+    HRPTrack *track = self.filteredSongArray[indexPath.row];
+    destinVC.track = track;
+    
 }
-*/
+
 
 @end

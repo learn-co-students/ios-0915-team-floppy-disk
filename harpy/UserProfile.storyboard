@@ -234,7 +234,7 @@
                                 <segue destination="PzG-Dy-ryI" kind="show" id="NTj-lU-mJE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="3Ig-pX-UYg">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="3Ig-pX-UYg">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="17A-f3-K6D" kind="show" id="TR3-wb-JzX"/>
@@ -502,6 +502,7 @@
     </scenes>
     <resources>
         <image name="back-Small" width="29" height="29"/>
+        <image name="settings" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="HRn-qV-cUE"/>

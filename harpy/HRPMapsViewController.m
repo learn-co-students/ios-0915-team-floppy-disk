@@ -36,12 +36,6 @@
     [super viewDidLoad];
     [self setupNavBar];
     
-    self.locationManager = [CLLocationManager sharedManager];
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.delegate = self;
-    
-    [self locationManagerPermissions];
-    
     self.defaultMarkerImage.hidden = YES;
     
     [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -61,6 +55,11 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.locationManager = [CLLocationManager sharedManager];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.delegate = self;
+    [self locationManagerPermissions];
+    [self.locationManager performSelector:@selector(startUpdatingLocation) withObject:nil afterDelay:1.0];
     [self.locationManager startUpdatingLocation];
 }
 

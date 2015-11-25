@@ -195,6 +195,7 @@
             if (user)
             {
                 NSLog(@"RESULT user %@ is logged in.", user);
+                //[self showMapsStoryboard];
                 [self performSelector:@selector(showMapsStoryboard) withObject:nil afterDelay:0];
             }
             else

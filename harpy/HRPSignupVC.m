@@ -55,7 +55,7 @@
     self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, fieldHeight)];
     self.email.text = self.emailString;
     self.email.textAlignment = NSTextAlignmentCenter;
-    self.email.font = [UIFont fontWithName:@"helvetica-neue" size:14.0];
+    self.email.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     self.email.adjustsFontSizeToFitWidth = YES;
     self.email.keyboardType = UIKeyboardTypeEmailAddress;
     self.email.returnKeyType = UIReturnKeyNext;
@@ -65,7 +65,7 @@
     self.passwordNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 40, 300, fieldHeight)];
     self.passwordNew.placeholder = @"Password";
     self.passwordNew.textAlignment = NSTextAlignmentCenter;
-    self.passwordNew.font = [UIFont fontWithName:@"helvetica-neue" size:14.0];
+    self.passwordNew.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     self.passwordNew.adjustsFontSizeToFitWidth = YES;
     self.passwordNew.keyboardType = UIKeyboardTypeEmailAddress; // Should change
     self.passwordNew.returnKeyType = UIReturnKeyNext;
@@ -76,7 +76,7 @@
     self.passwordConfirm = [[UITextField alloc] initWithFrame:CGRectMake(0, 80, 300, fieldHeight)];
     self.passwordConfirm.placeholder = @"Password";
     self.passwordConfirm.textAlignment = NSTextAlignmentCenter;
-    self.passwordConfirm.font = [UIFont fontWithName:@"helvetica-neue" size:14.0];
+    self.passwordConfirm.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     self.passwordConfirm.adjustsFontSizeToFitWidth = YES;
     self.passwordConfirm.keyboardType = UIKeyboardTypeEmailAddress; // Should change
     self.passwordConfirm.returnKeyType = UIReturnKeyGo;
@@ -85,6 +85,7 @@
     [self.inputView addSubview:self.passwordConfirm];
     
     self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.signup.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     [self.signup addTarget:self action:@selector(signupButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.signup setFrame:CGRectMake(40, 120, 215, 40)];
     [self.signup setTitle:@"Signup" forState:UIControlStateNormal];

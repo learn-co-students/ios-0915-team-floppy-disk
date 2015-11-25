@@ -77,7 +77,7 @@
     self.userNameNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, fieldHeight)];
     self.userNameNew.placeholder = @"Username";
     self.userNameNew.textAlignment = NSTextAlignmentCenter;
-    self.userNameNew.font = [UIFont fontWithName:@"helvetica-neue" size:14.0];
+    self.userNameNew.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     self.userNameNew.adjustsFontSizeToFitWidth = YES;
     self.userNameNew.keyboardType = UIKeyboardTypeEmailAddress;
     self.userNameNew.returnKeyType = UIReturnKeyNext;
@@ -87,7 +87,7 @@
     self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 40, 300, fieldHeight)];
     self.email.placeholder = @"Enter your email";
     self.email.textAlignment = NSTextAlignmentCenter;
-    self.email.font = [UIFont fontWithName:@"helvetica-neue" size:14.0];
+    self.email.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     self.email.adjustsFontSizeToFitWidth = YES; //adjust the font size to fit width.
     self.email.keyboardType = UIKeyboardTypeEmailAddress; //keyboard type (not sure if this is working)
     self.email.returnKeyType = UIReturnKeyNext; // "next" Key type for keyboard
@@ -95,6 +95,7 @@
     [self.inputView addSubview:self.email];
     
     self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.signup.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     [self.signup addTarget:self action:@selector(signupButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.signup setFrame:CGRectMake(40, 80, 215, 40)];
     [self.signup setTitle:@"Signup" forState:UIControlStateNormal];
@@ -108,7 +109,7 @@
     self.userName = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, fieldHeight)];
     self.userName.placeholder = @"Username";
     self.userName.textAlignment = NSTextAlignmentCenter;
-    self.userName.font = [UIFont fontWithName:@"helvetica-neue" size:14.0];
+    self.userName.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     self.userName.adjustsFontSizeToFitWidth = YES;
     self.userName.keyboardType = UIKeyboardTypeEmailAddress;
     self.userName.returnKeyType = UIReturnKeyDone;
@@ -119,7 +120,7 @@
     self.password = [[UITextField alloc] initWithFrame:CGRectMake(0, 40, 300, fieldHeight)];
     self.password.placeholder = @"Password";
     self.password.textAlignment = NSTextAlignmentCenter;
-    self.password.font = [UIFont fontWithName:@"helvetica-neue" size:14.0];
+    self.password.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     self.password.adjustsFontSizeToFitWidth = YES;
     self.password.keyboardType = UIKeyboardTypeEmailAddress;
     self.password.returnKeyType = UIReturnKeyDone;
@@ -129,6 +130,7 @@
     [self.inputView addSubview:self.password];
     
     self.login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.login.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     [self.login addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.login setFrame:CGRectMake(40, 80, 215, 40)];
     [self.login setTitle:@"Login" forState:UIControlStateNormal];

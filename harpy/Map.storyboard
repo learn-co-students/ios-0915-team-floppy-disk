@@ -53,11 +53,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Harpy" id="NjL-wP-bPr">
-                        <barButtonItem key="rightBarButtonItem" image="menu" id="9iU-qM-S92">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="9iU-qM-S92">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Zn9-Nw-Eau" kind="show" identifier="sendToUserProfile" id="0hJ-fw-pEZ"/>
                             </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="search" id="hsx-PQ-LpY">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -102,5 +105,6 @@
     <resources>
         <image name="default_marker" width="22" height="39"/>
         <image name="menu" width="25" height="13"/>
+        <image name="search" width="20" height="20"/>
     </resources>
 </document>

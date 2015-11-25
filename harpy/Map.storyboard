@@ -79,7 +79,6 @@
         <!--SEARCH-->
         <scene sceneID="XJO-td-Cby">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xmc-ib-BG5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="dEV-4u-8RP" customClass="HRPUserSearchVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6hZ-Au-I0f"/>
@@ -109,6 +108,7 @@
                         <outlet property="userSearchBar" destination="mp4-PT-vpe" id="2BZ-Gd-Pcb"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xmc-ib-BG5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1569" y="231"/>
         </scene>

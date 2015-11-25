@@ -38,7 +38,7 @@
 -(void)setupNavBar
 {
     [[UINavigationBar appearance] setTitleTextAttributes: @{
-        NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18.0f],
+        NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f],
     }];
 }
 

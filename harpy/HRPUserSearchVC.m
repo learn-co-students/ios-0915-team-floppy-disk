@@ -32,20 +32,29 @@
     
     [self initializeEmptyUsersArray];
     
-    PFQuery *query = [PFUser query];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        if (!error)
-        {
+    PFQuery *userQuery = [PFUser query];
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
+        if (!error) {
             NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
             self.users = [objects mutableCopy];
-        } else
-        {
+            [self.userTableView reloadData];
+            
+        } else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-    
-    [self.userTableView reloadData];
+//    PFQuery *query = [PFUser query];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        
+//        if (!error)
+//        {
+//            NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
+//            self.users = [objects mutableCopy];
+//        } else
+//        {
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -55,6 +64,26 @@
 
 -(void)initializeEmptyUsersArray {
     self.users = [NSMutableArray new];
+}
+
+
+- (void)fetchAllUsers:(void (^)(NSArray *, BOOL, NSError *))completionBlock {
+    
+    PFQuery *userQuery = [PFUser query];
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
+            if (!error) {
+                completionBlock(objects, YES, error);
+                
+                NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
+                self.users = [objects mutableCopy];
+                [self.userTableView reloadData];
+                
+            } else {
+                completionBlock(@[], NO, error);
+                
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+    }];
 }
 
 #pragma mark - Search bar methods
@@ -76,13 +105,13 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 75.0;
+    return 66.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self.userTableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
-    PFUser *user = [self.users objectAtIndex:[indexPath row] + 1]; // Add one since array count starts at 0
+    PFUser *user = [self.users objectAtIndex:[indexPath row]]; // Add one since array count starts at 0
     cell.textLabel.text = user.username;
     
     return cell;

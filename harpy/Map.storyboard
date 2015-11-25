@@ -42,9 +42,6 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
-                                <connections>
-                                    <action selector="postSongButtonTapped:" destination="vQb-cv-L16" eventType="touchUpInside" id="8cV-HW-Mlj"/>
-                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -69,15 +66,11 @@
                         <barButtonItem key="rightBarButtonItem" image="search" id="hsx-PQ-LpY">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="dEV-4u-8RP" kind="show" id="m76-6J-Doz"/>
+                                <segue destination="dEV-4u-8RP" kind="show" id="dkh-Dt-Wy7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <connections>
-                        <outlet property="defaultMarkerImage" destination="yRa-kE-mpk" id="qqB-kh-lib"/>
-                        <outlet property="postSongButton" destination="Cey-M4-euM" id="fzM-hY-8nZ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUG-Vo-6zZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -86,7 +79,8 @@
         <!--SEARCH-->
         <scene sceneID="XJO-td-Cby">
             <objects>
-                <viewController id="dEV-4u-8RP" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xmc-ib-BG5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="dEV-4u-8RP" customClass="HRPUserSearchVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6hZ-Au-I0f"/>
                         <viewControllerLayoutGuide type="bottom" id="KpN-1h-HZA"/>
@@ -99,54 +93,22 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackCell" rowHeight="81" translatesAutoresizingMaskIntoConstraints="NO" id="Y9N-Bl-q4U">
-                                <rect key="frame" x="0.0" y="108" width="414" height="81"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y9N-Bl-q4U" id="yzR-dF-fC8">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f2b-90-vhu">
-                                            <rect key="frame" x="8" y="7" width="65" height="65"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWp-dm-v5w">
-                                            <rect key="frame" x="81" y="8" width="284" height="21"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="username">
-                                                    <attributes>
-                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VzS-Jx-nPI">
-                                            <rect key="frame" x="81" y="37" width="284" height="21"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="discription">
-                                                    <attributes>
-                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <font key="NSFont" size="16" name="HelveticaNeue-Thin"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="SEARCH" id="Q0d-jD-FtC">
                         <barButtonItem key="leftBarButtonItem" image="back-Small" id="48g-Ja-Oui">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="vQb-cv-L16" kind="show" id="0ks-H5-Uig"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="userSearchBar" destination="mp4-PT-vpe" id="2BZ-Gd-Pcb"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xmc-ib-BG5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1569" y="231"/>
         </scene>
@@ -185,4 +147,7 @@
         <image name="menu" width="25" height="13"/>
         <image name="search" width="20" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0ks-H5-Uig"/>
+    </inferredMetricsTieBreakers>
 </document>

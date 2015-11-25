@@ -51,12 +51,20 @@
                 NSString *albumName = trackInfo[@"album"][@"name"];
                 NSURL *spotifyURL = trackInfo[@"uri"];
                 NSNumber *songPopularity = trackInfo[@"popularity"];
+                NSData *coverArt = [[NSData alloc]init];
+                UIImage *logo = [UIImage imageNamed:@"spotify"];
+                NSArray *URLArray = trackInfo[@"album"][@"images"];
+                HRPTrack *newTrack = [[HRPTrack alloc]init];
                 
-                NSDictionary *coverArtURLLocation = trackInfo[@"album"][@"images"][1];
-                NSURL *coverArtURL = [NSURL URLWithString: coverArtURLLocation[@"url"]];
-                NSData *coverArt = [[NSData alloc] initWithContentsOfURL:coverArtURL];
+                if (URLArray.count > 1) {
+                    NSDictionary *coverArtURLLocation = trackInfo[@"album"][@"images"][1];
+                    NSURL *coverArtURL = [NSURL URLWithString: coverArtURLLocation[@"url"]];
+                    coverArt = [[NSData alloc] initWithContentsOfURL:coverArtURL];
+                    newTrack = [[HRPTrack alloc] initWithSongTitle:songName artistName:artistName albumName:albumName spotifyURL:spotifyURL coverArt:coverArt songPopularity:songPopularity spotifyLogo:nil];
+                } else {
+                    newTrack = [[HRPTrack alloc] initWithSongTitle:songName artistName:artistName albumName:albumName spotifyURL:spotifyURL coverArt:nil songPopularity:songPopularity spotifyLogo:logo];
+                }
                 
-                HRPTrack *newTrack = [[HRPTrack alloc] initWithSongTitle:songName artistName:artistName albumName:albumName spotifyURL:spotifyURL coverArt:coverArt songPopularity:songPopularity];
                 [songDataArray addObject:newTrack];
                 if (songDataArray.count == trackList.count) {
                     completion(songDataArray);

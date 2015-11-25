@@ -28,6 +28,9 @@
     [super viewDidLoad];
     
     self.userTableView.delegate = self;
+    self.userTableView.dataSource = self;
+    
+    [self initializeEmptyUsersArray];
     
     PFQuery *query = [PFUser query];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -41,11 +44,17 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+    
+    [self.userTableView reloadData];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [self.userTableView deselectRowAtIndexPath:[self.userTableView indexPathForSelectedRow] animated:animated];
     [super viewWillAppear:animated];
+}
+
+-(void)initializeEmptyUsersArray {
+    self.users = [NSMutableArray new];
 }
 
 #pragma mark - Search bar methods
@@ -57,9 +66,17 @@
 
 #pragma mark - UITableViewDataSource Methods
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.users.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 75.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -31,7 +31,7 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBy-4X-gNf">
                                                         <rect key="frame" x="0.0" y="0.0" width="166" height="166"/>
                                                         <animations/>
-                                                        <color key="backgroundColor" red="0.50196081399917603" green="0.0" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" id="Cob-BH-oyl"/>
                                                             <constraint firstAttribute="width" secondItem="iBy-4X-gNf" secondAttribute="height" multiplier="1:1" id="VLv-Vb-uA6"/>
@@ -245,7 +245,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="profilePictureImageView" destination="iBy-4X-gNf" id="Ork-LV-JRt"/>
                         <outlet property="settingsButton" destination="3Ig-pX-UYg" id="Avg-G0-PVv"/>
+                        <outlet property="userAvatar" destination="iBy-4X-gNf" id="wwQ-eL-kIB"/>
                         <outlet property="username" destination="AMC-o8-0dn" id="8e9-Zx-ANy"/>
                     </connections>
                 </viewController>

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 
 @interface HRPProfileVC : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
+@property (nonatomic, retain) IBOutlet UIImageView *userAvatar;
 
 @end

@@ -46,7 +46,6 @@
         }
     }];
 }
-
 -(void)createUser:(NSString *)username email:(NSString *)email password:(NSString *)password completionHandler:(void (^)(HRPUser *user, NSError *error))completionHandler
 {
     PFUser *user = [[PFUser alloc]init];
@@ -75,7 +74,6 @@
          }
      }];
 }
-
 - (void)logout
 {
     [PFUser logOutInBackground];

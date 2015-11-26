@@ -39,6 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES]; // Carrys over from other VC's
     
     [self setupSignup];
     [self setupLogin];

@@ -78,17 +78,24 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yVJ-0o-gcQ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Th-A2-2hk">
+                                        <rect key="frame" x="112" y="84" width="69" height="64"/>
+                                        <connections>
+                                            <action selector="onSelectProfileImageButtonTapped:" destination="XFD-b9-zSJ" eventType="touchUpInside" id="yXf-EM-Aml"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Harpy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpl-6r-kK6">
-                                        <rect key="frame" x="93" y="20" width="139" height="70"/>
+                                        <rect key="frame" x="77" y="20" width="139" height="70"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="addPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="2MI-Bf-ex2">
-                                        <rect key="frame" x="122" y="83" width="80" height="70"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2CN-4a-DDZ">
+                                        <rect key="frame" x="104" y="73" width="85" height="85"/>
+                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Lv-sI-fjF">
-                                        <rect key="frame" x="-8" y="173" width="414" height="638"/>
+                                        <rect key="frame" x="-8" y="197" width="414" height="614"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -99,7 +106,9 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="imageButton" destination="0Th-A2-2hk" id="Dxs-ZX-vzV"/>
                         <outlet property="inputView" destination="6Lv-sI-fjF" id="vuw-fe-ZVp"/>
+                        <outlet property="profileImage" destination="2CN-4a-DDZ" id="cW5-35-RBW"/>
                         <segue destination="x7X-MU-eMV" kind="show" identifier="sendToMaps" id="ogk-ND-aD0"/>
                     </connections>
                 </viewController>
@@ -116,9 +125,6 @@
             <point key="canvasLocation" x="613" y="861"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="addPhoto" width="80" height="70"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ogk-ND-aD0"/>
     </inferredMetricsTieBreakers>

@@ -16,7 +16,7 @@
 #import "HRPLoginRedirect.h"
 @import SafariServices;
 
-@interface HRPSignupVC () <SPTAuthViewDelegate>
+@interface HRPSignupVC () <UIImagePickerControllerDelegate, SPTAuthViewDelegate>
 
 @property (nonatomic) UITextField *passwordNew;
 @property (nonatomic) UITextField *passwordConfirm;
@@ -25,6 +25,7 @@
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 @property (atomic, readwrite) SPTAuthViewController *authViewController;
 @property (strong, nonatomic) UIViewController *spotifySignupRedirect ;
+@property (weak, nonatomic) IBOutlet UIButton *imageButton;
 
 @end
 
@@ -36,6 +37,7 @@
 {
     [super viewDidLoad];
     [self setupInputView];
+    [self.navigationController setNavigationBarHidden:YES]; // Carrys over from other VC's
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.passwordConfirm];
     
@@ -50,6 +52,10 @@
 
 - (void)setupInputView
 {
+    
+    UIImage * buttonImage = [UIImage imageNamed:@"addPhoto"];
+    [self.imageButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    
     int fieldHeight = 30;
     
     self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, fieldHeight)];
@@ -103,26 +109,51 @@
     if ([self.passwordNew.text isEqual:self.passwordConfirm.text] && valid == YES)
     {
         NSLog(@"PASSWORDS: match and are valid.");
-        [self.parseService createUser:self.userNameNew.text email:self.email.text password:self.passwordConfirm.text completionHandler:^(HRPUser *user, NSError *error) {
-            if (user)
-            {
-                NSLog(@"CREATED: %@.", user);
-                [self callEmailCheckAlertController];
-            }
-            else
-            {
-                UIAlertController *alert;
-                alert = [UIAlertController alertControllerWithTitle:@"That username or email address is already taken." message:nil preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *errorAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
-                                              {
-                                                  [alert dismissViewControllerAnimated:YES completion:nil];
-                                              }];
+        NSData *selectedImage = UIImageJPEGRepresentation(self.userImage, 1);
+        
+        // Create an instance of PFUser
+        PFUser *user = [PFUser new];
+        
+        // Initializing the properties of PFUser
+        user.username = self.userNameNew.text;
+        user.password = self.passwordConfirm.text;
+        user.email = self.email.text;
+        
+        // Check if the user selected an image
+        if (selectedImage != nil) {
+            
+            // Connvert image to a PFFile
+            PFFile *imageFile = [PFFile fileWithName:@"image" data:selectedImage];
+            user[@"userAvatar"] = imageFile;
+            
+            //call the signup method
+            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 
-                [alert addAction:errorAction];
+                // Message displayed if signup was successful
+                NSString *userMessage = @"Registration was successful";
                 
-                [self presentViewController:alert animated:YES completion:nil];
-            }
-        }];
+                if (!succeeded){
+                    // Message displayed if signup was unsuccessful
+                    userMessage = error.localizedDescription;
+                    
+                }
+                // Display alert
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:userMessage preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okayButton = [UIAlertAction actionWithTitle:@"Okay"
+                                                                     style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                                                         if(succeeded){
+                                                                             // Dismiss Controller if signup was successful
+                                                                             [self dismissViewControllerAnimated:YES completion:nil];
+                                                                             
+                                                                         }
+                                                                         
+                                                                     }];
+                [alert addAction:okayButton];
+                [self presentViewController:alert
+                                   animated:YES
+                                 completion:nil];
+            }];
+        }
     }
     else if ([self.passwordNew.text isEqual:self.passwordConfirm.text] == NO && (valid == YES))
     {
@@ -142,6 +173,45 @@
     else
     {
         NSLog(@"PASSWORDS: case not considered.");
+    }
+}
+- (void)setImage:(UIImage *)image withCompletion:(void(^)())completion
+{
+    PFUser *currentUser = [PFUser currentUser];
+    NSData *data = UIImagePNGRepresentation(image);
+    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:data];
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            currentUser[@"userAvatar"] = imageFile;
+        }
+        completion();
+    }];
+}
+
+- (IBAction)onSelectProfileImageButtonTapped:(UIButton *)sender
+{
+    UIImagePickerController *pickerController = [UIImagePickerController new];
+    pickerController.delegate = self;
+    pickerController.allowsEditing = YES;
+    pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:pickerController animated:YES completion:nil];
+}
+
+#pragma mark - UIImagePicker Delegate Methods
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    self.userImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    self.profileImage.image = self.userImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    // If user sets an image remove the placeholder
+    if (self.profileImage)
+    {
+        [self.imageButton setBackgroundImage:nil forState:UIControlStateNormal];
+        self.profileImage.alpha = 1;
     }
 }
 

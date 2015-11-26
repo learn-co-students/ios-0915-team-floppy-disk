@@ -14,5 +14,12 @@
 @property (nonatomic) UITextField *email;
 @property (nonatomic, strong) NSString *emailString;
 @property (weak, nonatomic) IBOutlet UIView *inputView;
+//@property (nonatomic, strong) IBOutlet UIImageView *photo;
+//@property (weak, nonatomic) IBOutlet UIButton *userProfilePhoto;
+
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property UIImage *userImage;
+
+
 
 @end

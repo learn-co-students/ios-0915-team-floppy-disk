@@ -17,8 +17,6 @@
 @property (nonatomic) PFUser *currentUser;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
-@property (strong, nonatomic) IBOutlet UIImageView *profilePictureImageView;
-
 @end
 
 @implementation HRPProfileVC

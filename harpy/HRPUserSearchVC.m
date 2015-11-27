@@ -174,8 +174,8 @@
     UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
     usernameLabel.text = user.username;
     
-    UIImageView *userAvatar = (UIImageView *)[cell viewWithTag:2];
-    //userAvatar.image = [UIImage imageNamed:@"spinner.png"];
+    // UIImageView *userAvatar = (UIImageView *)[cell viewWithTag:2];
+    cell.imageView.image = [UIImage imageNamed:@"spinner.png"];
     
     PFFile *imageFile = [user objectForKey:@"userAvatar"];
     //PFFile *imageFile = user[@"userAvatar"];

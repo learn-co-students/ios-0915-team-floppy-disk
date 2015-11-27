@@ -122,7 +122,7 @@
     }
     NSLog(@"%@", self.userAndAvatars);
 }
-
+//
 //        PFFile *imageFile = [user objectForKey:@"userAvatar"];
 //        [imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
 //            if (!error)
@@ -131,7 +131,7 @@
 //                [self.userAndAvatars setObject:image forKey:user.username];
 //            }
 //        }];
-
+//
 //- (void)getPhotoForUser:(PFUser *)user WithBlock:(void (^)(UIImage *photo))completionBlock
 //{
 //    PFFile *imageFile = [user objectForKey:@"userAvatar"];
@@ -144,42 +144,53 @@
 //    }];
 //}
 
-//#pragma mark - Search bar methods
-//
-//-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-//{
-//
-//}
-//
-//#pragma mark - UITableViewDataSource Methods
-//
-//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return self.users.count;
-//}
-//
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 95.0;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UITableViewCell *cell = [self.userTableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
-//    PFUser *user = [self.users objectAtIndex:[indexPath row]];
-//    UIImage *avatar = [self.userAndAvatars objectAtIndex:[indexPath row]];
-//    
-//    UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
-//    usernameLabel.text = user.username;
-//    
-//    UIImage *userAvatar = (UIImage *)[cell viewWithTag:2];
-//    userAvatar = avatar;
-//    
-//    return cell;
-//}
+#pragma mark - Search bar methods
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+
+}
+
+#pragma mark - UITableViewDataSource Methods
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.users.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 95.0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self.userTableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
+    PFUser *user = [self.users objectAtIndex:[indexPath row]];
+    
+    UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
+    usernameLabel.text = user.username;
+    
+    UIImageView *userAvatar = (UIImageView *)[cell viewWithTag:2];
+    //userAvatar.image = [UIImage imageNamed:@"spinner.png"];
+    
+    PFFile *imageFile = [user objectForKey:@"userAvatar"];
+    //PFFile *imageFile = user[@"userAvatar"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            // userAvatar.image = [UIImage imageWithData:data];
+            cell.imageView.image = [UIImage imageWithData:data];
+        }
+        else {
+            NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    return cell;
+}
 
 
 @end

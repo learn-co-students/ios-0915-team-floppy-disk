@@ -245,7 +245,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="profilePictureImageView" destination="iBy-4X-gNf" id="Ork-LV-JRt"/>
                         <outlet property="settingsButton" destination="3Ig-pX-UYg" id="Avg-G0-PVv"/>
                         <outlet property="userAvatar" destination="iBy-4X-gNf" id="wwQ-eL-kIB"/>
                         <outlet property="username" destination="AMC-o8-0dn" id="8e9-Zx-ANy"/>

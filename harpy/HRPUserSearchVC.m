@@ -17,7 +17,8 @@
 @property (nonatomic) PFUser *user;
 @property (nonatomic) NSMutableArray *users;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
-@property (strong, nonatomic) NSMutableDictionary *userAndAvatars;
+@property (strong, nonatomic) NSMutableArray *userAndAvatars;
+
 @end
 
 @implementation HRPUserSearchVC
@@ -58,7 +59,7 @@
 
 -(void)initializeEmptyUsersArray {
     self.users = [NSMutableArray new];
-    self.userAndAvatars = [NSMutableDictionary dictionary];
+    self.userAndAvatars = [NSMutableArray new];
 }
 
 -(void)setupNavBar
@@ -70,7 +71,6 @@
 
 - (void)fetchAllUsers:(void (^)(NSArray *, BOOL, NSError *))completionBlock
 {
-    
     PFQuery *userQuery = [PFUser query];
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
         if (!error)
@@ -94,17 +94,43 @@
 {
     for (PFUser *user in self.users)
     {
-        PFFile *imageFile = [user objectForKey:@"userAvatar"];
-        [imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
+        PFQuery *userQuery = [PFUser query];
+        [userQuery whereKey:@"objectId" equalTo:user.objectId];
+        [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error)
             {
-                UIImage *image = [UIImage imageWithData:result];
-                [self.userAndAvatars setObject:image forKey:user.username];
+                NSLog(@"USER: %@", objects);
+                PFObject *user = [objects objectAtIndex:0];
+                PFFile *file = [user objectForKey:@"userAvatar"];
+                NSLog(@"FILE: %@", file);
+                
+                [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+                 {
+                     if (!error)
+                     {
+                         UIImage *image = [UIImage imageWithData:data];
+                         NSLog(@"IMAGE: %@", image);
+                         [self.userAndAvatars addObject:image];
+                     }
+                 }];
+            }
+            else
+            {
+                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
             }
         }];
     }
     NSLog(@"%@", self.userAndAvatars);
 }
+
+//        PFFile *imageFile = [user objectForKey:@"userAvatar"];
+//        [imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
+//            if (!error)
+//            {
+//                UIImage *image = [UIImage imageWithData:result];
+//                [self.userAndAvatars setObject:image forKey:user.username];
+//            }
+//        }];
 
 //- (void)getPhotoForUser:(PFUser *)user WithBlock:(void (^)(UIImage *photo))completionBlock
 //{
@@ -118,42 +144,42 @@
 //    }];
 //}
 
-#pragma mark - Search bar methods
+//#pragma mark - Search bar methods
+//
+//-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+//{
+//
+//}
+//
+//#pragma mark - UITableViewDataSource Methods
+//
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return 1;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return self.users.count;
+//}
+//
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 95.0;
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UITableViewCell *cell = [self.userTableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
+//    PFUser *user = [self.users objectAtIndex:[indexPath row]];
+//    UIImage *avatar = [self.userAndAvatars objectAtIndex:[indexPath row]];
+//    
+//    UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
+//    usernameLabel.text = user.username;
+//    
+//    UIImage *userAvatar = (UIImage *)[cell viewWithTag:2];
+//    userAvatar = avatar;
+//    
+//    return cell;
+//}
 
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-
-}
-
-#pragma mark - UITableViewDataSource Methods
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.users.count;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 95.0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [self.userTableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
-    PFUser *user = [self.users objectAtIndex:[indexPath row]];
-    UIImage *avatar = [self.userAndAvatars objectForKey:user.username];
-    
-    UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
-    usernameLabel.text = user.username;
-    
-    UIImage *userAvatar = (UIImage *)[cell viewWithTag:2];
-    userAvatar = avatar;
-    
-    return cell;
-}
-     
 
 @end

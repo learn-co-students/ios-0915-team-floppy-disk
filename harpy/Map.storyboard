@@ -88,7 +88,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-PT-vpe">
+                            <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-PT-vpe">
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -119,6 +119,10 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mp4-PT-vpe" firstAttribute="centerX" secondItem="fhd-Lc-x5W" secondAttribute="centerX" id="EnY-DP-mgy"/>
+                            <constraint firstItem="mp4-PT-vpe" firstAttribute="leading" secondItem="fhd-Lc-x5W" secondAttribute="leadingMargin" constant="-20" id="ul0-n0-ufU"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SEARCH" id="Q0d-jD-FtC">
                         <barButtonItem key="leftBarButtonItem" image="back-Small" id="48g-Ja-Oui">

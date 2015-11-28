@@ -94,24 +94,24 @@
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-//    if (![searchText isEqualToString:@""]) {
-//        PFQuery *userQuery = [PFUser query];
-//        NSString *searchTextCaseInsensitive = [
-//        [userQuery whereKey:@"username" equalTo:searchText];
-//        [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
-//            if (!error)
-//            {
-//                NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
-//                self.users = [objects mutableCopy];
-//                
-//                [self.userTableView reloadData];
-//            }
-//            else
-//            {
-//                NSLog(@"Error: %@ %@", error, [error userInfo]);
-//            }
-//        }];
-//    }
+    if (![searchText isEqualToString:@""]) {
+        PFQuery *userQuery = [PFUser query];
+        searchText = [searchText lowercaseString];
+        [userQuery whereKey:@"username" equalTo:searchText];
+        [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
+            if (!error)
+            {
+                NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
+                self.users = [objects mutableCopy];
+                
+                [self.userTableView reloadData];
+            }
+            else
+            {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
 }
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {

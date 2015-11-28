@@ -60,7 +60,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="9iU-qM-S92">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Zn9-Nw-Eau" kind="show" identifier="sendToUserProfile" id="0hJ-fw-pEZ"/>
+                                <segue destination="Zn9-Nw-Eau" kind="show" id="dgG-YM-kit"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="search" id="hsx-PQ-LpY">

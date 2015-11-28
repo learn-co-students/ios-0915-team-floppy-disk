@@ -47,7 +47,6 @@
 		E9FA64E51C04BC63008DDE69 /* HRPChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9FA65191C05065B008DDE69 /* HRPEditProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA65181C05065B008DDE69 /* HRPEditProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA651D1C056C55008DDE69 /* HRPUserSearchVC.m */; settings = {ASSET_TAGS = (); }; };
-		E9FA65441C08F559008DDE69 /* HRPUserSearchTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA65431C08F559008DDE69 /* HRPUserSearchTableVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9FA65461C0901BB008DDE69 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9FA65451C0901BB008DDE69 /* loading.gif */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -136,8 +135,6 @@
 		E9FA65181C05065B008DDE69 /* HRPEditProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPEditProfileVC.m; sourceTree = "<group>"; };
 		E9FA651C1C056C55008DDE69 /* HRPUserSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPUserSearchVC.h; sourceTree = "<group>"; };
 		E9FA651D1C056C55008DDE69 /* HRPUserSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPUserSearchVC.m; sourceTree = "<group>"; };
-		E9FA65421C08F559008DDE69 /* HRPUserSearchTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPUserSearchTableVC.h; sourceTree = "<group>"; };
-		E9FA65431C08F559008DDE69 /* HRPUserSearchTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPUserSearchTableVC.m; sourceTree = "<group>"; };
 		E9FA65451C0901BB008DDE69 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -283,8 +280,6 @@
 				E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */,
 				E9FA651C1C056C55008DDE69 /* HRPUserSearchVC.h */,
 				E9FA651D1C056C55008DDE69 /* HRPUserSearchVC.m */,
-				E9FA65421C08F559008DDE69 /* HRPUserSearchTableVC.h */,
-				E9FA65431C08F559008DDE69 /* HRPUserSearchTableVC.m */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -508,7 +503,6 @@
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
 				E9FA64E51C04BC63008DDE69 /* HRPChangePasswordVC.m in Sources */,
 				E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */,
-				E9FA65441C08F559008DDE69 /* HRPUserSearchTableVC.m in Sources */,
 				3BAC251C1BFF87EF004C6790 /* HRPTempTableViewController.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,
 			);

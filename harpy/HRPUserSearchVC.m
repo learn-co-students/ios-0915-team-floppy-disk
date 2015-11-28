@@ -9,8 +9,9 @@
 #import "HRPUserSearchVC.h"
 #import "HRPUser.h"
 #import "HRPParseNetworkService.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface HRPUserSearchVC ()  <UITableViewDelegate, UITableViewDataSource>
+@interface HRPUserSearchVC ()  <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *userSearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *userTableView;
@@ -30,6 +31,7 @@
     
     self.userTableView.delegate = self;
     self.userTableView.dataSource = self;
+    self.userSearchBar.delegate = self;
     self.parseService = [HRPParseNetworkService sharedService];
     
     [self initializeEmptyUsersArray];
@@ -68,7 +70,6 @@
                                                             NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f],
                                                             }];
 }
-
 - (void)fetchAllUsers:(void (^)(NSArray *, BOOL, NSError *))completionBlock
 {
     PFQuery *userQuery = [PFUser query];
@@ -93,18 +94,53 @@
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-
+//    if (![searchText isEqualToString:@""]) {
+//        PFQuery *userQuery = [PFUser query];
+//        NSString *searchTextCaseInsensitive = [
+//        [userQuery whereKey:@"username" equalTo:searchText];
+//        [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
+//            if (!error)
+//            {
+//                NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
+//                self.users = [objects mutableCopy];
+//                
+//                [self.userTableView reloadData];
+//            }
+//            else
+//            {
+//                NSLog(@"Error: %@ %@", error, [error userInfo]);
+//            }
+//        }];
+//    }
+}
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    
+}
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.text = [NSString stringWithFormat:@""];
+    [self.userTableView reloadData];
+    [searchBar resignFirstResponder];
 }
 
 #pragma mark - UITableViewDataSource Methods
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.users.count;
+//    if ([self.userSearchBar.text isEqualToString:@""])
+//    {
+//        return 1;
+//    }
+//    else
+//    {
+        return self.users.count;
+//    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -118,12 +154,17 @@
     UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
     usernameLabel.text = user.username;
     
+    
     cell.imageView.image = [UIImage imageNamed:@"spinner.png"];
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    cell.imageView.layer.cornerRadius = 4;
+    cell.imageView.layer.masksToBounds = YES;
     PFFile *imageFile = [user objectForKey:@"userAvatar"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error)
         {
             cell.imageView.image = [UIImage imageWithData:data];
+            cell.imageView.highlightedImage = [UIImage imageWithData:data];
         }
         else
         {
@@ -132,6 +173,13 @@
     }];
     
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // typically you need know which item the user has selected.
+    // this method allows you to keep track of the selection
+    indexPath = indexPath;
+    
 }
 
 

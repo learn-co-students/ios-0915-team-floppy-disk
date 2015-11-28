@@ -110,7 +110,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qdj-aQ-Kht">
-                                                    <rect key="frame" x="15" y="2" width="85" height="85"/>
+                                                    <rect key="frame" x="15" y="4" width="85" height="85"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>

@@ -6,13 +6,13 @@
 //  Copyright © 2015 teamFloppyDisk. All rights reserved.
 //
 
-#import "HRPLoginOrSignupVC.h"
-#import "HRPSignupVC.h"
-#import "HRPValidationManager.h"
-#import "HRPParseNetworkService.h"
 #import "AppDelegate.h"
-#import "HRPSpotifyViewController.h"
+#import "HRPCreateProfile.h"
+#import "HRPLoginOrSignupVC.h"
 #import "HRPLoginRedirect.h"
+#import "HRPParseNetworkService.h"
+#import "HRPSpotifyViewController.h"
+#import "HRPValidationManager.h"
 #import "UIViewController+PresentViewController.h"
 #import <Spotify/Spotify.h>
 #import <QuartzCore/QuartzCore.h> // Required for boarder color
@@ -20,26 +20,20 @@
 
 @interface HRPLoginOrSignupVC () <SPTAuthViewDelegate>
 
-@property (nonatomic) UIGestureRecognizer *tapper;
-@property (nonatomic) UIView *underline;
-
-// Sign up properties
-@property (nonatomic) UITextField *email;
-@property (nonatomic) UITextField *userNameNew;
-@property (nonatomic) UITextField *passwordNew;
-@property (nonatomic) UITextField *passwordConfirm;
-@property (nonatomic) UIButton *signup;
-
-// Login properties
-@property (nonatomic) UITextField *userName;
-@property (nonatomic) UITextField *password;
-@property (nonatomic) UITextField *textField;
-@property (nonatomic) UITextField *textFieldString;
-@property (nonatomic) UIButton *login;
-
 //@property (nonatomic) BOOL blockUserBool; TODO
 @property (nonatomic) BOOL spotifyPremium; // add to parse
-
+@property (nonatomic) UIButton *login;
+@property (nonatomic) UIButton *signup;
+@property (nonatomic) UIGestureRecognizer *tapper;
+@property (nonatomic) UITextField *email;
+@property (nonatomic) UITextField *password;
+@property (nonatomic) UITextField *passwordConfirm;
+@property (nonatomic) UITextField *passwordNew;
+@property (nonatomic) UITextField *textField;
+@property (nonatomic) UITextField *textFieldString;
+@property (nonatomic) UITextField *userName;
+@property (nonatomic) UITextField *userNameNew;
+@property (nonatomic) UIView *underline;
 @property (nonatomic, strong) HRPSignupVC *sendToSignupVC;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
@@ -70,7 +64,7 @@
     self.underline.backgroundColor = [UIColor whiteColor];
     [self.inputView addSubview:self.underline];
     
-    self.inputView.layer.backgroundColor = [[UIColor clearColor]CGColor];
+    //self.inputView.layer.backgroundColor = [[UIColor clearColor]CGColor];
     
     self.tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     self.tapper.cancelsTouchesInView = NO;
@@ -79,8 +73,8 @@
     [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
-    UIImage *backgroundImage = [UIImage imageNamed:@"backround_iphone5"];
-    self.view.backgroundColor =[[UIColor alloc] initWithPatternImage:backgroundImage];
+    //UIImage *backgroundImage = [UIImage imageNamed:@"backround_iphone5"];
+    //self.view.backgroundColor =[[UIColor alloc] initWithPatternImage:backgroundImage];
     
     self.parseService = [HRPParseNetworkService sharedService];
 }
@@ -371,7 +365,7 @@
             if (user)
             {
                 NSLog(@"RESULT user %@ is logged in.", user);
-                [self performSelector:@selector(showMapsStoryboard) withObject:nil afterDelay:0];
+                [self showMapsStoryboard];
             }
             else
             {
@@ -583,13 +577,13 @@
         self.spotifyPremium = YES;
         [self spotifyLoginPopup];
         
-        //[self showMapsStoryboard];
+        [self performSegueWithIdentifier: @"sendToSignup" sender: self];
     }];
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         self.spotifyPremium = NO;
         [self spotifySignupPopup];
         
-        //[self showMapsStoryboard];
+        [self performSegueWithIdentifier: @"sendToSignup" sender: self];
     }];
     
     [alert addAction:yes];

@@ -1,5 +1,5 @@
 //
-//  HRPSignupVC.h
+//  HRPCreateProfile.h
 //  harpy
 //
 //  Created by Kiara Robles on 11/19/15.
@@ -19,7 +19,5 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property UIImage *userImage;
-
-
 
 @end

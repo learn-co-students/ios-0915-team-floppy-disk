@@ -27,6 +27,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="backround_iphone5" translatesAutoresizingMaskIntoConstraints="NO" id="I4c-WC-CZP">
+                                <rect key="frame" x="0.0" y="0.0" width="412" height="652"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fTH-Wx-pNM">
                                 <rect key="frame" x="-4" y="40" width="416" height="612"/>
                                 <subviews>
@@ -56,8 +59,8 @@
                                                             </mask>
                                                         </variation>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="120" translatesAutoresizingMaskIntoConstraints="NO" id="2uD-hR-wZW" userLabel="Buttons">
-                                                        <rect key="frame" x="99" y="17" width="217" height="29"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="160" translatesAutoresizingMaskIntoConstraints="NO" id="2uD-hR-wZW" userLabel="Buttons">
+                                                        <rect key="frame" x="79" y="17" width="257" height="29"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsT-od-f2C">
                                                                 <rect key="frame" x="0.0" y="0.0" width="53" height="29"/>
@@ -70,7 +73,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8R-Bx-o13">
-                                                                <rect key="frame" x="173" y="0.0" width="44" height="29"/>
+                                                                <rect key="frame" x="213" y="0.0" width="44" height="29"/>
                                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                                 <state key="normal" title="LOG IN">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -87,7 +90,7 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHt-Oq-Y8C">
                                         <rect key="frame" x="0.0" y="99" width="416" height="513"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -111,12 +114,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="I4c-WC-CZP" firstAttribute="height" secondItem="21C-I4-vPG" secondAttribute="height" id="2Gb-8Q-d9r"/>
                             <constraint firstItem="mGg-J7-EGQ" firstAttribute="top" secondItem="UUE-N1-8Lr" secondAttribute="bottom" constant="20" id="4eH-V4-70b"/>
+                            <constraint firstItem="I4c-WC-CZP" firstAttribute="width" secondItem="21C-I4-vPG" secondAttribute="width" id="6VB-Jx-IXK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fTH-Wx-pNM" secondAttribute="trailing" constant="-18" id="JKO-Cm-tNc"/>
                             <constraint firstItem="fTH-Wx-pNM" firstAttribute="leading" secondItem="21C-I4-vPG" secondAttribute="leadingMargin" constant="-24" id="TLE-5L-Nru"/>
                             <constraint firstItem="kGa-Yp-Ouc" firstAttribute="top" secondItem="fTH-Wx-pNM" secondAttribute="bottom" constant="84" id="Ufb-Hj-A6x"/>
                             <constraint firstItem="lkI-Kd-mFn" firstAttribute="width" secondItem="21C-I4-vPG" secondAttribute="width" id="Ytj-IO-lBx"/>
                             <constraint firstItem="mGg-J7-EGQ" firstAttribute="width" secondItem="21C-I4-vPG" secondAttribute="width" id="ZA8-Fr-jFd"/>
+                            <constraint firstItem="I4c-WC-CZP" firstAttribute="centerY" secondItem="21C-I4-vPG" secondAttribute="centerY" id="fpd-qc-Pns"/>
+                            <constraint firstItem="I4c-WC-CZP" firstAttribute="centerX" secondItem="21C-I4-vPG" secondAttribute="centerX" id="yI0-Sr-Du4"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -193,6 +200,9 @@
             <point key="canvasLocation" x="613" y="861"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backround_iphone5" width="320" height="568"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Wvz-6f-f07"/>
     </inferredMetricsTieBreakers>

@@ -56,6 +56,18 @@
     // Canonical username (currently Phils) needs to be saved so that different users can have persistent sessions
     auth.sessionUserDefaultsKey = @"125204578";
     
+    
+    for (NSString* family in [UIFont familyNames])
+    {
+        NSLog(@"%@", family);
+        
+        for (NSString* name in [UIFont fontNamesForFamilyName: family])
+        {
+            NSLog(@"  %@", name);
+        }
+    }
+    
+    
     return YES;
 }
 

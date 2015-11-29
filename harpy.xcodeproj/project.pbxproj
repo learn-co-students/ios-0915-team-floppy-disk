@@ -33,6 +33,13 @@
 		E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E938012B1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m */; };
 		E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */; };
 		E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801331BFD1764004CC8A2 /* HRPUser.m */; };
+		E93A60A71C0A5E220053524B /* HRPLoginAndSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A60A61C0A5E220053524B /* HRPLoginAndSignupViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E93A60AA1C0A5E7A0053524B /* HRPLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A60A91C0A5E7A0053524B /* HRPLoginView.m */; settings = {ASSET_TAGS = (); }; };
+		E93A60AD1C0A5E950053524B /* HRPSignupView.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A60AC1C0A5E950053524B /* HRPSignupView.m */; settings = {ASSET_TAGS = (); }; };
+		E976148D1C0A6646003B3C5B /* SF-UI-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E97614891C0A6607003B3C5B /* SF-UI-Display-Regular.otf */; settings = {ASSET_TAGS = (); }; };
+		E976148E1C0A6648003B3C5B /* SF-UI-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */; settings = {ASSET_TAGS = (); }; };
+		E976148F1C0A664A003B3C5B /* SF-UI-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148C1C0A6607003B3C5B /* SF-UI-Display-Heavy.otf */; settings = {ASSET_TAGS = (); }; };
+		E97614901C0A664C003B3C5B /* SF-UI-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148B1C0A6607003B3C5B /* SF-UI-Display-Medium.otf */; settings = {ASSET_TAGS = (); }; };
 		E9E211141BFD3E2500739143 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9E211131BFD3E2500739143 /* Keys.plist */; };
 		E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E211161BFD76B700739143 /* HRPValidationManager.m */; };
 		E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -111,6 +118,16 @@
 		E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPParseNetworkService.m; sourceTree = "<group>"; };
 		E93801321BFD1764004CC8A2 /* HRPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPUser.h; sourceTree = "<group>"; };
 		E93801331BFD1764004CC8A2 /* HRPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPUser.m; sourceTree = "<group>"; };
+		E93A60A51C0A5E220053524B /* HRPLoginAndSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPLoginAndSignupViewController.h; sourceTree = "<group>"; };
+		E93A60A61C0A5E220053524B /* HRPLoginAndSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPLoginAndSignupViewController.m; sourceTree = "<group>"; };
+		E93A60A81C0A5E7A0053524B /* HRPLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPLoginView.h; sourceTree = "<group>"; };
+		E93A60A91C0A5E7A0053524B /* HRPLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPLoginView.m; sourceTree = "<group>"; };
+		E93A60AB1C0A5E950053524B /* HRPSignupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSignupView.h; sourceTree = "<group>"; };
+		E93A60AC1C0A5E950053524B /* HRPSignupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSignupView.m; sourceTree = "<group>"; };
+		E97614891C0A6607003B3C5B /* SF-UI-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Regular.otf"; sourceTree = "<group>"; };
+		E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Semibold.otf"; sourceTree = "<group>"; };
+		E976148B1C0A6607003B3C5B /* SF-UI-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Medium.otf"; sourceTree = "<group>"; };
+		E976148C1C0A6607003B3C5B /* SF-UI-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Heavy.otf"; sourceTree = "<group>"; };
 		E9E211131BFD3E2500739143 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		E9E211151BFD76B700739143 /* HRPValidationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPValidationManager.h; sourceTree = "<group>"; };
 		E9E211161BFD76B700739143 /* HRPValidationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPValidationManager.m; sourceTree = "<group>"; };
@@ -235,6 +252,10 @@
 				E9335C6B1BFA7EBC002DD9C6 /* Info.plist */,
 				E9FA65451C0901BB008DDE69 /* loading.gif */,
 				E9335C5B1BFA7EBC002DD9C6 /* main.m */,
+				E97614891C0A6607003B3C5B /* SF-UI-Display-Regular.otf */,
+				E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */,
+				E976148B1C0A6607003B3C5B /* SF-UI-Display-Medium.otf */,
+				E976148C1C0A6607003B3C5B /* SF-UI-Display-Heavy.otf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -252,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				E93801281BFCEADF004CC8A2 /* Login.storyboard */,
+				E97614911C0A70AE003B3C5B /* ExampleView */,
 				E93801321BFD1764004CC8A2 /* HRPUser.h */,
 				E93801331BFD1764004CC8A2 /* HRPUser.m */,
 				E93801161BFBEB97004CC8A2 /* HRPLoginRedirectViewController.h */,
@@ -282,6 +304,19 @@
 				E9FA651D1C056C55008DDE69 /* HRPUserSearchVC.m */,
 			);
 			name = Maps;
+			sourceTree = "<group>";
+		};
+		E97614911C0A70AE003B3C5B /* ExampleView */ = {
+			isa = PBXGroup;
+			children = (
+				E93A60A51C0A5E220053524B /* HRPLoginAndSignupViewController.h */,
+				E93A60A61C0A5E220053524B /* HRPLoginAndSignupViewController.m */,
+				E93A60A81C0A5E7A0053524B /* HRPLoginView.h */,
+				E93A60A91C0A5E7A0053524B /* HRPLoginView.m */,
+				E93A60AB1C0A5E950053524B /* HRPSignupView.h */,
+				E93A60AC1C0A5E950053524B /* HRPSignupView.m */,
+			);
+			name = ExampleView;
 			sourceTree = "<group>";
 		};
 		E9EE0EB91BFFCB4000C4F1DE /* Spotify */ = {
@@ -403,12 +438,16 @@
 			files = (
 				E9E211141BFD3E2500739143 /* Keys.plist in Resources */,
 				E9335C6A1BFA7EBC002DD9C6 /* LaunchScreen.storyboard in Resources */,
+				E97614901C0A664C003B3C5B /* SF-UI-Display-Medium.otf in Resources */,
 				E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */,
 				E9335C671BFA7EBC002DD9C6 /* Assets.xcassets in Resources */,
 				E93801291BFCEADF004CC8A2 /* Login.storyboard in Resources */,
+				E976148F1C0A664A003B3C5B /* SF-UI-Display-Heavy.otf in Resources */,
 				E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */,
 				E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */,
 				E9FA65461C0901BB008DDE69 /* loading.gif in Resources */,
+				E976148E1C0A6648003B3C5B /* SF-UI-Display-Semibold.otf in Resources */,
+				E976148D1C0A6646003B3C5B /* SF-UI-Display-Regular.otf in Resources */,
 				E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */,
 				3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */,
 			);
@@ -481,10 +520,13 @@
 				E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */,
 				E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */,
 				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,
+				E93A60AD1C0A5E950053524B /* HRPSignupView.m in Sources */,
 				3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */,
 				E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */,
 				E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */,
 				E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */,
+				E93A60AA1C0A5E7A0053524B /* HRPLoginView.m in Sources */,
+				E93A60A71C0A5E220053524B /* HRPLoginAndSignupViewController.m in Sources */,
 				E9FA64D41C039E43008DDE69 /* HRPManagerViewController.m in Sources */,
 				3BAC251F1BFF8810004C6790 /* HRPTempViewController.m in Sources */,
 				3B0A73281BFE30550010A257 /* HRPPlaybackController.m in Sources */,

@@ -16,6 +16,7 @@
 @interface HRPLoginOrSignupVC ()
 
 @property (nonatomic) UIGestureRecognizer *tapper;
+@property (nonatomic) UIView *underline;
 
 // Sign up properties
 @property (nonatomic) UITextField *userNameNew;
@@ -58,11 +59,18 @@
     self.userName.hidden = YES;
     self.userNameNew.hidden = NO;
     
+    self.underline = [[UIView alloc] initWithFrame:CGRectMake(55, 0, 55, 0.5)];
+    self.underline.backgroundColor = [UIColor whiteColor];
+    [self.inputView addSubview:self.underline];
+    
     self.inputView.layer.backgroundColor = [[UIColor clearColor]CGColor];
     
     self.tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     self.tapper.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:self.tapper];
+    
+    [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     UIImage *backgroundImage = [UIImage imageNamed:@"backround_iphone5"];
     self.view.backgroundColor =[[UIColor alloc] initWithPatternImage:backgroundImage];
@@ -128,7 +136,7 @@
     self.userNameNew.returnKeyType = UIReturnKeyNext;
     self.userNameNew.textAlignment = NSTextAlignmentLeft;
     self.userNameNew.textColor = [UIColor whiteColor];
-    [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.email.center.y + 50)];
+    [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + 60)];
     [self.inputView addSubview:self.userNameNew];
     
     self.passwordNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 250, fieldHeight + 8)];
@@ -149,7 +157,7 @@
     self.passwordNew.secureTextEntry = YES;
     self.passwordNew.textAlignment = NSTextAlignmentLeft;
     self.passwordNew.textColor = [UIColor whiteColor];
-    [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.email.center.y + 100)];
+    [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + 110)];
     [self.inputView addSubview:self.passwordNew];
     
     self.passwordConfirm = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 250, fieldHeight + 8)];
@@ -170,7 +178,7 @@
     self.passwordConfirm.secureTextEntry = YES;
     self.passwordConfirm.textAlignment = NSTextAlignmentLeft;
     self.passwordConfirm.textColor = [UIColor whiteColor];
-    [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.email.center.y + 150)];
+    [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + 160)];
     [self.inputView addSubview:self.passwordConfirm];
     
     self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -182,35 +190,40 @@
     [self.signup setFrame:CGRectMake(0, 0, 250, 40)];
     [self.signup setTitle:@"SIGN UP" forState:UIControlStateNormal];
     [self.signup setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.signup setCenter: CGPointMake(self.view.center.x, self.email.center.y + 205)];
+    [self.signup setCenter: CGPointMake(self.view.center.x, self.signup.center.y + 210)];
     [self.inputView addSubview:self.signup];
 }
 -(void)setupLogin
 {
     int fieldHeight = 30;
     
-    self.userName = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 250, fieldHeight + 9)];
+    self.userName = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 250, fieldHeight + 8)];
     self.userName.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
     self.userName.leftViewMode = UITextFieldViewModeAlways;
-    self.userName.placeholder = @"USERNAME";
+    self.userName.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.userName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.userName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.userName.textColor = [UIColor whiteColor];
     self.userName.textAlignment = NSTextAlignmentLeft;
-    self.userName.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
+    self.userName.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.userName.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:10.0];
     self.userName.adjustsFontSizeToFitWidth = YES;
     self.userName.keyboardType = UIKeyboardTypeEmailAddress;
     self.userName.returnKeyType = UIReturnKeyDone;
     self.userName.returnKeyType = UIReturnKeyDefault;
-    self.userName.layer.cornerRadius = 18.0f;
+    self.userName.layer.cornerRadius = 20.0f;
     self.userName.layer.borderWidth = 1;
     self.userName.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
     self.userName.delegate = self;
+    [self.userName setCenter: CGPointMake(self.view.center.x, self.userName.center.y + 15)];
     [self.inputView addSubview:self.userName];
     
-    self.password = [[UITextField alloc] initWithFrame:CGRectMake(0, 50, 250, fieldHeight + 9)];
+    self.password = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 250, fieldHeight + 8)];
     self.password.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
     self.password.leftViewMode = UITextFieldViewModeAlways;
-    self.password.placeholder = @"PASSWORD";
+    self.password.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.password.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.password.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.password.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.password.textColor = [UIColor whiteColor];
     self.password.textAlignment = NSTextAlignmentLeft;
@@ -220,18 +233,23 @@
     self.password.returnKeyType = UIReturnKeyDone;
     self.password.returnKeyType = UIReturnKeyDefault;
     self.password.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
-    self.password.layer.cornerRadius = 18.0f;
+    self.password.layer.cornerRadius = 20.0f;
     self.password.layer.borderWidth = 1;
     self.password.delegate = self;
     self.password.secureTextEntry = YES;
+    [self.password setCenter: CGPointMake(self.view.center.x, self.password.center.y + 60)];
     [self.inputView addSubview:self.password];
-    
+
     self.login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.login.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
+    self.login.layer.backgroundColor = [[UIColor colorWithRed:0.17 green:0.62 blue:0.90 alpha:1.0]CGColor];
+    self.login.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
+    self.login.layer.cornerRadius = 20.0f;
+    [self.login setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.login addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.login setFrame:CGRectMake(40, 75, 215, 40)];
-    [self.login setTitle:@"Login" forState:UIControlStateNormal];
+    [self.login setFrame:CGRectMake(0, 0, 250, 40)];
+    [self.login setTitle:@"LOG IN" forState:UIControlStateNormal];
     [self.login setExclusiveTouch:YES];
+    [self.login  setCenter: CGPointMake(self.view.center.x, self.login.center.y + 210)];
     [self.inputView addSubview:self.login];
 }
 
@@ -248,6 +266,14 @@
     self.signup.hidden = NO;
     self.userName.hidden = YES;
     self.userNameNew.hidden = NO;
+    
+    [UIView animateKeyframesWithDuration:1
+                                   delay:0
+                                 options:UIViewAnimationCurveLinear
+                              animations:^{
+                                  [self.underline setCenter: CGPointMake(80, 0)];
+                              }
+                              completion:nil];
 }
 - (IBAction)logIn:(id)sender
 {
@@ -260,6 +286,15 @@
     self.signup.hidden = YES;
     self.userName.hidden = NO;
     self.userNameNew.hidden = YES;
+    
+    [UIView animateKeyframesWithDuration:1
+                                   delay:0
+                                 options:UIViewAnimationCurveLinear
+                              animations:^{
+                                  [self.login  setCenter: CGPointMake(self.view.center.x, 125)];
+                                  [self.underline setCenter: CGPointMake(self.view.center.x + 90, 0)];
+                              }
+                              completion:nil];
 }
 -(void)signupButtonClicked:(UIButton *)sender
 {
@@ -315,13 +350,18 @@
 
 #pragma mark - Overrides
 
-//- (void)keyboardDidShow:(NSNotification *)notification
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 //{
-//    self.signup.hidden = YES;
-//}
-//-(void)keyboardDidHide:(NSNotification *)notification
-//{
-//    self.signup.hidden = NO;
+//    if (self.signup.state == UIControlStateHighlighted)
+//    {
+//        [self.signup setHighlighted:NO];
+//        self.signup.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Semibold" size:10.0];
+//    }
+//    if (self.login.state == UIControlStateHighlighted)
+//    {
+//        [self.login setHighlighted:NO];
+//        self.login.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Semibold" size:10.0];
+//    }
 //}
 - (void)handleSingleTap:(UITapGestureRecognizer *) sender
 {

@@ -11,16 +11,21 @@
 #import "HRPValidationManager.h"
 #import "HRPParseNetworkService.h"
 #import "AppDelegate.h"
+#import "HRPSpotifyViewController.h"
+#import "HRPLoginRedirect.h"
+#import "UIViewController+PresentViewController.h"
+#import <Spotify/Spotify.h>
 #import <QuartzCore/QuartzCore.h> // Required for boarder color
+@import SafariServices;
 
-@interface HRPLoginOrSignupVC ()
+@interface HRPLoginOrSignupVC () <SPTAuthViewDelegate>
 
 @property (nonatomic) UIGestureRecognizer *tapper;
 @property (nonatomic) UIView *underline;
 
 // Sign up properties
-@property (nonatomic) UITextField *userNameNew;
 @property (nonatomic) UITextField *email;
+@property (nonatomic) UITextField *userNameNew;
 @property (nonatomic) UITextField *passwordNew;
 @property (nonatomic) UITextField *passwordConfirm;
 @property (nonatomic) UIButton *signup;
@@ -31,7 +36,9 @@
 @property (nonatomic) UITextField *textField;
 @property (nonatomic) UITextField *textFieldString;
 @property (nonatomic) UIButton *login;
-@property (nonatomic) BOOL blockUserBool;
+
+//@property (nonatomic) BOOL blockUserBool; TODO
+@property (nonatomic) BOOL spotifyPremium; // add to parse
 
 @property (nonatomic, strong) HRPSignupVC *sendToSignupVC;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
@@ -81,15 +88,18 @@
 {
     [super viewDidAppear:animated];
     
-    // Set up notifications for text field validity
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.userNameNew];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.email];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.passwordNew];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.passwordConfirm];
 }
 -(void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:self.userNameNew];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:self.email];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:self.userNameNew];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:self.passwordNew];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:self.passwordConfirm];
 }
 
 #pragma mark - Custom Accessors
@@ -99,12 +109,12 @@
     int fieldHeight = 30;
     
     //self.email.adjustsFontSizeToFitWidth = YES; //adjust the font size to fit width.
-    self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 250, fieldHeight + 8)];
+    self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
     self.email.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"EMAIL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.email.autocorrectionType = UITextAutocorrectionTypeNo;
     self.email.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.email.delegate = self; // Required for dismissing the keyboard programically
-    self.email.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:10.0];
+    self.email.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
     self.email.keyboardAppearance = UIKeyboardAppearanceDark;
     self.email.keyboardType = UIKeyboardTypeEmailAddress;
     self.email.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
@@ -118,14 +128,13 @@
     [self.email setCenter: CGPointMake(self.view.center.x, self.email.center.y + 15)];
     [self.inputView addSubview:self.email];
     
-    
-    self.userNameNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 250, fieldHeight + 8)];
+    self.userNameNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
     self.userNameNew.adjustsFontSizeToFitWidth = YES;
     self.userNameNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.userNameNew.autocorrectionType = UITextAutocorrectionTypeNo;
     self.userNameNew.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.userNameNew.delegate = self;
-    self.userNameNew.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:10.0];
+    self.userNameNew.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
     self.userNameNew.keyboardAppearance = UIKeyboardAppearanceDark;
     self.userNameNew.keyboardType = UIKeyboardTypeEmailAddress;
     self.userNameNew.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
@@ -136,16 +145,16 @@
     self.userNameNew.returnKeyType = UIReturnKeyNext;
     self.userNameNew.textAlignment = NSTextAlignmentLeft;
     self.userNameNew.textColor = [UIColor whiteColor];
-    [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + 60)];
+    [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + 65)];
     [self.inputView addSubview:self.userNameNew];
     
-    self.passwordNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 250, fieldHeight + 8)];
+    self.passwordNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
     self.passwordNew.adjustsFontSizeToFitWidth = YES;
     self.passwordNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.passwordNew.autocorrectionType = UITextAutocorrectionTypeNo;
     self.passwordNew.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.passwordNew.delegate = self;
-    self.passwordNew.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:10.0];
+    self.passwordNew.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
     self.passwordNew.keyboardAppearance = UIKeyboardAppearanceDark;
     self.passwordNew.keyboardType = UIKeyboardTypeEmailAddress; // Should change
     self.passwordNew.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
@@ -157,16 +166,16 @@
     self.passwordNew.secureTextEntry = YES;
     self.passwordNew.textAlignment = NSTextAlignmentLeft;
     self.passwordNew.textColor = [UIColor whiteColor];
-    [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + 110)];
+    [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + 115)];
     [self.inputView addSubview:self.passwordNew];
     
-    self.passwordConfirm = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 250, fieldHeight + 8)];
+    self.passwordConfirm = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
     self.passwordConfirm.adjustsFontSizeToFitWidth = YES;
     self.passwordConfirm.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"CONFIRM PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.passwordConfirm.autocorrectionType = UITextAutocorrectionTypeNo;
     self.passwordConfirm.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.passwordConfirm.delegate = self;
-    self.passwordConfirm.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:10.0];
+    self.passwordConfirm.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
     self.passwordConfirm.keyboardAppearance = UIKeyboardAppearanceDark;
     self.passwordConfirm.keyboardType = UIKeyboardTypeEmailAddress; // Should change
     self.passwordConfirm.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
@@ -178,7 +187,7 @@
     self.passwordConfirm.secureTextEntry = YES;
     self.passwordConfirm.textAlignment = NSTextAlignmentLeft;
     self.passwordConfirm.textColor = [UIColor whiteColor];
-    [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + 160)];
+    [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + 165)];
     [self.inputView addSubview:self.passwordConfirm];
     
     self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -187,17 +196,17 @@
     self.signup.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
     [self.signup addTarget:self action:@selector(signupButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.signup setExclusiveTouch:YES];
-    [self.signup setFrame:CGRectMake(0, 0, 250, 40)];
+    [self.signup setFrame:CGRectMake(0, 0, 275, 40)];
     [self.signup setTitle:@"SIGN UP" forState:UIControlStateNormal];
     [self.signup setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.signup setCenter: CGPointMake(self.view.center.x, self.signup.center.y + 210)];
+    [self.signup setCenter: CGPointMake(self.view.center.x, self.signup.center.y + 215)];
     [self.inputView addSubview:self.signup];
 }
 -(void)setupLogin
 {
     int fieldHeight = 30;
     
-    self.userName = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 250, fieldHeight + 8)];
+    self.userName = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
     self.userName.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
     self.userName.leftViewMode = UITextFieldViewModeAlways;
     self.userName.keyboardAppearance = UIKeyboardAppearanceDark;
@@ -206,7 +215,7 @@
     self.userName.textColor = [UIColor whiteColor];
     self.userName.textAlignment = NSTextAlignmentLeft;
     self.userName.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.userName.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:10.0];
+    self.userName.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
     self.userName.adjustsFontSizeToFitWidth = YES;
     self.userName.keyboardType = UIKeyboardTypeEmailAddress;
     self.userName.returnKeyType = UIReturnKeyDone;
@@ -218,7 +227,7 @@
     [self.userName setCenter: CGPointMake(self.view.center.x, self.userName.center.y + 15)];
     [self.inputView addSubview:self.userName];
     
-    self.password = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 250, fieldHeight + 8)];
+    self.password = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
     self.password.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
     self.password.leftViewMode = UITextFieldViewModeAlways;
     self.password.keyboardAppearance = UIKeyboardAppearanceDark;
@@ -227,7 +236,7 @@
     self.password.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.password.textColor = [UIColor whiteColor];
     self.password.textAlignment = NSTextAlignmentLeft;
-    self.password.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:10.0];
+    self.password.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
     self.password.adjustsFontSizeToFitWidth = YES;
     self.password.keyboardType = UIKeyboardTypeEmailAddress;
     self.password.returnKeyType = UIReturnKeyDone;
@@ -237,7 +246,7 @@
     self.password.layer.borderWidth = 1;
     self.password.delegate = self;
     self.password.secureTextEntry = YES;
-    [self.password setCenter: CGPointMake(self.view.center.x, self.password.center.y + 60)];
+    [self.password setCenter: CGPointMake(self.view.center.x, self.password.center.y + 65)];
     [self.inputView addSubview:self.password];
 
     self.login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -246,10 +255,10 @@
     self.login.layer.cornerRadius = 20.0f;
     [self.login setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.login addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.login setFrame:CGRectMake(0, 0, 250, 40)];
+    [self.login setFrame:CGRectMake(0, 0, 275, 40)];
     [self.login setTitle:@"LOG IN" forState:UIControlStateNormal];
     [self.login setExclusiveTouch:YES];
-    [self.login  setCenter: CGPointMake(self.view.center.x, self.login.center.y + 210)];
+    [self.login  setCenter: CGPointMake(self.view.center.x, self.login.center.y + 215)];
     [self.inputView addSubview:self.login];
 }
 
@@ -271,7 +280,7 @@
                                    delay:0
                                  options:UIViewAnimationCurveLinear
                               animations:^{
-                                  [self.underline setCenter: CGPointMake(80, 0)];
+                                  [self.underline setCenter: CGPointMake(82, 0)];
                               }
                               completion:nil];
 }
@@ -291,7 +300,7 @@
                                    delay:0
                                  options:UIViewAnimationCurveLinear
                               animations:^{
-                                  [self.login  setCenter: CGPointMake(self.view.center.x, 125)];
+                                  [self.login  setCenter: CGPointMake(self.view.center.x, 135)];
                                   [self.underline setCenter: CGPointMake(self.view.center.x + 90, 0)];
                               }
                               completion:nil];
@@ -300,17 +309,51 @@
 {
     NSLog(@"CLICKED: signup button");
     
-    if ([self isTextFieldValid:self.userNameNew] ==  YES && [self isTextFieldValid:self.email] ==  YES)
+    BOOL validEmail = [self isTextFieldValid:self.email];
+    // BOOL validUsername = [self isTextFieldValid:self.userNameNew];
+    BOOL validPasswordNew = [self isTextFieldValid:self.passwordNew];
+    BOOL validPasswordConfirm = [self isTextFieldValid:self.passwordConfirm];
+    BOOL validPasswordMatch = [self.passwordNew.text isEqual:self.passwordConfirm.text];
+    
+    if ([self.email.text isEqual: @""] || [self.userNameNew.text isEqual: @""] || [self.passwordNew.text isEqual: @""]|| [self.passwordConfirm.text isEqual: @""])
     {
-        [self performSegueWithIdentifier:@"sendToSignup" sender:sender];
+        [self alertControllerAllFieldsRequired];
     }
-    else if ([self isTextFieldValid:self.userNameNew] ==  YES && [self isTextFieldValid:self.email] ==  NO)
+    else if (validEmail == NO)
     {
-        [self callBadEmailAlertController];
+        [self alertControllerEmailValidation];
     }
-    else if ([self isTextFieldValid:self.userNameNew] ==  NO && [self isTextFieldValid:self.email] ==  YES)
+    else if (validPasswordMatch == NO)
     {
-        [self callBadUsernameAlertController];
+        [self alertControllerPasswordMatchValidation];
+    }
+    else if (validPasswordNew == NO && validPasswordConfirm == NO)
+    {
+        [self alertControllerPasswordStrengthValidation];
+    }
+    else if (validPasswordMatch == YES && validPasswordNew == YES && validPasswordConfirm == YES)
+    {
+        [self alertControllerEmailConfirmation];
+
+        PFUser *user = [PFUser new];
+        
+        NSString *usernameLowercase = [self.userNameNew.text lowercaseString];
+        user.username = usernameLowercase;
+        user.password = self.passwordConfirm.text;
+        user.email = self.email.text;
+        
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        
+            NSString *userMessage = @"Registration was successful";
+            if (succeeded)
+            {
+                NSLog(@"CREATED: %@", user);
+            }
+            else
+            {
+                userMessage = error.localizedDescription;
+            }
+        }];
     }
 }
 -(void)loginButtonClicked:(UIButton *)sender
@@ -319,7 +362,7 @@
     
     if ((self.userName.text.length == 0)  || (self.password.text.length ==  0))
     {
-        [self callLoginInvalid];
+        [self alertControllerLoginInvalid];
     }
     else
     {
@@ -328,21 +371,11 @@
             if (user)
             {
                 NSLog(@"RESULT user %@ is logged in.", user);
-                //[self showMapsStoryboard];
                 [self performSelector:@selector(showMapsStoryboard) withObject:nil afterDelay:0];
             }
             else
             {
-                UIAlertController *alert;
-                alert = [UIAlertController alertControllerWithTitle:@"That login doesnt seem to work\n try again." message:nil preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *errorAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
-                                              {
-                                                  [alert dismissViewControllerAnimated:YES completion:nil];
-                                              }];
-                
-                [alert addAction:errorAction];
-                
-                [self presentViewController:alert animated:YES completion:nil];
+                [self alertControllerLoginInvalid];
             }
         }];
     }
@@ -393,14 +426,25 @@
 -(void)textFieldTextDidChange:(NSNotification *)notification
 {
     UITextField *textField = (UITextField *)notification.object;
+
     if (textField == self.email)
     {
         textField.tag = HRPViewControllerEmailTextFieldTag;
     }
-    if (textField == self.userNameNew)
+    else if (textField == self.userNameNew)
     {
         textField.tag = HRPViewControllerUsernameTextFieldTag;
     }
+    else if (textField == self.passwordNew)
+    {
+        textField.tag = HRPViewControllerPasswordNewTextFieldTag;
+    }
+    else if (textField == self.passwordConfirm)
+    {
+        textField.tag = HRPViewControllerPasswordConfirmTextFieldTag;
+    }
+    NSLog(@"textField.tag: %ld", (long)textField.tag);
+    NSLog(@"textField.text: %@", textField.text);
     
     [self isTextFieldValid:textField];
 }
@@ -426,64 +470,157 @@
 -(BOOL)isTextFieldValid:(UITextField *)textField
 {
     BOOL valid = NO;
-    if ([textField.text length] == 0)
-    {
-        // To stop it from being called when empty
-    } else
+    if (!textField.text.length == 0 || textField.tag == 3 || textField.tag == 4)
     {
         HRPValidationManager *validationManager = [HRPValidationManager sharedManager];
         switch (textField.tag)
         {
-            case HRPViewControllerUsernameTextFieldTag:
-                valid = [validationManager validateValue:textField.text forKey:kHRPValidationManagerUsernameKey];
-                break;
             case HRPViewControllerEmailTextFieldTag:
                 valid = [validationManager validateValue:textField.text forKey:kHRPValidationManagerEmailAddressKey];
                 break;
-            case HRPViewControllerPasswordTextFieldTag:
+            case HRPViewControllerUsernameTextFieldTag:
+                valid = [validationManager validateValue:textField.text forKey:kHRPValidationManagerUsernameKey];
+                break;
+            case HRPViewControllerPasswordNewTextFieldTag:
+                valid = [validationManager validateValue:textField.text forKey:kHRPValidationManagerPasswordKey];
+                break;
+            case HRPViewControllerPasswordConfirmTextFieldTag:
                 valid = [validationManager validateValue:textField.text forKey:kHRPValidationManagerPasswordKey];
                 break;
         }
-        NSLog(@"TEST: %@ is %@", textField.text, valid ? @"YES" : @"NO");
     }
-    
+    NSLog(@"TEST: %@ with tag %ld is %@", textField.text, (long)textField.tag, valid ? @"YES" : @"NO");
+
     return valid;
 }
 
 #pragma mark - Alert Controller Methods
 
--(void)callBadEmailAlertController
+-(void)alertControllerAllFieldsRequired
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Can't work with that email address\n try again." message:nil preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Please enter values for username and password fields" preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         
     }];
     
-    [alertController addAction:okayAction];
-    [self presentViewController:alertController animated:YES completion:nil];
+    [alert addAction:okay];
+    [self presentViewController:alert animated:YES completion:nil];
 }
--(void)callBadUsernameAlertController
+-(void)alertControllerPasswordMatchValidation
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Not a great username\n try again." message:nil preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Those passwords don't match." preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         
     }];
     
-    [alertController addAction:okayAction];
-    [self presentViewController:alertController animated:YES completion:nil];
+    [alert addAction:okay];
+    [self presentViewController:alert animated:YES completion:nil];
 }
-- (void)callLoginInvalid
+-(void)alertControllerPasswordStrengthValidation
 {
-    NSLog(@"RESULT is not a valid entry");
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                                        message:@"Please enter values for username and password fields"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-    [alertView show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Try making a stronger password." preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+        
+    }];
+    
+    [alert addAction:okay];
+    [self presentViewController:alert animated:YES completion:nil];
 }
+-(void)alertControllerEmailValidation
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Not a valid email address." preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+        
+    }];
+    
+    [alert addAction:okay];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+-(void)alertControllerUsernameValidation
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Not a great username try again." preferredStyle:(UIAlertControllerStyleActionSheet)];
+    
+    UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+        
+    }];
+    
+    [alert addAction:okay];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+-(void)alertControllerEmailConfirmation
+{
+    NSString *string = @"The email address you entered is:";
+    NSString *message = [NSString stringWithFormat:@"%@\n%@", string, self.email.text];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Is this correct?" message:message preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+        NSLog(@"EMAIL: is confirmed.");
+        [self alertControllerSpotifyVerify];
+    }];
+    UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+        
+    }];
+    
+    [alert addAction:yes];
+    [alert addAction:no];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+- (void)alertControllerLoginInvalid
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Please enter values for username and password fields" preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+        
+    }];
+    
+    [alert addAction:okay];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+-(void)alertControllerSpotifyVerify
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Do you have a Spotify account?" preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+        NSLog(@"EMAIL: is confirmed.");
+        self.spotifyPremium = YES;
+        [self spotifyLoginPopup];
+        
+        //[self showMapsStoryboard];
+    }];
+    UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+        self.spotifyPremium = NO;
+        [self spotifySignupPopup];
+        
+        //[self showMapsStoryboard];
+    }];
+    
+    [alert addAction:yes];
+    [alert addAction:no];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+# pragma mark - Spotify
+
+-(void)spotifyLoginPopup
+{
+    [HRPLoginRedirect launchSpotify];
+}
+-(void)spotifySignupPopup
+{
+    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.spotify.com/signup/"]];
+    [self presentViewController:safariVC animated:YES];
+}
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
+{
+    
+}
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
+{
+    
+}
+-(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
+{
+    
+}
+
 
 @end
 

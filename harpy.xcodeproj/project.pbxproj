@@ -17,7 +17,6 @@
 		3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25281C0CA4F6004C6790 /* HRPPost.m */; settings = {ASSET_TAGS = (); }; };
 		3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
-		3DAC61ED1BFE27D9002BAB02 /* HRPAddPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC61EC1BFE27D9002BAB02 /* HRPAddPostViewController.m */; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
 		E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */; };
 		E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335C631BFA7EBC002DD9C6 /* Main.storyboard */; };
@@ -34,10 +33,14 @@
 		E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E938012B1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m */; };
 		E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */; };
 		E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801331BFD1764004CC8A2 /* HRPUser.m */; };
+		E976148D1C0A6646003B3C5B /* SF-UI-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E97614891C0A6607003B3C5B /* SF-UI-Display-Regular.otf */; settings = {ASSET_TAGS = (); }; };
+		E976148E1C0A6648003B3C5B /* SF-UI-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */; settings = {ASSET_TAGS = (); }; };
+		E976148F1C0A664A003B3C5B /* SF-UI-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148C1C0A6607003B3C5B /* SF-UI-Display-Heavy.otf */; settings = {ASSET_TAGS = (); }; };
+		E97614901C0A664C003B3C5B /* SF-UI-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148B1C0A6607003B3C5B /* SF-UI-Display-Medium.otf */; settings = {ASSET_TAGS = (); }; };
+		E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C8CAB81C0BB2CA00836B40 /* HRPCreateProfileVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9E211141BFD3E2500739143 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9E211131BFD3E2500739143 /* Keys.plist */; };
 		E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E211161BFD76B700739143 /* HRPValidationManager.m */; };
 		E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */; settings = {ASSET_TAGS = (); }; };
-		E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */; };
 		E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */; };
 		E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E9FA64D41C039E43008DDE69 /* HRPManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -47,6 +50,8 @@
 		E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9FA64E51C04BC63008DDE69 /* HRPChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9FA65191C05065B008DDE69 /* HRPEditProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA65181C05065B008DDE69 /* HRPEditProfileVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA651D1C056C55008DDE69 /* HRPUserSearchVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9FA65461C0901BB008DDE69 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9FA65451C0901BB008DDE69 /* loading.gif */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +83,6 @@
 		3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
-		3DAC61EB1BFE27D9002BAB02 /* HRPAddPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPAddPostViewController.h; sourceTree = "<group>"; };
-		3DAC61EC1BFE27D9002BAB02 /* HRPAddPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPAddPostViewController.m; sourceTree = "<group>"; };
 		6DB65EC059DFF1DB09801C30 /* Pods-harpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-harpy/Pods-harpy.release.xcconfig"; sourceTree = "<group>"; };
 		8A0453F870576313A0151B46 /* libPods-harpy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harpy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335C571BFA7EBC002DD9C6 /* harpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,12 +115,16 @@
 		E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPParseNetworkService.m; sourceTree = "<group>"; };
 		E93801321BFD1764004CC8A2 /* HRPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPUser.h; sourceTree = "<group>"; };
 		E93801331BFD1764004CC8A2 /* HRPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPUser.m; sourceTree = "<group>"; };
+		E97614891C0A6607003B3C5B /* SF-UI-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Regular.otf"; sourceTree = "<group>"; };
+		E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Semibold.otf"; sourceTree = "<group>"; };
+		E976148B1C0A6607003B3C5B /* SF-UI-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Medium.otf"; sourceTree = "<group>"; };
+		E976148C1C0A6607003B3C5B /* SF-UI-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Heavy.otf"; sourceTree = "<group>"; };
+		E9C8CAB71C0BB2CA00836B40 /* HRPCreateProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPCreateProfileVC.h; sourceTree = "<group>"; };
+		E9C8CAB81C0BB2CA00836B40 /* HRPCreateProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPCreateProfileVC.m; sourceTree = "<group>"; };
 		E9E211131BFD3E2500739143 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		E9E211151BFD76B700739143 /* HRPValidationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPValidationManager.h; sourceTree = "<group>"; };
 		E9E211161BFD76B700739143 /* HRPValidationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPValidationManager.m; sourceTree = "<group>"; };
 		E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
-		E9F8CE701BFE1F3800979181 /* HRPSignupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSignupVC.h; sourceTree = "<group>"; };
-		E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSignupVC.m; sourceTree = "<group>"; };
 		E9F8CE791BFE622F00979181 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PresentViewController.h"; sourceTree = "<group>"; };
@@ -134,6 +141,9 @@
 		E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPChangePasswordVC.m; sourceTree = "<group>"; };
 		E9FA65171C05065B008DDE69 /* HRPEditProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPEditProfileVC.h; sourceTree = "<group>"; };
 		E9FA65181C05065B008DDE69 /* HRPEditProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPEditProfileVC.m; sourceTree = "<group>"; };
+		E9FA651C1C056C55008DDE69 /* HRPUserSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPUserSearchVC.h; sourceTree = "<group>"; };
+		E9FA651D1C056C55008DDE69 /* HRPUserSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPUserSearchVC.m; sourceTree = "<group>"; };
+		E9FA65451C0901BB008DDE69 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,7 +241,12 @@
 			children = (
 				E9E211131BFD3E2500739143 /* Keys.plist */,
 				E9335C6B1BFA7EBC002DD9C6 /* Info.plist */,
+				E9FA65451C0901BB008DDE69 /* loading.gif */,
 				E9335C5B1BFA7EBC002DD9C6 /* main.m */,
+				E97614891C0A6607003B3C5B /* SF-UI-Display-Regular.otf */,
+				E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */,
+				E976148B1C0A6607003B3C5B /* SF-UI-Display-Medium.otf */,
+				E976148C1C0A6607003B3C5B /* SF-UI-Display-Heavy.otf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -257,8 +272,8 @@
 				E93801261BFCCA50004CC8A2 /* HRPLoginRedirect.m */,
 				E938012A1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.h */,
 				E938012B1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m */,
-				E9F8CE701BFE1F3800979181 /* HRPSignupVC.h */,
-				E9F8CE711BFE1F3800979181 /* HRPSignupVC.m */,
+				E9C8CAB71C0BB2CA00836B40 /* HRPCreateProfileVC.h */,
+				E9C8CAB81C0BB2CA00836B40 /* HRPCreateProfileVC.m */,
 				E9E211151BFD76B700739143 /* HRPValidationManager.h */,
 				E9E211161BFD76B700739143 /* HRPValidationManager.m */,
 			);
@@ -273,10 +288,10 @@
 				E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */,
 				E93801101BFBE956004CC8A2 /* HRPMapsViewController.h */,
 				E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */,
-				3DAC61EB1BFE27D9002BAB02 /* HRPAddPostViewController.h */,
-				3DAC61EC1BFE27D9002BAB02 /* HRPAddPostViewController.m */,
 				E93801191BFC23A7004CC8A2 /* HRPLocationManager.h */,
 				E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */,
+				E9FA651C1C056C55008DDE69 /* HRPUserSearchVC.h */,
+				E9FA651D1C056C55008DDE69 /* HRPUserSearchVC.m */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -400,11 +415,16 @@
 			files = (
 				E9E211141BFD3E2500739143 /* Keys.plist in Resources */,
 				E9335C6A1BFA7EBC002DD9C6 /* LaunchScreen.storyboard in Resources */,
+				E97614901C0A664C003B3C5B /* SF-UI-Display-Medium.otf in Resources */,
 				E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */,
 				E9335C671BFA7EBC002DD9C6 /* Assets.xcassets in Resources */,
 				E93801291BFCEADF004CC8A2 /* Login.storyboard in Resources */,
+				E976148F1C0A664A003B3C5B /* SF-UI-Display-Heavy.otf in Resources */,
 				E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */,
 				E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */,
+				E9FA65461C0901BB008DDE69 /* loading.gif in Resources */,
+				E976148E1C0A6648003B3C5B /* SF-UI-Display-Semibold.otf in Resources */,
+				E976148D1C0A6646003B3C5B /* SF-UI-Display-Regular.otf in Resources */,
 				E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */,
 				3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */,
 			);
@@ -474,6 +494,7 @@
 			files = (
 				E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */,
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
+				E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */,
 				E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */,
 				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,
 				3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */,
@@ -486,7 +507,6 @@
 				E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */,
 				E9FA65191C05065B008DDE69 /* HRPEditProfileVC.m in Sources */,
 				E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */,
-				E9F8CE721BFE1F3800979181 /* HRPSignupVC.m in Sources */,
 				3BAC25251C050D41004C6790 /* HRPPostPreviewViewController.m in Sources */,
 				E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */,
 				3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */,
@@ -494,8 +514,8 @@
 				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
 				E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */,
 				3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */,
+				E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */,
 				E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */,
-				3DAC61ED1BFE27D9002BAB02 /* HRPAddPostViewController.m in Sources */,
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
 				E9FA64E51C04BC63008DDE69 /* HRPChangePasswordVC.m in Sources */,
 				E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "HRPPostPreviewViewController.h"
+#import <Parse/Parse.h>
 
 @interface HRPPostPreviewViewController () <UITextViewDelegate>
 
@@ -16,7 +17,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *albumNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) IBOutlet UITextView *postCaptionTextView;
-@property (assign, nonatomic) BOOL textViewEdited;
 
 @end
 
@@ -34,7 +34,8 @@
     self.songTitleLabel.text = self.track.songTitle;
     self.artistNameLabel.text = self.track.artistName;
     self.albumNameLabel.text = self.track.albumName;
-    self.textViewEdited = NO;
+    
+    
 }
 
 
@@ -50,18 +51,56 @@
     //add location to be pinned on map
 }
 
+//needs to be adjusted in order to take either album art or a picture
 - (IBAction)postTrackButtonTapped:(UIButton *)sender {
-    //post track
+    
+    NSLog(@"post button tapped");
+
+    PFObject *post = [PFObject objectWithClassName:@"HRPPost"];
+    PFUser *currentUser = [PFUser currentUser];
+    NSString *urlString = (NSString *)self.track.spotifyURI;
+    PFFile *albumcover = [PFFile fileWithName:@"album_cover" data:self.track.albumCoverArt];
+    
+    // will not work unless logged in
+    post[@"username"] = currentUser;
+    
+    post[@"songTitle"] = self.track.songTitle;
+    post[@"artistName"] = self.track.artistName;
+    post[@"albumName"] = self.track.albumName;
+
+    // where is geo location being saved?
+    post[@"locationGeoPoint"] = [NSNull null];
+
+    //location name if added
+    post[@"locationName"] = self.locationLabel.text;
+
+    //dictionary will start empty
+    post[@"comments"] = [NSNull null];
+    NSLog(@"comments made");
+
+    //array will start empty
+    post[@"likes"] = [NSNull null];
+    NSLog(@"likes made");
+
+    post[@"songURL"] = urlString;
+    NSLog(@"song url made");
+
+    post[@"albumArt"] = albumcover;
+    NSLog(@"alvum art made");
+
+    //nil unless photo is added
+    post[@"postPhoto"] = [NSNull null];
+    NSLog(@"post photo made");
+
+    [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"holla atcha boi");
+        }
+    }];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-    
-    if (self.textViewEdited == NO) {
-        self.postCaptionTextView.text = @"";
-        self.textViewEdited = YES;
-    }
-    return self.textViewEdited;
-}
 
 
 @end

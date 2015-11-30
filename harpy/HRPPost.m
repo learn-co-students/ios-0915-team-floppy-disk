@@ -7,7 +7,6 @@
 //
 
 #import "HRPPost.h"
-#import "HRPTrack.h"
 #import <Parse/Parse.h>
 
 @implementation HRPPost
@@ -21,7 +20,7 @@
     return self;
 }
 
--(void)createPostForTrack:(HRPTrack *)track withCaption:(NSString *)caption {
+-(void)createPostForTrack:(HRPTrack *)track withCaption:(NSString *)caption WithCompletion:(void (^)(BOOL success))completion {
     //******* does not include functionality to add photo to post
     
     
@@ -58,8 +57,10 @@
     post[@"caption"] = caption;
     
     [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"holla atcha boi");
+        if (error != nil) {
+            completion(NO);
+        } else {
+            completion(YES);
         }
     }];
 }

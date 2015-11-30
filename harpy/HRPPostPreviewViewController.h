@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "HRPTrack.h"
+#import "HRPPost.h"
 
 @interface HRPPostPreviewViewController : UIViewController
 
 @property (nonatomic, strong) HRPTrack *track;
+@property (nonatomic, strong) HRPPost *post;
 
 @end

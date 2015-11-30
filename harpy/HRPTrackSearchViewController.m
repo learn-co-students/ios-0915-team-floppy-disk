@@ -121,7 +121,7 @@
     NSIndexPath *indexPath = self.songTableView.indexPathForSelectedRow;
     HRPTrack *track = self.filteredSongArray[indexPath.row];
     destinVC.track = track;
-    
+    destinVC.post = self.post;
 }
 
 

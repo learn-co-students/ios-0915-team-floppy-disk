@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "HRPTrack.h"
 
 @interface HRPPost : NSObject
 
@@ -21,5 +22,7 @@
 @property (nonatomic, strong) NSData *postPhoto;
 
 -(instancetype)initWithLatitude:(CGFloat)latitude Longitude:(CGFloat)longitude;
+
+-(void)createPostForTrack:(HRPTrack *)track withCaption:(NSString *)caption WithCompletion:(void (^)(BOOL success))completion;
 
 @end

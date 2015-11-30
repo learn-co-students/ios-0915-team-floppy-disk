@@ -34,6 +34,8 @@
     self.userSearchBar.delegate = self;
     self.parseService = [HRPParseNetworkService sharedService];
     
+    
+    
     [self initializeEmptyUsersArray];
     [self setupNavBar];
     
@@ -151,6 +153,8 @@
     UITableViewCell *cell = [self.userTableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
     PFUser *user = [self.users objectAtIndex:[indexPath row]];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
     usernameLabel.text = user.username;
     
@@ -165,6 +169,7 @@
         {
             cell.imageView.image = [UIImage imageWithData:data];
             cell.imageView.highlightedImage = [UIImage imageWithData:data];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         else
         {

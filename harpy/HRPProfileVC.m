@@ -48,7 +48,12 @@
 - (void)setupUserProfile
 {
     PFUser *currentUser = [PFUser currentUser];
+    
     self.username.text = currentUser.username;
+    
+    self.navigationItem.title = currentUser.username;
+    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName: [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0f]}];
+    
 }
 - (void)retrieveUserAvatar
 {

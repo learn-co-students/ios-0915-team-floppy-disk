@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1rH-bZ-uSV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0GJ-KY-fAq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--Track Search View Controller-->
+        <!--Search Songs-->
         <scene sceneID="5sh-LV-gs0">
             <objects>
                 <viewController id="1rH-bZ-uSV" customClass="HRPTrackSearchViewController" sceneMemberID="viewController">
@@ -61,7 +61,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qmp-pb-MEz" kind="presentation" id="yqo-et-g8H"/>
+                                            <segue destination="qmp-pb-MEz" kind="show" id="yqo-et-g8H"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -69,6 +69,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Search Songs" id="ugX-8d-URQ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="songSearchBar" destination="zWB-xD-fLO" id="nkg-kQ-eKI"/>
@@ -77,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAx-ln-BdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101" y="222"/>
+            <point key="canvasLocation" x="913" y="222"/>
         </scene>
         <!--Post Preview View Controller-->
         <scene sceneID="0Gg-cr-Grp">
@@ -94,13 +95,7 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BW8-D3-2Ha">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Create Post" id="LJl-ub-pFF">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Dop-kp-A6K">
-                                            <connections>
-                                                <action selector="cancelButtonTapped:" destination="qmp-pb-MEz" id="TLz-KL-VZ5"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Create Post" id="LJl-ub-pFF"/>
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hmL-Ua-R5A">
@@ -150,14 +145,6 @@
                                     <action selector="postTrackButtonTapped:" destination="qmp-pb-MEz" eventType="touchUpInside" id="7bj-nz-yET"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEg-oe-gnk">
-                                <rect key="frame" x="220" y="178" width="148" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="Add Location"/>
-                                <connections>
-                                    <action selector="addLocationButtonTapped:" destination="qmp-pb-MEz" eventType="touchUpInside" id="cio-CE-RXU"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YH-uc-rg9">
                                 <rect key="frame" x="220" y="207" width="194" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
@@ -179,7 +166,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08D-my-Bu1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="642" y="222"/>
+            <point key="canvasLocation" x="1454" y="222"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="R3o-bQ-C56">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0GJ-KY-fAq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mKy-BX-urQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1rH-bZ-uSV" kind="relationship" relationship="rootViewController" id="trT-YI-Zpk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uIp-5f-aqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="287" y="222"/>
         </scene>
     </scenes>
 </document>

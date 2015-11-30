@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRPPost.h"
 
 @interface HRPTrackSearchViewController : UIViewController
 
 @property (strong, nonatomic) NSMutableArray *songArray;
+@property (strong, nonatomic) HRPPost *post;
 
 @end

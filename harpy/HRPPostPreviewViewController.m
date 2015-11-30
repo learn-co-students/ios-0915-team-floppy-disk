@@ -8,6 +8,8 @@
 
 #import "HRPPostPreviewViewController.h"
 #import <Parse/Parse.h>
+#import "HRPPost.h"
+
 
 @interface HRPPostPreviewViewController () <UITextViewDelegate, UINavigationControllerDelegate>
 
@@ -54,48 +56,14 @@
 //needs to be adjusted in order to take either album art or a picture
 - (IBAction)postTrackButtonTapped:(UIButton *)sender {
     
-    NSLog(@"post button tapped");
-
-    PFObject *post = [PFObject objectWithClassName:@"HRPPost"];
-    PFUser *currentUser = [PFUser currentUser];
-    NSString *urlString = (NSString *)self.track.spotifyURI;
-    PFFile *albumcover = [PFFile fileWithName:@"album_cover" data:self.track.albumCoverArt];
-    
-    // will not work unless logged in
-    post[@"username"] = currentUser;
-    
-    post[@"songTitle"] = self.track.songTitle;
-    post[@"artistName"] = self.track.artistName;
-    post[@"albumName"] = self.track.albumName;
-
-    // where is geo location being saved?
-    post[@"locationGeoPoint"] = [NSNull null];
-
-    //dictionary will start empty
-    post[@"comments"] = [NSNull null];
-    NSLog(@"comments made");
-
-    //array will start empty
-    post[@"likes"] = [NSNull null];
-    NSLog(@"likes made");
-
-    post[@"songURL"] = urlString;
-    NSLog(@"song url made");
-
-    post[@"albumArt"] = albumcover;
-    NSLog(@"alvum art made");
-
-    //nil unless photo is added
-    post[@"postPhoto"] = [NSNull null];
-    NSLog(@"post photo made");
-
-    [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"holla atcha boi");
+    [self.post createPostForTrack:self.track withCaption:self.postCaptionTextView.text WithCompletion:^(BOOL success) {
+        if (success) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            }];
         }
     }];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

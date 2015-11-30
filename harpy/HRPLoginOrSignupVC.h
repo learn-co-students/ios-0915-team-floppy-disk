@@ -18,7 +18,6 @@ NS_ENUM(NSUInteger, HRPViewControllerTags)
 
 @interface HRPLoginOrSignupVC : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *displayMessage;
 @property (weak, nonatomic) IBOutlet UIView *inputView;
 
 - (IBAction)signUp:(id)sender;

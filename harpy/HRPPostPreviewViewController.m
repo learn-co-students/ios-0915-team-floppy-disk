@@ -9,7 +9,7 @@
 #import "HRPPostPreviewViewController.h"
 #import <Parse/Parse.h>
 
-@interface HRPPostPreviewViewController () <UITextViewDelegate>
+@interface HRPPostPreviewViewController () <UITextViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *albumArtImageView;
 @property (strong, nonatomic) IBOutlet UILabel *songTitleLabel;
@@ -70,9 +70,6 @@
 
     // where is geo location being saved?
     post[@"locationGeoPoint"] = [NSNull null];
-
-    //location name if added
-    post[@"locationName"] = self.locationLabel.text;
 
     //dictionary will start empty
     post[@"comments"] = [NSNull null];

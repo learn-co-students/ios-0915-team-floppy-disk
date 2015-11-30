@@ -16,11 +16,8 @@
 @property (nonatomic, strong) NSString *postAlbumName;
 @property (nonatomic) CGFloat latitude;
 @property (nonatomic) CGFloat longitude;
-@property (nonatomic, strong) NSString *postLocationName;
-@property (nonatomic, strong) NSMutableDictionary *postComments;
-@property (nonatomic, strong) NSMutableArray *postLikes;
-@property (nonatomic, strong) NSString *songURL;
-@property (nonatomic, strong) NSData *postSongURL;
+@property (nonatomic, strong) NSString *postSongURL;
+@property (nonatomic, strong) NSData *postAlbumArt;
 @property (nonatomic, strong) NSData *postPhoto;
 
 -(instancetype)initWithLatitude:(CGFloat)latitude Longitude:(CGFloat)longitude;

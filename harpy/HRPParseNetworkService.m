@@ -46,7 +46,6 @@
         }
     }];
 }
-
 -(void)createUser:(NSString *)username email:(NSString *)email password:(NSString *)password completionHandler:(void (^)(HRPUser *user, NSError *error))completionHandler
 {
     PFUser *user = [[PFUser alloc]init];
@@ -75,10 +74,21 @@
          }
      }];
 }
-
 - (void)logout
 {
     [PFUser logOutInBackground];
+}
+
+
++ (void)getPhotoForUser:(PFUser *)user WithBlock:(void (^)(UIImage *photo))completionBlock
+{
+    PFFile *imageFile = [user objectForKey:@"photo"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *result, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:result];
+            completionBlock(image);
+        }
+    }];
 }
 
 @end

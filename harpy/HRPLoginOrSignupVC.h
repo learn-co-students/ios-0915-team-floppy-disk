@@ -10,14 +10,14 @@
 
 NS_ENUM(NSUInteger, HRPViewControllerTags)
 {
-    HRPViewControllerUsernameTextFieldTag = 1,
-    HRPViewControllerEmailTextFieldTag = 2,
-    HRPViewControllerPasswordTextFieldTag = 3
+    HRPViewControllerEmailTextFieldTag = 1,
+    HRPViewControllerUsernameTextFieldTag = 2,
+    HRPViewControllerPasswordNewTextFieldTag = 3,
+    HRPViewControllerPasswordConfirmTextFieldTag = 4,
 };
 
 @interface HRPLoginOrSignupVC : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *displayMessage;
 @property (weak, nonatomic) IBOutlet UIView *inputView;
 
 - (IBAction)signUp:(id)sender;

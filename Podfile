@@ -8,6 +8,7 @@ target 'harpy' do
    pod 'GoogleMaps'
    pod 'Spotify-iOS-SDK', :podspec => 'Spotify-iOS-SDK.podspec.json'
    pod 'Parse'
+   pod 'ParseUI'
 
 end
 

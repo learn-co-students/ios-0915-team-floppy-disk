@@ -10,11 +10,10 @@
 
 #import "HRPMapsViewController.h"
 #import "HRPLocationManager.h"
-#import "HRPAddPostViewController.h"
 #import <MapKit/MapKit.h>
 @import GoogleMaps;
 
-@interface HRPMapsViewController () <GMSMapViewDelegate, HRPAddPostViewControllerDelegate>
+@interface HRPMapsViewController () <GMSMapViewDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
@@ -36,12 +35,6 @@
     [super viewDidLoad];
     [self setupNavBar];
     
-    self.locationManager = [CLLocationManager sharedManager];
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.delegate = self;
-    
-    [self locationManagerPermissions];
-    
     self.defaultMarkerImage.hidden = YES;
     
     [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -61,6 +54,11 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.locationManager = [CLLocationManager sharedManager];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.delegate = self;
+    [self locationManagerPermissions];
+    [self.locationManager performSelector:@selector(startUpdatingLocation) withObject:nil afterDelay:1.0];
     [self.locationManager startUpdatingLocation];
 }
 
@@ -69,7 +67,7 @@
 -(void)setupNavBar
 {
     [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18.0f],
+                                                            NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f],
                                                             }];
 }
 
@@ -209,29 +207,29 @@
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    HRPAddPostViewController *addPostDVC = segue.destinationViewController;
-    addPostDVC.delegate = self;
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    HRPAddPostViewController *addPostDVC = segue.destinationViewController;
+//    addPostDVC.delegate = self;
+//}
 
 #pragma mark - Modal View Controller
 
-// the methods below are for use with the modal view controller (+) button on top of the maps view.  it's all connected to the delegate and protocol of the HRPAddPostViewController class
-- (void)addPostViewController:(id)viewController didFinishWithLocation:(CLLocation *)location
-{
-    CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
-    
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-    marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
-    marker.map = mapView_;
-    
-    [viewController dismissViewControllerAnimated:YES completion:nil];
-}
-- (void)addPostViewControllerDidCancel:(HRPAddPostViewController *)viewController
-{
-    [viewController dismissViewControllerAnimated:YES completion:nil];
-}
+//// the methods below are for use with the modal view controller (+) button on top of the maps view.  it's all connected to the delegate and protocol of the HRPAddPostViewController class
+//- (void)addPostViewController:(id)viewController didFinishWithLocation:(CLLocation *)location
+//{
+//    CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
+//    
+//    GMSMarker *marker = [[GMSMarker alloc] init];
+//    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+//    marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+//    marker.map = mapView_;
+//    
+//    [viewController dismissViewControllerAnimated:YES completion:nil];
+//}
+//- (void)addPostViewControllerDidCancel:(HRPAddPostViewController *)viewController
+//{
+//    [viewController dismissViewControllerAnimated:YES completion:nil];
+//}
 
 @end

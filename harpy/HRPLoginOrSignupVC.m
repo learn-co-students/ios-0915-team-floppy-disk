@@ -34,7 +34,8 @@
 @property (nonatomic) UITextField *userName;
 @property (nonatomic) UITextField *userNameNew;
 @property (nonatomic) UIView *underline;
-@property (nonatomic, strong) HRPSignupVC *sendToSignupVC;
+@property (weak, nonatomic) IBOutlet UIView *underlineView;
+//@property (nonatomic, strong) HRPSignupVC *sendToSignupVC;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
 @end
@@ -50,7 +51,7 @@
     [self setupLogin];
     [self.navigationController setNavigationBarHidden:YES]; // Carrys over from other VC's
     
-    self.displayMessage.text = @"SIGN UP TO FIND MUSIC CURATED LOCALLY";
+    //self.displayMessage.text = @"SIGN UP TO FIND MUSIC CURATED LOCALLY";
     self.email.hidden = NO;
     self.login.hidden = YES;
     self.password.hidden = YES;
@@ -60,11 +61,13 @@
     self.userName.hidden = YES;
     self.userNameNew.hidden = NO;
     
-    self.underline = [[UIView alloc] initWithFrame:CGRectMake(55, 0, 55, 0.5)];
-    self.underline.backgroundColor = [UIColor whiteColor];
-    [self.inputView addSubview:self.underline];
+//    self.underline = [[UIView alloc] initWithFrame:CGRectMake(55, 0, 55, 0.5)];
+//    self.underline.backgroundColor = [UIColor whiteColor];
+//    [self.inputView addSubview:self.underline];
     
-    //self.inputView.layer.backgroundColor = [[UIColor clearColor]CGColor];
+    self.underline = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 55, 0.5)];
+    self.underline.backgroundColor = [UIColor whiteColor];
+    [self.underlineView addSubview:self.underline];
     
     self.tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     self.tapper.cancelsTouchesInView = NO;
@@ -72,9 +75,6 @@
     
     [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-    
-    //UIImage *backgroundImage = [UIImage imageNamed:@"backround_iphone5"];
-    //self.view.backgroundColor =[[UIColor alloc] initWithPatternImage:backgroundImage];
     
     self.parseService = [HRPParseNetworkService sharedService];
 }
@@ -260,7 +260,7 @@
 
 - (IBAction)signUp:(id)sender
 {
-    self.displayMessage.text = @"SIGN UP TO FIND MUSIC CURATED LOCALLY";
+    //self.displayMessage.text = @"SIGN UP TO FIND MUSIC CURATED LOCALLY";
     self.email.hidden = NO;
     self.login.hidden = YES;
     self.password.hidden = YES;
@@ -274,13 +274,14 @@
                                    delay:0
                                  options:UIViewAnimationCurveLinear
                               animations:^{
-                                  [self.underline setCenter: CGPointMake(82, 0)];
+                                  //[self.underline setCenter: CGPointMake(82, 0)];
+                                  [self.underline setCenter: CGPointMake(27, 0)];
                               }
                               completion:nil];
 }
 - (IBAction)logIn:(id)sender
 {
-    self.displayMessage.text = @"LOG IN TO FIND MUSIC CURATED LOCALLY";
+    //self.displayMessage.text = @"LOG IN TO FIND MUSIC CURATED LOCALLY";
     self.email.hidden = YES;
     self.login.hidden = NO;
     self.password.hidden = NO;
@@ -295,7 +296,7 @@
                                  options:UIViewAnimationCurveLinear
                               animations:^{
                                   [self.login  setCenter: CGPointMake(self.view.center.x, 135)];
-                                  [self.underline setCenter: CGPointMake(self.view.center.x + 90, 0)];
+                                  [self.underline setCenter: CGPointMake(222, 0)];
                               }
                               completion:nil];
 }
@@ -328,26 +329,6 @@
     else if (validPasswordMatch == YES && validPasswordNew == YES && validPasswordConfirm == YES)
     {
         [self alertControllerEmailConfirmation];
-
-        PFUser *user = [PFUser new];
-        
-        NSString *usernameLowercase = [self.userNameNew.text lowercaseString];
-        user.username = usernameLowercase;
-        user.password = self.passwordConfirm.text;
-        user.email = self.email.text;
-        
-        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        
-            NSString *userMessage = @"Registration was successful";
-            if (succeeded)
-            {
-                NSLog(@"CREATED: %@", user);
-            }
-            else
-            {
-                userMessage = error.localizedDescription;
-            }
-        }];
     }
 }
 -(void)loginButtonClicked:(UIButton *)sender
@@ -445,14 +426,20 @@
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    [self performSegueWithIdentifier:@"sendToSignup" sender:self];
+//    
+////    if([segue.identifier isEqualToString:@"sendToSignup"])
+////    {
+////        HRPSignupVC *vc = segue.destinationViewController;
+////        vc.userNameNew = self.userNameNew;
+////        vc.emailString = self.email.text;
+////    }
+//}
+- (void)showCreateProfileView
 {
-    if([segue.identifier isEqualToString:@"sendToSignup"])
-    {
-        HRPSignupVC *vc = segue.destinationViewController;
-        vc.userNameNew = self.userNameNew;
-        vc.emailString = self.email.text;
-    }
+    [self performSegueWithIdentifier:@"sendToSignup" sender:self];
 }
 - (void)showMapsStoryboard
 {
@@ -486,6 +473,30 @@
     NSLog(@"TEST: %@ with tag %ld is %@", textField.text, (long)textField.tag, valid ? @"YES" : @"NO");
 
     return valid;
+}
+-(void)createParseUser
+{
+    PFUser *user = [PFUser new];
+    
+    NSString *usernameLowercase = [self.userNameNew.text lowercaseString];
+    user.username = usernameLowercase;
+    user.password = self.passwordConfirm.text;
+    user.email = self.email.text;
+    
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        
+        NSString *userMessage = @"Registration was successful";
+        if (succeeded)
+        {
+            NSLog(@"CREATED: %@", user);
+            [self showCreateProfileView];
+            NSLog(@"SENT: to showCreateProfileView");
+        }
+        else
+        {
+            userMessage = error.localizedDescription;
+        }
+    }];
 }
 
 #pragma mark - Alert Controller Methods
@@ -549,7 +560,7 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Is this correct?" message:message preferredStyle:(UIAlertControllerStyleActionSheet)];
     UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         NSLog(@"EMAIL: is confirmed.");
-        [self alertControllerSpotifyVerify];
+        [self createParseUser]; // MOVE TO AFTER SPOTIFY ACCOUNT
     }];
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
         
@@ -573,17 +584,14 @@
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Do you have a Spotify account?" preferredStyle:(UIAlertControllerStyleActionSheet)];
     UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-        NSLog(@"EMAIL: is confirmed.");
         self.spotifyPremium = YES;
         [self spotifyLoginPopup];
         
-        [self performSegueWithIdentifier: @"sendToSignup" sender: self];
     }];
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         self.spotifyPremium = NO;
         [self spotifySignupPopup];
         
-        [self performSegueWithIdentifier: @"sendToSignup" sender: self];
     }];
     
     [alert addAction:yes];

@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "HRPCreateProfile.h"
 #import "HRPLoginOrSignupVC.h"
 #import "HRPLoginRedirect.h"
 #import "HRPParseNetworkService.h"
@@ -426,17 +425,6 @@
 
 #pragma mark - Navigation
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    [self performSegueWithIdentifier:@"sendToSignup" sender:self];
-//    
-////    if([segue.identifier isEqualToString:@"sendToSignup"])
-////    {
-////        HRPSignupVC *vc = segue.destinationViewController;
-////        vc.userNameNew = self.userNameNew;
-////        vc.emailString = self.email.text;
-////    }
-//}
 - (void)showCreateProfileView
 {
     [self performSegueWithIdentifier:@"sendToSignup" sender:self];
@@ -622,7 +610,6 @@
 {
     
 }
-
 
 @end
 

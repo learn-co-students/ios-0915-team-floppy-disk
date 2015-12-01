@@ -62,12 +62,16 @@
             completion(NO);
         } else {
             completion(YES);
+            [post save];
+            PFRelation *userRelation = [currentUser relationForKey:@"HRPPosts"];
+            [userRelation addObject:post];
+            [currentUser saveInBackground];
         }
     }];
     
-    PFRelation *userRelation = [currentUser relationForKey:@"HRPPosts"];
-    [userRelation addObject:post];
-    [currentUser saveInBackground];
+//    PFRelation *userRelation = [currentUser relationForKey:@"HRPPosts"];
+//    [userRelation addObject:post];
+//    [currentUser saveInBackground];
     
 }
 

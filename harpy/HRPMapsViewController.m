@@ -35,13 +35,11 @@
     [super viewDidLoad];
     [self setupNavBar];
     
-    /*
-     self.locationManager = [CLLocationManager sharedManager];
-     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-     self.locationManager.delegate = self;                          ***************   this got moved to viewDidAppear
-     
-     [self locationManagerPermissions];
-     */
+    self.locationManager = [CLLocationManager sharedManager];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.delegate = self;
+    
+    [self locationManagerPermissions];
     
     self.defaultMarkerImage.hidden = YES;
     self.readyToPin = NO;
@@ -53,11 +51,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.locationManager = [CLLocationManager sharedManager];               //************
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;             //moved from viewDidLoad
-    self.locationManager.delegate = self;                                                   //************
-    [self locationManagerPermissions];
-    [self.locationManager performSelector:@selector(startUpdatingLocation) withObject:nil afterDelay:1.0]; //*********
     [self.locationManager startUpdatingLocation];
 }
 
@@ -127,14 +120,14 @@
     self.defaultMarker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
     //    self.defaultMarkerImage.hidden = YES; //****************
     self.defaultMarker.map = mapView_;
-//    [self.defaultMarker setDraggable:true];
+    //    [self.defaultMarker setDraggable:true];
     
     // Use some kind of data to identify each marker, marker does not have 'tag' but 'userData' that is an 'id' type
     //    [self.defaultMarker setUserData:<#(id)#>];
     
     mapView_.delegate = self;
     mapView_.indoorEnabled = NO;
-    mapView_.settings.scrollGestures = NO; //scroll gestures locked here
+    //    mapView_.settings.scrollGestures = NO; //scroll gestures locked here
     
     [mapView_ setMinZoom:13 maxZoom:mapView_.maxZoom];
     
@@ -200,11 +193,14 @@
         
         CGPoint point = mapView_.center;
         CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
+        
         NSLog(@"inside the block");
+        
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
         marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
         marker.map = mapView_;
+        
         NSLog(@"marker: %@", marker);
         NSLog(@"marker.icon = %@", marker.icon);
         NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);

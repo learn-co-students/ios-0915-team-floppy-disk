@@ -91,7 +91,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logInClicked:" destination="BrP-JT-HgS" eventType="touchUpInside" id="Ign-yb-5Hw"/>
-                                    <segue destination="vzj-2k-I9q" kind="show" identifier="playerSegue" id="sBO-18-4X5"/>
+                                    <segue destination="wru-FH-4OD" kind="show" identifier="playerSegue" id="9L4-yK-uso"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -186,7 +186,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackCell" rowHeight="106" id="afn-VZ-MA4">
-                                <rect key="frame" x="0.0" y="28" width="414" height="106"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="106"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="afn-VZ-MA4" id="qqN-AM-1nQ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="105.5"/>

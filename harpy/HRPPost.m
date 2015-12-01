@@ -37,7 +37,7 @@
     self.postSongURL = urlString;
     
     self.postAlbumArt = track.albumCoverArt;
-    PFFile *albumcover = [PFFile fileWithName:@"album_cover" data:self.postAlbumArt];
+    PFFile *albumcover = [PFFile fileWithName:@"album_cover" data:track.albumCoverArt];
 
     post[@"username"] = currentUser;
     post[@"songTitle"] = self.postSongTitle;

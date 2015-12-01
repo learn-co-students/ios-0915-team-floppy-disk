@@ -181,6 +181,7 @@
         
         [self presentConfirmPinAlertController];
     }
+    
 }
 - (void)handlePans
 {
@@ -198,6 +199,8 @@
         marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
         marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
         marker.map = mapView_;
+        
+        [self performSegueWithIdentifier:@"sendToSignup" sender:self];
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     

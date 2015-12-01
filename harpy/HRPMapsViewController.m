@@ -102,6 +102,43 @@
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
+    CGFloat coordinateDifference = 0.005;
+    
+    CGFloat firstLatitude = coordinate.latitude;
+    firstLatitude += coordinateDifference;
+    
+    CGFloat firstLongitude = coordinate.longitude;
+    firstLongitude += coordinateDifference;
+    NSLog(@"new latitude: %f, longitude: %f", firstLatitude, firstLongitude);
+
+    CLLocationDegrees topLat = firstLatitude;
+    CLLocationDegrees topLon = firstLongitude;
+    CLLocationCoordinate2D northEastCoordinate = CLLocationCoordinate2DMake(topLat, topLon);
+    
+    CGFloat secondLatitude = coordinate.latitude;
+    secondLatitude -= coordinateDifference;
+    
+    CGFloat secondLongitude = coordinate.longitude;
+    secondLongitude -= coordinateDifference;
+    NSLog(@"new latitude: %f, longitude: %f", secondLatitude, secondLongitude);
+    
+    CLLocationDegrees botLat = secondLatitude;
+    CLLocationDegrees botLon = secondLongitude;
+    CLLocationCoordinate2D southWestCoordinate = CLLocationCoordinate2DMake(botLat, botLon);
+    
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] init];
+    bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:northEastCoordinate coordinate:southWestCoordinate];
+    
+//    CLLocationCoordinate2D northWestCoordinate = CLLocationCoordinate2DMake(topLat, botLon);
+//    CLLocationCoordinate2D southEastCoordinate = CLLocationCoordinate2DMake(botLat, topLon);
+//    
+//    GMSVisibleRegion region = (southWestCoordinate, southEastCoordinate, northWestCoordinate, northEastCoordinate);
+    
+//    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:<#(GMSVisibleRegion)#>];
+    
+//    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 0, 0);
+//    GMSCameraPosition *camera = [mapView_ cameraForBounds:bounds insets:insets];
+    
     // Create a GMSCameraPosition that tells the map to display
     // this determines the zoom of the camera as soon as the map opens; the higher the number, the more detail we see on the map
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:18];
@@ -109,7 +146,6 @@
     //this controls the map size on the view
     CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - (self.view.bounds.size.height * 0.08));
     mapView_ = [GMSMapView mapWithFrame:rect camera:camera];
-    NSLog(@"bounds of view: %@", NSStringFromCGRect(rect));
     
     //this sets the mapView_ at the very background of the view
     [self.view insertSubview:mapView_ atIndex:0];
@@ -126,7 +162,7 @@
 // Called if getting user location fails
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    NSLog(@"didFailWithError: %@", error);
+//    NSLog(@"didFailWithError: %@", error);
     
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
     
@@ -134,6 +170,7 @@
     [errorAlerts addAction:okAction];
     
     [self presentViewController:errorAlerts animated:YES completion:nil];
+    [manager stopUpdatingLocation];
 }
 
 #pragma mark - Action Methods

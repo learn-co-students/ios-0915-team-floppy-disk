@@ -10,6 +10,7 @@
 #import "HRPParseNetworkService.h"
 #import "HRPUser.h"
 #import "PFFile.h"
+#import <QuartzCore/QuartzCore.h> // Needed to round UIImage
 
 @interface HRPProfileVC ()
 
@@ -28,9 +29,6 @@
     [super viewDidLoad];
     [self setupUserProfile];
     
-    self.userAvatar = [[UIImageView alloc] init];
-    [self.view addSubview:self.userAvatar];
-    
     self.parseService = [HRPParseNetworkService sharedService];
     self.currentUser = [PFUser currentUser];
 }
@@ -47,13 +45,19 @@
 
 - (void)setupUserProfile
 {
+    self.userAvatar.layer.cornerRadius = 50;
+    self.userAvatar.clipsToBounds = YES;
+    
     PFUser *currentUser = [PFUser currentUser];
     
     self.username.text = currentUser.username;
     
     self.navigationItem.title = currentUser.username;
-    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName: [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0f]}];
-    
+    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
+                                                                 [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
+                                                       NSForegroundColorAttributeName:[UIColor whiteColor]
+                                                                  }];
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage imageNamed:@"backround_cropped"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] forBarMetrics:UIBarMetricsDefault];
 }
 - (void)retrieveUserAvatar
 {
@@ -74,15 +78,6 @@
                     self.userAvatar.image = [UIImage imageWithData:data];
                     UIImage *image = [UIImage imageWithData:data];
                     NSLog(@"IMAGE: %@", image);
-                
-                    CGRect rect = CGRectMake(0,0,100,100); // Would prefer to do without CGRect
-                    UIImage *userAvatar = [self imageWithImage:image scaledToSize:rect.size];
-                    self.userAvatar = [[UIImageView alloc] initWithImage:userAvatar];
-                    
-                    CGRect viewBounds = [[self view] frame];
-                    [self.userAvatar.layer setPosition:CGPointMake(viewBounds.size.width / 4.85, viewBounds.size.height / 4.6 - viewBounds.origin.y)];
-                    
-                    [self.view addSubview:self.userAvatar];
                 }
             }];
         }

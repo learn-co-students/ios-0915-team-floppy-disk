@@ -168,6 +168,8 @@
         self.defaultMarkerImage.hidden = YES;
     }
     [self changeButtonBackground];
+    
+    
 }
 
 - (void)changeButtonBackground
@@ -198,6 +200,14 @@
         
         //[self performSegueWithIdentifier:@"showTrackViews" sender:self];
         HRPPost *newPost = [[HRPPost alloc] initWithLatitude:latitude Longitude:longitude];
+        
+        // perform segue with identifier OR  manually (alloc init new VC, give it post, push it)
+        UIStoryboard *trackViewsStoryboard = [UIStoryboard storyboardWithName:@"TrackViews" bundle:nil];
+        HRPTrackSearchViewController *trackSearchVC = [trackViewsStoryboard instantiateViewControllerWithIdentifier:@"trackSearchVC"];
+        trackSearchVC.post = newPost;
+        
+        //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:trackSearchVC];
+        [self presentViewController:trackSearchVC animated:YES completion:nil];
     }
     else
     {
@@ -206,5 +216,11 @@
     }
     
 }
+
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    [super prepareForSegue:segue sender:sender];
+//    HRPTrackSearchViewController *destinVC = segue.destinationViewController;
+//    
+//}
 
 @end

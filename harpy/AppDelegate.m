@@ -34,7 +34,7 @@
     
     // Spotify Keys
     NSString *spotifyClientId = [plistDictionary objectForKey:@"spotifyClientId"];
-    self.spotifyClientId = @"804eb482ff2349f2b902a7774bfe58ce";
+    self.spotifyClientId = spotifyClientId;
     NSString *spotifyClientSecret = [plistDictionary objectForKey:@"spotifyClientSecret"];
 
     // Parse Keys

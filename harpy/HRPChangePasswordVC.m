@@ -8,7 +8,7 @@
 
 #import "HRPChangePasswordVC.h"
 
-@interface HRPChangePasswordVC ()
+@interface HRPChangePasswordVC () <UINavigationControllerDelegate>
 
 @end
 
@@ -33,6 +33,10 @@
                                                              NSForegroundColorAttributeName:[UIColor whiteColor]
                                                              }];
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage imageNamed:@"backround_cropped"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] forBarMetrics:UIBarMetricsDefault];
+}
+
+- (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

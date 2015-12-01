@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xEc-KJ-4VB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xEc-KJ-4VB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqz-ns-WvY" userLabel="Top View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqz-ns-WvY" userLabel="Top View">
                                 <rect key="frame" x="20" y="64" width="374" height="184"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="bWa-9r-jn4">
@@ -57,25 +57,25 @@
                                                 <rect key="frame" x="166" y="0.0" width="208" height="184"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kol-El-JLY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="32"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="31"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LTg-MC-nDo">
                                                                 <rect key="frame" x="0.0" y="0.0" width="208" height="16"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKN-52-CPh">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="69" height="16"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="16"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDy-kN-Rnf">
-                                                                        <rect key="frame" x="69" y="0.0" width="70" height="16"/>
+                                                                        <rect key="frame" x="70" y="0.0" width="69" height="16"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBs-co-kAi">
-                                                                        <rect key="frame" x="139" y="0.0" width="69" height="16"/>
+                                                                        <rect key="frame" x="139" y="0.0" width="70" height="16"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -86,21 +86,21 @@
                                                                 <rect key="frame" x="0.0" y="16" width="208" height="16"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAs-LE-qWL">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="69" height="16"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="16"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Juv-w1-gIc">
-                                                                        <rect key="frame" x="69" y="0.0" width="70" height="16"/>
+                                                                        <rect key="frame" x="70" y="0.0" width="69" height="16"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="fans" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUo-a8-9tf">
-                                                                        <rect key="frame" x="139" y="0.0" width="69" height="16"/>
+                                                                        <rect key="frame" x="139" y="0.0" width="70" height="16"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -159,11 +159,11 @@
                                     <constraint firstItem="bWa-9r-jn4" firstAttribute="centerY" secondItem="qqz-ns-WvY" secondAttribute="centerY" constant="10" id="V71-jD-cyo"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2b-0c-iv9" userLabel="Bottom View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2b-0c-iv9" userLabel="Bottom View">
                                 <rect key="frame" x="20" y="248" width="374" height="444"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="724-2i-lEg">
-                                        <rect key="frame" x="0.0" y="10" width="374" height="488"/>
+                                        <rect key="frame" x="0.0" y="10" width="374" height="444"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-h3-Haf">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
@@ -193,12 +193,12 @@
                                                 </cells>
                                             </collectionView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
-                                                <rect key="frame" x="0.0" y="128" width="374" height="310"/>
+                                                <rect key="frame" x="0.0" y="128" width="374" height="266"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-Uc-7cS" userLabel="Music Player View">
-                                                <rect key="frame" x="0.0" y="438" width="374" height="50"/>
+                                                <rect key="frame" x="0.0" y="394" width="374" height="50"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.50196081399917603" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -243,7 +243,7 @@
                         <barButtonItem key="rightBarButtonItem" image="settings" id="3Ig-pX-UYg">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="17A-f3-K6D" kind="show" id="TR3-wb-JzX"/>
+                                <segue destination="17A-f3-K6D" kind="presentation" id="TR3-wb-JzX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -258,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5T-88-61l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1875" y="337"/>
+            <point key="canvasLocation" x="1589" y="337"/>
         </scene>
         <!--SETTINGS-->
         <scene sceneID="il2-Rz-x7w">
@@ -357,7 +357,7 @@
                         <barButtonItem key="leftBarButtonItem" image="back-Small" id="wFO-xA-69u">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="C0a-CR-bU2" kind="show" id="OR8-6g-Zdv"/>
+                                <action selector="backButtonTapped:" destination="Ozf-ZG-XMv" id="ld6-lF-PRn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -369,7 +369,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCk-be-eKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2900" y="337"/>
+            <point key="canvasLocation" x="2884" y="75"/>
         </scene>
         <!--EDIT PROFILE-->
         <scene sceneID="IFd-5c-FvZ">
@@ -389,7 +389,7 @@
                         <barButtonItem key="leftBarButtonItem" image="back-Small" id="1zg-um-935">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Ozf-ZG-XMv" kind="show" id="HRn-qV-cUE"/>
+                                <action selector="backButtonTapped:" destination="A5p-nX-Ojg" id="7hy-kx-nLj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -440,7 +440,7 @@
                         <barButtonItem key="leftBarButtonItem" image="back-Small" id="hYM-1i-qWa">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Ozf-ZG-XMv" kind="show" id="gjQ-1f-1OJ"/>
+                                <action selector="backButtonTapped:" destination="7Cp-GL-eIi" id="Xcc-E9-BTo"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="AKO-xk-zli"/>
@@ -449,7 +449,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBH-x2-132" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3458" y="801"/>
+            <point key="canvasLocation" x="3214" y="1077"/>
+        </scene>
+        <!--How should we segue to this?-->
+        <scene sceneID="UCK-cd-7dQ">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="How should we segue to this?" id="kc9-pK-wpc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f89-k2-nGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2670.5" y="817"/>
         </scene>
         <!--Login-->
         <scene sceneID="HPG-Pe-atf">
@@ -457,7 +465,7 @@
                 <viewControllerPlaceholder storyboardName="Login" id="L9j-td-ouA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXT-pd-bE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2900.5" y="916"/>
+            <point key="canvasLocation" x="2662.5" y="770"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DTO-TB-Ae0">
@@ -477,7 +485,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyE-BP-CfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1351" y="337"/>
+            <point key="canvasLocation" x="1059" y="337"/>
+        </scene>
+        <!--How should we segue to this?-->
+        <scene sceneID="k3n-fv-q8n">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="How should we segue to this?" id="1rk-BY-L9U" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EsL-Jm-bFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1877" y="-368"/>
         </scene>
         <!--Map-->
         <scene sceneID="ff1-rb-n0b">
@@ -485,7 +501,7 @@
                 <viewControllerPlaceholder storyboardName="Map" id="PzG-Dy-ryI" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4O-rh-qdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1319" y="-197"/>
+            <point key="canvasLocation" x="1941" y="-291"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2PN-EX-bcR">
@@ -505,7 +521,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOn-5w-MQ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2398" y="337"/>
+            <point key="canvasLocation" x="2220" y="337"/>
         </scene>
     </scenes>
     <resources>
@@ -513,8 +529,4 @@
         <image name="left_Arrow" width="22" height="16"/>
         <image name="settings" width="29" height="29"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="gjQ-1f-1OJ"/>
-        <segue reference="OR8-6g-Zdv"/>
-    </inferredMetricsTieBreakers>
 </document>

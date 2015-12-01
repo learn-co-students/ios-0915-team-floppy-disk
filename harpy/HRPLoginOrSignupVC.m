@@ -548,7 +548,7 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Is this correct?" message:message preferredStyle:(UIAlertControllerStyleActionSheet)];
     UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         NSLog(@"EMAIL: is confirmed.");
-        [self createParseUser]; // MOVE TO AFTER SPOTIFY ACCOUNT
+        [self alertControllerSpotifyVerify];
     }];
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
         
@@ -575,11 +575,25 @@
         self.spotifyPremium = YES;
         [self spotifyLoginPopup];
         
+        SPTAuth *auth = [SPTAuth defaultInstance];
+        if (auth.session && [auth.session isValid])
+        {
+            [self createParseUser];
+            [self showCreateProfileView];
+        }
     }];
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         self.spotifyPremium = NO;
         [self spotifySignupPopup];
         
+        [self createParseUser];
+        
+        SPTAuth *auth = [SPTAuth defaultInstance];
+        if (auth.session && [auth.session isValid])
+        {
+            
+            [self showCreateProfileView];
+        }
     }];
     
     [alert addAction:yes];

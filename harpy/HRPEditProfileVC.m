@@ -8,7 +8,7 @@
 
 #import "HRPEditProfileVC.h"
 
-@interface HRPEditProfileVC ()
+@interface HRPEditProfileVC () <UINavigationControllerDelegate>
 
 @end
 
@@ -35,6 +35,9 @@
                                                             }];
 }
 
+- (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 @end

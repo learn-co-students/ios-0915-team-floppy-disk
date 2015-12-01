@@ -7,8 +7,11 @@
 //
 
 #import "HRPPostPreviewViewController.h"
+#import <Parse/Parse.h>
+#import "HRPPost.h"
 
-@interface HRPPostPreviewViewController () <UITextViewDelegate>
+
+@interface HRPPostPreviewViewController () <UITextViewDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *albumArtImageView;
 @property (strong, nonatomic) IBOutlet UILabel *songTitleLabel;
@@ -16,7 +19,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *albumNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) IBOutlet UITextView *postCaptionTextView;
-@property (assign, nonatomic) BOOL textViewEdited;
 
 @end
 
@@ -34,7 +36,8 @@
     self.songTitleLabel.text = self.track.songTitle;
     self.artistNameLabel.text = self.track.artistName;
     self.albumNameLabel.text = self.track.albumName;
-    self.textViewEdited = NO;
+    
+    
 }
 
 
@@ -50,18 +53,19 @@
     //add location to be pinned on map
 }
 
+//needs to be adjusted in order to take either album art or a picture
 - (IBAction)postTrackButtonTapped:(UIButton *)sender {
-    //post track
+    
+    [self.post createPostForTrack:self.track withCaption:self.postCaptionTextView.text WithCompletion:^(BOOL success) {
+        if (success) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            }];
+        }
+    }];
+    
 }
 
--(BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-    
-    if (self.textViewEdited == NO) {
-        self.postCaptionTextView.text = @"";
-        self.textViewEdited = YES;
-    }
-    return self.textViewEdited;
-}
 
 
 @end

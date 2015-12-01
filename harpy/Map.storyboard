@@ -71,6 +71,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <segue destination="lQp-3U-Hrk" kind="presentation" identifier="showTrackViews" id="aRs-4z-AN2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUG-Vo-6zZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,13 +145,21 @@
             </objects>
             <point key="canvasLocation" x="1533" y="231"/>
         </scene>
+        <!--TrackViews-->
+        <scene sceneID="T7g-mG-WVd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrackViews" id="lQp-3U-Hrk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hWz-0a-Acr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="850.5" y="767"/>
+        </scene>
         <!--UserProfile-->
         <scene sceneID="6Fy-AO-ank">
             <objects>
                 <viewControllerPlaceholder storyboardName="UserProfile" id="Zn9-Nw-Eau" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0g-u8-bMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1039" y="699"/>
+            <point key="canvasLocation" x="1261" y="779"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hjw-uP-gFi">

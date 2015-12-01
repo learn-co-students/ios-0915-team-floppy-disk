@@ -9,9 +9,11 @@
 #import "HRPSettingsVC.h"
 #import "HRPParseNetworkService.h"
 
-@interface HRPSettingsVC ()
+@interface HRPSettingsVC () <UINavigationControllerDelegate>
 
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
+
+
 
 - (IBAction)logout:(id)sender;
 
@@ -55,5 +57,11 @@
         [self performSegueWithIdentifier:@"sendToLogins" sender:sender];
     }
 }
+
+- (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

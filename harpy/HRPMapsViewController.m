@@ -115,15 +115,15 @@
     [self.view insertSubview:mapView_ atIndex:0];
     
     //this is a moveable green marker that shows up when the map loads
-    self.defaultMarker = [[GMSMarker alloc] init];
-    self.defaultMarker.icon = [GMSMarker markerImageWithColor:[UIColor greenColor]];
-    self.defaultMarker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
-    //    self.defaultMarkerImage.hidden = YES; //****************
-    self.defaultMarker.map = mapView_;
-    //    [self.defaultMarker setDraggable:true];
-    
-    // Use some kind of data to identify each marker, marker does not have 'tag' but 'userData' that is an 'id' type
-    //    [self.defaultMarker setUserData:<#(id)#>];
+//    self.defaultMarker = [[GMSMarker alloc] init];
+//    self.defaultMarker.icon = [GMSMarker markerImageWithColor:[UIColor greenColor]];
+//    self.defaultMarker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+//    //    self.defaultMarkerImage.hidden = YES; //****************
+//    self.defaultMarker.map = mapView_;
+//    //    [self.defaultMarker setDraggable:true];
+//    
+//    // Use some kind of data to identify each marker, marker does not have 'tag' but 'userData' that is an 'id' type
+//    //    [self.defaultMarker setUserData:<#(id)#>];
     
     mapView_.delegate = self;
     mapView_.indoorEnabled = NO;

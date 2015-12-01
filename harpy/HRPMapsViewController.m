@@ -10,6 +10,8 @@
 
 #import "HRPMapsViewController.h"
 #import "HRPLocationManager.h"
+#import "HRPTrackSearchViewController.h"
+#import "HRPPost.h"
 #import <MapKit/MapKit.h>
 @import GoogleMaps;
 
@@ -175,23 +177,6 @@
         [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
         self.readyToPin = NO;
         
-        [self presentConfirmPinAlertController];
-    }
-    else
-    {
-        [self.postSongButton setBackgroundColor:[UIColor orangeColor]];
-        self.readyToPin = YES;
-    }
-    
-}
-
-- (void)presentConfirmPinAlertController
-{
-    NSLog(@"alert controller method hit");
-    UIAlertController *confirmPinAlert = [UIAlertController alertControllerWithTitle:@"Confirm Pin" message:@"Post song here?" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
         CGPoint point = mapView_.center;
         CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
         
@@ -202,20 +187,24 @@
         marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
         marker.map = mapView_;
         
+        CGFloat latitude = marker.position.latitude;
+        CGFloat longitude = marker.position.longitude;
+        
         NSLog(@"marker: %@", marker);
         NSLog(@"marker.icon = %@", marker.icon);
         NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
         NSLog(@"marker.map = %@", marker.map);
         //WHY IS THIS NOT POSTING???
         
-//        [self performSegueWithIdentifier:@"sendToSignup" sender:self];
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+        //[self performSegueWithIdentifier:@"showTrackViews" sender:self];
+        HRPPost *newPost = [[HRPPost alloc] initWithLatitude:latitude Longitude:longitude];
+    }
+    else
+    {
+        [self.postSongButton setBackgroundColor:[UIColor orangeColor]];
+        self.readyToPin = YES;
+    }
     
-    [confirmPinAlert addAction:confirmAction];
-    [confirmPinAlert addAction:cancelAction];
-    
-    [self presentViewController:confirmPinAlert animated:YES completion:nil];
 }
 
 @end

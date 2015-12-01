@@ -18,7 +18,6 @@
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
 @property (weak, nonatomic) IBOutlet UIButton *postSongButton;
-//@property (nonatomic) BOOL buttonShouldDisappear;
 @property (nonatomic) BOOL readyToPin;
 @property (strong, nonatomic) GMSMarker *defaultMarker;
 
@@ -50,19 +49,6 @@
     [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
 }
-
-//-(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position
-//{
-//    self.postSongButton.hidden = NO;
-//}
-//
-//- (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture
-//{
-//    if (self.buttonShouldDisappear)
-//    {
-//        self.postSongButton.hidden = YES;
-//    }
-//}
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -174,8 +160,6 @@
 - (IBAction)postSongButtonTapped:(id)sender
 {
     NSLog(@"method entered");
-//    self.buttonShouldDisappear = YES;
-    
     NSLog(@"button text: %@", self.postSongButton.titleLabel.text);
     
     if (self.defaultMarkerImage.hidden)
@@ -196,7 +180,6 @@
     if (self.readyToPin)
     {
         [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
-//        self.buttonShouldDisappear = NO;
         self.readyToPin = NO;
         
         [self presentConfirmPinAlertController];
@@ -207,12 +190,6 @@
         self.readyToPin = YES;
     }
 }
-
-//this makes the postSongButton disappear when finger is moving on screen
-//- (void)handlePans
-//{
-//    self.postSongButton.hidden = YES;
-//}
 
 - (void)presentConfirmPinAlertController
 {
@@ -241,24 +218,5 @@
     
     [self presentViewController:confirmPinAlert animated:YES completion:nil];
 }
-
-#pragma mark - Modal View Controller
-
-//// the methods below are for use with the modal view controller (+) button on top of the maps view.  it's all connected to the delegate and protocol of the HRPAddPostViewController class
-//- (void)addPostViewController:(id)viewController didFinishWithLocation:(CLLocation *)location
-//{
-//    CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
-//
-//    GMSMarker *marker = [[GMSMarker alloc] init];
-//    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-//    marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);      *******************
-//    marker.map = mapView_;
-//
-//    [viewController dismissViewControllerAnimated:YES completion:nil];
-//}
-//- (void)addPostViewControllerDidCancel:(HRPAddPostViewController *)viewController
-//{
-//    [viewController dismissViewControllerAnimated:YES completion:nil];
-//}
 
 @end

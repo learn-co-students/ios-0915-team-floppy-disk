@@ -10,11 +10,10 @@
 
 #import "HRPMapsViewController.h"
 #import "HRPLocationManager.h"
-//#import "HRPAddPostViewController.h" ***********
 #import <MapKit/MapKit.h>
 @import GoogleMaps;
 
-@interface HRPMapsViewController () <GMSMapViewDelegate/*, HRPAddPostViewControllerDelegate*/>
+@interface HRPMapsViewController () <GMSMapViewDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
@@ -34,8 +33,8 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad]; //*************
-    [self setupNavBar]; //*************
+    [super viewDidLoad];
+    [self setupNavBar];
     
     /*
      self.locationManager = [CLLocationManager sharedManager];
@@ -77,7 +76,7 @@
 }
 
 #pragma mark - Setup methods
-//*************  this entire section/method has been added
+
 -(void)setupNavBar
 {
     [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
@@ -142,7 +141,7 @@
     self.defaultMarker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
     //    self.defaultMarkerImage.hidden = YES; //****************
     self.defaultMarker.map = mapView_;
-    [self.defaultMarker setDraggable:true];
+//    [self.defaultMarker setDraggable:true];
     
     // Use some kind of data to identify each marker, marker does not have 'tag' but 'userData' that is an 'id' type
     //    [self.defaultMarker setUserData:<#(id)#>];
@@ -221,13 +220,19 @@
     UIAlertController *confirmPinAlert = [UIAlertController alertControllerWithTitle:@"Confirm Pin" message:@"Post song here?" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
         CGPoint point = mapView_.center;
         CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
-        
+        NSLog(@"inside the block");
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
         marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
         marker.map = mapView_;
+        NSLog(@"marker: %@", marker);
+        NSLog(@"marker.icon = %@", marker.icon);
+        NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
+        NSLog(@"marker.map = %@", marker.map);
+        //WHY IS THIS NOT POSTING???
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
@@ -236,14 +241,6 @@
     
     [self presentViewController:confirmPinAlert animated:YES completion:nil];
 }
-
-#pragma mark - Navigation
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    HRPAddPostViewController *addPostDVC = segue.destinationViewController;           ***********
-//    addPostDVC.delegate = self;
-//}
 
 #pragma mark - Modal View Controller
 

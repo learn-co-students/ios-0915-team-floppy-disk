@@ -17,6 +17,7 @@
 		3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25281C0CA4F6004C6790 /* HRPPost.m */; settings = {ASSET_TAGS = (); }; };
 		3BC25DEB1C0E0F3D00A831CE /* postTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */; settings = {ASSET_TAGS = (); }; };
 		3BC25DEF1C0E0FB300A831CE /* postCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEE1C0E0FB300A831CE /* postCell.xib */; settings = {ASSET_TAGS = (); }; };
+		3BC25DF21C0E1DCA00A831CE /* HRPPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC25DF11C0E1DCA00A831CE /* HRPPostTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
@@ -84,6 +85,8 @@
 		3BAC25281C0CA4F6004C6790 /* HRPPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPost.m; sourceTree = "<group>"; };
 		3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = postTable.storyboard; sourceTree = "<group>"; };
 		3BC25DEE1C0E0FB300A831CE /* postCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = postCell.xib; sourceTree = "<group>"; };
+		3BC25DF01C0E1DCA00A831CE /* HRPPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPPostTableViewCell.h; sourceTree = "<group>"; };
+		3BC25DF11C0E1DCA00A831CE /* HRPPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPostTableViewCell.m; sourceTree = "<group>"; };
 		3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 				3BAC25211C04B381004C6790 /* HRPTrackSearchViewController.m */,
 				3BAC25231C050D41004C6790 /* HRPPostPreviewViewController.h */,
 				3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */,
+				3BC25DF01C0E1DCA00A831CE /* HRPPostTableViewCell.h */,
+				3BC25DF11C0E1DCA00A831CE /* HRPPostTableViewCell.m */,
 			);
 			name = Spotify;
 			sourceTree = "<group>";
@@ -500,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BC25DF21C0E1DCA00A831CE /* HRPPostTableViewCell.m in Sources */,
 				E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */,
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
 				E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */,

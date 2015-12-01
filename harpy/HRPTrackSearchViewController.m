@@ -6,18 +6,25 @@
 //  Copyright © 2015 teamFloppyDisk. All rights reserved.
 //
 
+#import <Spotify/Spotify.h>
 #import "HRPTrackSearchViewController.h"
 #import "HRPTrack.h"
 #import "HRPTrackCreator.h"
 #import "HRPPostPreviewViewController.h"
 
-@interface HRPTrackSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+@interface HRPTrackSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SPTAudioStreamingDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *songSearchBar;
 @property (strong, nonatomic) IBOutlet UITableView *songTableView;
 @property (strong, nonatomic) NSMutableArray *filteredSongArray;
-@property (strong, nonatomic) NSArray *originalArray;
-//may not need original array
+
+@property (strong, nonatomic) IBOutlet UIImageView *playerCoverView;
+@property (strong, nonatomic) IBOutlet UILabel *playStatusLabel;
+@property (strong, nonatomic) IBOutlet UILabel *playerSongLabel;
+@property (strong, nonatomic) IBOutlet UILabel *playerArtistLabel;
+
+
+@property (strong, nonatomic) SPTAudioStreamingController *player;
 
 @end
 
@@ -31,7 +38,7 @@
     self.songTableView.dataSource = self;
 
     [self initializeEmptySongArray];
-
+    self.playStatusLabel.text = @"";
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -81,6 +88,9 @@
         coverArt.image = track.spotifyLogo;
     }
     
+    UIButton *playTrackButton = (UIButton *)[cell viewWithTag:5];
+    [playTrackButton addTarget:self action:@selector(cellPlayButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
@@ -124,5 +134,54 @@
     destinVC.post = self.post;
 }
 
+- (IBAction)cellPlayButtonTapped:(UIButton *)sender {
+    
+    NSIndexPath *indexPath = [self.songTableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+    HRPTrack *trackAtCell = self.filteredSongArray[indexPath.row];
+    self.playerSongLabel.text = trackAtCell.songTitle;
+    self.playerArtistLabel.text = trackAtCell.artistName;
+    self.playerCoverView.image = [UIImage imageWithData:trackAtCell.albumCoverArt];
+    self.playStatusLabel.text = @"Playing";
+    
+    [self handleNewSession];
+    NSString *urlString = [NSString stringWithFormat:trackAtCell.spotifyURI];
+    NSURL *url = [NSURL URLWithString:urlString];
+    //NSURL *url = trackAtCell.spotifyURI;
+    
+    [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
+        NSLog(@"%@", error);
+        
+    }];
+}
+
+
+- (IBAction)playerViewTapped:(UITapGestureRecognizer *)sender {
+    
+    [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+    
+    if ([self.playStatusLabel.text isEqualToString:@"Playing"]) {
+        self.playStatusLabel.text = @"Paused";
+    } else if ([self.playStatusLabel.text isEqualToString:@"Paused"]) {
+        self.playStatusLabel.text = @"Playing";
+    }
+}
+
+-(void)handleNewSession {
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    
+    if (self.player == nil) {
+        self.player = [[SPTAudioStreamingController alloc] initWithClientId:auth.clientID];
+        //is this an audioStreamingDelegate issue? if so, must moce to AppDelegate
+        self.player.playbackDelegate = self;
+        self.player.diskCache = [[SPTDiskCache alloc] initWithCapacity:1024 * 1024 * 64];
+    }
+    
+    [self.player loginWithSession:auth.session callback:^(NSError *error) {
+        
+        NSLog(@"%@", error);
+    }];
+    
+    
+}
 
 @end

@@ -36,7 +36,8 @@
     self.songTitleLabel.text = self.track.songTitle;
     self.artistNameLabel.text = self.track.artistName;
     self.albumNameLabel.text = self.track.albumName;
-    
+    NSString *latLong = [NSString stringWithFormat:@"%f, %f", self.post.latitude, self.post.longitude];
+    self.locationLabel.text = latLong;
     
 }
 

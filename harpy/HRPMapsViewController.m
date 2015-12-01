@@ -208,7 +208,7 @@
         NSLog(@"marker.map = %@", marker.map);
         //WHY IS THIS NOT POSTING???
         
-        [self performSegueWithIdentifier:@"sendToSignup" sender:self];
+//        [self performSegueWithIdentifier:@"sendToSignup" sender:self];
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     

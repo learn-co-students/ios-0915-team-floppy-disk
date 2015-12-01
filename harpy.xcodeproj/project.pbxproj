@@ -15,6 +15,8 @@
 		3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25211C04B381004C6790 /* HRPTrackSearchViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC25251C050D41004C6790 /* HRPPostPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25281C0CA4F6004C6790 /* HRPPost.m */; settings = {ASSET_TAGS = (); }; };
+		3BC25DEB1C0E0F3D00A831CE /* postTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3BC25DEF1C0E0FB300A831CE /* postCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEE1C0E0FB300A831CE /* postCell.xib */; settings = {ASSET_TAGS = (); }; };
 		3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
@@ -80,6 +82,8 @@
 		3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPostPreviewViewController.m; sourceTree = "<group>"; };
 		3BAC25271C0CA4F6004C6790 /* HRPPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPPost.h; sourceTree = "<group>"; };
 		3BAC25281C0CA4F6004C6790 /* HRPPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPost.m; sourceTree = "<group>"; };
+		3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = postTable.storyboard; sourceTree = "<group>"; };
+		3BC25DEE1C0E0FB300A831CE /* postCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = postCell.xib; sourceTree = "<group>"; };
 		3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 			isa = PBXGroup;
 			children = (
 				E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */,
+				3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */,
+				3BC25DEE1C0E0FB300A831CE /* postCell.xib */,
 				3B0A73201BFCD58E0010A257 /* HRPTrackCreator.h */,
 				3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */,
 				3B0A73231BFD24420010A257 /* HRPTrack.h */,
@@ -416,9 +422,11 @@
 				E9E211141BFD3E2500739143 /* Keys.plist in Resources */,
 				E9335C6A1BFA7EBC002DD9C6 /* LaunchScreen.storyboard in Resources */,
 				E97614901C0A664C003B3C5B /* SF-UI-Display-Medium.otf in Resources */,
+				3BC25DEF1C0E0FB300A831CE /* postCell.xib in Resources */,
 				E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */,
 				E9335C671BFA7EBC002DD9C6 /* Assets.xcassets in Resources */,
 				E93801291BFCEADF004CC8A2 /* Login.storyboard in Resources */,
+				3BC25DEB1C0E0F3D00A831CE /* postTable.storyboard in Resources */,
 				E976148F1C0A664A003B3C5B /* SF-UI-Display-Heavy.otf in Resources */,
 				E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */,
 				E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */,

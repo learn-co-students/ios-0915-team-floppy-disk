@@ -42,6 +42,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="postSongButtonTapped:" destination="vQb-cv-L16" eventType="touchUpInside" id="nGq-em-hSn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>

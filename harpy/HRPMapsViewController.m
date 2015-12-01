@@ -10,15 +10,16 @@
 
 #import "HRPMapsViewController.h"
 #import "HRPLocationManager.h"
+//#import "HRPAddPostViewController.h" ***********
 #import <MapKit/MapKit.h>
 @import GoogleMaps;
 
-@interface HRPMapsViewController () <GMSMapViewDelegate>
+@interface HRPMapsViewController () <GMSMapViewDelegate/*, HRPAddPostViewControllerDelegate*/>
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
 @property (weak, nonatomic) IBOutlet UIButton *postSongButton;
-//@property (nonatomic) BOOL buttonShouldDisappear;
+@property (nonatomic) BOOL buttonShouldDisappear;
 @property (strong, nonatomic) GMSMarker *defaultMarker;
 
 @end
@@ -32,8 +33,16 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    [self setupNavBar];
+    [super viewDidLoad]; //*************
+    [self setupNavBar]; //*************
+    
+    /*
+     self.locationManager = [CLLocationManager sharedManager];
+     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+     self.locationManager.delegate = self;                          ***************   this got moved to viewDidAppear
+     
+     [self locationManagerPermissions];
+     */
     
     self.defaultMarkerImage.hidden = YES;
     
@@ -41,32 +50,32 @@
     [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
 }
 
-//-(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position
-//{
-//    self.postSongButton.hidden = NO;
-//}
-//
-//- (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture
-//{
-//    if (self.buttonShouldDisappear)
-//    {
-//        self.postSongButton.hidden = YES;
-//    }
-//}
+-(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position
+{
+    self.postSongButton.hidden = NO;
+}
+
+- (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture
+{
+    if (self.buttonShouldDisappear)
+    {
+        self.postSongButton.hidden = YES;
+    }
+}
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.locationManager = [CLLocationManager sharedManager];
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.delegate = self;
+    self.locationManager = [CLLocationManager sharedManager];               //************
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;             //moved from viewDidLoad
+    self.locationManager.delegate = self;                                                   //************
     [self locationManagerPermissions];
-    [self.locationManager performSelector:@selector(startUpdatingLocation) withObject:nil afterDelay:1.0];
+    [self.locationManager performSelector:@selector(startUpdatingLocation) withObject:nil afterDelay:1.0]; //*********
     [self.locationManager startUpdatingLocation];
 }
 
 #pragma mark - Setup methods
-
+//*************  this entire section/method has been added
 -(void)setupNavBar
 {
     [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
@@ -129,7 +138,7 @@
     self.defaultMarker = [[GMSMarker alloc] init];
     self.defaultMarker.icon = [GMSMarker markerImageWithColor:[UIColor greenColor]];
     self.defaultMarker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
-    self.defaultMarkerImage.hidden = YES;
+//    self.defaultMarkerImage.hidden = YES; //****************
     self.defaultMarker.map = mapView_;
     [self.defaultMarker setDraggable:true];
     
@@ -165,7 +174,7 @@
 {
     NSString *enterPostSongOverlay = @"Post a Song";
     NSString *pinSongHere = @"Pin Track";
-//    self.buttonShouldDisappear = YES;
+    self.buttonShouldDisappear = YES;
     
     if (self.defaultMarkerImage.hidden)
     {
@@ -182,7 +191,7 @@
     }
     else if ([self.postSongButton.titleLabel.text isEqualToString:pinSongHere])
     {
-//        self.buttonShouldDisappear = NO;
+        self.buttonShouldDisappear = NO;
         
         [self.postSongButton setTitle:enterPostSongOverlay forState:UIControlStateNormal];
         [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
@@ -192,10 +201,10 @@
 }
 
 //this makes the postSongButton disappear when finger is moving on screen
-//- (void)handlePans
-//{
-//    self.postSongButton.hidden = YES;
-//}
+- (void)handlePans
+{
+    self.postSongButton.hidden = YES;
+}
 
 - (void)presentConfirmPinAlertController
 {
@@ -222,7 +231,7 @@
 
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 //{
-//    HRPAddPostViewController *addPostDVC = segue.destinationViewController;
+//    HRPAddPostViewController *addPostDVC = segue.destinationViewController;           ***********
 //    addPostDVC.delegate = self;
 //}
 
@@ -235,7 +244,7 @@
 //    
 //    GMSMarker *marker = [[GMSMarker alloc] init];
 //    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-//    marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+//    marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);      *******************
 //    marker.map = mapView_;
 //    
 //    [viewController dismissViewControllerAnimated:YES completion:nil];

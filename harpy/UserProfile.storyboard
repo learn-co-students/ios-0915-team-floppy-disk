@@ -37,6 +37,11 @@
                                                             <constraint firstAttribute="width" secondItem="iBy-4X-gNf" secondAttribute="height" multiplier="1:1" id="VLv-Vb-uA6"/>
                                                             <constraint firstAttribute="height" constant="100" id="kFo-91-oMG"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="60"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMC-o8-0dn">
                                                         <rect key="frame" x="0.0" y="166" width="166" height="18"/>
@@ -146,7 +151,7 @@
                                     </stackView>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="bWa-9r-jn4" firstAttribute="height" secondItem="qqz-ns-WvY" secondAttribute="height" id="Bgg-XX-TCY"/>
                                     <constraint firstItem="bWa-9r-jn4" firstAttribute="centerX" secondItem="qqz-ns-WvY" secondAttribute="centerX" id="NEd-Lh-elj"/>
@@ -205,7 +210,7 @@
                                     </stackView>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="724-2i-lEg" firstAttribute="width" secondItem="z2b-0c-iv9" secondAttribute="width" id="5se-5s-nhR"/>
                                     <constraint firstItem="724-2i-lEg" firstAttribute="centerY" secondItem="z2b-0c-iv9" secondAttribute="centerY" constant="10" id="8bZ-r6-Eq8"/>
@@ -215,7 +220,7 @@
                             </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.98123324396782841" green="0.98123324396782841" blue="0.98123324396782841" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="qqz-ns-WvY" secondAttribute="trailing" id="8sd-b2-7MG"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="top" secondItem="Pb1-mO-Aqd" secondAttribute="bottom" id="M4B-Yd-D4U"/>
@@ -229,19 +234,20 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="EIy-1h-741">
-                        <barButtonItem key="leftBarButtonItem" image="back-Small" id="hh6-mo-JVj">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="leftBarButtonItem" image="left_Arrow" id="hh6-mo-JVj">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="PzG-Dy-ryI" kind="show" id="NTj-lU-mJE"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings" id="3Ig-pX-UYg">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="17A-f3-K6D" kind="show" id="TR3-wb-JzX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -504,6 +510,7 @@
     </scenes>
     <resources>
         <image name="back-Small" width="29" height="29"/>
+        <image name="left_Arrow" width="22" height="16"/>
         <image name="settings" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>

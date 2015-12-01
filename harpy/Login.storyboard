@@ -188,7 +188,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="740" misplaced="YES" distribution="equalCentering" spacing="148" translatesAutoresizingMaskIntoConstraints="NO" id="kXI-9l-AAL" userLabel="Button Stack">
                                                                 <rect key="frame" x="0.0" y="21" width="252" height="29"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsT-od-f2C">
+                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsT-od-f2C">
                                                                         <rect key="frame" x="0.0" y="0.0" width="53" height="29"/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                                         <state key="normal" title="SIGN UP">

@@ -586,7 +586,7 @@
         self.spotifyPremium = NO;
         [self spotifySignupPopup];
         
-        
+
         
         SPTAuth *auth = [SPTAuth defaultInstance];
         if (auth.session && [auth.session isValid])

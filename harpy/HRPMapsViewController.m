@@ -10,6 +10,8 @@
 
 #import "HRPMapsViewController.h"
 #import "HRPLocationManager.h"
+#import "HRPTrackSearchViewController.h"
+#import "HRPPost.h"
 #import <MapKit/MapKit.h>
 @import GoogleMaps;
 
@@ -18,7 +20,7 @@
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
 @property (weak, nonatomic) IBOutlet UIButton *postSongButton;
-@property (nonatomic) BOOL buttonShouldDisappear;
+@property (nonatomic) BOOL readyToPin;
 @property (strong, nonatomic) GMSMarker *defaultMarker;
 
 @end
@@ -35,30 +37,22 @@
     [super viewDidLoad];
     [self setupNavBar];
     
+    self.locationManager = [CLLocationManager sharedManager];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.delegate = self;
+    
+    [self locationManagerPermissions];
+    
     self.defaultMarkerImage.hidden = YES;
+    self.readyToPin = NO;
     
     [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
 }
--(void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position
-{
-    self.postSongButton.hidden = NO;
-}
-- (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture
-{
-    if (self.buttonShouldDisappear)
-    {
-        self.postSongButton.hidden = YES;
-    }
-}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.locationManager = [CLLocationManager sharedManager];
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.delegate = self;
-    [self locationManagerPermissions];
-    [self.locationManager performSelector:@selector(startUpdatingLocation) withObject:nil afterDelay:1.0];
     [self.locationManager startUpdatingLocation];
 }
 
@@ -96,6 +90,7 @@
         }
     }
 }
+
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
     NSLog(@"FOUND YOU: %@", self.locationManager.location);
@@ -104,6 +99,7 @@
     [manager stopUpdatingLocation];
     [self updateMapWithCurrentLocation];
 }
+
 - (void)updateMapWithCurrentLocation
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
@@ -112,24 +108,28 @@
     // this determines the zoom of the camera as soon as the map opens; the higher the number, the more detail we see on the map
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:18];
     
+    //this controls the map size on the view
     CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - (self.view.bounds.size.height * 0.08));
-    
     mapView_ = [GMSMapView mapWithFrame:rect camera:camera];
     NSLog(@"bounds of view: %@", NSStringFromCGRect(rect));
     
+    //this sets the mapView_ at the very background of the view
     [self.view insertSubview:mapView_ atIndex:0];
     
-    self.defaultMarker = [[GMSMarker alloc] init];
-    self.defaultMarker.icon = [GMSMarker markerImageWithColor:[UIColor greenColor]];
-    self.defaultMarker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
-    self.defaultMarker.map = mapView_;
-    [self.defaultMarker setDraggable:true];
-    // Use some kind of data to identify each marker, marker does not have 'tag' but 'userData' that is an 'id' type
-    //    [self.defaultMarker setUserData:<#(id)#>];
+    //this is a moveable green marker that shows up when the map loads
+//    self.defaultMarker = [[GMSMarker alloc] init];
+//    self.defaultMarker.icon = [GMSMarker markerImageWithColor:[UIColor greenColor]];
+//    self.defaultMarker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+//    //    self.defaultMarkerImage.hidden = YES; //****************
+//    self.defaultMarker.map = mapView_;
+//    //    [self.defaultMarker setDraggable:true];
+//    
+//    // Use some kind of data to identify each marker, marker does not have 'tag' but 'userData' that is an 'id' type
+//    //    [self.defaultMarker setUserData:<#(id)#>];
     
     mapView_.delegate = self;
     mapView_.indoorEnabled = NO;
-    mapView_.settings.scrollGestures = NO;
+    //    mapView_.settings.scrollGestures = NO; //scroll gestures locked here
     
     [mapView_ setMinZoom:13 maxZoom:mapView_.maxZoom];
     
@@ -145,7 +145,6 @@
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    
     [errorAlerts addAction:okAction];
     
     [self presentViewController:errorAlerts animated:YES completion:nil];
@@ -155,86 +154,57 @@
 
 - (IBAction)postSongButtonTapped:(id)sender
 {
-    NSString *enterPostSongOverlay = @"Post a Song";
-    NSString *pinSongHere = @"Pin Track";
-    self.buttonShouldDisappear = YES;
+    NSLog(@"method entered");
+    NSLog(@"button text: %@", self.postSongButton.titleLabel.text);
     
     if (self.defaultMarkerImage.hidden)
     {
+        NSLog(@"marker is hidden");
         self.defaultMarkerImage.hidden = NO;
     }
     else
     {
+        NSLog(@"marker is NOT hidden");
         self.defaultMarkerImage.hidden = YES;
     }
-    if ([self.postSongButton.titleLabel.text isEqualToString:enterPostSongOverlay])
+    [self changeButtonBackground];
+}
+
+- (void)changeButtonBackground
+{
+    if (self.readyToPin)
     {
-        [self.postSongButton setTitle:pinSongHere forState:UIControlStateNormal];
-        [self.postSongButton setBackgroundColor:[UIColor blackColor]];
-    }
-    else if ([self.postSongButton.titleLabel.text isEqualToString:pinSongHere])
-    {
-        self.buttonShouldDisappear = NO;
-        
-        [self.postSongButton setTitle:enterPostSongOverlay forState:UIControlStateNormal];
         [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
+        self.readyToPin = NO;
         
-        [self presentConfirmPinAlertController];
-    }
-    
-}
-- (void)handlePans
-{
-    self.postSongButton.hidden = YES;
-}
-- (void)presentConfirmPinAlertController
-{
-    UIAlertController *confirmPinAlert = [UIAlertController alertControllerWithTitle:@"Confirm Pin" message:@"Post song here?" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         CGPoint point = mapView_.center;
         CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
+        
+        NSLog(@"inside the block");
         
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
         marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
         marker.map = mapView_;
         
-        [self performSegueWithIdentifier:@"sendToSignup" sender:self];
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+        CGFloat latitude = marker.position.latitude;
+        CGFloat longitude = marker.position.longitude;
+        
+        NSLog(@"marker: %@", marker);
+        NSLog(@"marker.icon = %@", marker.icon);
+        NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
+        NSLog(@"marker.map = %@", marker.map);
+        //WHY IS THIS NOT POSTING???
+        
+        //[self performSegueWithIdentifier:@"showTrackViews" sender:self];
+        HRPPost *newPost = [[HRPPost alloc] initWithLatitude:latitude Longitude:longitude];
+    }
+    else
+    {
+        [self.postSongButton setBackgroundColor:[UIColor orangeColor]];
+        self.readyToPin = YES;
+    }
     
-    [confirmPinAlert addAction:confirmAction];
-    [confirmPinAlert addAction:cancelAction];
-    
-    [self presentViewController:confirmPinAlert animated:YES completion:nil];
 }
-
-#pragma mark - Navigation
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    HRPAddPostViewController *addPostDVC = segue.destinationViewController;
-//    addPostDVC.delegate = self;
-//}
-
-#pragma mark - Modal View Controller
-
-//// the methods below are for use with the modal view controller (+) button on top of the maps view.  it's all connected to the delegate and protocol of the HRPAddPostViewController class
-//- (void)addPostViewController:(id)viewController didFinishWithLocation:(CLLocation *)location
-//{
-//    CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
-//    
-//    GMSMarker *marker = [[GMSMarker alloc] init];
-//    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-//    marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
-//    marker.map = mapView_;
-//    
-//    [viewController dismissViewControllerAnimated:YES completion:nil];
-//}
-//- (void)addPostViewControllerDidCancel:(HRPAddPostViewController *)viewController
-//{
-//    [viewController dismissViewControllerAnimated:YES completion:nil];
-//}
 
 @end

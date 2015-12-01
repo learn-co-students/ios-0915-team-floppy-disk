@@ -52,12 +52,8 @@
     
     self.username.text = currentUser.username;
     
+    self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = currentUser.username;
-    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
-                                                                 [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
-                                                       NSForegroundColorAttributeName:[UIColor whiteColor]
-                                                                  }];
-    [[UINavigationBar appearance] setBackgroundImage:[[UIImage imageNamed:@"backround_cropped"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] forBarMetrics:UIBarMetricsDefault];
 }
 - (void)retrieveUserAvatar
 {

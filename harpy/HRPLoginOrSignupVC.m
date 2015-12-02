@@ -610,6 +610,7 @@
 {
     [self dismissViewControllerAnimated:YES];
     
+    
     SPTAuth *auth = [SPTAuth defaultInstance];
     if (auth.session && [auth.session isValid])
     {

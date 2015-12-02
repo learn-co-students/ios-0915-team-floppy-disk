@@ -30,9 +30,9 @@
 
 -(void)setupNavBar
 {
-    [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSFontAttributeName: [UIFont fontWithName:@"SFUIDisplay-Medium" size:18.0f],
-                                                            }];
+//    [[UINavigationBar appearance] setTitleTextAttributes: @{
+//                                                            NSFontAttributeName: [UIFont fontWithName:@"SFUIDisplay-Medium" size:18.0f],
+//                                                            }];
 }
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {

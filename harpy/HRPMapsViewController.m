@@ -16,10 +16,11 @@
 @interface HRPMapsViewController () <GMSMapViewDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
+@property (strong, nonatomic) GMSMarker *defaultMarker;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
 @property (weak, nonatomic) IBOutlet UIButton *postSongButton;
-@property (nonatomic) BOOL readyToPin;
-@property (strong, nonatomic) GMSMarker *defaultMarker;
+@property (nonatomic, assign) BOOL readyToPin;
+@property (nonatomic, assign) BOOL scrollGestures;
 
 @end
 
@@ -110,7 +111,7 @@
     CGFloat firstLongitude = coordinate.longitude;
     firstLongitude += coordinateDifference;
     NSLog(@"new latitude: %f, longitude: %f", firstLatitude, firstLongitude);
-
+    
     CLLocationDegrees topLat = firstLatitude;
     CLLocationDegrees topLon = firstLongitude;
     CLLocationCoordinate2D northEastCoordinate = CLLocationCoordinate2DMake(topLat, topLon);
@@ -129,15 +130,27 @@
     GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] init];
     bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:northEastCoordinate coordinate:southWestCoordinate];
     
-//    CLLocationCoordinate2D northWestCoordinate = CLLocationCoordinate2DMake(topLat, botLon);
-//    CLLocationCoordinate2D southEastCoordinate = CLLocationCoordinate2DMake(botLat, topLon);
-//    
-//    GMSVisibleRegion region = (southWestCoordinate, southEastCoordinate, northWestCoordinate, northEastCoordinate);
+    CLLocationCoordinate2D coordinatesAtMapCenter = [self findCoordinatesAtMapCenter];
     
-//    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:<#(GMSVisibleRegion)#>];
+    if ([bounds containsCoordinate:coordinatesAtMapCenter])
+    {
+        self.scrollGestures = YES;
+        //THIS DOESN'T ACTUALLY TURN SCROLLING OFF YET
+    }
+    else
+    {
+        self.scrollGestures = NO;
+    }
     
-//    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 0, 0);
-//    GMSCameraPosition *camera = [mapView_ cameraForBounds:bounds insets:insets];
+    //    CLLocationCoordinate2D northWestCoordinate = CLLocationCoordinate2DMake(topLat, botLon);
+    //    CLLocationCoordinate2D southEastCoordinate = CLLocationCoordinate2DMake(botLat, topLon);
+    //
+    //    GMSVisibleRegion region = (southWestCoordinate, southEastCoordinate, northWestCoordinate, northEastCoordinate);
+    
+    //    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:<#(GMSVisibleRegion)#>];
+    
+    //    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 0, 0);
+    //    GMSCameraPosition *camera = [mapView_ cameraForBounds:bounds insets:insets];
     
     // Create a GMSCameraPosition that tells the map to display
     // this determines the zoom of the camera as soon as the map opens; the higher the number, the more detail we see on the map
@@ -159,18 +172,22 @@
     mapView_.settings.myLocationButton = YES;
 }
 
-// Called if getting user location fails
+- (CLLocationCoordinate2D)findCoordinatesAtMapCenter
+{
+    CGPoint point = mapView_.center;
+    return [mapView_.projection coordinateForPoint:point];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-//    NSLog(@"didFailWithError: %@", error);
-    
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [errorAlerts addAction:okAction];
     
     [self presentViewController:errorAlerts animated:YES completion:nil];
-    [manager stopUpdatingLocation];
+    //    [manager stopUpdatingLocation];
+    //this prevents further warnings from the alert controller but also doesn't show a map at all
 }
 
 #pragma mark - Action Methods
@@ -216,14 +233,13 @@
     
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        CGPoint point = mapView_.center;
-        CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
+        CLLocationCoordinate2D coordinatesAtMapCenter = [self findCoordinatesAtMapCenter];
         
         NSLog(@"inside the block");
         
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-        marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
+        marker.position = CLLocationCoordinate2DMake(coordinatesAtMapCenter.latitude, coordinatesAtMapCenter.longitude);
         marker.map = mapView_;
         
         NSLog(@"marker: %@", marker);
@@ -231,7 +247,8 @@
         NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
         NSLog(@"marker.map = %@", marker.map);
         
-        [self performSegueWithIdentifier:@"sendToTrackView" sender:self];
+//        [self performSegueWithIdentifier:@"sendToTrackView" sender:self];
+        //This segue still crashes the program.
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     

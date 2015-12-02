@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *postSongButton;
 @property (nonatomic, assign) BOOL readyToPin;
 @property (nonatomic, assign) BOOL scrollGestures;
+@property (nonatomic, strong) GMSCoordinateBounds *bounds;
 
 @end
 
@@ -47,6 +48,7 @@
     
     [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
+    mapView_.settings.scrollGestures = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -103,7 +105,7 @@
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
-    CGFloat coordinateDifference = 0.005;
+    CGFloat coordinateDifference = 0.1;
     
     CGFloat firstLatitude = coordinate.latitude;
     firstLatitude += coordinateDifference;
@@ -127,30 +129,10 @@
     CLLocationDegrees botLon = secondLongitude;
     CLLocationCoordinate2D southWestCoordinate = CLLocationCoordinate2DMake(botLat, botLon);
     
-    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] init];
-    bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:northEastCoordinate coordinate:southWestCoordinate];
+    self.bounds = [[GMSCoordinateBounds alloc] init];
+    self.bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:northEastCoordinate coordinate:southWestCoordinate];
     
-    CLLocationCoordinate2D coordinatesAtMapCenter = [self findCoordinatesAtMapCenter];
-    
-    if ([bounds containsCoordinate:coordinatesAtMapCenter])
-    {
-        self.scrollGestures = YES;
-        //THIS DOESN'T ACTUALLY TURN SCROLLING OFF YET
-    }
-    else
-    {
-        self.scrollGestures = NO;
-    }
-    
-    //    CLLocationCoordinate2D northWestCoordinate = CLLocationCoordinate2DMake(topLat, botLon);
-    //    CLLocationCoordinate2D southEastCoordinate = CLLocationCoordinate2DMake(botLat, topLon);
-    //
-    //    GMSVisibleRegion region = (southWestCoordinate, southEastCoordinate, northWestCoordinate, northEastCoordinate);
-    
-    //    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:<#(GMSVisibleRegion)#>];
-    
-    //    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 0, 0);
-    //    GMSCameraPosition *camera = [mapView_ cameraForBounds:bounds insets:insets];
+    NSLog(@"BOUNDS: %f, %f || %f, %f", self.bounds.northEast.latitude, self.bounds.northEast.longitude, self.bounds.southWest.latitude, self.bounds.southWest.longitude);
     
     // Create a GMSCameraPosition that tells the map to display
     // this determines the zoom of the camera as soon as the map opens; the higher the number, the more detail we see on the map
@@ -172,10 +154,28 @@
     mapView_.settings.myLocationButton = YES;
 }
 
-- (CLLocationCoordinate2D)findCoordinatesAtMapCenter
+- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position
 {
-    CGPoint point = mapView_.center;
-    return [mapView_.projection coordinateForPoint:point];
+    if ([self.bounds containsCoordinate:position.target])
+    {
+        NSLog(@"we are within bounds!");
+        NSLog(@"camera: %f, %f", position.target.latitude, position.target.longitude);
+        self.scrollGestures = YES;
+    }
+    else
+    {
+        NSLog(@"we are not in bounds");
+        self.scrollGestures = NO;
+        [mapView_ animateToLocation:self.currentLocation.coordinate];
+    }
+    if (!self.scrollGestures)
+    {
+        mapView_.settings.scrollGestures = NO;
+    }
+    else
+    {
+        mapView_.settings.scrollGestures = YES;
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -256,6 +256,12 @@
     [confirmPinAlert addAction:cancelAction];
     
     [self presentViewController:confirmPinAlert animated:YES completion:nil];
+}
+
+- (CLLocationCoordinate2D)findCoordinatesAtMapCenter
+{
+    CGPoint point = mapView_.center;
+    return [mapView_.projection coordinateForPoint:point];
 }
 
 @end

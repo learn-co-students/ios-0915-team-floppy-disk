@@ -10,13 +10,6 @@
 		0C1A58203BF13D8D1931530C /* libPods-harpy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0453F870576313A0151B46 /* libPods-harpy.a */; };
 		3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */; };
 		3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73241BFD24420010A257 /* HRPTrack.m */; };
-		3BAC251C1BFF87EF004C6790 /* HRPTempTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC251B1BFF87EF004C6790 /* HRPTempTableViewController.m */; };
-		3BAC251F1BFF8810004C6790 /* HRPTempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC251E1BFF8810004C6790 /* HRPTempViewController.m */; };
-		3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25211C04B381004C6790 /* HRPTrackSearchViewController.m */; };
-		3BAC25251C050D41004C6790 /* HRPPostPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */; };
-		3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25281C0CA4F6004C6790 /* HRPPost.m */; };
-		3BC25DEB1C0E0F3D00A831CE /* postTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */; };
-		3BC25DEF1C0E0FB300A831CE /* postCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEE1C0E0FB300A831CE /* postCell.xib */; };
 		3BAC251C1BFF87EF004C6790 /* HRPTempTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC251B1BFF87EF004C6790 /* HRPTempTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC251F1BFF8810004C6790 /* HRPTempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC251E1BFF8810004C6790 /* HRPTempViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25211C04B381004C6790 /* HRPTrackSearchViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -50,8 +43,6 @@
 		E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C8CAB81C0BB2CA00836B40 /* HRPCreateProfileVC.m */; };
 		E9E211141BFD3E2500739143 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9E211131BFD3E2500739143 /* Keys.plist */; };
 		E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E211161BFD76B700739143 /* HRPValidationManager.m */; };
-		E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */; };
-		E9ED3F841C0E86070091C015 /* UINavigationController+StatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ED3F831C0E86070091C015 /* UINavigationController+StatusBarStyle.m */; settings = {ASSET_TAGS = (); }; };
 		E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */; settings = {ASSET_TAGS = (); }; };
 		E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */; };
 		E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */; };
@@ -140,8 +131,6 @@
 		E9E211131BFD3E2500739143 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		E9E211151BFD76B700739143 /* HRPValidationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPValidationManager.h; sourceTree = "<group>"; };
 		E9E211161BFD76B700739143 /* HRPValidationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPValidationManager.m; sourceTree = "<group>"; };
-		E9ED3F821C0E86070091C015 /* UINavigationController+StatusBarStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+StatusBarStyle.h"; sourceTree = "<group>"; };
-		E9ED3F831C0E86070091C015 /* UINavigationController+StatusBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StatusBarStyle.m"; sourceTree = "<group>"; };
 		E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
 		E9F8CE791BFE622F00979181 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
@@ -225,8 +214,6 @@
 			children = (
 				E9335C5D1BFA7EBC002DD9C6 /* AppDelegate.h */,
 				E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */,
-				E9ED3F821C0E86070091C015 /* UINavigationController+StatusBarStyle.h */,
-				E9ED3F831C0E86070091C015 /* UINavigationController+StatusBarStyle.m */,
 				3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */,
 				3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */,
 				E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */,
@@ -523,7 +510,6 @@
 				E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */,
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
 				E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */,
-				E9ED3F841C0E86070091C015 /* UINavigationController+StatusBarStyle.m in Sources */,
 				E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */,
 				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,
 				3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */,

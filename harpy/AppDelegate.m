@@ -58,7 +58,7 @@
     // Spotify Authorization Initializers
     SPTAuth *auth = [SPTAuth defaultInstance];
     auth.clientID = spotifyClientId;
-    auth.requestedScopes = @[SPTAuthStreamingScope];
+    auth.requestedScopes = @[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope];
     auth.redirectURL = [NSURL URLWithString:@"harpy-app://authorize"];
     auth.tokenSwapURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/swap"];
     auth.tokenRefreshURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/refresh"];
@@ -107,5 +107,7 @@
     
     
 }
+
+
 
 @end

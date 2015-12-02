@@ -13,5 +13,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic) NSString *spotifyClientId;
 
++(void)getUsername;
+
 @end
 

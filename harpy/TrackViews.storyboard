@@ -120,7 +120,14 @@
                             <constraint firstAttribute="trailing" secondItem="J5h-kQ-Kuh" secondAttribute="trailing" id="x2S-HD-c2N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Search Songs" id="ugX-8d-URQ"/>
+                    <navigationItem key="navigationItem" title="Search Songs" id="ugX-8d-URQ">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="EQ6-n6-V3w">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="1rH-bZ-uSV" id="EfP-q2-jxd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -203,7 +210,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YH-uc-rg9">
                                 <rect key="frame" x="220" y="207" width="194" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.76231317929999998" green="0.035230366200000002" blue="0.027155836480000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

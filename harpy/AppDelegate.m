@@ -25,7 +25,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[UINavigationBar appearance] setTranslucent:NO];
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
                                                                  [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],

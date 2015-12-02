@@ -37,7 +37,6 @@
     
     
     [self initializeEmptyUsersArray];
-    [self setupNavBar];
     
     PFQuery *userQuery = [PFUser query];
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
@@ -65,12 +64,6 @@
 -(void)initializeEmptyUsersArray
 {
     self.users = [NSMutableArray new];
-}
--(void)setupNavBar
-{
-//    [[UINavigationBar appearance] setTitleTextAttributes: @{
-//                                                            NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f],
-//                                                            }];
 }
 - (void)fetchAllUsers:(void (^)(NSArray *, BOOL, NSError *))completionBlock
 {

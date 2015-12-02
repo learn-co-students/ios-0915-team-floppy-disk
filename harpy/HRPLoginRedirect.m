@@ -29,6 +29,7 @@
 
     // OpenUrl: from sharedApplication AppDelegate
     NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
+    
     [[UIApplication sharedApplication] performSelector:@selector(openURL:) withObject:loginURL afterDelay:0.1];
     
 }

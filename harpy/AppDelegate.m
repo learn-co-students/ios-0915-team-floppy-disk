@@ -10,6 +10,7 @@
 #import <Spotify/Spotify.h>
 #import <AVFoundation/AVFoundation.h> // Required for Spotify
 #import <Parse/Parse.h>
+#import <UIKit/UIKit.h>
 #import "HRPTrackCreator.h"
 #import "HRPTrack.h"
 
@@ -24,6 +25,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    [[UINavigationBar appearance] setTranslucent:NO];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+//    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
+//                                                                 [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
+//                                                             NSForegroundColorAttributeName:[UIColor whiteColor]
+//                                                             }];
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backround_cropped"] forBarMetrics:UIBarMetricsDefault];
+    
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backround_cropped"] forBarMetrics:UIBarMetricsDefault];
     
     // Get API Key from key.plist (hidden by .gitignore)
     NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
@@ -34,7 +44,7 @@
     
     // Spotify Keys
     NSString *spotifyClientId = [plistDictionary objectForKey:@"spotifyClientId"];
-    self.spotifyClientId = @"804eb482ff2349f2b902a7774bfe58ce";
+    self.spotifyClientId = spotifyClientId;
     NSString *spotifyClientSecret = [plistDictionary objectForKey:@"spotifyClientSecret"];
 
     // Parse Keys
@@ -94,6 +104,8 @@
         return YES;
     }
     return NO;
+    
+    
 }
 
 @end

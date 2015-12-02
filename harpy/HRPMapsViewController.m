@@ -10,6 +10,8 @@
 
 #import "HRPMapsViewController.h"
 #import "HRPLocationManager.h"
+#import "HRPTrackSearchViewController.h"
+#import "HRPPost.h"
 #import <MapKit/MapKit.h>
 @import GoogleMaps;
 
@@ -48,7 +50,10 @@
     
     [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
+    
     mapView_.settings.scrollGestures = YES;
+    
+    //[self setNeedsStatusBarAppearanceUpdate];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -61,12 +66,20 @@
 
 -(void)setupNavBar
 {
+    self.navigationController.navigationBar.translucent = NO;
     [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
                                                                  [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
                                                              NSForegroundColorAttributeName:[UIColor whiteColor]
                                                              }];
-    [[UINavigationBar appearance] setBackgroundImage:[[UIImage imageNamed:@"backround_cropped"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    [[UINavigationBar appearance] setBarStyle:UIStatusBarStyleLightContent];
+//    [self preferredStatusBarStyle];
 }
+
+//- (UIStatusBarStyle)preferredStatusBarStyle
+//{
+//    return UIStatusBarStyleLightContent;
+//}
 
 #pragma mark - CLLocationManagerDelegate
 
@@ -210,6 +223,31 @@
     [self changeButtonBackground];
 }
 
+-(HRPPost *)postWithCurrentMapPosition
+{
+    CGPoint point = mapView_.center;
+    CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
+    
+    NSLog(@"inside the block");
+    
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+    marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
+    marker.map = mapView_;
+    
+    CGFloat latitude = marker.position.latitude;
+    CGFloat longitude = marker.position.longitude;
+    
+    NSLog(@"marker: %@", marker);
+    NSLog(@"marker.icon = %@", marker.icon);
+    NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
+    NSLog(@"marker.map = %@", marker.map);
+    
+    HRPPost *newPost = [[HRPPost alloc] initWithLatitude:latitude Longitude:longitude];
+    
+    return newPost;
+}
+
 - (void)changeButtonBackground
 {
     if (self.readyToPin)
@@ -217,7 +255,7 @@
         [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
         self.readyToPin = NO;
         
-        [self presentConfirmPinAlertController];
+        [self performSegueWithIdentifier:@"showTrackViews" sender:nil];
     }
     else
     {
@@ -226,7 +264,7 @@
     }
 }
 
-- (void)presentConfirmPinAlertController
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"alert controller method hit");
     UIAlertController *confirmPinAlert = [UIAlertController alertControllerWithTitle:@"Confirm Pin" message:@"Post song here?" preferredStyle:UIAlertControllerStyleAlert];
@@ -236,6 +274,11 @@
         CLLocationCoordinate2D coordinatesAtMapCenter = [self findCoordinatesAtMapCenter];
         
         NSLog(@"inside the block");
+
+    if([segue.identifier isEqualToString:@"showTrackViews"])
+    {
+        UINavigationController *navController = segue.destinationViewController;
+        HRPTrackSearchViewController *destinVC = navController.viewControllers.firstObject;
         
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
@@ -246,9 +289,6 @@
         NSLog(@"marker.icon = %@", marker.icon);
         NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
         NSLog(@"marker.map = %@", marker.map);
-        
-//        [self performSegueWithIdentifier:@"sendToTrackView" sender:self];
-        //This segue still crashes the program.
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
@@ -256,6 +296,8 @@
     [confirmPinAlert addAction:cancelAction];
     
     [self presentViewController:confirmPinAlert animated:YES completion:nil];
+        destinVC.post = [self postWithCurrentMapPosition];
+    }
 }
 
 - (CLLocationCoordinate2D)findCoordinatesAtMapCenter

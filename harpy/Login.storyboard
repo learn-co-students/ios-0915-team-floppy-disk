@@ -135,6 +135,7 @@
                             <constraint firstItem="B5Q-am-IeE" firstAttribute="centerX" secondItem="zXE-jR-uG6" secondAttribute="centerX" id="yEh-O8-YgX"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="inputView" destination="MOw-pP-lfQ" id="35c-TQ-U52"/>
@@ -248,6 +249,7 @@
                             <constraint firstItem="I4c-WC-CZP" firstAttribute="centerX" secondItem="Pqv-M1-Q2r" secondAttribute="centerX" id="kdM-7A-uaC"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="inputView" destination="EHt-Oq-Y8C" id="yzT-8k-xz9"/>

@@ -212,6 +212,19 @@
             </objects>
             <point key="canvasLocation" x="485" y="231"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="rzp-aS-3eL">
+            <objects>
+                <viewController id="jXT-uo-Mno" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X8c-ca-reh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Zc-Ol-wXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="default_marker" width="22" height="39"/>

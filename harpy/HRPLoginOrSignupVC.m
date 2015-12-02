@@ -574,26 +574,17 @@
     UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         self.spotifyPremium = YES;
         [self spotifyLoginPopup];
-        
-        SPTAuth *auth = [SPTAuth defaultInstance];
-        if (auth.session && [auth.session isValid])
-        {
-            [self createParseUser];
-            [self showCreateProfileView];
-        }
     }];
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         self.spotifyPremium = NO;
         [self spotifySignupPopup];
-        
 
-        
-        SPTAuth *auth = [SPTAuth defaultInstance];
-        if (auth.session && [auth.session isValid])
-        {
-            [self createParseUser];
-            [self showCreateProfileView];
-        }
+//        SPTAuth *auth = [SPTAuth defaultInstance];
+//        if (auth.session && [auth.session isValid])
+//        {
+//            [self createParseUser];
+//            [self showCreateProfileView];
+//        }
     }];
     
     [alert addAction:yes];
@@ -605,13 +596,28 @@
 
 -(void)spotifyLoginPopup
 {
-    [HRPLoginRedirect launchSpotify];
+    [HRPLoginRedirect launchSpotifyFromViewController:self];
 }
 -(void)spotifySignupPopup
 {
     SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.spotify.com/signup/"]];
     [self presentViewController:safariVC animated:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginCompleted:) name:@"sessionUpdated" object:nil];
 }
+
+-(void)loginCompleted:(NSNotification *)notification
+{
+    [self dismissViewControllerAnimated:YES];
+    
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    if (auth.session && [auth.session isValid])
+    {
+        [self createParseUser];
+        [self showCreateProfileView];
+    }
+}
+
 -(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
 {
     

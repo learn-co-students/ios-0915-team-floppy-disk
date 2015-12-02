@@ -9,12 +9,13 @@
 #import "HRPLoginRedirect.h"
 #import "AppDelegate.h"
 #import <Spotify/Spotify.h>
+#import <SafariServices/SafariServices.h>
 
 @implementation HRPLoginRedirect
 
 #pragma mark - Spotify
 
-+ (void)launchSpotify
++ (void)launchSpotifyFromViewController:(UIViewController *)presentingViewController
 {    
     // Get API key from sharedApplication AppDelegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -30,7 +31,10 @@
     // OpenUrl: from sharedApplication AppDelegate
     NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
     
-    [[UIApplication sharedApplication] performSelector:@selector(openURL:) withObject:loginURL afterDelay:0.1];
+    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:loginURL];
+    [presentingViewController presentViewController:safariVC animated:YES completion:nil];
+    
+//    [[UIApplication sharedApplication] performSelector:@selector(openURL:) withObject:loginURL afterDelay:0.1];
     
 }
 

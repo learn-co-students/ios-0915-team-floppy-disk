@@ -31,7 +31,6 @@
                                                              NSForegroundColorAttributeName:[UIColor whiteColor]
                                                              }];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backround_cropped"] forBarMetrics:UIBarMetricsDefault];
-//    [[UINavigationBar appearance] setTranslucent:NO];
     
     
     // Get API Key from key.plist (hidden by .gitignore)

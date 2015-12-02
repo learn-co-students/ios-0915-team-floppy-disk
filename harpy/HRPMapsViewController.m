@@ -13,12 +13,11 @@
 #import "HRPTrackSearchViewController.h"
 #import "HRPPost.h"
 #import <MapKit/MapKit.h>
+#import <Parse/Parse.h>
 @import GoogleMaps;
 
 @interface HRPMapsViewController () <GMSMapViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *barButton1;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *barButton2;
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (strong, nonatomic) GMSMarker *defaultMarker;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
@@ -26,6 +25,8 @@
 @property (nonatomic, assign) BOOL readyToPin;
 @property (nonatomic, assign) BOOL scrollGestures;
 @property (nonatomic, strong) GMSCoordinateBounds *bounds;
+@property (nonatomic, strong) NSArray *parsePosts;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -41,11 +42,7 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
-//    // IF Parse
-//    UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
-//    self.navigationItem.titleView = activityIndicator;
-//    [activityIndicator startAnimating];
-//    
+    self.title = @"HARPY";
 
     self.locationManager = [CLLocationManager sharedManager];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -66,6 +63,46 @@
 {
     [super viewDidAppear:animated];
     [self.locationManager startUpdatingLocation];
+}
+
+#pragma mark - Parse Geopoints
+
+- (void)queryForHRPosts
+{
+    
+    if (self.currentLocation) {
+        CLLocationCoordinate2D currentCoordinate = [self.currentLocation coordinate];
+        PFGeoPoint *currentUserGeoPoint = [PFGeoPoint geoPointWithLatitude:currentCoordinate.latitude longitude:currentCoordinate.longitude];
+        
+        NSLog(@"CURRENT USER GEOPOINT: %@", currentUserGeoPoint);
+        PFQuery *query = [PFQuery queryWithClassName:@"HRPPost"];
+        [query whereKey:@"locationGeoPoint" nearGeoPoint:currentUserGeoPoint withinMiles:100.0];
+        query.limit = 10;
+        
+        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+        self.navigationItem.titleView = self.activityIndicator;
+        [self.activityIndicator startAnimating];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+        {
+            [self.activityIndicator stopAnimating];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont boldSystemFontOfSize:18];
+            label.text = @"HARPY";
+            label.textAlignment = NSTextAlignmentCenter;
+            self.navigationItem.titleView = label;
+
+            if (!error) {
+                self.parsePosts = objects;
+                NSLog(@"PARSE POSTS: %@", self.parsePosts);
+            } else {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
 }
 
 
@@ -98,6 +135,7 @@
     NSLog(@"FOUND YOU: %@", self.locationManager.location);
     self.currentLocation = self.locationManager.location;
     
+    [self queryForHRPosts];
     [manager stopUpdatingLocation];
     [self updateMapWithCurrentLocation];
 }
@@ -124,7 +162,7 @@
     
     CGFloat secondLongitude = coordinate.longitude;
     secondLongitude -= coordinateDifference;
-    NSLog(@"new latitude: %f, longitude: %f", secondLatitude, secondLongitude);
+    //NSLog(@"new latitude: %f, longitude: %f", secondLatitude, secondLongitude);
     
     CLLocationDegrees botLat = secondLatitude;
     CLLocationDegrees botLon = secondLongitude;
@@ -133,10 +171,8 @@
     self.bounds = [[GMSCoordinateBounds alloc] init];
     self.bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:northEastCoordinate coordinate:southWestCoordinate];
     
-    NSLog(@"BOUNDS: %f, %f || %f, %f", self.bounds.northEast.latitude, self.bounds.northEast.longitude, self.bounds.southWest.latitude, self.bounds.southWest.longitude);
+    //NSLog(@"BOUNDS: %f, %f || %f, %f", self.bounds.northEast.latitude, self.bounds.northEast.longitude, self.bounds.southWest.latitude, self.bounds.southWest.longitude);
     
-    // Create a GMSCameraPosition that tells the map to display
-    // this determines the zoom of the camera as soon as the map opens; the higher the number, the more detail we see on the map
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:18];
     
     //this controls the map size on the view
@@ -159,13 +195,13 @@
 {
     if ([self.bounds containsCoordinate:position.target])
     {
-        NSLog(@"we are within bounds!");
-        NSLog(@"camera: %f, %f", position.target.latitude, position.target.longitude);
+        //NSLog(@"we are within bounds!");
+        //NSLog(@"camera: %f, %f", position.target.latitude, position.target.longitude);
         self.scrollGestures = YES;
     }
     else
     {
-        NSLog(@"we are not in bounds");
+        //NSLog(@"we are not in bounds");
         self.scrollGestures = NO;
         [mapView_ animateToLocation:self.currentLocation.coordinate];
     }

@@ -289,15 +289,16 @@
         NSLog(@"marker.icon = %@", marker.icon);
         NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
         NSLog(@"marker.map = %@", marker.map);
-    }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
     [confirmPinAlert addAction:confirmAction];
     [confirmPinAlert addAction:cancelAction];
     
     [self presentViewController:confirmPinAlert animated:YES completion:nil];
+        
         destinVC.post = [self postWithCurrentMapPosition];
-    }
+     }
+    }];
 }
 
 - (CLLocationCoordinate2D)findCoordinatesAtMapCenter

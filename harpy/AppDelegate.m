@@ -10,6 +10,7 @@
 #import <Spotify/Spotify.h>
 #import <AVFoundation/AVFoundation.h> // Required for Spotify
 #import <Parse/Parse.h>
+#import <UIKit/UIKit.h>
 #import "HRPTrackCreator.h"
 #import "HRPTrack.h"
 
@@ -24,12 +25,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[UINavigationBar appearance] setTranslucent:NO];
-    [application setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
-                                                                 [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
-                                                             NSForegroundColorAttributeName:[UIColor whiteColor]
-                                                             }];
+//    [[UINavigationBar appearance] setTranslucent:NO];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+//    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
+//                                                                 [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
+//                                                             NSForegroundColorAttributeName:[UIColor whiteColor]
+//                                                             }];
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backround_cropped"] forBarMetrics:UIBarMetricsDefault];
+    
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backround_cropped"] forBarMetrics:UIBarMetricsDefault];
     
     // Get API Key from key.plist (hidden by .gitignore)

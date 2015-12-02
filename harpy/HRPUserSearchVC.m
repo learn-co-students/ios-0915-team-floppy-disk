@@ -68,9 +68,9 @@
 }
 -(void)setupNavBar
 {
-    [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f],
-                                                            }];
+//    [[UINavigationBar appearance] setTitleTextAttributes: @{
+//                                                            NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f],
+//                                                            }];
 }
 - (void)fetchAllUsers:(void (^)(NSArray *, BOOL, NSError *))completionBlock
 {

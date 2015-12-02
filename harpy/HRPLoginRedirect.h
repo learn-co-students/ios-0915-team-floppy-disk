@@ -6,10 +6,10 @@
 //  Copyright © 2015 teamFloppyDisk. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface HRPLoginRedirect : NSObject
 
-+ (void)launchSpotify;
++ (void)launchSpotifyFromViewController:(UIViewController *)presentingViewController;
 
 @end

@@ -17,6 +17,8 @@
 
 @interface HRPMapsViewController () <GMSMapViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *barButton1;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *barButton2;
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (strong, nonatomic) GMSMarker *defaultMarker;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
@@ -37,8 +39,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+
+//    // IF Parse
+//    UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+//    self.navigationItem.titleView = activityIndicator;
+//    [activityIndicator startAnimating];
+//    
+
     self.locationManager = [CLLocationManager sharedManager];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.delegate = self;

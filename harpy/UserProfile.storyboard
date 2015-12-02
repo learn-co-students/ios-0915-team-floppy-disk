@@ -18,6 +18,8 @@
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
+            <string>SFUIDisplay-Regular</string>
+            <string>SFUIDisplay-Regular</string>
         </mutableArray>
         <mutableArray key="SF-UI-Display-Semibold.otf">
             <string>SFUIDisplay-Semibold</string>
@@ -43,10 +45,10 @@
                                         <rect key="frame" x="0.0" y="10" width="374" height="177"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9Zj-md-RCZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="140" height="177"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="143" height="177"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBy-4X-gNf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="143" height="143"/>
                                                         <animations/>
                                                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -61,14 +63,14 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMC-o8-0dn">
-                                                        <rect key="frame" x="0.0" y="140" width="140" height="20"/>
+                                                        <rect key="frame" x="0.0" y="143" width="143" height="18"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="15"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Short Bio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghN-tF-V6Z" userLabel="Short Bio">
-                                                        <rect key="frame" x="0.0" y="160" width="140" height="17"/>
+                                                        <rect key="frame" x="0.0" y="161" width="143" height="16"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -78,30 +80,30 @@
                                                 <animations/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalCentering" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-Gq-0cW">
-                                                <rect key="frame" x="152" y="0.0" width="222" height="177"/>
+                                                <rect key="frame" x="155" y="0.0" width="219" height="177"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kol-El-JLY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="222" height="32"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="219" height="32"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LTg-MC-nDo">
-                                                                <rect key="frame" x="0.0" y="0.0" width="222" height="16"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="219" height="16"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKN-52-CPh">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="74" height="16"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="16"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDy-kN-Rnf">
-                                                                        <rect key="frame" x="74" y="0.0" width="74" height="16"/>
+                                                                        <rect key="frame" x="73" y="0.0" width="73" height="16"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBs-co-kAi">
-                                                                        <rect key="frame" x="148" y="0.0" width="74" height="16"/>
+                                                                        <rect key="frame" x="146" y="0.0" width="73" height="16"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -111,24 +113,24 @@
                                                                 <animations/>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3Xp-Kc-tzb">
-                                                                <rect key="frame" x="0.0" y="16" width="222" height="16"/>
+                                                                <rect key="frame" x="0.0" y="16" width="219" height="16"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAs-LE-qWL">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="74" height="16"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="16"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Juv-w1-gIc">
-                                                                        <rect key="frame" x="74" y="0.0" width="74" height="16"/>
+                                                                        <rect key="frame" x="73" y="0.0" width="73" height="16"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="fans" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUo-a8-9tf">
-                                                                        <rect key="frame" x="148" y="0.0" width="74" height="16"/>
+                                                                        <rect key="frame" x="146" y="0.0" width="73" height="16"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="13"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -141,7 +143,7 @@
                                                         <animations/>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zR0-et-59C">
-                                                        <rect key="frame" x="0.0" y="142" width="222" height="35"/>
+                                                        <rect key="frame" x="0.0" y="142" width="219" height="35"/>
                                                         <animations/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -185,19 +187,19 @@
                                         <rect key="frame" x="0.0" y="10" width="374" height="435"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eBw-lt-Qdj">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="16"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="table view" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaS-DA-Fft">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="16"/>
                                                         <animations/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="map view" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRR-tf-mZj">
-                                                        <rect key="frame" x="187" y="0.0" width="187" height="0.0"/>
+                                                        <rect key="frame" x="187" y="0.0" width="187" height="16"/>
                                                         <animations/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -205,11 +207,11 @@
                                                 <animations/>
                                             </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-h3-Haf">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
+                                                <rect key="frame" x="0.0" y="16" width="374" height="112"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="128" id="u53-oD-eHN"/>
+                                                    <constraint firstAttribute="height" constant="112" id="u53-oD-eHN"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CwI-Fd-IuE">
                                                     <size key="itemSize" width="50" height="50"/>
@@ -232,16 +234,16 @@
                                                 </cells>
                                             </collectionView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
-                                                <rect key="frame" x="0.0" y="128" width="374" height="257"/>
+                                                <rect key="frame" x="0.0" y="128" width="374" height="241"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-Uc-7cS" userLabel="Music Player View">
-                                                <rect key="frame" x="0.0" y="385" width="374" height="50"/>
+                                                <rect key="frame" x="0.0" y="369" width="374" height="66"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.50196081399917603" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="ICf-IV-zAl"/>
+                                                    <constraint firstAttribute="height" constant="66" id="ICf-IV-zAl"/>
                                                 </constraints>
                                             </view>
                                         </subviews>

@@ -52,7 +52,8 @@
     
     self.username.text = currentUser.username;
     
-    self.navigationController.navigationBar.translucent = NO;
+    //self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.navigationItem.title = currentUser.username;
 }
 - (void)retrieveUserAvatar

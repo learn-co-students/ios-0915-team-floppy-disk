@@ -19,7 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setupNavBar];
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -27,13 +27,6 @@
 }
 
 #pragma mark - Setup methods
-
--(void)setupNavBar
-{
-//    [[UINavigationBar appearance] setTitleTextAttributes: @{
-//                                                            NSFontAttributeName: [UIFont fontWithName:@"SFUIDisplay-Medium" size:18.0f],
-//                                                            }];
-}
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];

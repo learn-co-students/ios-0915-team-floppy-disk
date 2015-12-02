@@ -48,6 +48,9 @@
     
     [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
+    
+    
+    //[self setNeedsStatusBarAppearanceUpdate];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -60,12 +63,20 @@
 
 -(void)setupNavBar
 {
+    self.navigationController.navigationBar.translucent = NO;
     [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
                                                                  [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
                                                              NSForegroundColorAttributeName:[UIColor whiteColor]
                                                              }];
-    [[UINavigationBar appearance] setBackgroundImage:[[UIImage imageNamed:@"backround_cropped"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)] forBarMetrics:UIBarMetricsDefault];
+
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    [[UINavigationBar appearance] setBarStyle:UIStatusBarStyleLightContent];
+//    [self preferredStatusBarStyle];
 }
+//- (UIStatusBarStyle)preferredStatusBarStyle
+//{
+//    return UIStatusBarStyleLightContent;
+//}
 
 #pragma mark - CLLocationManagerDelegate
 

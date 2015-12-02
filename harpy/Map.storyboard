@@ -96,12 +96,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-PT-vpe">
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-PT-vpe">
                                 <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <animations/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8bJ-AT-u0b">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8bJ-AT-u0b">
                                 <rect key="frame" x="0.0" y="108" width="414" height="628"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -113,19 +113,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8N-uP-1Bf">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8N-uP-1Bf">
                                                     <rect key="frame" x="108" y="34" width="239" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qdj-aQ-Kht">
+                                                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qdj-aQ-Kht">
                                                     <rect key="frame" x="15" y="4" width="85" height="85"/>
                                                     <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="85" id="HPt-KG-c5Z"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="Qdj-aQ-Kht" firstAttribute="top" secondItem="QYb-hY-E8K" secondAttribute="topMargin" constant="-4" id="C3v-vn-q1E"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="U8N-uP-1Bf" secondAttribute="bottom" constant="31" id="K0d-QE-u4A"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="U8N-uP-1Bf" secondAttribute="trailing" constant="59" id="KZf-Fs-xqy"/>
+                                                <constraint firstItem="Qdj-aQ-Kht" firstAttribute="leading" secondItem="QYb-hY-E8K" secondAttribute="leadingMargin" constant="7" id="jbI-s8-oQO"/>
+                                                <constraint firstItem="Qdj-aQ-Kht" firstAttribute="centerY" secondItem="QYb-hY-E8K" secondAttribute="centerY" id="o6k-vg-PtO"/>
+                                                <constraint firstItem="U8N-uP-1Bf" firstAttribute="top" secondItem="QYb-hY-E8K" secondAttribute="topMargin" constant="26" id="qWs-Sv-J8A"/>
+                                                <constraint firstItem="U8N-uP-1Bf" firstAttribute="leading" secondItem="Qdj-aQ-Kht" secondAttribute="trailing" constant="8" symbolic="YES" id="udF-Fd-6Zm"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -135,8 +147,13 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="mp4-PT-vpe" firstAttribute="top" secondItem="6hZ-Au-I0f" secondAttribute="bottom" id="24x-Qh-iNg"/>
+                            <constraint firstItem="8bJ-AT-u0b" firstAttribute="bottom" secondItem="KpN-1h-HZA" secondAttribute="top" id="B3U-1w-icF"/>
                             <constraint firstItem="mp4-PT-vpe" firstAttribute="centerX" secondItem="fhd-Lc-x5W" secondAttribute="centerX" id="EnY-DP-mgy"/>
+                            <constraint firstItem="mp4-PT-vpe" firstAttribute="trailing" secondItem="8bJ-AT-u0b" secondAttribute="trailing" id="qwy-zR-ydf"/>
+                            <constraint firstItem="mp4-PT-vpe" firstAttribute="bottom" secondItem="8bJ-AT-u0b" secondAttribute="top" id="sRD-TL-FW8"/>
                             <constraint firstItem="mp4-PT-vpe" firstAttribute="leading" secondItem="fhd-Lc-x5W" secondAttribute="leadingMargin" constant="-20" id="ul0-n0-ufU"/>
+                            <constraint firstItem="mp4-PT-vpe" firstAttribute="leading" secondItem="8bJ-AT-u0b" secondAttribute="leading" id="xLZ-R9-XHj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SEARCH" id="Q0d-jD-FtC">

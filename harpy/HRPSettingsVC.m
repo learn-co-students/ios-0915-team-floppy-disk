@@ -26,24 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setupNavBar];
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
     self.parseService = [HRPParseNetworkService sharedService];
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-#pragma mark - Setup methods
-
--(void)setupNavBar
-{
-//    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
-//                                                                 [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
-//                                                             NSForegroundColorAttributeName:[UIColor whiteColor]
-//                                                             }];
-//    [[UINavigationBar appearance] setBackgroundImage:[[UIImage imageNamed:@"backround_cropped"] forBarMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - Action methods

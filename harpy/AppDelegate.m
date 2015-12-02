@@ -25,15 +25,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    [[UINavigationBar appearance] setTranslucent:NO];
+    [[UINavigationBar appearance] setTranslucent:NO];
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
-//    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
-//                                                                 [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
-//                                                             NSForegroundColorAttributeName:[UIColor whiteColor]
-//                                                             }];
-//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backround_cropped"] forBarMetrics:UIBarMetricsDefault];
-    
+    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
+                                                                 [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
+                                                             NSForegroundColorAttributeName:[UIColor whiteColor]
+                                                             }];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backround_cropped"] forBarMetrics:UIBarMetricsDefault];
+    
     
     // Get API Key from key.plist (hidden by .gitignore)
     NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];

@@ -48,12 +48,12 @@
     self.userAvatar.layer.cornerRadius = 50;
     self.userAvatar.clipsToBounds = YES;
     
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    
     PFUser *currentUser = [PFUser currentUser];
     
     self.username.text = currentUser.username;
     
-    //self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.navigationItem.title = currentUser.username;
 }
 - (void)retrieveUserAvatar

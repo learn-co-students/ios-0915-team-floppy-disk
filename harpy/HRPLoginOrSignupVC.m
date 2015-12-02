@@ -586,12 +586,12 @@
         self.spotifyPremium = NO;
         [self spotifySignupPopup];
         
-        [self createParseUser];
+
         
         SPTAuth *auth = [SPTAuth defaultInstance];
         if (auth.session && [auth.session isValid])
         {
-            
+            [self createParseUser];
             [self showCreateProfileView];
         }
     }];

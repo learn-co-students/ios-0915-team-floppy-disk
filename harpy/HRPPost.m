@@ -39,7 +39,8 @@
     self.postAlbumArt = track.albumCoverArt;
     PFFile *albumcover = [PFFile fileWithName:@"album_cover" data:track.albumCoverArt];
 
-    post[@"username"] = currentUser;
+    PFRelation *relation = [post relationForKey:@"username"];
+    [relation addObject:currentUser];
     post[@"songTitle"] = self.postSongTitle;
     post[@"artistName"] = self.postArtistName;
     post[@"albumName"] = self.postAlbumName;
@@ -61,8 +62,17 @@
             completion(NO);
         } else {
             completion(YES);
+            [post save];
+            PFRelation *userRelation = [currentUser relationForKey:@"HRPPosts"];
+            [userRelation addObject:post];
+            [currentUser saveInBackground];
         }
     }];
+    
+//    PFRelation *userRelation = [currentUser relationForKey:@"HRPPosts"];
+//    [userRelation addObject:post];
+//    [currentUser saveInBackground];
+    
 }
 
 @end

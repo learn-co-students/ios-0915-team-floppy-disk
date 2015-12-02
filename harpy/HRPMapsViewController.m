@@ -37,7 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setupNavBar];
+     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
     self.locationManager = [CLLocationManager sharedManager];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -52,8 +52,6 @@
     [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
     
     mapView_.settings.scrollGestures = YES;
-    
-    //[self setNeedsStatusBarAppearanceUpdate];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -62,24 +60,6 @@
     [self.locationManager startUpdatingLocation];
 }
 
-#pragma mark - Setup methods
-
--(void)setupNavBar
-{
-    self.navigationController.navigationBar.translucent = NO;
-    [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
-                                                                 [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
-                                                             NSForegroundColorAttributeName:[UIColor whiteColor]
-                                                             }];
-    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    [[UINavigationBar appearance] setBarStyle:UIStatusBarStyleLightContent];
-//    [self preferredStatusBarStyle];
-}
-
-//- (UIStatusBarStyle)preferredStatusBarStyle
-//{
-//    return UIStatusBarStyleLightContent;
-//}
 
 #pragma mark - CLLocationManagerDelegate
 

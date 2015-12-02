@@ -172,6 +172,31 @@
     
 }
 
+-(HRPPost *)postWithCurrentMapPosition
+{
+    CGPoint point = mapView_.center;
+    CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
+    
+    NSLog(@"inside the block");
+    
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+    marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
+    marker.map = mapView_;
+    
+    CGFloat latitude = marker.position.latitude;
+    CGFloat longitude = marker.position.longitude;
+    
+    NSLog(@"marker: %@", marker);
+    NSLog(@"marker.icon = %@", marker.icon);
+    NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
+    NSLog(@"marker.map = %@", marker.map);
+    
+    HRPPost *newPost = [[HRPPost alloc] initWithLatitude:latitude Longitude:longitude];
+    
+    return newPost;
+}
+
 - (void)changeButtonBackground
 {
     if (self.readyToPin)
@@ -179,35 +204,7 @@
         [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
         self.readyToPin = NO;
         
-        CGPoint point = mapView_.center;
-        CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
-        
-        NSLog(@"inside the block");
-        
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-        marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
-        marker.map = mapView_;
-        
-        CGFloat latitude = marker.position.latitude;
-        CGFloat longitude = marker.position.longitude;
-        
-        NSLog(@"marker: %@", marker);
-        NSLog(@"marker.icon = %@", marker.icon);
-        NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
-        NSLog(@"marker.map = %@", marker.map);
-        //WHY IS THIS NOT POSTING???
-        
-        //[self performSegueWithIdentifier:@"showTrackViews" sender:self];
-        HRPPost *newPost = [[HRPPost alloc] initWithLatitude:latitude Longitude:longitude];
-        
-        // perform segue with identifier OR  manually (alloc init new VC, give it post, push it)
-        UIStoryboard *trackViewsStoryboard = [UIStoryboard storyboardWithName:@"TrackViews" bundle:nil];
-        HRPTrackSearchViewController *trackSearchVC = [trackViewsStoryboard instantiateViewControllerWithIdentifier:@"trackSearchVC"];
-        trackSearchVC.post = newPost;
-        
-        //UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:trackSearchVC];
-        [self presentViewController:trackSearchVC animated:YES completion:nil];
+        [self performSegueWithIdentifier:@"showTrackViews" sender:nil];
     }
     else
     {
@@ -217,10 +214,15 @@
     
 }
 
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    [super prepareForSegue:segue sender:sender];
-//    HRPTrackSearchViewController *destinVC = segue.destinationViewController;
-//    
-//}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    
+    if([segue.identifier isEqualToString:@"showTrackViews"]) {
+        UINavigationController *navController = segue.destinationViewController;
+        HRPTrackSearchViewController *destinVC = navController.viewControllers.firstObject;
+        
+        destinVC.post = [self postWithCurrentMapPosition];
+    }
+}
 
 @end

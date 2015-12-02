@@ -32,7 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    
     self.songSearchBar.delegate = self;
     self.songTableView.delegate = self;
     self.songTableView.dataSource = self;

@@ -72,8 +72,8 @@
 
 - (void)queryForHRPosts
 {
-    
-    if (self.currentLocation) {
+    if (self.currentLocation)
+    {
         CLLocationCoordinate2D currentCoordinate = [self.currentLocation coordinate];
         PFGeoPoint *currentUserGeoPoint = [PFGeoPoint geoPointWithLatitude:currentCoordinate.latitude longitude:currentCoordinate.longitude];
         
@@ -98,7 +98,8 @@
             label.textAlignment = NSTextAlignmentCenter;
             self.navigationItem.titleView = label;
 
-            if (!error) {
+            if (!error)
+            {
                 self.parsePosts = objects;
                 NSLog(@"PARSE POSTS: %@", self.parsePosts);
             } else {
@@ -107,7 +108,6 @@
         }];
     }
 }
-
 
 #pragma mark - CLLocationManagerDelegate
 
@@ -165,7 +165,6 @@
     
     CGFloat secondLongitude = coordinate.longitude;
     secondLongitude -= coordinateDifference;
-    //NSLog(@"new latitude: %f, longitude: %f", secondLatitude, secondLongitude);
     
     CLLocationDegrees botLat = secondLatitude;
     CLLocationDegrees botLon = secondLongitude;
@@ -173,8 +172,6 @@
     
     self.bounds = [[GMSCoordinateBounds alloc] init];
     self.bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:northEastCoordinate coordinate:southWestCoordinate];
-    
-    //NSLog(@"BOUNDS: %f, %f || %f, %f", self.bounds.northEast.latitude, self.bounds.northEast.longitude, self.bounds.southWest.latitude, self.bounds.southWest.longitude);
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:18];
     
@@ -198,13 +195,10 @@
 {
     if ([self.bounds containsCoordinate:position.target])
     {
-        //NSLog(@"we are within bounds!");
-        //NSLog(@"camera: %f, %f", position.target.latitude, position.target.longitude);
         self.scrollGestures = YES;
     }
     else
     {
-        //NSLog(@"we are not in bounds");
         self.scrollGestures = NO;
         [mapView_ animateToLocation:self.currentLocation.coordinate];
     }
@@ -220,12 +214,14 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
+    NSLog(@"error: %@", error);
+    
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [errorAlerts addAction:okAction];
     
-    [self presentViewController:errorAlerts animated:YES completion:nil];
+//    [self presentViewController:errorAlerts animated:YES completion:nil];
     //    [manager stopUpdatingLocation];
     //this prevents further warnings from the alert controller but also doesn't show a map at all
 }

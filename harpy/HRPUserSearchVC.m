@@ -208,7 +208,7 @@
     UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.imageView.image = [UIImage imageNamed:@"spinner.png"];
+    cell.imageView.image = [UIImage imageNamed:@"periwinkleImage.png"];
     cell.imageView.layer.cornerRadius =  42.5;
     [cell.imageView.layer setBorderColor: [ironColor CGColor]];
     [cell.imageView.layer setBorderWidth: 1.0];

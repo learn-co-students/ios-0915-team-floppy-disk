@@ -16,16 +16,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nm7-lb-4aa">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nm7-lb-4aa">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nm7-lb-4aa" secondAttribute="trailing" id="WxW-fY-UdP"/>
+                            <constraint firstItem="nm7-lb-4aa" firstAttribute="leading" secondItem="XDG-x7-hFf" secondAttribute="leading" id="cvR-k5-30z"/>
+                            <constraint firstItem="nm7-lb-4aa" firstAttribute="top" secondItem="XDG-x7-hFf" secondAttribute="top" id="hsF-Mt-LW7"/>
+                            <constraint firstItem="pLC-QI-Svd" firstAttribute="top" secondItem="nm7-lb-4aa" secondAttribute="bottom" id="p1P-1X-7us"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <segue destination="1ei-Yk-iyH" kind="show" identifier="sendToLogins" animates="NO" id="815-vK-6Ro"/>
-                        <segue destination="4KD-Rx-pLD" kind="show" identifier="sendToMaps" animates="NO" id="QhV-Sm-dWU"/>
+                        <outlet property="containerView" destination="nm7-lb-4aa" id="bVo-dh-0cL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVA-Fu-yZo" userLabel="First Responder" sceneMemberID="firstResponder"/>

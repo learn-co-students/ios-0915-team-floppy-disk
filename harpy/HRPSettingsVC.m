@@ -42,10 +42,9 @@
 {
     NSLog(@"CLICKED: logout button");
     
-    {
-        [self.parseService logout];
-        [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogOutNotificationName object:nil];
-    }
+    [self.parseService logout];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogOutNotificationName object:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {

@@ -39,6 +39,8 @@
 
 - (void)viewDidLoad
 {
+    self.navCont = self.navigationController;
+    
     [super viewDidLoad];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
@@ -57,6 +59,7 @@
     [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
     
     mapView_.settings.scrollGestures = YES;
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated

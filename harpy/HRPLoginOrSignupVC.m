@@ -92,7 +92,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.passwordConfirm];
 }
 
--(void) viewDidDisappear:(BOOL)animated
+-(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:self.email];
@@ -107,32 +107,14 @@
 {
     int fieldHeight = 30;
     
-    self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
-    self.userNameNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
-    self.passwordNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
-    self.passwordConfirm = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    [self setupEmailWithFieldHeight:fieldHeight];
+    [self setupNewUsernameWithFieldHeight:fieldHeight];
+    [self setupNewPasswordWithFieldHeight:fieldHeight];
+    [self setupConfirmPasswordnameWithFieldHeight:fieldHeight];
     
     NSArray *textFields = @[ self.email, self.userNameNew, self.passwordNew, self.passwordConfirm ];
     
     [self setUpCommonTraitsForTextFields:textFields];
-    
-    self.email.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"EMAIL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.email.returnKeyType = UIReturnKeyNext;
-    [self.email setCenter: CGPointMake(self.view.center.x, self.email.center.y + 15)]; // !!
-    
-    self.userNameNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.userNameNew.returnKeyType = UIReturnKeyNext;
-    [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + 65)]; // !!
-    
-    self.passwordNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.passwordNew.returnKeyType = UIReturnKeyNext;
-    self.passwordNew.secureTextEntry = YES;
-    [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + 115)]; // !!
-    
-    self.passwordConfirm.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"CONFIRM PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.passwordConfirm.returnKeyType = UIReturnKeyGo;
-    self.passwordConfirm.secureTextEntry = YES;
-    [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + 165)]; // !!
     
     self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.signup addTarget:self action:@selector(signupButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -141,32 +123,74 @@
     [self setUpCommonTraitsForButton:self.signup];
 }
 
+- (void)setupEmailWithFieldHeight:(int)fieldHeight
+{
+    self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.email.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"EMAIL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    self.email.returnKeyType = UIReturnKeyNext;
+    [self.email setCenter: CGPointMake(self.view.center.x, self.email.center.y + 15)]; // !!
+}
+
+- (void)setupNewUsernameWithFieldHeight:(int)fieldHeight
+{
+    self.userNameNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.userNameNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    self.userNameNew.returnKeyType = UIReturnKeyNext;
+    [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + 65)]; // !!
+}
+
+- (void)setupNewPasswordWithFieldHeight:(int)fieldHeight
+{
+    self.passwordNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.passwordNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    self.passwordNew.returnKeyType = UIReturnKeyNext;
+    self.passwordNew.secureTextEntry = YES;
+    [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + 115)]; // !!
+}
+
+- (void)setupConfirmPasswordnameWithFieldHeight:(int)fieldHeight
+{
+    self.passwordConfirm = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.passwordConfirm.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"CONFIRM PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    self.passwordConfirm.returnKeyType = UIReturnKeyGo;
+    self.passwordConfirm.secureTextEntry = YES;
+    [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + 165)]; // !!
+}
+
 -(void)setupLogin
 {
     int fieldHeight = 30;
     
-    self.userName = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
-    self.password = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    [self setupUsernameWithFieldHeight:fieldHeight];
+    [self setupPasswordWithFieldHeight:fieldHeight];
     
     NSArray *textFields = @[ self.userName, self.password ];
     
     [self setUpCommonTraitsForTextFields:textFields];
-    
-    self.userName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.userName.returnKeyType = UIReturnKeyDone;
-    self.userName.returnKeyType = UIReturnKeyDefault;
-    [self.userName setCenter: CGPointMake(self.view.center.x, self.userName.center.y + 15)]; // !!
-    
-    self.password.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.password.returnKeyType = UIReturnKeyDone;
-    self.password.returnKeyType = UIReturnKeyDefault;
-    [self.password setCenter: CGPointMake(self.view.center.x, self.password.center.y + 65)]; // !!
     
     self.login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.login addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.login setTitle:@"LOG IN" forState:UIControlStateNormal];
     
     [self setUpCommonTraitsForButton:self.login];
+}
+
+- (void)setupUsernameWithFieldHeight:(int)fieldHeight
+{
+    self.userName = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.userName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    self.userName.returnKeyType = UIReturnKeyDone;
+    self.userName.returnKeyType = UIReturnKeyDefault;
+    [self.userName setCenter: CGPointMake(self.view.center.x, self.userName.center.y + 15)]; // !!
+}
+
+- (void)setupPasswordWithFieldHeight:(int)fieldHeight
+{
+    self.password = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.password.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    self.password.returnKeyType = UIReturnKeyDone;
+    self.password.returnKeyType = UIReturnKeyDefault;
+    [self.password setCenter: CGPointMake(self.view.center.x, self.password.center.y + 65)]; // !!
 }
 
 - (void)setUpCommonTraitsForTextFields:(NSArray *)textFields

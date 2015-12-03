@@ -68,6 +68,8 @@
 }
 -(void) setupTableViewUI
 {
+    self.userSearchBar.keyboardAppearance = UIKeyboardAppearanceDark;
+    
     UIColor *desertStormGreyUIColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0];
     UIImage *desertStormGreyColorImage = [self imageWithColor:desertStormGreyUIColor];
     

@@ -85,7 +85,7 @@
         {
             UITextField *textFieldObject = (UITextField *)object;
             UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
-            textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
+            textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:14.0];
             textFieldObject.layer.borderColor = [ironColor CGColor];
             textFieldObject.layer.borderWidth = 1.0;
             textFieldObject.layer.cornerRadius = 13;
@@ -207,7 +207,7 @@
     }
     
     UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
-    usernameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:15.0];
+    usernameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:15.0];
     usernameLabel.text = user.username;
     
     UILabel *realnameLabel = (UILabel *)[cell viewWithTag:3];

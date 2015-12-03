@@ -64,7 +64,7 @@
                                             </button>
                                         </subviews>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="GpB-55-9WJ" firstAttribute="leading" secondItem="sAY-CB-Xwt" secondAttribute="trailing" constant="51" id="6r6-xh-6V1"/>
                                             <constraint firstAttribute="trailing" secondItem="GpB-55-9WJ" secondAttribute="trailing" constant="25" id="HaF-At-938"/>
@@ -203,7 +203,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="740" misplaced="YES" distribution="equalCentering" spacing="148" translatesAutoresizingMaskIntoConstraints="NO" id="kXI-9l-AAL" userLabel="Button Stack">
                                                                 <rect key="frame" x="0.0" y="21" width="252" height="29"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsT-od-f2C">
+                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsT-od-f2C">
                                                                         <rect key="frame" x="0.0" y="0.0" width="53" height="29"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
@@ -364,6 +364,6 @@
         <image name="right-Arrow" width="22" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wvz-6f-f07"/>
+        <segue reference="1KX-jc-oE4"/>
     </inferredMetricsTieBreakers>
 </document>

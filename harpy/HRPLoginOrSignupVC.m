@@ -106,9 +106,12 @@
     
     NSArray *textFields = @[ self.email, self.userNameNew, self.passwordNew, self.passwordConfirm ];
     
-    for (UITextField *textField in textFields)
+    for (NSUInteger i = 0; i < textFields.count; i++)
     {
+        UITextField *textField = textFields[i];
+        
         textField.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
+        textField.adjustsFontSizeToFitWidth = YES;
         textField.textAlignment = NSTextAlignmentLeft;
         textField.textColor = [UIColor whiteColor];
         textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -124,34 +127,28 @@
         textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
         textField.leftViewMode = UITextFieldViewModeAlways;
         
-        textField.delegate = self;
+        NSUInteger math = (i * 40) + ((i + 1) * 10) + 5;
+        
+        [textField setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + (math))];
+        
+        textField.delegate = self; // Required for dismissing the keyboard programically
     }
-    //self.email.adjustsFontSizeToFitWidth = YES; //adjust the font size to fit width.
-    //
     self.email.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"EMAIL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.email.delegate = self; // Required for dismissing the keyboard programically //
     self.email.returnKeyType = UIReturnKeyNext;
-    [self.email setCenter: CGPointMake(self.view.center.x, self.email.center.y + 15)];
     [self.inputView addSubview:self.email];
     
-    self.userNameNew.adjustsFontSizeToFitWidth = YES;
     self.userNameNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.userNameNew.returnKeyType = UIReturnKeyNext;
-    [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + 65)];
     [self.inputView addSubview:self.userNameNew];
     
-    self.passwordNew.adjustsFontSizeToFitWidth = YES;
     self.passwordNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.passwordNew.returnKeyType = UIReturnKeyNext;
     self.passwordNew.secureTextEntry = YES;
-    [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + 115)];
     [self.inputView addSubview:self.passwordNew];
     
-    self.passwordConfirm.adjustsFontSizeToFitWidth = YES;
     self.passwordConfirm.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"CONFIRM PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.passwordConfirm.returnKeyType = UIReturnKeyGo;
     self.passwordConfirm.secureTextEntry = YES;
-    [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + 165)];
     [self.inputView addSubview:self.passwordConfirm];
     
     self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];

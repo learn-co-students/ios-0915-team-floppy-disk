@@ -66,21 +66,6 @@
         NSLog(@"%@", object);
     }];
     
-    // Canonical username (currently Phils) needs to be saved so that different users can have persistent sessions
-    
-    //auth.sessionUserDefaultsKey = @"125204578";
-    
-    
-//    for (NSString* family in [UIFont familyNames])
-//    {
-//        NSLog(@"%@", family);
-//        
-//        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-//        {
-//            NSLog(@"  %@", name);
-//        }
-//    }
-//    
     
     return YES;
 }
@@ -97,10 +82,6 @@
             return;
         }
         
-        NSLog(@"Successful OAuth callback from Spotify. Access token: %@", session.accessToken);
-        [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, id object) {
-            NSLog(@"%@", object);
-        }];
         
         auth.session = session;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"sessionUpdated" object:self];

@@ -8,6 +8,7 @@
 
 #import "HRPParseNetworkService.h"
 #import "HRPUser.h"
+#import <Spotify/Spotify.h>
 
 @interface HRPParseNetworkService ( )
 
@@ -77,6 +78,8 @@
 - (void)logout
 {
     [PFUser logOutInBackground];
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    auth.sessionUserDefaultsKey = nil;
 }
 
 

@@ -21,9 +21,11 @@
 
 //@property (nonatomic) BOOL blockUserBool; TODO
 @property (nonatomic) BOOL spotifyPremium; // add to parse
+
 @property (nonatomic) UIButton *login;
 @property (nonatomic) UIButton *signup;
 @property (nonatomic) UIGestureRecognizer *tapper;
+
 @property (nonatomic) UITextField *email;
 @property (nonatomic) UITextField *password;
 @property (nonatomic) UITextField *passwordConfirm;
@@ -32,6 +34,7 @@
 @property (nonatomic) UITextField *textFieldString;
 @property (nonatomic) UITextField *userName;
 @property (nonatomic) UITextField *userNameNew;
+
 @property (nonatomic) UIView *underline;
 @property (weak, nonatomic) IBOutlet UIView *underlineView;
 //@property (nonatomic, strong) HRPSignupVC *sendToSignupVC;
@@ -68,10 +71,15 @@
     self.tapper.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:self.tapper];
     
-    [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-    [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //
+    [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //
     
     self.parseService = [HRPParseNetworkService sharedService];
+    
+    //    for (UIView *view in self.view.subviews){
+    //        [view removeConstraints: self.view.constraints];
+    //        view.translatesAutoresizingMaskIntoConstraints = NO;
+    //    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -127,16 +135,10 @@
     [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + 165)]; // !!
     
     self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.signup.layer.backgroundColor = [[UIColor colorWithRed:0.17 green:0.62 blue:0.90 alpha:1.0]CGColor];
-    self.signup.layer.cornerRadius = 20.0f;
-    self.signup.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
     [self.signup addTarget:self action:@selector(signupButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.signup setExclusiveTouch:YES];
-    [self.signup setFrame:CGRectMake(0, 0, 275, 40)];
     [self.signup setTitle:@"SIGN UP" forState:UIControlStateNormal];
-    [self.signup setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.signup setCenter: CGPointMake(self.view.center.x, self.signup.center.y + 215)];
-    [self.inputView addSubview:self.signup];
+    
+    [self setUpCommonTraitsForButton:self.signup];
 }
 
 -(void)setupLogin
@@ -154,23 +156,17 @@
     self.userName.returnKeyType = UIReturnKeyDone;
     self.userName.returnKeyType = UIReturnKeyDefault;
     [self.userName setCenter: CGPointMake(self.view.center.x, self.userName.center.y + 15)]; // !!
-
+    
     self.password.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.password.returnKeyType = UIReturnKeyDone;
     self.password.returnKeyType = UIReturnKeyDefault;
     [self.password setCenter: CGPointMake(self.view.center.x, self.password.center.y + 65)]; // !!
     
     self.login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.login.layer.backgroundColor = [[UIColor colorWithRed:0.17 green:0.62 blue:0.90 alpha:1.0]CGColor];
-    self.login.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
-    self.login.layer.cornerRadius = 20.0f;
-    [self.login setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.login addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.login setFrame:CGRectMake(0, 0, 275, 40)];
     [self.login setTitle:@"LOG IN" forState:UIControlStateNormal];
-    [self.login setExclusiveTouch:YES];
-    [self.login  setCenter: CGPointMake(self.view.center.x, self.login.center.y + 215)];
-    [self.inputView addSubview:self.login];
+    
+    [self setUpCommonTraitsForButton:self.login];
 }
 
 - (void)setUpCommonTraitsForTextFields:(NSArray *)textFields
@@ -196,15 +192,26 @@
         textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
         textField.leftViewMode = UITextFieldViewModeAlways;
         
-//        NSUInteger math = (i * 40) + ((i + 1) * 10) + 5;
-        
-//        [textField setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + (math))];
-//        NSLog(@"math: %lu", math);
-        
         textField.delegate = self; // Required for dismissing the keyboard programmatically
         
         [self.inputView addSubview:textField];
     }
+}
+
+- (void)setUpCommonTraitsForButton:(UIButton *)button
+{
+    [button setFrame:CGRectMake(0, 0, 275, 40)];
+    [button setCenter: CGPointMake(self.view.center.x, self.signup.center.y + 215)];
+    
+    button.layer.cornerRadius = 20.0f;
+    button.layer.backgroundColor = [[UIColor colorWithRed:0.17 green:0.62 blue:0.90 alpha:1.0]CGColor];
+    
+    button.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [button setExclusiveTouch:YES];
+
+    [self.inputView addSubview:button];
 }
 
 #pragma mark - Action Methods

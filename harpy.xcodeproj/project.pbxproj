@@ -10,6 +10,7 @@
 		0C1A58203BF13D8D1931530C /* libPods-harpy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0453F870576313A0151B46 /* libPods-harpy.a */; };
 		3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */; };
 		3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73241BFD24420010A257 /* HRPTrack.m */; };
+		3B0EFC4F1C10AE140086545B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0EFC4E1C10AE140086545B /* Constants.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC251C1BFF87EF004C6790 /* HRPTempTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC251B1BFF87EF004C6790 /* HRPTempTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC251F1BFF8810004C6790 /* HRPTempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC251E1BFF8810004C6790 /* HRPTempViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25211C04B381004C6790 /* HRPTrackSearchViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -73,6 +74,8 @@
 		3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTrackCreator.m; sourceTree = "<group>"; };
 		3B0A73231BFD24420010A257 /* HRPTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPTrack.h; sourceTree = "<group>"; };
 		3B0A73241BFD24420010A257 /* HRPTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTrack.m; sourceTree = "<group>"; };
+		3B0EFC4D1C10AE140086545B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		3B0EFC4E1C10AE140086545B /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		3BAC251A1BFF87EF004C6790 /* HRPTempTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPTempTableViewController.h; sourceTree = "<group>"; };
 		3BAC251B1BFF87EF004C6790 /* HRPTempTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTempTableViewController.m; sourceTree = "<group>"; };
 		3BAC251D1BFF8810004C6790 /* HRPTempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPTempViewController.h; sourceTree = "<group>"; };
@@ -227,6 +230,8 @@
 				E938012F1BFD1703004CC8A2 /* HRPParseNetworkService.h */,
 				E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */,
 				E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */,
+				3B0EFC4D1C10AE140086545B /* Constants.h */,
+				3B0EFC4E1C10AE140086545B /* Constants.m */,
 				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
 				E9FA64DC1C03BD9D008DDE69 /* Profile */,
 				E9EE0EB91BFFCB4000C4F1DE /* Spotify */,
@@ -510,6 +515,7 @@
 				E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */,
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
 				E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */,
+				3B0EFC4F1C10AE140086545B /* Constants.m in Sources */,
 				E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */,
 				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,
 				3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */,

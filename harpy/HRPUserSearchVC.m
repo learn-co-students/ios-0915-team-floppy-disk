@@ -207,22 +207,24 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.imageView.image = [UIImage imageNamed:@"spinner.png"];
-    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     cell.imageView.layer.cornerRadius =  42.5;
     cell.imageView.layer.masksToBounds = YES;
     PFFile *imageFile = [user objectForKey:@"userAvatar"];
-    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error)
-        {
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.imageView.image = [UIImage imageWithData:data];
-            cell.imageView.highlightedImage = [UIImage imageWithData:data];
-        }
-        else
-        {
-            NSLog(@"ERROR: %@ %@", error, [error userInfo]);
-        }
-    }];
+    if (imageFile)
+    {
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error)
+            {
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.imageView.image = [UIImage imageWithData:data];
+                cell.imageView.highlightedImage = [UIImage imageWithData:data];
+            }
+            else
+            {
+                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
     
     UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
     usernameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:15.0];
@@ -240,12 +242,10 @@
     
     return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // typically you need know which item the user has selected.
-    // this method allows you to keep track of the selection
-    indexPath = indexPath;
-    
+    NSLog(@"cell selected at %ld", indexPath.row);
 }
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {

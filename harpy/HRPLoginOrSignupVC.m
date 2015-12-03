@@ -14,7 +14,7 @@
 #import "HRPValidationManager.h"
 #import "UIViewController+PresentViewController.h"
 #import <Spotify/Spotify.h>
-#import <QuartzCore/QuartzCore.h> // Required for boarder color
+#import <QuartzCore/QuartzCore.h> // Required for border color
 @import SafariServices;
 
 @interface HRPLoginOrSignupVC () <SPTAuthViewDelegate>
@@ -60,10 +60,6 @@
     self.userName.hidden = YES;
     self.userNameNew.hidden = NO;
     
-//    self.underline = [[UIView alloc] initWithFrame:CGRectMake(55, 0, 55, 0.5)];
-//    self.underline.backgroundColor = [UIColor whiteColor];
-//    [self.inputView addSubview:self.underline];
-    
     self.underline = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 55, 0.5)];
     self.underline.backgroundColor = [UIColor whiteColor];
     [self.underlineView addSubview:self.underline];
@@ -101,85 +97,92 @@
 {
     int fieldHeight = 30;
     
-    //self.email.adjustsFontSizeToFitWidth = YES; //adjust the font size to fit width.
     self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.userNameNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.passwordNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.passwordConfirm = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    
+    NSArray *textFields = @[ self.email, self.userNameNew, self.passwordNew, self.passwordConfirm ];
+    
+    for (UITextField *textField in textFields)
+    {
+        textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    }
+    
+    //self.email.adjustsFontSizeToFitWidth = YES; //adjust the font size to fit width.
+    //
     self.email.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"EMAIL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.email.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.email.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    self.email.delegate = self; // Required for dismissing the keyboard programically
-    self.email.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
-    self.email.keyboardAppearance = UIKeyboardAppearanceDark;
-    self.email.keyboardType = UIKeyboardTypeEmailAddress;
-    self.email.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
-    self.email.layer.borderWidth = 1;
-    self.email.layer.cornerRadius = 20.0f;
-    self.email.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
-    self.email.leftViewMode = UITextFieldViewModeAlways;
+    self.email.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter; //
+    self.email.delegate = self; // Required for dismissing the keyboard programically //
+    self.email.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0]; //
+    self.email.keyboardAppearance = UIKeyboardAppearanceDark; //
+    self.email.keyboardType = UIKeyboardTypeEmailAddress; //
+    self.email.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor]; //
+    self.email.layer.borderWidth = 1; //
+    self.email.layer.cornerRadius = 20.0f; //
+    self.email.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)]; //
+    self.email.leftViewMode = UITextFieldViewModeAlways; //
     self.email.returnKeyType = UIReturnKeyNext;
-    self.email.textAlignment = NSTextAlignmentLeft;
-    self.email.textColor = [UIColor whiteColor];
+    self.email.textAlignment = NSTextAlignmentLeft; //
+    self.email.textColor = [UIColor whiteColor]; //
     [self.email setCenter: CGPointMake(self.view.center.x, self.email.center.y + 15)];
     [self.inputView addSubview:self.email];
     
-    self.userNameNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    //
     self.userNameNew.adjustsFontSizeToFitWidth = YES;
-    self.userNameNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.userNameNew.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.userNameNew.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    self.userNameNew.delegate = self;
-    self.userNameNew.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
-    self.userNameNew.keyboardAppearance = UIKeyboardAppearanceDark;
-    self.userNameNew.keyboardType = UIKeyboardTypeEmailAddress;
-    self.userNameNew.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
-    self.userNameNew.layer.borderWidth = 1;
-    self.userNameNew.layer.cornerRadius = 20.0f;
-    self.userNameNew.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
-    self.userNameNew.leftViewMode = UITextFieldViewModeAlways;
+    self.userNameNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];    self.userNameNew.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter; //
+    self.userNameNew.delegate = self; //
+    self.userNameNew.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0]; //
+    self.userNameNew.keyboardAppearance = UIKeyboardAppearanceDark; //
+    self.userNameNew.keyboardType = UIKeyboardTypeEmailAddress; //
+    self.userNameNew.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor]; //
+    self.userNameNew.layer.borderWidth = 1; //
+    self.userNameNew.layer.cornerRadius = 20.0f; //
+    self.userNameNew.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)]; //
+    self.userNameNew.leftViewMode = UITextFieldViewModeAlways; //
     self.userNameNew.returnKeyType = UIReturnKeyNext;
-    self.userNameNew.textAlignment = NSTextAlignmentLeft;
-    self.userNameNew.textColor = [UIColor whiteColor];
+    self.userNameNew.textAlignment = NSTextAlignmentLeft; //
+    self.userNameNew.textColor = [UIColor whiteColor]; //
     [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + 65)];
     [self.inputView addSubview:self.userNameNew];
     
-    self.passwordNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    //
     self.passwordNew.adjustsFontSizeToFitWidth = YES;
     self.passwordNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.passwordNew.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.passwordNew.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    self.passwordNew.delegate = self;
-    self.passwordNew.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
-    self.passwordNew.keyboardAppearance = UIKeyboardAppearanceDark;
-    self.passwordNew.keyboardType = UIKeyboardTypeEmailAddress; // Should change
-    self.passwordNew.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
-    self.passwordNew.layer.borderWidth = 1;
-    self.passwordNew.layer.cornerRadius = 20.0f;
-    self.passwordNew.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
-    self.passwordNew.leftViewMode = UITextFieldViewModeAlways;
+    self.passwordNew.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter; //
+    self.passwordNew.delegate = self; //
+    self.passwordNew.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0]; //
+    self.passwordNew.keyboardAppearance = UIKeyboardAppearanceDark; //
+    self.passwordNew.keyboardType = UIKeyboardTypeEmailAddress; //
+    self.passwordNew.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor]; //
+    self.passwordNew.layer.borderWidth = 1; //
+    self.passwordNew.layer.cornerRadius = 20.0f; //
+    self.passwordNew.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)]; //
+    self.passwordNew.leftViewMode = UITextFieldViewModeAlways; //
     self.passwordNew.returnKeyType = UIReturnKeyNext;
     self.passwordNew.secureTextEntry = YES;
-    self.passwordNew.textAlignment = NSTextAlignmentLeft;
-    self.passwordNew.textColor = [UIColor whiteColor];
+    self.passwordNew.textAlignment = NSTextAlignmentLeft; //
+    self.passwordNew.textColor = [UIColor whiteColor]; //
     [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + 115)];
     [self.inputView addSubview:self.passwordNew];
     
-    self.passwordConfirm = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    //
     self.passwordConfirm.adjustsFontSizeToFitWidth = YES;
     self.passwordConfirm.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"CONFIRM PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    self.passwordConfirm.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.passwordConfirm.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    self.passwordConfirm.delegate = self;
-    self.passwordConfirm.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
-    self.passwordConfirm.keyboardAppearance = UIKeyboardAppearanceDark;
-    self.passwordConfirm.keyboardType = UIKeyboardTypeEmailAddress; // Should change
-    self.passwordConfirm.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
-    self.passwordConfirm.layer.borderWidth = 1;
-    self.passwordConfirm.layer.cornerRadius = 20.0f;
-    self.passwordConfirm.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
-    self.passwordConfirm.leftViewMode = UITextFieldViewModeAlways;
+    self.passwordConfirm.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter; //
+    self.passwordConfirm.delegate = self; //
+    self.passwordConfirm.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0]; //
+    self.passwordConfirm.keyboardAppearance = UIKeyboardAppearanceDark; //
+    self.passwordConfirm.keyboardType = UIKeyboardTypeEmailAddress; //
+    self.passwordConfirm.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor]; //
+    self.passwordConfirm.layer.borderWidth = 1; //
+    self.passwordConfirm.layer.cornerRadius = 20.0f; //
+    self.passwordConfirm.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)]; //
+    self.passwordConfirm.leftViewMode = UITextFieldViewModeAlways; //
     self.passwordConfirm.returnKeyType = UIReturnKeyGo;
     self.passwordConfirm.secureTextEntry = YES;
-    self.passwordConfirm.textAlignment = NSTextAlignmentLeft;
-    self.passwordConfirm.textColor = [UIColor whiteColor];
+    self.passwordConfirm.textAlignment = NSTextAlignmentLeft; //
+    self.passwordConfirm.textColor = [UIColor whiteColor]; //
     [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + 165)];
     [self.inputView addSubview:self.passwordConfirm];
     
@@ -241,7 +244,7 @@
     self.password.secureTextEntry = YES;
     [self.password setCenter: CGPointMake(self.view.center.x, self.password.center.y + 65)];
     [self.inputView addSubview:self.password];
-
+    
     self.login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.login.layer.backgroundColor = [[UIColor colorWithRed:0.17 green:0.62 blue:0.90 alpha:1.0]CGColor];
     self.login.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
@@ -273,14 +276,12 @@
                                    delay:0
                                  options:UIViewAnimationCurveLinear
                               animations:^{
-                                  //[self.underline setCenter: CGPointMake(82, 0)];
                                   [self.underline setCenter: CGPointMake(27, 0)];
                               }
                               completion:nil];
 }
 - (IBAction)logIn:(id)sender
 {
-    //self.displayMessage.text = @"LOG IN TO FIND MUSIC CURATED LOCALLY";
     self.email.hidden = YES;
     self.login.hidden = NO;
     self.password.hidden = NO;
@@ -343,22 +344,22 @@
     else
     {
         [self.parseService loginApp:self.userName.text password:self.password.text completionHandler:^(HRPUser *user, NSError *error)
-        {
-            if (user)
-            {
-                NSLog(@"RESULT user %@ is logged in.", user);
-                
-                PFUser *user = [PFUser currentUser];
-                NSString *canonicalUsername = user[@"spotifyCanonical"];
-                auth.sessionUserDefaultsKey = canonicalUsername;
-                
-                [self showMapsStoryboard];
-            }
-            else
-            {
-                [self alertControllerLoginInvalid];
-            }
-        }];
+         {
+             if (user)
+             {
+                 NSLog(@"RESULT user %@ is logged in.", user);
+                 
+                 PFUser *user = [PFUser currentUser];
+                 NSString *canonicalUsername = user[@"spotifyCanonical"];
+                 auth.sessionUserDefaultsKey = canonicalUsername;
+                 
+                 [self showMapsStoryboard];
+             }
+             else
+             {
+                 [self alertControllerLoginInvalid];
+             }
+         }];
     }
 }
 
@@ -407,7 +408,7 @@
 -(void)textFieldTextDidChange:(NSNotification *)notification
 {
     UITextField *textField = (UITextField *)notification.object;
-
+    
     if (textField == self.email)
     {
         textField.tag = HRPViewControllerEmailTextFieldTag;
@@ -466,7 +467,7 @@
         }
     }
     NSLog(@"TEST: %@ with tag %ld is %@", textField.text, (long)textField.tag, valid ? @"YES" : @"NO");
-
+    
     return valid;
 }
 -(void)createParseUser
@@ -595,13 +596,13 @@
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         self.spotifyPremium = NO;
         [self spotifySignupPopup];
-
-//        SPTAuth *auth = [SPTAuth defaultInstance];
-//        if (auth.session && [auth.session isValid])
-//        {
-//            [self createParseUser];
-//            [self showCreateProfileView];
-//        }
+        
+        //        SPTAuth *auth = [SPTAuth defaultInstance];
+        //        if (auth.session && [auth.session isValid])
+        //        {
+        //            [self createParseUser];
+        //            [self showCreateProfileView];
+        //        }
     }];
     
     [alert addAction:yes];

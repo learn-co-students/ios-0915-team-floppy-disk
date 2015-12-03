@@ -28,13 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupTableViewUI];
     
     self.userTableView.delegate = self;
     self.userTableView.dataSource = self;
     self.userSearchBar.delegate = self;
     self.parseService = [HRPParseNetworkService sharedService];
-    
-    
     
     [self initializeEmptyUsersArray];
     
@@ -58,6 +57,65 @@
     [self.userTableView deselectRowAtIndexPath:[self.userTableView indexPathForSelectedRow] animated:animated];
     [super viewWillAppear:animated];
 }
+
+-(void) setupTableViewUI
+{
+    UIColor *desertStormGreyUIColor = [UIColor colorWithHue:0 saturation:0 brightness:0.97 alpha:1];
+    UIImage *desertStormGreyColorImage = [self imageWithColor:desertStormGreyUIColor];
+    
+    self.userTableView.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = desertStormGreyUIColor;
+    
+    [[self searchSubviewsForTextFieldIn:self.userSearchBar] setBackgroundColor:desertStormGreyUIColor];
+    self.userSearchBar.backgroundImage = desertStormGreyColorImage;
+    
+    for (id object in [[[self.userSearchBar subviews] objectAtIndex:0] subviews])
+    {
+        if ([object isKindOfClass:[UITextField class]])
+        {
+            UITextField *textFieldObject = (UITextField *)object;
+            UIColor *ironUIColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+            textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
+            textFieldObject.layer.borderColor = [ironUIColor CGColor];
+            textFieldObject.layer.borderWidth = 1.0;
+            textFieldObject.layer.cornerRadius = 13;
+            break;
+        }
+    }
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[self.userSearchBar class], nil] setTintColor:[UIColor darkGrayColor]];
+}
+
+- (UITextField*)searchSubviewsForTextFieldIn:(UIView*)view
+{
+    if ([view isKindOfClass:[UITextField class]]) {
+        return (UITextField*)view;
+    }
+    UITextField *searchedTextField;
+    for (UIView *subview in view.subviews) {
+        searchedTextField = [self searchSubviewsForTextFieldIn:subview];
+        if (searchedTextField) {
+            break;
+        }
+    }
+    return searchedTextField;
+}
+
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 
 #pragma mark - Setup methods
 

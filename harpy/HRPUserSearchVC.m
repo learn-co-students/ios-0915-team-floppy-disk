@@ -68,6 +68,7 @@
 - (void)fetchAllUsers:(void (^)(NSArray *, BOOL, NSError *))completionBlock
 {
     PFQuery *userQuery = [PFUser query];
+    userQuery.limit = 10;
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
         if (!error)
         {
@@ -92,7 +93,7 @@
     if (![searchText isEqualToString:@""]) {
         PFQuery *userQuery = [PFUser query];
         searchText = [searchText lowercaseString];
-        [userQuery whereKey:@"username" equalTo:searchText];
+        [userQuery whereKey:@"username" hasPrefix:searchText];
         [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
             if (!error)
             {

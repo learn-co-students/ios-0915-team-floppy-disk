@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xEc-KJ-4VB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="C0a-CR-bU2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -38,7 +38,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqz-ns-WvY" userLabel="Top View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqz-ns-WvY" userLabel="Top View">
                                 <rect key="frame" x="20" y="84" width="374" height="177"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q2S-E8-x2a">
@@ -206,11 +206,11 @@
                                     <constraint firstItem="Q2S-E8-x2a" firstAttribute="centerX" secondItem="qqz-ns-WvY" secondAttribute="centerX" id="zRu-9H-Ktk"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2b-0c-iv9" userLabel="Bottom View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2b-0c-iv9" userLabel="Bottom View">
                                 <rect key="frame" x="20" y="272" width="374" height="420"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="724-2i-lEg">
-                                        <rect key="frame" x="0.0" y="10" width="374" height="420"/>
+                                        <rect key="frame" x="0.0" y="10" width="374" height="464"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eBw-lt-Qdj">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="22"/>
@@ -263,12 +263,12 @@
                                                 </cells>
                                             </collectionView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
-                                                <rect key="frame" x="0.0" y="102" width="374" height="252"/>
+                                                <rect key="frame" x="0.0" y="102" width="374" height="296"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-Uc-7cS" userLabel="Music Player View">
-                                                <rect key="frame" x="0.0" y="354" width="374" height="66"/>
+                                                <rect key="frame" x="0.0" y="398" width="374" height="66"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.50196081399917603" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -307,7 +307,7 @@
                         <barButtonItem key="leftBarButtonItem" image="left_Arrow" id="hh6-mo-JVj">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="PzG-Dy-ryI" kind="show" id="NTj-lU-mJE"/>
+                                <action selector="backButtonTapped:" destination="C0a-CR-bU2" id="f5X-uA-AUY"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="cog" id="3Ig-pX-UYg">
@@ -542,27 +542,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXT-pd-bE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2560.5" y="696"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="DTO-TB-Ae0">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xEc-KJ-4VB" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5iv-Sx-quv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="C0a-CR-bU2" kind="relationship" relationship="rootViewController" id="L2a-8U-7gt"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wyE-BP-CfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1059" y="337"/>
         </scene>
         <!--How should we segue to this?-->
         <scene sceneID="k3n-fv-q8n">

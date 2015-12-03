@@ -14,5 +14,5 @@ NSString * const LoggedInUserDefaultsKey = @"LoggenIn";
 NSString * const UserDidLogInNotificationName = @"UserDidLogInNotification";
 NSString * const UserDidLogOutNotificationName = @"UserDidLogOutNotification";
 
-NSString * const LogInViewControllerStoryboardID = @"LogInViewController";
-NSString * const HomeViewControllerStoryboardID = @"HomeViewController";
+NSString * const LogInViewControllerStoryboardID = @"sendToLogins";
+NSString * const HomeViewControllerStoryboardID = @"sendToMaps";

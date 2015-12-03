@@ -45,7 +45,7 @@
 
 - (void)setupUserProfile
 {
-    self.userAvatar.layer.cornerRadius = 50;
+    self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height/2;
     self.userAvatar.clipsToBounds = YES;
     
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;

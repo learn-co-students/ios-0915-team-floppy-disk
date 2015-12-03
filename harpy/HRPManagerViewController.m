@@ -35,15 +35,6 @@
     } else {
         [self showLogIn];
     }
-    
-//    if (![PFUser currentUser])
-//    {
-//        [self performSelector:@selector(showLoginsStoryboard) withObject:nil afterDelay:0];
-//    }
-//    else
-//    {
-//        [self performSelector:@selector(showMapsStoryboard) withObject:nil afterDelay:0];
-//    }
 }
 
 #pragma mark Send to designated view controller
@@ -105,17 +96,6 @@
     [self.containerView addSubview:controller.view];
     [controller didMoveToParentViewController:self];
 }
-
-
-
-//- (void)showLoginsStoryboard
-//{
-//    [self performSegueWithIdentifier:@"sendToLogins" sender:self];
-//}
-//- (void)showMapsStoryboard
-//{
-//    [self performSegueWithIdentifier:@"sendToMaps" sender:self];
-//}
 
 
 

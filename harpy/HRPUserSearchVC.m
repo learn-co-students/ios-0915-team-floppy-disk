@@ -148,28 +148,37 @@
     PFUser *user = [self.users objectAtIndex:[indexPath row]];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
-    usernameLabel.text = user.username;
-    
-    
     cell.imageView.image = [UIImage imageNamed:@"spinner.png"];
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    cell.imageView.layer.cornerRadius = 4;
+    cell.imageView.layer.cornerRadius =  42.5;
     cell.imageView.layer.masksToBounds = YES;
     PFFile *imageFile = [user objectForKey:@"userAvatar"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error)
         {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.imageView.image = [UIImage imageWithData:data];
             cell.imageView.highlightedImage = [UIImage imageWithData:data];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         else
         {
             NSLog(@"ERROR: %@ %@", error, [error userInfo]);
         }
     }];
+    
+    UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
+    usernameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:15.0];
+    usernameLabel.text = user.username;
+    
+    UILabel *realnameLabel = (UILabel *)[cell viewWithTag:3];
+    NSString *realnameString = user[@"realName"];
+    realnameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
+    realnameLabel.text = realnameString;
+
+    UILabel *shortbioLabel = (UILabel *)[cell viewWithTag:4];
+    NSString *shortbioString = user[@"shortBio"];
+    shortbioLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
+    shortbioLabel.text = shortbioString;
     
     return cell;
 }

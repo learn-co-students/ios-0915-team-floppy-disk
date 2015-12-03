@@ -28,13 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupTableViewUI];
     
     self.userTableView.delegate = self;
     self.userTableView.dataSource = self;
     self.userSearchBar.delegate = self;
     self.parseService = [HRPParseNetworkService sharedService];
-    
-    
     
     [self initializeEmptyUsersArray];
     
@@ -59,6 +58,65 @@
     [super viewWillAppear:animated];
 }
 
+-(void) setupTableViewUI
+{
+    UIColor *desertStormGreyUIColor = [UIColor colorWithHue:0 saturation:0 brightness:0.97 alpha:1];
+    UIImage *desertStormGreyColorImage = [self imageWithColor:desertStormGreyUIColor];
+    
+    self.userTableView.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = desertStormGreyUIColor;
+    
+    [[self searchSubviewsForTextFieldIn:self.userSearchBar] setBackgroundColor:desertStormGreyUIColor];
+    self.userSearchBar.backgroundImage = desertStormGreyColorImage;
+    
+    for (id object in [[[self.userSearchBar subviews] objectAtIndex:0] subviews])
+    {
+        if ([object isKindOfClass:[UITextField class]])
+        {
+            UITextField *textFieldObject = (UITextField *)object;
+            UIColor *ironUIColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+            textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
+            textFieldObject.layer.borderColor = [ironUIColor CGColor];
+            textFieldObject.layer.borderWidth = 1.0;
+            textFieldObject.layer.cornerRadius = 13;
+            break;
+        }
+    }
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[self.userSearchBar class], nil] setTintColor:[UIColor darkGrayColor]];
+}
+
+- (UITextField*)searchSubviewsForTextFieldIn:(UIView*)view
+{
+    if ([view isKindOfClass:[UITextField class]]) {
+        return (UITextField*)view;
+    }
+    UITextField *searchedTextField;
+    for (UIView *subview in view.subviews) {
+        searchedTextField = [self searchSubviewsForTextFieldIn:subview];
+        if (searchedTextField) {
+            break;
+        }
+    }
+    return searchedTextField;
+}
+
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+
 #pragma mark - Setup methods
 
 -(void)initializeEmptyUsersArray
@@ -68,6 +126,7 @@
 - (void)fetchAllUsers:(void (^)(NSArray *, BOOL, NSError *))completionBlock
 {
     PFQuery *userQuery = [PFUser query];
+    userQuery.limit = 10;
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
         if (!error)
         {
@@ -92,7 +151,7 @@
     if (![searchText isEqualToString:@""]) {
         PFQuery *userQuery = [PFUser query];
         searchText = [searchText lowercaseString];
-        [userQuery whereKey:@"username" equalTo:searchText];
+        [userQuery whereKey:@"username" hasPrefix:searchText];
         [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
             if (!error)
             {
@@ -147,28 +206,37 @@
     PFUser *user = [self.users objectAtIndex:[indexPath row]];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
-    usernameLabel.text = user.username;
-    
-    
     cell.imageView.image = [UIImage imageNamed:@"spinner.png"];
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    cell.imageView.layer.cornerRadius = 4;
+    cell.imageView.layer.cornerRadius =  42.5;
     cell.imageView.layer.masksToBounds = YES;
     PFFile *imageFile = [user objectForKey:@"userAvatar"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error)
         {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.imageView.image = [UIImage imageWithData:data];
             cell.imageView.highlightedImage = [UIImage imageWithData:data];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         else
         {
             NSLog(@"ERROR: %@ %@", error, [error userInfo]);
         }
     }];
+    
+    UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
+    usernameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:15.0];
+    usernameLabel.text = user.username;
+    
+    UILabel *realnameLabel = (UILabel *)[cell viewWithTag:3];
+    NSString *realnameString = user[@"realName"];
+    realnameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
+    realnameLabel.text = realnameString;
+
+    UILabel *shortbioLabel = (UILabel *)[cell viewWithTag:4];
+    NSString *shortbioString = user[@"shortBio"];
+    shortbioLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
+    shortbioLabel.text = shortbioString;
     
     return cell;
 }

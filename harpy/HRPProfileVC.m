@@ -11,6 +11,7 @@
 #import "HRPUser.h"
 #import "PFFile.h"
 #import <QuartzCore/QuartzCore.h> // Needed to round UIImage
+#import "HRPMapsViewController.h"
 
 @interface HRPProfileVC ()
 
@@ -91,6 +92,12 @@
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+- (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
+    
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

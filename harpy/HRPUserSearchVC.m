@@ -38,6 +38,8 @@
     [self initializeEmptyUsersArray];
     
     PFQuery *userQuery = [PFUser query];
+    userQuery.limit = 19;
+    [userQuery orderByDescending:@"createdAt"];
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
         if (!error)
         {
@@ -58,9 +60,15 @@
     [super viewWillAppear:animated];
 }
 
+#pragma mark - Setup methods
+
+-(void)initializeEmptyUsersArray
+{
+    self.users = [NSMutableArray new];
+}
 -(void) setupTableViewUI
 {
-    UIColor *desertStormGreyUIColor = [UIColor colorWithHue:0 saturation:0 brightness:0.97 alpha:1];
+    UIColor *desertStormGreyUIColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0];
     UIImage *desertStormGreyColorImage = [self imageWithColor:desertStormGreyUIColor];
     
     self.userTableView.backgroundColor = [UIColor clearColor];
@@ -86,23 +94,10 @@
     [[UIBarButtonItem appearanceWhenContainedIn:[self.userSearchBar class], nil] setTintColor:[UIColor darkGrayColor]];
 }
 
-- (UITextField*)searchSubviewsForTextFieldIn:(UIView*)view
+#pragma mark - Helper methods
+
+- (UIImage *)imageWithColor:(UIColor *)color
 {
-    if ([view isKindOfClass:[UITextField class]]) {
-        return (UITextField*)view;
-    }
-    UITextField *searchedTextField;
-    for (UIView *subview in view.subviews) {
-        searchedTextField = [self searchSubviewsForTextFieldIn:subview];
-        if (searchedTextField) {
-            break;
-        }
-    }
-    return searchedTextField;
-}
-
-
-- (UIImage *)imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -114,34 +109,6 @@
     UIGraphicsEndImageContext();
     
     return image;
-}
-
-
-#pragma mark - Setup methods
-
--(void)initializeEmptyUsersArray
-{
-    self.users = [NSMutableArray new];
-}
-- (void)fetchAllUsers:(void (^)(NSArray *, BOOL, NSError *))completionBlock
-{
-    PFQuery *userQuery = [PFUser query];
-    userQuery.limit = 10;
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
-        if (!error)
-        {
-            completionBlock(objects, YES, error);
-            NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
-            self.users = [objects mutableCopy];
-            [self.userTableView reloadData];
-                
-        }
-        else
-        {
-            completionBlock(@[], NO, error);
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
 }
 
 #pragma mark - Search bar methods
@@ -167,6 +134,20 @@
         }];
     }
 }
+- (UITextField*)searchSubviewsForTextFieldIn:(UIView*)view
+{
+    if ([view isKindOfClass:[UITextField class]]) {
+        return (UITextField*)view;
+    }
+    UITextField *searchedTextField;
+    for (UIView *subview in view.subviews) {
+        searchedTextField = [self searchSubviewsForTextFieldIn:subview];
+        if (searchedTextField) {
+            break;
+        }
+    }
+    return searchedTextField;
+}
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
@@ -187,14 +168,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    if ([self.userSearchBar.text isEqualToString:@""])
-//    {
-//        return 1;
-//    }
-//    else
-//    {
-        return self.users.count;
-//    }
+    return self.users.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -251,6 +225,8 @@
 {
     NSLog(@"cell selected at %ld", indexPath.row);
 }
+
+# pragma mark- Navigation methods
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];

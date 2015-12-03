@@ -77,7 +77,7 @@
                     <connections>
                         <outlet property="defaultMarkerImage" destination="yRa-kE-mpk" id="eOO-f4-qT4"/>
                         <outlet property="postSongButton" destination="Cey-M4-euM" id="SDk-bl-Lag"/>
-                        <segue destination="jZz-Vg-kOe" kind="show" identifier="showTrackViews" id="rQd-sp-5dF"/>
+                        <segue destination="jZz-Vg-kOe" kind="presentation" identifier="showTrackViews" id="rQd-sp-5dF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUG-Vo-6zZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,7 +160,7 @@
                         <barButtonItem key="leftBarButtonItem" image="left_Arrow" id="48g-Ja-Oui">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="vQb-cv-L16" kind="show" id="0ks-H5-Uig"/>
+                                <action selector="backButtonTapped:" destination="dEV-4u-8RP" id="JFT-sD-7Kx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -212,19 +212,6 @@
             </objects>
             <point key="canvasLocation" x="485" y="231"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="rzp-aS-3eL">
-            <objects>
-                <viewController id="jXT-uo-Mno" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="X8c-ca-reh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Zc-Ol-wXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="default_marker" width="22" height="39"/>
@@ -232,7 +219,4 @@
         <image name="menu" width="25" height="13"/>
         <image name="search" width="20" height="20"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="DDa-2Q-l5D"/>
-    </inferredMetricsTieBreakers>
 </document>

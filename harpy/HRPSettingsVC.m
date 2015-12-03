@@ -43,7 +43,7 @@
     
     {
         [self.parseService logout];
-        [self performSegueWithIdentifier:@"sendToLogins" sender:sender];
+        //pop to root view
     }
 }
 

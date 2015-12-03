@@ -25,7 +25,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+
+    
+    
     [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
                                                                  [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
                                                              NSForegroundColorAttributeName:[UIColor whiteColor]
@@ -33,7 +35,6 @@
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backround_cropped"] forBarMetrics:UIBarMetricsDefault];
     
     
-    // Get API Key from key.plist (hidden by .gitignore)
     NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
     
     // Google Keys
@@ -56,25 +57,15 @@
     // Spotify Authorization Initializers
     SPTAuth *auth = [SPTAuth defaultInstance];
     auth.clientID = spotifyClientId;
-    auth.requestedScopes = @[SPTAuthStreamingScope];
+    auth.requestedScopes = @[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope];
     auth.redirectURL = [NSURL URLWithString:@"harpy-app://authorize"];
     auth.tokenSwapURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/swap"];
     auth.tokenRefreshURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/refresh"];
+    NSLog(@"%@", auth.session.accessToken);
+    [SPTUser requestCurrentUserWithAccessToken:auth.session.accessToken callback:^(NSError *error, id object) {
+        NSLog(@"%@", object);
+    }];
     
-    // Canonical username (currently Phils) needs to be saved so that different users can have persistent sessions
-    auth.sessionUserDefaultsKey = @"125204578";
-    
-    
-//    for (NSString* family in [UIFont familyNames])
-//    {
-//        NSLog(@"%@", family);
-//        
-//        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-//        {
-//            NSLog(@"  %@", name);
-//        }
-//    }
-//    
     
     return YES;
 }
@@ -83,16 +74,17 @@
 {
     SPTAuth *auth = [SPTAuth defaultInstance];
     SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
-    // This is the callback that'll be triggered when auth is completed (or fails).
+        // This is the callback that'll be triggered when auth is completed (or fails).
+            
+        if (error != nil)
+        {
+            NSLog(@"*** Auth error: %@", error);
+            return;
+        }
         
-    if (error != nil)
-    {
-        NSLog(@"*** Auth error: %@", error);
-        return;
-    }
         
-    auth.session = session;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"sessionUpdated" object:self];
+        auth.session = session;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"sessionUpdated" object:self];
     
     };
     
@@ -105,5 +97,7 @@
     
     
 }
+
+
 
 @end

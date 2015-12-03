@@ -26,7 +26,7 @@
     // Spotify authentication
     [[SPTAuth defaultInstance] setClientID:spotifyClientId];
     [[SPTAuth defaultInstance] setRedirectURL:redirectURL];
-    [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope]];
+    [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope]];
 
     // OpenUrl: from sharedApplication AppDelegate
     NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];

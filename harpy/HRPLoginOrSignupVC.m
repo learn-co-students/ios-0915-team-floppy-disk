@@ -334,6 +334,8 @@
 {
     NSLog(@"CLICKED: login button");
     
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    
     if ((self.userName.text.length == 0)  || (self.password.text.length ==  0))
     {
         [self alertControllerLoginInvalid];
@@ -345,6 +347,11 @@
             if (user)
             {
                 NSLog(@"RESULT user %@ is logged in.", user);
+                
+                PFUser *user = [PFUser currentUser];
+                NSString *canonicalUsername = user[@"spotifyCanonical"];
+                auth.sessionUserDefaultsKey = canonicalUsername;
+                
                 [self showMapsStoryboard];
             }
             else
@@ -470,6 +477,16 @@
     user.username = usernameLowercase;
     user.password = self.passwordConfirm.text;
     user.email = self.email.text;
+    
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    SPTSession *session = auth.session;
+    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, NSString *object) {
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            user[@"spotifyCanonical"] = object;
+            auth.sessionUserDefaultsKey = object;
+        }];
+    }];
+    
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         
@@ -609,6 +626,7 @@
 -(void)loginCompleted:(NSNotification *)notification
 {
     [self dismissViewControllerAnimated:YES];
+    
     
     SPTAuth *auth = [SPTAuth defaultInstance];
     if (auth.session && [auth.session isValid])

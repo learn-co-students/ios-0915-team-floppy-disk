@@ -232,13 +232,13 @@
 				E9EE0EB91BFFCB4000C4F1DE /* Spotify */,
 				E938012E1BFCEF6C004CC8A2 /* Maps */,
 				E938012D1BFCEF58004CC8A2 /* Login */,
-				E9335C631BFA7EBC002DD9C6 /* Main.storyboard */,
-				E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */,
 				E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */,
 				3BAC251A1BFF87EF004C6790 /* HRPTempTableViewController.h */,
 				3BAC251B1BFF87EF004C6790 /* HRPTempTableViewController.m */,
 				3BAC251D1BFF8810004C6790 /* HRPTempViewController.h */,
 				3BAC251E1BFF8810004C6790 /* HRPTempViewController.m */,
+				E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */,
+				E9335C631BFA7EBC002DD9C6 /* Main.storyboard */,
 			);
 			path = harpy;
 			sourceTree = "<group>";

@@ -15,6 +15,7 @@
 #import "UIViewController+PresentViewController.h"
 #import <Spotify/Spotify.h>
 #import <QuartzCore/QuartzCore.h> // Required for boarder color
+#import "Constants.h"
 @import SafariServices;
 
 @interface HRPLoginOrSignupVC () <SPTAuthViewDelegate>
@@ -351,6 +352,7 @@
                 PFUser *user = [PFUser currentUser];
                 NSString *canonicalUsername = user[@"spotifyCanonical"];
                 auth.sessionUserDefaultsKey = canonicalUsername;
+                [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogInNotificationName object:nil];
                 
                 [self showMapsStoryboard];
             }
@@ -632,6 +634,8 @@
     if (auth.session && [auth.session isValid])
     {
         [self createParseUser];
+        [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogInNotificationName object:nil];
+
         [self showCreateProfileView];
     }
 }

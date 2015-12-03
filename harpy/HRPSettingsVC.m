@@ -8,6 +8,7 @@
 
 #import "HRPSettingsVC.h"
 #import "HRPParseNetworkService.h"
+#import "Constants.h"
 
 @interface HRPSettingsVC () <UINavigationControllerDelegate>
 
@@ -43,7 +44,7 @@
     
     {
         [self.parseService logout];
-        //pop to root view
+        [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogOutNotificationName object:nil];
     }
 }
 

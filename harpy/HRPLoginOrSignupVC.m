@@ -202,6 +202,7 @@
     self.password.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.password.returnKeyType = UIReturnKeyDone;
     self.password.returnKeyType = UIReturnKeyDefault;
+    self.password.secureTextEntry = YES;
     [self.password setCenter: CGPointMake(self.view.center.x, self.password.center.y + 65)]; // !!
 }
 

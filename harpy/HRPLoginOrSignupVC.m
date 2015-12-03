@@ -51,17 +51,9 @@
     [super viewDidLoad];
     [self setupSignup];
     [self setupLogin];
-    [self.navigationController setNavigationBarHidden:YES]; // Carrys over from other VC's
-    
-    //self.displayMessage.text = @"SIGN UP TO FIND MUSIC CURATED LOCALLY";
-    self.email.hidden = NO;
-    self.login.hidden = YES;
-    self.password.hidden = YES;
-    self.passwordConfirm.hidden = NO;
-    self.passwordNew.hidden = NO;
-    self.signup.hidden = NO;
-    self.userName.hidden = YES;
-    self.userNameNew.hidden = NO;
+    [self.navigationController setNavigationBarHidden:YES]; // Carries over from other VC's
+
+    [self setHiddenStatus];
     
     self.underline = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 55, 0.5)];
     self.underline.backgroundColor = [UIColor whiteColor];
@@ -71,21 +63,36 @@
     self.tapper.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:self.tapper];
     
-    [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //
-    [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //
-    
     self.parseService = [HRPParseNetworkService sharedService];
     
-    //    for (UIView *view in self.view.subviews){
+    //    for (UIView *view in self.view.subviews)
+    //    {
     //        [view removeConstraints: self.view.constraints];
     //        view.translatesAutoresizingMaskIntoConstraints = NO;
     //    }
 }
 
+- (void)setHiddenStatus
+{
+    self.email.hidden = NO;
+    self.userNameNew.hidden = NO;
+    self.passwordNew.hidden = NO;
+    self.passwordConfirm.hidden = NO;
+    self.signup.hidden = NO;
+    
+    self.userName.hidden = YES;
+    self.password.hidden = YES;
+    self.login.hidden = YES;
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    [self setNotificationObserver];
+}
+
+- (void)setNotificationObserver
+{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.userNameNew];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.email];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidEndEditingNotification object:self.passwordNew];
@@ -95,6 +102,11 @@
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [self removeNotificationObserver];
+}
+
+- (void)removeNotificationObserver
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:self.email];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:self.userNameNew];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:self.passwordNew];
@@ -114,13 +126,8 @@
     
     NSArray *textFields = @[ self.email, self.userNameNew, self.passwordNew, self.passwordConfirm ];
     
-    [self setUpCommonTraitsForTextFields:textFields];
-    
-    self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.signup addTarget:self action:@selector(signupButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.signup setTitle:@"SIGN UP" forState:UIControlStateNormal];
-    
-    [self setUpCommonTraitsForButton:self.signup];
+    [self setupCommonPropertiesForTextFields:textFields];
+    [self setupSignupButton];
 }
 
 - (void)setupEmailWithFieldHeight:(int)fieldHeight
@@ -157,6 +164,16 @@
     [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + 165)]; // !!
 }
 
+- (void)setupSignupButton
+{
+    self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.signup addTarget:self action:@selector(signupButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.signup setTitle:@"SIGN UP" forState:UIControlStateNormal];
+    [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //are these used? (blackColor, StateHighlighted)
+    
+    [self setupCommonPropertiesForButton:self.signup];
+}
+
 -(void)setupLogin
 {
     int fieldHeight = 30;
@@ -166,13 +183,8 @@
     
     NSArray *textFields = @[ self.userName, self.password ];
     
-    [self setUpCommonTraitsForTextFields:textFields];
-    
-    self.login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.login addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.login setTitle:@"LOG IN" forState:UIControlStateNormal];
-    
-    [self setUpCommonTraitsForButton:self.login];
+    [self setupCommonPropertiesForTextFields:textFields];
+    [self setupLoginButton];
 }
 
 - (void)setupUsernameWithFieldHeight:(int)fieldHeight
@@ -193,7 +205,17 @@
     [self.password setCenter: CGPointMake(self.view.center.x, self.password.center.y + 65)]; // !!
 }
 
-- (void)setUpCommonTraitsForTextFields:(NSArray *)textFields
+- (void)setupLoginButton
+{
+    self.login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.login addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.login setTitle:@"LOG IN" forState:UIControlStateNormal];
+    [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //are these used?
+    
+    [self setupCommonPropertiesForButton:self.login];
+}
+
+- (void)setupCommonPropertiesForTextFields:(NSArray *)textFields
 {
     for (NSUInteger i = 0; i < textFields.count; i++)
     {
@@ -222,7 +244,7 @@
     }
 }
 
-- (void)setUpCommonTraitsForButton:(UIButton *)button
+- (void)setupCommonPropertiesForButton:(UIButton *)button
 {
     [button setFrame:CGRectMake(0, 0, 275, 40)];
     [button setCenter: CGPointMake(self.view.center.x, self.signup.center.y + 215)];
@@ -234,7 +256,7 @@
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [button setExclusiveTouch:YES];
-
+    
     [self.inputView addSubview:button];
 }
 

@@ -74,9 +74,9 @@
         if ([object isKindOfClass:[UITextField class]])
         {
             UITextField *textFieldObject = (UITextField *)object;
-            UIColor *ironUIColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+            UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
             textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
-            textFieldObject.layer.borderColor = [ironUIColor CGColor];
+            textFieldObject.layer.borderColor = [ironColor CGColor];
             textFieldObject.layer.borderWidth = 1.0;
             textFieldObject.layer.cornerRadius = 13;
             break;
@@ -205,9 +205,13 @@
     UITableViewCell *cell = [self.userTableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
     PFUser *user = [self.users objectAtIndex:[indexPath row]];
     
+    UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.imageView.image = [UIImage imageNamed:@"spinner.png"];
     cell.imageView.layer.cornerRadius =  42.5;
+    [cell.imageView.layer setBorderColor: [ironColor CGColor]];
+    [cell.imageView.layer setBorderWidth: 1.0];
     cell.imageView.layer.masksToBounds = YES;
     PFFile *imageFile = [user objectForKey:@"userAvatar"];
     if (imageFile)

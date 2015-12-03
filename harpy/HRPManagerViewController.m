@@ -8,8 +8,11 @@
 
 #import "HRPManagerViewController.h"
 #import <Parse/Parse.h>
+#import "Constants.h"
 
 @interface HRPManagerViewController ()
+
+@property (strong, nonatomic) IBOutlet UIView *containerView;
 
 @end
 
@@ -21,27 +24,77 @@
 {
     [super viewDidLoad];
     
-    if (![PFUser currentUser])
-    {
-        [self performSelector:@selector(showLoginsStoryboard) withObject:nil afterDelay:0];
-    }
-    else
-    {
-        [self performSelector:@selector(showMapsStoryboard) withObject:nil afterDelay:0];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserDidLogout:) name:UserDidLogOutNotificationName object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserDidLogin:) name:UserDidLogInNotificationName object:nil];
+    
+    BOOL isLoggedIn = [[NSUserDefaults standardUserDefaults] boolForKey:LoggedInUserDefaultsKey];
+    
+    if (isLoggedIn) {
+        [self showHome];
+    } else {
+        [self showLogIn];
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+#pragma mark Send to designated view controller
+-(void)showLogIn {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:LogInViewControllerStoryboardID];
+    
+    [self setEmbeddedViewController:viewController];
 }
-- (void)showLoginsStoryboard
-{
-    [self performSegueWithIdentifier:@"sendToLogins" sender:self];
+
+-(void)showHome {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Map" bundle:nil];
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:HomeViewControllerStoryboardID];
+    
+    [self setEmbeddedViewController:viewController];
 }
-- (void)showMapsStoryboard
-{
-    [self performSegueWithIdentifier:@"sendToMaps" sender:self];
+
+
+#pragma mark NSNotificationCenter handlers
+
+-(void)handleUserDidLogout:(NSNotification *)notification {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:LoggedInUserDefaultsKey];
+    
+    [self showLogIn];
+}
+
+-(void)handleUserDidLogin:(NSNotification *)notification {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:LoggedInUserDefaultsKey];
+    
+    [self showHome];
+}
+
+
+#pragma mark Child view controllers
+
+-(void)setEmbeddedViewController:(UIViewController *)controller {
+    
+    if ([self.childViewControllers containsObject:controller]) {
+        return;
+    }
+    
+    for (UIViewController *vc in self.childViewControllers) {
+        [vc willMoveToParentViewController:nil];
+        
+        if (vc.isViewLoaded) {
+            [vc.view removeFromSuperview];
+        }
+        
+        [vc removeFromParentViewController];
+    }
+    
+    if (!controller) {
+        return;
+    }
+    
+    [self addChildViewController:controller];
+    [self.containerView addSubview:controller.view];
+    [controller didMoveToParentViewController:self];
 }
 
 

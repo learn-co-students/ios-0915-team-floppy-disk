@@ -8,6 +8,7 @@
 
 #import "HRPSettingsVC.h"
 #import "HRPParseNetworkService.h"
+#import "Constants.h"
 
 @interface HRPSettingsVC () <UINavigationControllerDelegate>
 
@@ -41,10 +42,9 @@
 {
     NSLog(@"CLICKED: logout button");
     
-    {
-        [self.parseService logout];
-        //pop to root view
-    }
+    [self.parseService logout];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogOutNotificationName object:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {

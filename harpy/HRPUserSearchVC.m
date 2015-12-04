@@ -78,6 +78,12 @@
     
     [[self searchSubviewsForTextFieldIn:self.userSearchBar] setBackgroundColor:desertStormGreyUIColor];
     self.userSearchBar.backgroundImage = desertStormGreyColorImage;
+//    self.userSearchBar.layer.shadowOffset = CGSizeMake(50.0f, 10.0f);
+//    self.userSearchBar.layer.shadowColor = [[UIColor redColor] CGColor];
+//    self.userSearchBar.layer.shadowRadius = 50.0f;
+//    self.userSearchBar.layer.opacity = 2.0f;
+    
+    
     
     for (id object in [[[self.userSearchBar subviews] objectAtIndex:0] subviews])
     {
@@ -180,6 +186,11 @@
 {
     UITableViewCell *cell = [self.userTableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
     PFUser *user = [self.users objectAtIndex:[indexPath row]];
+//    
+//    // NSInteger indexToUse =  [self integerToUseToGrabDataFromSomeArray:indexPath];
+//    PFUSer *currentPerson = self.users[indexToUse];
+//    
+    
     
     UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
     

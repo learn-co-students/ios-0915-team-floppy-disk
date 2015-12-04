@@ -7,10 +7,8 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="SF-UI-Display-Medium.otf">
-            <string>SFUIDisplay-Medium</string>
-        </mutableArray>
         <mutableArray key="SF-UI-Display-Regular.otf">
+            <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
         </mutableArray>
@@ -29,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_marker" translatesAutoresizingMaskIntoConstraints="NO" id="yRa-kE-mpk">
-                                <rect key="frame" x="196" y="300" width="22" height="39"/>
+                                <rect key="frame" x="196" y="358" width="22" height="39"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="Ktn-XM-y05"/>
@@ -64,7 +62,7 @@
                             <constraint firstItem="yRa-kE-mpk" firstAttribute="centerX" secondItem="OQI-PZ-qK3" secondAttribute="centerX" id="cOW-HU-mCo"/>
                             <constraint firstItem="Cey-M4-euM" firstAttribute="height" secondItem="OQI-PZ-qK3" secondAttribute="height" multiplier="0.08" id="gXo-bI-ojE"/>
                             <constraint firstItem="Cey-M4-euM" firstAttribute="leading" secondItem="OQI-PZ-qK3" secondAttribute="leadingMargin" constant="-20" id="l26-5b-Dcj"/>
-                            <constraint firstItem="yRa-kE-mpk" firstAttribute="bottom" secondItem="OQI-PZ-qK3" secondAttribute="centerY" multiplier="0.92" id="oDD-yg-moh"/>
+                            <constraint firstItem="yRa-kE-mpk" firstAttribute="bottom" secondItem="OQI-PZ-qK3" secondAttribute="centerY" multiplier="1.08" id="oDD-yg-moh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HARPY" id="NjL-wP-bPr">
@@ -93,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="1039" y="231"/>
         </scene>
-        <!--SEARCH-->
+        <!--USER SEARCH-->
         <scene sceneID="XJO-td-Cby">
             <objects>
                 <viewController id="dEV-4u-8RP" customClass="HRPUserSearchVC" sceneMemberID="viewController">
@@ -117,7 +115,7 @@
                                 <color key="sectionIndexBackgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="95" id="m8I-1j-ZRe">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="95"/>
+                                        <rect key="frame" x="0.0" y="92" width="414" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="center" tableViewCell="m8I-1j-ZRe" id="QYb-hY-E8K">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
@@ -134,10 +132,10 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ieZ-zH-wyh">
                                                     <rect key="frame" x="108" y="16" width="295" height="61"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8N-uP-1Bf">
-                                                            <rect key="frame" x="0.0" y="0.0" width="67" height="18"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8N-uP-1Bf">
+                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="18"/>
                                                             <animations/>
-                                                            <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -146,19 +144,23 @@
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="real name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lk1-xG-zqZ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="295" height="16"/>
+                                                                    <animations/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="short bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esU-2D-JtO">
                                                                     <rect key="frame" x="0.0" y="19" width="295" height="16"/>
+                                                                    <animations/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
+                                                            <animations/>
                                                         </stackView>
                                                     </subviews>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstItem="f32-9V-OPa" firstAttribute="width" secondItem="ieZ-zH-wyh" secondAttribute="width" id="Nxe-94-p3v"/>
                                                     </constraints>
@@ -193,7 +195,7 @@
                             <constraint firstItem="mp4-PT-vpe" firstAttribute="leading" secondItem="8bJ-AT-u0b" secondAttribute="leading" id="xLZ-R9-XHj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SEARCH" id="Q0d-jD-FtC">
+                    <navigationItem key="navigationItem" title="USER SEARCH" id="Q0d-jD-FtC">
                         <barButtonItem key="leftBarButtonItem" image="left_Arrow" id="48g-Ja-Oui">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>

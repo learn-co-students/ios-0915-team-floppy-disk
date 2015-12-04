@@ -15,7 +15,11 @@
 
 @interface HRPProfileVC ()
 
-@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *postCount;
+@property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fansCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *realName;
+@property (weak, nonatomic) IBOutlet UILabel *shortBio;
 @property (nonatomic) PFUser *currentUser;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
@@ -46,16 +50,22 @@
 
 - (void)setupUserProfile
 {
-    self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height/2;
+    self.userAvatar.layer.cornerRadius = 45;
+    UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    [self.userAvatar.layer setBorderColor: [ironColor CGColor]];
+    [self.userAvatar.layer setBorderWidth: 1.0];
     self.userAvatar.clipsToBounds = YES;
     
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
     PFUser *currentUser = [PFUser currentUser];
-    
-    self.username.text = currentUser.username;
-    
     self.navigationItem.title = currentUser.username;
+    
+    NSString *realName = currentUser[@"realName"];
+    self.realName.text = realName;
+    
+    NSString *shortBio = currentUser[@"shortBio"];
+    self.shortBio.text = shortBio;
 }
 - (void)retrieveUserAvatar
 {

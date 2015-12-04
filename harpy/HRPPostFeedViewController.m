@@ -7,8 +7,15 @@
 //
 
 #import "HRPPostFeedViewController.h"
+#import <Spotify/Spotify.h>
 
-@interface HRPPostFeedViewController ()
+@interface HRPPostFeedViewController () <UITableViewDelegate, UITableViewDataSource, SPTAudioStreamingDelegate>
+
+@property (strong, nonatomic) IBOutlet UIImageView *albumArtView;
+@property (strong, nonatomic) IBOutlet UILabel *playPauseLabel;
+@property (strong, nonatomic) IBOutlet UILabel *songnameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *artistNameLabel;
+@property (strong, nonatomic) IBOutlet UITableView *postTableView;
 
 @end
 
@@ -16,22 +23,61 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.postTableView.delegate = self;
+    self.postTableView.dataSource = self;
+    
+    self.playPauseLabel.text = @"";
+    self.songnameLabel.text = @"";
+    self.artistNameLabel.text = @"";
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)initializeEmptyPostArray {
+    self.postsArray = [NSMutableArray new];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 0;
 }
-*/
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    NSUInteger count = self.postsArray.count;
+    NSInteger numberOfRows = (NSInteger)count * 2;
+    return numberOfRows;
+}
+
+//height method
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row % 2 == 0) {
+        UITableViewCell *cell2 = [self.postTableView dequeueReusableCellWithIdentifier:@"postContentCell" forIndexPath:indexPath];
+        
+        NSUInteger arraySpot = indexPath.row - (indexPath.row/2);
+        
+        PFObject *post = self.postsArray[arraySpot];
+        
+        //add cell properties
+        
+        return cell2;
+    } else {
+        UITableViewCell *cell1 = [self.postTableView dequeueReusableCellWithIdentifier:@"userInfoCell" forIndexPath:indexPath];
+        
+        NSUInteger arraySpot = 0;
+        PFObject *post = [[PFObject alloc]init];
+        if (indexPath.row > 1) {
+            arraySpot = (indexPath.row + 1) / 2;
+            post = self.postsArray[arraySpot];
+        } else if (indexPath.row == 1) {
+            arraySpot = 1;
+            post = self.postsArray[arraySpot];
+        }
+        
+        //add cell properties
+        
+        return cell1;
+    }
+}
 
 @end

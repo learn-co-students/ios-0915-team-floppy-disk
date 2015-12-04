@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface HRPPostFeedViewController : UIViewController
+
+@property (strong, nonatomic) NSMutableArray *postsArray;
 
 @end

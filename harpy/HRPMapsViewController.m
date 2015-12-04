@@ -313,8 +313,8 @@
 //        
 //        NSLog(@"inside the block");
 //
-//    if([segue.identifier isEqualToString:@"showTrackViews"])
-//    {
+    if([segue.identifier isEqualToString:@"showTrackViews"])
+    {
         UINavigationController *navController = segue.destinationViewController;
         HRPTrackSearchViewController *destinVC = navController.viewControllers.firstObject;
         
@@ -336,7 +336,7 @@
 //    [self presentViewController:confirmPinAlert animated:YES completion:nil];
     
         destinVC.post = [self postWithCurrentMapPosition];
-//     }
+     }
 //    }];
 }
 

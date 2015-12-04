@@ -52,14 +52,14 @@
     
     [self locationManagerPermissions];
     
+//    self.defaultMarkerImage
     self.defaultMarkerImage.hidden = YES;
     self.readyToPin = NO;
     
     [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
+    [self.postSongButton setBackgroundColor:[UIColor colorWithRed:0.18 green:0.21 blue:0.31 alpha:1.0]];
     
     mapView_.settings.scrollGestures = YES;
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -102,7 +102,8 @@
             {
                 self.parsePosts = objects;
                 NSLog(@"PARSE POSTS: %@", self.parsePosts);
-            } else {
+            } else
+            {
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
         }];
@@ -176,7 +177,8 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:18];
     
     //this controls the map size on the view
-    CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - (self.view.bounds.size.height * 0.08));
+    CGFloat h = self.topLayoutGuide.length;
+    CGRect rect = CGRectMake(0, h, self.view.bounds.size.width, self.view.bounds.size.height - (self.view.bounds.size.height * 0.08));
     mapView_ = [GMSMapView mapWithFrame:rect camera:camera];
     
     //this sets the mapView_ at the very background of the view
@@ -223,7 +225,7 @@
     
 //    [self presentViewController:errorAlerts animated:YES completion:nil];
     //    [manager stopUpdatingLocation];
-    //this prevents further warnings from the alert controller but also doesn't show a map at all
+    //this prevents further warnings from the alert controller but also doesn't show a map at all in simulator
 }
 
 #pragma mark - Action Methods
@@ -248,8 +250,7 @@
 
 -(HRPPost *)postWithCurrentMapPosition
 {
-    CGPoint point = mapView_.center;
-    CLLocationCoordinate2D coordinates = [mapView_.projection coordinateForPoint:point];
+    CLLocationCoordinate2D coordinates = [self findCoordinatesAtMapCenter];
     
     NSLog(@"inside the block");
     
@@ -271,18 +272,24 @@
     return newPost;
 }
 
+- (CLLocationCoordinate2D)findCoordinatesAtMapCenter
+{
+    CGPoint point = mapView_.center;
+    return [mapView_.projection coordinateForPoint:point];
+}
+
 - (void)changeButtonBackground
 {
     if (self.readyToPin)
     {
-        [self.postSongButton setBackgroundColor:[UIColor darkGrayColor]];
+        [self.postSongButton setBackgroundColor:[UIColor colorWithRed:0.18 green:0.21 blue:0.31 alpha:1.0]];
         self.readyToPin = NO;
         
         [self performSegueWithIdentifier:@"showTrackViews" sender:nil];
     }
     else
     {
-        [self.postSongButton setBackgroundColor:[UIColor orangeColor]];
+        [self.postSongButton setBackgroundColor:[UIColor colorWithRed:0.64 green:0.35 blue:0.34 alpha:1.0]];
         self.readyToPin = YES;
     }
 }
@@ -312,6 +319,7 @@
         NSLog(@"marker.icon = %@", marker.icon);
         NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
         NSLog(@"marker.map = %@", marker.map);
+        
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
     [confirmPinAlert addAction:confirmAction];
@@ -322,12 +330,6 @@
         destinVC.post = [self postWithCurrentMapPosition];
      }
     }];
-}
-
-- (CLLocationCoordinate2D)findCoordinatesAtMapCenter
-{
-    CGPoint point = mapView_.center;
-    return [mapView_.projection coordinateForPoint:point];
 }
 
 @end

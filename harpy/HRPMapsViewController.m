@@ -101,6 +101,17 @@
             {
                 self.parsePosts = objects;
                 NSLog(@"PARSE POSTS: %@", self.parsePosts);
+                
+                NSDictionary *HRPPosts = self.parsePosts[0];
+                NSLog(@"PARSE DICTIONARY: %@", HRPPosts);
+                
+                PFGeoPoint *HRPGeoPoint = HRPPosts[@"locationGeoPoint"];
+                NSLog(@"geoPointString %@", HRPGeoPoint);
+                
+                CLLocationCoordinate2D postCoordinate = CLLocationCoordinate2DMake(HRPGeoPoint.latitude, HRPGeoPoint.longitude);
+                
+                NSLog(@"postCoordinate %@", postCoordinate);
+                
             } else
             {
                 NSLog(@"Error: %@ %@", error, [error userInfo]);

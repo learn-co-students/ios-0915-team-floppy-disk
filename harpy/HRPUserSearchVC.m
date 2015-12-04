@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UISearchBar *userSearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *userTableView;
+@property(nonatomic) UIScrollViewIndicatorStyle indicatorStyle;
 @property (nonatomic) PFUser *user;
 @property (nonatomic) NSMutableArray *users;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
@@ -30,6 +31,8 @@
     [super viewDidLoad];
     [self setupTableViewUI];
     
+    self.userTableView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
+    
     self.userTableView.delegate = self;
     self.userTableView.dataSource = self;
     self.userSearchBar.delegate = self;
@@ -38,6 +41,8 @@
     [self initializeEmptyUsersArray];
     
     PFQuery *userQuery = [PFUser query];
+    userQuery.limit = 19;
+    [userQuery orderByDescending:@"createdAt"];
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
         if (!error)
         {
@@ -58,9 +63,54 @@
     [super viewWillAppear:animated];
 }
 
+
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)changeScrollBarColorFor:(UIScrollView *)scrollView
+{
+    for ( UIView *view in scrollView.subviews ) {
+        
+        if (view.tag == 0 && [view isKindOfClass:UIImageView.class])
+        {
+            UIImageView *imageView = (UIImageView *)view;
+            imageView.backgroundColor = [UIColor darkGrayColor];
+        }
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    float shadowOffset = (scrollView.contentOffset.y/100);
+    
+    // Make sure that the offset doesn't exceed 3 or drop below 0.5
+    shadowOffset = MIN(MAX(shadowOffset, 0), 1);
+    
+    //Ensure that the shadow radius is between 1 and 3
+    float shadowRadius = MIN(MAX(shadowOffset, 0), 1);
+    
+    self.userSearchBar.layer.shadowOffset = CGSizeMake(0, shadowOffset);
+    self.userSearchBar.layer.shadowRadius = shadowRadius;
+    self.userSearchBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.userSearchBar.layer.shadowOpacity = 0.25;
+}
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    //[self changeScrollBarColorFor:scrollView];
+//}
+
+#pragma mark - Setup methods
+
+-(void)initializeEmptyUsersArray
+{
+    self.users = [NSMutableArray new];
+}
 -(void) setupTableViewUI
 {
-    UIColor *desertStormGreyUIColor = [UIColor colorWithHue:0 saturation:0 brightness:0.97 alpha:1];
+    self.userSearchBar.keyboardAppearance = UIKeyboardAppearanceDark;
+    
+    UIColor *desertStormGreyUIColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0];
     UIImage *desertStormGreyColorImage = [self imageWithColor:desertStormGreyUIColor];
     
     self.userTableView.backgroundColor = [UIColor clearColor];
@@ -68,15 +118,23 @@
     
     [[self searchSubviewsForTextFieldIn:self.userSearchBar] setBackgroundColor:desertStormGreyUIColor];
     self.userSearchBar.backgroundImage = desertStormGreyColorImage;
+//    self.userSearchBar.layer.shadowOffset = CGSizeMake(50.0f, 10.0f);
+//    self.userSearchBar.layer.shadowColor = [[UIColor redColor] CGColor];
+//    self.userSearchBar.layer.shadowRadius = 50.0f;
+//    self.userSearchBar.layer.opacity = 2.0f;
+    
+    [self.view bringSubviewToFront:self.userSearchBar];
+    
+    
     
     for (id object in [[[self.userSearchBar subviews] objectAtIndex:0] subviews])
     {
         if ([object isKindOfClass:[UITextField class]])
         {
             UITextField *textFieldObject = (UITextField *)object;
-            UIColor *ironUIColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
-            textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
-            textFieldObject.layer.borderColor = [ironUIColor CGColor];
+            UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+            textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:14.0];
+            textFieldObject.layer.borderColor = [ironColor CGColor];
             textFieldObject.layer.borderWidth = 1.0;
             textFieldObject.layer.cornerRadius = 13;
             break;
@@ -86,23 +144,10 @@
     [[UIBarButtonItem appearanceWhenContainedIn:[self.userSearchBar class], nil] setTintColor:[UIColor darkGrayColor]];
 }
 
-- (UITextField*)searchSubviewsForTextFieldIn:(UIView*)view
+#pragma mark - Helper methods
+
+- (UIImage *)imageWithColor:(UIColor *)color
 {
-    if ([view isKindOfClass:[UITextField class]]) {
-        return (UITextField*)view;
-    }
-    UITextField *searchedTextField;
-    for (UIView *subview in view.subviews) {
-        searchedTextField = [self searchSubviewsForTextFieldIn:subview];
-        if (searchedTextField) {
-            break;
-        }
-    }
-    return searchedTextField;
-}
-
-
-- (UIImage *)imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -114,34 +159,6 @@
     UIGraphicsEndImageContext();
     
     return image;
-}
-
-
-#pragma mark - Setup methods
-
--(void)initializeEmptyUsersArray
-{
-    self.users = [NSMutableArray new];
-}
-- (void)fetchAllUsers:(void (^)(NSArray *, BOOL, NSError *))completionBlock
-{
-    PFQuery *userQuery = [PFUser query];
-    userQuery.limit = 10;
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
-        if (!error)
-        {
-            completionBlock(objects, YES, error);
-            NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
-            self.users = [objects mutableCopy];
-            [self.userTableView reloadData];
-                
-        }
-        else
-        {
-            completionBlock(@[], NO, error);
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
 }
 
 #pragma mark - Search bar methods
@@ -167,6 +184,20 @@
         }];
     }
 }
+- (UITextField*)searchSubviewsForTextFieldIn:(UIView*)view
+{
+    if ([view isKindOfClass:[UITextField class]]) {
+        return (UITextField*)view;
+    }
+    UITextField *searchedTextField;
+    for (UIView *subview in view.subviews) {
+        searchedTextField = [self searchSubviewsForTextFieldIn:subview];
+        if (searchedTextField) {
+            break;
+        }
+    }
+    return searchedTextField;
+}
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
@@ -187,14 +218,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    if ([self.userSearchBar.text isEqualToString:@""])
-//    {
-//        return 1;
-//    }
-//    else
-//    {
-        return self.users.count;
-//    }
+    return self.users.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -204,28 +228,39 @@
 {
     UITableViewCell *cell = [self.userTableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
     PFUser *user = [self.users objectAtIndex:[indexPath row]];
+//    
+//    // NSInteger indexToUse =  [self integerToUseToGrabDataFromSomeArray:indexPath];
+//    PFUSer *currentPerson = self.users[indexToUse];
+//    
+    
+    
+    UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.imageView.image = [UIImage imageNamed:@"spinner.png"];
-    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    cell.imageView.image = [UIImage imageNamed:@"periwinkleImage.png"];
     cell.imageView.layer.cornerRadius =  42.5;
+    [cell.imageView.layer setBorderColor: [ironColor CGColor]];
+    [cell.imageView.layer setBorderWidth: 1.0];
     cell.imageView.layer.masksToBounds = YES;
     PFFile *imageFile = [user objectForKey:@"userAvatar"];
-    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!error)
-        {
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.imageView.image = [UIImage imageWithData:data];
-            cell.imageView.highlightedImage = [UIImage imageWithData:data];
-        }
-        else
-        {
-            NSLog(@"ERROR: %@ %@", error, [error userInfo]);
-        }
-    }];
+    if (imageFile)
+    {
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error)
+            {
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.imageView.image = [UIImage imageWithData:data];
+                cell.imageView.highlightedImage = [UIImage imageWithData:data];
+            }
+            else
+            {
+                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
     
     UILabel *usernameLabel = (UILabel *)[cell viewWithTag:1];
-    usernameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:15.0];
+    usernameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:15.0];
     usernameLabel.text = user.username;
     
     UILabel *realnameLabel = (UILabel *)[cell viewWithTag:3];
@@ -240,13 +275,13 @@
     
     return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // typically you need know which item the user has selected.
-    // this method allows you to keep track of the selection
-    indexPath = indexPath;
-    
+    NSLog(@"cell selected at %ld", indexPath.row);
 }
+
+# pragma mark- Navigation methods
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];

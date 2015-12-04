@@ -52,7 +52,6 @@
     
     [self locationManagerPermissions];
     
-    
     self.defaultMarkerImage.hidden = YES;
     self.readyToPin = NO;
     
@@ -146,6 +145,20 @@
 
 - (void)updateMapWithCurrentLocation
 {
+    [self setBounds];
+    [self setCamera];
+    
+    mapView_.delegate = self;
+    mapView_.indoorEnabled = NO;
+    
+    [mapView_ setMinZoom:13 maxZoom:mapView_.maxZoom];
+    
+    mapView_.myLocationEnabled = YES;
+    mapView_.settings.myLocationButton = YES;
+}
+
+- (void)setBounds
+{
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
     CGFloat coordinateDifference = 0.1;
@@ -173,26 +186,19 @@
     
     self.bounds = [[GMSCoordinateBounds alloc] init];
     self.bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:northEastCoordinate coordinate:southWestCoordinate];
-    
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:18];
+}
+
+- (void)setCamera
+{
+    CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:15];
     
     //this controls the map size on the view
     CGFloat h = self.topLayoutGuide.length;
     CGRect rect = CGRectMake(0, h, self.view.bounds.size.width, self.view.bounds.size.height - (self.view.bounds.size.height * 0.08));
     mapView_ = [GMSMapView mapWithFrame:rect camera:camera];
     
-    //this sets the mapView_ at the very background of the view
     [self.view insertSubview:mapView_ atIndex:0];
-    
-//    [self.defaultMarkerImage.bottomAnchor constraintEqualToAnchor:mapView_.centerYAnchor].active = YES;
-    
-    mapView_.delegate = self;
-    mapView_.indoorEnabled = NO;
-    
-    [mapView_ setMinZoom:13 maxZoom:mapView_.maxZoom];
-    
-    mapView_.myLocationEnabled = YES;
-    mapView_.settings.myLocationButton = YES;
 }
 
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position

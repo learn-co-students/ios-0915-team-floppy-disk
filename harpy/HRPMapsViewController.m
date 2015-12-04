@@ -280,7 +280,7 @@
     
     CGFloat latitude = marker.position.latitude;
     CGFloat longitude = marker.position.longitude;
-    
+    NSLog(@"LAT: %f\nLONG: %F", latitude, longitude);
     NSLog(@"marker: %@", marker);
     NSLog(@"marker.icon = %@", marker.icon);
     NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
@@ -315,40 +315,40 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"alert controller method hit");
-    UIAlertController *confirmPinAlert = [UIAlertController alertControllerWithTitle:@"Confirm Pin" message:@"Post song here?" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        CLLocationCoordinate2D coordinatesAtMapCenter = [self findCoordinatesAtMapCenter];
-        
-        NSLog(@"inside the block");
-
+//    NSLog(@"alert controller method hit");
+//    UIAlertController *confirmPinAlert = [UIAlertController alertControllerWithTitle:@"Confirm Pin" message:@"Post song here?" preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        
+//        CLLocationCoordinate2D coordinatesAtMapCenter = [self findCoordinatesAtMapCenter];
+//        
+//        NSLog(@"inside the block");
+//
     if([segue.identifier isEqualToString:@"showTrackViews"])
     {
         UINavigationController *navController = segue.destinationViewController;
         HRPTrackSearchViewController *destinVC = navController.viewControllers.firstObject;
         
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-        marker.position = CLLocationCoordinate2DMake(coordinatesAtMapCenter.latitude, coordinatesAtMapCenter.longitude);
-        marker.map = mapView_;
-        
-        NSLog(@"marker: %@", marker);
-        NSLog(@"marker.icon = %@", marker.icon);
-        NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
-        NSLog(@"marker.map = %@", marker.map);
-        
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+//        GMSMarker *marker = [[GMSMarker alloc] init];
+//        marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+//        marker.position = CLLocationCoordinate2DMake(coordinatesAtMapCenter.latitude, coordinatesAtMapCenter.longitude);
+//        marker.map = mapView_;
+//        
+//        NSLog(@"marker: %@", marker);
+//        NSLog(@"marker.icon = %@", marker.icon);
+//        NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
+//        NSLog(@"marker.map = %@", marker.map);
+//        
+//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+//    
+//    [confirmPinAlert addAction:confirmAction];
+//    [confirmPinAlert addAction:cancelAction];
     
-    [confirmPinAlert addAction:confirmAction];
-    [confirmPinAlert addAction:cancelAction];
+//    [self presentViewController:confirmPinAlert animated:YES completion:nil];
     
-    [self presentViewController:confirmPinAlert animated:YES completion:nil];
-        
         destinVC.post = [self postWithCurrentMapPosition];
      }
-    }];
+//    }];
 }
 
 @end

@@ -52,7 +52,7 @@
     
     [self locationManagerPermissions];
     
-//    self.defaultMarkerImage
+    
     self.defaultMarkerImage.hidden = YES;
     self.readyToPin = NO;
     
@@ -183,6 +183,8 @@
     
     //this sets the mapView_ at the very background of the view
     [self.view insertSubview:mapView_ atIndex:0];
+    
+//    [self.defaultMarkerImage.bottomAnchor constraintEqualToAnchor:mapView_.centerYAnchor].active = YES;
     
     mapView_.delegate = self;
     mapView_.indoorEnabled = NO;

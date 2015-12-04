@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_marker" translatesAutoresizingMaskIntoConstraints="NO" id="yRa-kE-mpk">
-                                <rect key="frame" x="196" y="300" width="22" height="39"/>
+                                <rect key="frame" x="196" y="358" width="22" height="39"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="Ktn-XM-y05"/>
@@ -62,7 +62,7 @@
                             <constraint firstItem="yRa-kE-mpk" firstAttribute="centerX" secondItem="OQI-PZ-qK3" secondAttribute="centerX" id="cOW-HU-mCo"/>
                             <constraint firstItem="Cey-M4-euM" firstAttribute="height" secondItem="OQI-PZ-qK3" secondAttribute="height" multiplier="0.08" id="gXo-bI-ojE"/>
                             <constraint firstItem="Cey-M4-euM" firstAttribute="leading" secondItem="OQI-PZ-qK3" secondAttribute="leadingMargin" constant="-20" id="l26-5b-Dcj"/>
-                            <constraint firstItem="yRa-kE-mpk" firstAttribute="bottom" secondItem="OQI-PZ-qK3" secondAttribute="centerY" multiplier="0.92" id="oDD-yg-moh"/>
+                            <constraint firstItem="yRa-kE-mpk" firstAttribute="bottom" secondItem="OQI-PZ-qK3" secondAttribute="centerY" multiplier="1.08" id="oDD-yg-moh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HARPY" id="NjL-wP-bPr">
@@ -133,7 +133,7 @@
                                                     <rect key="frame" x="108" y="16" width="295" height="61"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8N-uP-1Bf">
-                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="18"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="67" height="18"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

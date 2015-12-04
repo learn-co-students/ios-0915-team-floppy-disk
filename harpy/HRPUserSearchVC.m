@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UISearchBar *userSearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *userTableView;
+@property(nonatomic) UIScrollViewIndicatorStyle indicatorStyle;
 @property (nonatomic) PFUser *user;
 @property (nonatomic) NSMutableArray *users;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
@@ -29,6 +30,8 @@
 {
     [super viewDidLoad];
     [self setupTableViewUI];
+    
+    self.userTableView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
     
     self.userTableView.delegate = self;
     self.userTableView.dataSource = self;
@@ -60,6 +63,43 @@
     [super viewWillAppear:animated];
 }
 
+
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)changeScrollBarColorFor:(UIScrollView *)scrollView
+{
+    for ( UIView *view in scrollView.subviews ) {
+        
+        if (view.tag == 0 && [view isKindOfClass:UIImageView.class])
+        {
+            UIImageView *imageView = (UIImageView *)view;
+            imageView.backgroundColor = [UIColor darkGrayColor];
+        }
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    float shadowOffset = (scrollView.contentOffset.y/100);
+    
+    // Make sure that the offset doesn't exceed 3 or drop below 0.5
+    shadowOffset = MIN(MAX(shadowOffset, 0), 1);
+    
+    //Ensure that the shadow radius is between 1 and 3
+    float shadowRadius = MIN(MAX(shadowOffset, 0), 1);
+    
+    self.userSearchBar.layer.shadowOffset = CGSizeMake(0, shadowOffset);
+    self.userSearchBar.layer.shadowRadius = shadowRadius;
+    self.userSearchBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.userSearchBar.layer.shadowOpacity = 0.25;
+}
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    //[self changeScrollBarColorFor:scrollView];
+//}
+
 #pragma mark - Setup methods
 
 -(void)initializeEmptyUsersArray
@@ -78,6 +118,14 @@
     
     [[self searchSubviewsForTextFieldIn:self.userSearchBar] setBackgroundColor:desertStormGreyUIColor];
     self.userSearchBar.backgroundImage = desertStormGreyColorImage;
+//    self.userSearchBar.layer.shadowOffset = CGSizeMake(50.0f, 10.0f);
+//    self.userSearchBar.layer.shadowColor = [[UIColor redColor] CGColor];
+//    self.userSearchBar.layer.shadowRadius = 50.0f;
+//    self.userSearchBar.layer.opacity = 2.0f;
+    
+    [self.view bringSubviewToFront:self.userSearchBar];
+    
+    
     
     for (id object in [[[self.userSearchBar subviews] objectAtIndex:0] subviews])
     {
@@ -180,6 +228,11 @@
 {
     UITableViewCell *cell = [self.userTableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
     PFUser *user = [self.users objectAtIndex:[indexPath row]];
+//    
+//    // NSInteger indexToUse =  [self integerToUseToGrabDataFromSomeArray:indexPath];
+//    PFUSer *currentPerson = self.users[indexToUse];
+//    
+    
     
     UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
     

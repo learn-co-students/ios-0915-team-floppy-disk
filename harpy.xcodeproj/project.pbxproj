@@ -11,14 +11,13 @@
 		3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */; };
 		3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73241BFD24420010A257 /* HRPTrack.m */; };
 		3B0EFC4F1C10AE140086545B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0EFC4E1C10AE140086545B /* Constants.m */; settings = {ASSET_TAGS = (); }; };
+		3B0EFCD01C11F0BC0086545B /* HRPPostFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0EFCCF1C11F0BC0086545B /* HRPPostFeedViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC251C1BFF87EF004C6790 /* HRPTempTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC251B1BFF87EF004C6790 /* HRPTempTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC251F1BFF8810004C6790 /* HRPTempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC251E1BFF8810004C6790 /* HRPTempViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25211C04B381004C6790 /* HRPTrackSearchViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC25251C050D41004C6790 /* HRPPostPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25281C0CA4F6004C6790 /* HRPPost.m */; settings = {ASSET_TAGS = (); }; };
 		3BC25DEB1C0E0F3D00A831CE /* postTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */; settings = {ASSET_TAGS = (); }; };
-		3BC25DEF1C0E0FB300A831CE /* postCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEE1C0E0FB300A831CE /* postCell.xib */; settings = {ASSET_TAGS = (); }; };
-		3BC25DF21C0E1DCA00A831CE /* HRPPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC25DF11C0E1DCA00A831CE /* HRPPostTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
@@ -76,6 +75,8 @@
 		3B0A73241BFD24420010A257 /* HRPTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTrack.m; sourceTree = "<group>"; };
 		3B0EFC4D1C10AE140086545B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		3B0EFC4E1C10AE140086545B /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		3B0EFCCE1C11F0BC0086545B /* HRPPostFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPPostFeedViewController.h; sourceTree = "<group>"; };
+		3B0EFCCF1C11F0BC0086545B /* HRPPostFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPostFeedViewController.m; sourceTree = "<group>"; };
 		3BAC251A1BFF87EF004C6790 /* HRPTempTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPTempTableViewController.h; sourceTree = "<group>"; };
 		3BAC251B1BFF87EF004C6790 /* HRPTempTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTempTableViewController.m; sourceTree = "<group>"; };
 		3BAC251D1BFF8810004C6790 /* HRPTempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPTempViewController.h; sourceTree = "<group>"; };
@@ -87,9 +88,6 @@
 		3BAC25271C0CA4F6004C6790 /* HRPPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPPost.h; sourceTree = "<group>"; };
 		3BAC25281C0CA4F6004C6790 /* HRPPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPost.m; sourceTree = "<group>"; };
 		3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = postTable.storyboard; sourceTree = "<group>"; };
-		3BC25DEE1C0E0FB300A831CE /* postCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = postCell.xib; sourceTree = "<group>"; };
-		3BC25DF01C0E1DCA00A831CE /* HRPPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPPostTableViewCell.h; sourceTree = "<group>"; };
-		3BC25DF11C0E1DCA00A831CE /* HRPPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPostTableViewCell.m; sourceTree = "<group>"; };
 		3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
@@ -313,7 +311,6 @@
 			children = (
 				E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */,
 				3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */,
-				3BC25DEE1C0E0FB300A831CE /* postCell.xib */,
 				3B0A73201BFCD58E0010A257 /* HRPTrackCreator.h */,
 				3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */,
 				3B0A73231BFD24420010A257 /* HRPTrack.h */,
@@ -324,8 +321,8 @@
 				3BAC25211C04B381004C6790 /* HRPTrackSearchViewController.m */,
 				3BAC25231C050D41004C6790 /* HRPPostPreviewViewController.h */,
 				3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */,
-				3BC25DF01C0E1DCA00A831CE /* HRPPostTableViewCell.h */,
-				3BC25DF11C0E1DCA00A831CE /* HRPPostTableViewCell.m */,
+				3B0EFCCE1C11F0BC0086545B /* HRPPostFeedViewController.h */,
+				3B0EFCCF1C11F0BC0086545B /* HRPPostFeedViewController.m */,
 			);
 			name = Spotify;
 			sourceTree = "<group>";
@@ -433,7 +430,6 @@
 				E9E211141BFD3E2500739143 /* Keys.plist in Resources */,
 				E9335C6A1BFA7EBC002DD9C6 /* LaunchScreen.storyboard in Resources */,
 				E97614901C0A664C003B3C5B /* SF-UI-Display-Medium.otf in Resources */,
-				3BC25DEF1C0E0FB300A831CE /* postCell.xib in Resources */,
 				E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */,
 				E9335C671BFA7EBC002DD9C6 /* Assets.xcassets in Resources */,
 				E93801291BFCEADF004CC8A2 /* Login.storyboard in Resources */,
@@ -511,7 +507,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BC25DF21C0E1DCA00A831CE /* HRPPostTableViewCell.m in Sources */,
 				E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */,
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
 				E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */,
@@ -533,6 +528,7 @@
 				3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */,
 				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
 				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
+				3B0EFCD01C11F0BC0086545B /* HRPPostFeedViewController.m in Sources */,
 				E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */,
 				3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */,
 				E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */,

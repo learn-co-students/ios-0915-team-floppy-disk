@@ -102,6 +102,36 @@
             {
                 self.parsePosts = objects;
                 NSLog(@"PARSE POSTS: %@", self.parsePosts);
+                
+                for (NSUInteger i = 0; i < self.parsePosts.count; i++)
+                {
+                    NSDictionary *HRPPosts = self.parsePosts[i];
+                    NSLog(@"PARSE DICTIONARY: %@", HRPPosts);
+                    
+                    PFGeoPoint *HRPGeoPoint = HRPPosts[@"locationGeoPoint"];
+                    NSLog(@"geoPointString %@", HRPGeoPoint);
+                    
+                    CLLocationCoordinate2D postCoordinate = CLLocationCoordinate2DMake(HRPGeoPoint.latitude, HRPGeoPoint.longitude);
+                    NSLog(@"postCoordinate %f, %f", postCoordinate.latitude, postCoordinate.longitude);
+                    
+                    GMSMarker *marker = [[GMSMarker alloc] init];
+                    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+                    marker.position = postCoordinate;
+                    marker.map = mapView_;
+                    NSLog(@"marker: %@", marker);
+                    
+                    for (PFObject *post in objects) {
+                        PFRelation *userRelation = [post relationForKey:@"username"];
+                        PFQuery *userUsername = [userRelation query];
+                        [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
+                            for (PFObject *username in user) {
+                                NSLog(@"USERNAME: %@", username[@"username"]);
+                            }
+                        }];
+                    }
+                }
+                
+                
             } else
             {
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -138,8 +168,7 @@
 {
     NSLog(@"FOUND YOU: %@", self.locationManager.location);
     self.currentLocation = self.locationManager.location;
-    
-    [self queryForHRPosts];
+
     [manager stopUpdatingLocation];
     [self updateMapWithCurrentLocation];
 }
@@ -156,6 +185,8 @@
     
     mapView_.myLocationEnabled = YES;
     mapView_.settings.myLocationButton = YES;
+    
+    [self queryForHRPosts];
 }
 
 - (void)setBounds
@@ -267,6 +298,7 @@
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
     marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
     marker.map = mapView_;
+    NSLog(@"marker in other method: %@", marker);
     
     CGFloat latitude = marker.position.latitude;
     CGFloat longitude = marker.position.longitude;

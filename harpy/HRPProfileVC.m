@@ -59,7 +59,9 @@
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
     PFUser *currentUser = [PFUser currentUser];
-    self.navigationItem.title = currentUser.username;
+    NSString *usernameString = currentUser.username;
+    usernameString = [usernameString uppercaseString];
+    self.navigationItem.title = usernameString;
     
     NSString *realName = currentUser[@"realName"];
     self.realName.text = realName;

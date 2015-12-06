@@ -154,7 +154,7 @@
                                                     <constraint firstItem="9Zj-md-RCZ" firstAttribute="top" secondItem="bWa-9r-jn4" secondAttribute="top" id="t7Q-49-bjm"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Glf-Ey-3Vu">
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="Glf-Ey-3Vu">
                                                 <rect key="frame" x="0.0" y="143" width="374" height="34"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ndr-9U-T52">
@@ -201,36 +201,42 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2b-0c-iv9" userLabel="Bottom View">
-                                <rect key="frame" x="0.0" y="228" width="414" height="464"/>
+                                <rect key="frame" x="0.0" y="224" width="414" height="468"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="724-2i-lEg">
-                                        <rect key="frame" x="0.0" y="10" width="414" height="464"/>
+                                        <rect key="frame" x="0.0" y="10" width="414" height="468"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eBw-lt-Qdj">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="35"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T85-q9-sIW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T85-q9-sIW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="35"/>
                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                         <state key="normal" title="  List View" image="listview" backgroundImage="white_backround">
                                                             <color key="titleColor" red="0.58823529411764708" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="listmenuClicked:" destination="C0a-CR-bU2" eventType="touchUpInside" id="PlY-Tw-cNO"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rao-gA-5hf">
-                                                        <rect key="frame" x="207" y="0.0" width="207" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rao-gA-5hf">
+                                                        <rect key="frame" x="207" y="0.0" width="207" height="35"/>
                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                         <state key="normal" title="  Map View" image="mapview" backgroundImage="white_backround">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="mapmenuClicked:" destination="C0a-CR-bU2" eventType="touchUpInside" id="VWJ-go-Ilx"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <animations/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="8v7-eW-hxS"/>
+                                                    <constraint firstAttribute="height" constant="35" id="8v7-eW-hxS"/>
                                                 </constraints>
                                             </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-h3-Haf">
-                                                <rect key="frame" x="0.0" y="30" width="414" height="80"/>
+                                                <rect key="frame" x="0.0" y="35" width="414" height="80"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -257,12 +263,12 @@
                                                 </cells>
                                             </collectionView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
-                                                <rect key="frame" x="0.0" y="110" width="414" height="288"/>
+                                                <rect key="frame" x="0.0" y="115" width="414" height="287"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-Uc-7cS" userLabel="Music Player View">
-                                                <rect key="frame" x="0.0" y="398" width="414" height="66"/>
+                                                <rect key="frame" x="0.0" y="402" width="414" height="66"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.50196081399917603" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -293,7 +299,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="z2b-0c-iv9" secondAttribute="trailing" id="WxR-Yg-jSi"/>
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="leading" secondItem="zOA-Zn-puh" secondAttribute="leadingMargin" id="cQq-L8-m3A"/>
                             <constraint firstItem="EU0-Np-qFi" firstAttribute="top" secondItem="z2b-0c-iv9" secondAttribute="bottom" id="jGc-HU-l40"/>
-                            <constraint firstItem="z2b-0c-iv9" firstAttribute="top" secondItem="qqz-ns-WvY" secondAttribute="bottom" constant="11" id="lAy-yh-jJ4"/>
+                            <constraint firstItem="z2b-0c-iv9" firstAttribute="top" secondItem="qqz-ns-WvY" secondAttribute="bottom" constant="7" id="lAy-yh-jJ4"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="height" secondItem="zOA-Zn-puh" secondAttribute="height" multiplier="0.24" id="lJ0-zA-zog"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="leading" secondItem="zOA-Zn-puh" secondAttribute="leadingMargin" id="tLP-v1-Bku"/>
                         </constraints>
@@ -325,6 +331,8 @@
                     <connections>
                         <outlet property="fansCountLabel" destination="NBs-co-kAi" id="VSh-s3-X6a"/>
                         <outlet property="followingCountLabel" destination="BDy-kN-Rnf" id="7fp-hs-2jw"/>
+                        <outlet property="listViewButton" destination="T85-q9-sIW" id="gVE-9q-VDE"/>
+                        <outlet property="mapviewButton" destination="Rao-gA-5hf" id="1zT-Ed-BW0"/>
                         <outlet property="postCount" destination="WKN-52-CPh" id="690-xW-jxs"/>
                         <outlet property="realName" destination="AMC-o8-0dn" id="ue2-5y-XdD"/>
                         <outlet property="settingsButton" destination="3Ig-pX-UYg" id="Avg-G0-PVv"/>

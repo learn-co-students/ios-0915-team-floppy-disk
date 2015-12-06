@@ -32,8 +32,24 @@
                                                                  [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
                                                              NSForegroundColorAttributeName:[UIColor whiteColor]
                                                              }];
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backround_cropped"] forBarMetrics:UIBarMetricsDefault];
+
     
+
+    NSLog(@"width is :%f",[[UIScreen mainScreen] bounds].size.width);
+    
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f)
+    {
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"background_cropped_6"] forBarMetrics:UIBarMetricsDefault];
+    }
+    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f)
+    {
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"background_cropped_6s"] forBarMetrics:UIBarMetricsDefault];
+    }
+    else
+    {
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"backround_cropped"] forBarMetrics:UIBarMetricsDefault];
+    }
+
     
     NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
     

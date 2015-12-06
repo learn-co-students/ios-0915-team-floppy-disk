@@ -87,6 +87,7 @@
         
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
         {
+            
             [self.activityIndicator stopAnimating];
             
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];

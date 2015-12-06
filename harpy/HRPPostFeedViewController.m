@@ -56,7 +56,6 @@
         
         NSUInteger arraySpot = indexPath.row - (indexPath.row/2);
         
-        PFObject *post = self.postsArray[arraySpot];
         
         //add cell properties
         

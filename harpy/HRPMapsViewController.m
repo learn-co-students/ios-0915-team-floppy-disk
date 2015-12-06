@@ -118,6 +118,16 @@
                     marker.position = postCoordinate;
                     marker.map = mapView_;
                     NSLog(@"marker: %@", marker);
+                    
+                    for (PFObject *post in objects) {
+                        PFRelation *userRelation = [post relationForKey:@"username"];
+                        PFQuery *userUsername = [userRelation query];
+                        [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
+                            for (PFObject *username in user) {
+                                NSLog(@"USERNAME: %@", username[@"username"]);
+                            }
+                        }];
+                    }
                 }
                 
                 

@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *fansCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *realName;
 @property (weak, nonatomic) IBOutlet UILabel *shortBio;
+@property (weak, nonatomic) IBOutlet UIButton *mapviewButton;
+@property (weak, nonatomic) IBOutlet UIButton *listViewButton;
+
 @property (nonatomic) PFUser *currentUser;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
@@ -151,10 +154,23 @@
     return newImage;
 }
 
+#pragma mark - Naviagation
+
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
     
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Action methods
+
+- (IBAction)listmenuClicked:(id)sender
+{
+    
+}
+- (IBAction)mapmenuClicked:(id)sender
+{
+    NSLog(@"Map menu clicked");
 }
 
 @end

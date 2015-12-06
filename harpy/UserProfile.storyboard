@@ -48,18 +48,14 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9Zj-md-RCZ">
                                                         <rect key="frame" x="0.0" y="0.0" width="118" height="118"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iBy-4X-gNf">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iBy-4X-gNf">
                                                                 <rect key="frame" x="0.0" y="0.0" width="118" height="118"/>
                                                                 <animations/>
                                                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="iBy-4X-gNf" secondAttribute="height" multiplier="1:1" id="VLv-Vb-uA6"/>
+                                                                    <constraint firstAttribute="height" constant="118" id="Yah-88-gDA"/>
                                                                 </constraints>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="59"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
                                                             </imageView>
                                                         </subviews>
                                                         <animations/>

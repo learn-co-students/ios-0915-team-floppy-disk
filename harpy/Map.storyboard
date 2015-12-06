@@ -101,12 +101,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-PT-vpe">
-                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="60"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="oKG-6l-OLq"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8bJ-AT-u0b">
-                                <rect key="frame" x="0.0" y="108" width="414" height="628"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="612"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -122,6 +125,7 @@
                                                     <rect key="frame" x="15" y="4" width="85" height="85"/>
                                                     <animations/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="85" id="1DF-tb-AnK"/>
                                                         <constraint firstAttribute="width" secondItem="Qdj-aQ-Kht" secondAttribute="height" multiplier="1:1" id="GxI-7l-pVI"/>
                                                         <constraint firstAttribute="width" constant="85" id="HPt-KG-c5Z"/>
                                                     </constraints>
@@ -129,8 +133,8 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ieZ-zH-wyh">
                                                     <rect key="frame" x="108" y="16" width="295" height="61"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8N-uP-1Bf">
-                                                            <rect key="frame" x="0.0" y="0.0" width="67" height="18"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8N-uP-1Bf">
+                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="18"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

@@ -236,21 +236,16 @@
     
     UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.imageView.image = [UIImage imageNamed:@"periwinkleImage.png"];
-    [cell.imageView.layer setBorderColor: [ironColor CGColor]];
-    [cell.imageView.layer setBorderWidth: 1.0];
-    cell.imageView.layer.masksToBounds = YES;
-    
     PFFile *albumArt = HRPPosts[@"albumArt"];
+    UIImageView *albumArtView = (UIImageView *)[cell viewWithTag:2];
+    albumArtView.layer.masksToBounds = YES;
     if (albumArt)
     {
         [albumArt getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
             if (!error)
             {
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.imageView.image = [UIImage imageWithData:data];
-                cell.imageView.highlightedImage = [UIImage imageWithData:data];
+                albumArtView.image = [UIImage imageWithData:data];
+                [albumArtView.layer setBorderColor: [ironColor CGColor]];
             }
             else
             {

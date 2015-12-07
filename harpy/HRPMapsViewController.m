@@ -269,6 +269,10 @@
 
 #pragma mark - Action Methods
 
+- (IBAction)profileButtonTapped:(id)sender
+{
+    [self performSegueWithIdentifier:@"showUserProfile" sender:self];
+}
 - (IBAction)postSongButtonTapped:(id)sender
 {
     NSLog(@"method entered");

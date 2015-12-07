@@ -66,13 +66,13 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="9iU-qM-S92">
                             <color key="tintColor" red="0.981233244" green="0.981233244" blue="0.981233244" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Zn9-Nw-Eau" kind="show" id="dgG-YM-kit"/>
+                                <action selector="profileButtonTapped:" destination="vQb-cv-L16" id="lS6-HA-xte"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="search" id="hsx-PQ-LpY">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="dEV-4u-8RP" kind="show" id="dkh-Dt-Wy7"/>
+                                <segue destination="dEV-4u-8RP" kind="show" identifier="showUserSearch" id="dkh-Dt-Wy7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -82,6 +82,7 @@
                         <outlet property="defaultMarkerImage" destination="yRa-kE-mpk" id="eOO-f4-qT4"/>
                         <outlet property="postSongButton" destination="Cey-M4-euM" id="SDk-bl-Lag"/>
                         <segue destination="jZz-Vg-kOe" kind="presentation" identifier="showTrackViews" id="rQd-sp-5dF"/>
+                        <segue destination="Zn9-Nw-Eau" kind="show" identifier="showUserProfile" id="REI-F8-dvx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUG-Vo-6zZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -229,7 +230,7 @@
                 <viewControllerPlaceholder storyboardName="UserProfile" id="Zn9-Nw-Eau" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0g-u8-bMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1304.5" y="811"/>
+            <point key="canvasLocation" x="1262" y="811"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hjw-uP-gFi">

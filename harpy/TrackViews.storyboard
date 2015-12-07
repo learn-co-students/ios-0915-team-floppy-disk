@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SF-UI-Display-Regular.otf">
@@ -37,8 +38,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Gu-IZ-obB">
-                                                    <rect key="frame" x="11" y="11" width="313" height="85"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Gu-IZ-obB">
+                                                    <rect key="frame" x="8" y="8" width="390" height="85"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ckb-wR-WKR">
                                                             <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
@@ -47,13 +48,13 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="eZa-BU-YJr">
-                                                            <rect key="frame" x="90" y="0.0" width="223" height="85"/>
+                                                            <rect key="frame" x="90" y="0.0" width="300" height="85"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DoE-kv-Rkb">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="85"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="257" height="85"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="song title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vy-KX-fV7">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="47"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="257" height="47"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="47" id="SE4-E1-z7k"/>
                                                                             </constraints>
@@ -62,16 +63,16 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="91l-xw-tmg">
-                                                                            <rect key="frame" x="0.0" y="47" width="180" height="38"/>
+                                                                            <rect key="frame" x="0.0" y="47" width="257" height="38"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAR-oD-DVh">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="23"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="257" height="23"/>
                                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHx-uH-KFG">
-                                                                                    <rect key="frame" x="0.0" y="23" width="180" height="15"/>
+                                                                                    <rect key="frame" x="0.0" y="23" width="257" height="15"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="15" id="Wlv-s1-Lds"/>
                                                                                     </constraints>
@@ -87,7 +88,7 @@
                                                                     </constraints>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ruP-Fg-ZlA">
-                                                                    <rect key="frame" x="183" y="0.0" width="40" height="85"/>
+                                                                    <rect key="frame" x="260" y="0.0" width="40" height="85"/>
                                                                     <subviews>
                                                                         <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7c-kV-oYy">
                                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="55"/>
@@ -117,8 +118,8 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ruP-Fg-ZlA" secondAttribute="trailing" constant="8" id="MZ0-kh-Khd"/>
                                                 <constraint firstItem="1Gu-IZ-obB" firstAttribute="centerY" secondItem="tD8-Om-UFP" secondAttribute="centerY" constant="-3.5" id="lZm-0o-RUq"/>
-                                                <constraint firstItem="DoE-kv-Rkb" firstAttribute="width" secondItem="tD8-Om-UFP" secondAttribute="height" multiplier="5:3" id="ptN-qo-1pW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>

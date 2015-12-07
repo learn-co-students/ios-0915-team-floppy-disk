@@ -103,16 +103,16 @@
             if (!error)
             {
                 self.parsePosts = objects;
-                //[self.parsePosts arrayByAddingObjectsFromArray:objects];
-                NSLog(@"PARSE POSTS: %@", self.parsePosts);
+                NSLog(@"THERE ARE %lu PARSE POSTS.", self.parsePosts.count);
                 
                 for (NSUInteger i = 0; i < self.parsePosts.count; i++)
                 {
                     NSDictionary *HRPPosts = self.parsePosts[i];
-                    NSLog(@"PARSE DICTIONARY: %@", HRPPosts);
+//                    NSLog(@"PARSE DICTIONARY: %@", HRPPosts);
+                    NSLog(@"POSTED SONG: %@", HRPPosts[@"songTitle"]);
                     
                     PFGeoPoint *HRPGeoPoint = HRPPosts[@"locationGeoPoint"];
-                    NSLog(@"geoPointString %@", HRPGeoPoint);
+                    NSLog(@"geoPointString %f, %f", HRPGeoPoint.latitude, HRPGeoPoint.longitude);
                     
                     CLLocationCoordinate2D postCoordinate = CLLocationCoordinate2DMake(HRPGeoPoint.latitude, HRPGeoPoint.longitude);
                     NSLog(@"postCoordinate %f, %f", postCoordinate.latitude, postCoordinate.longitude);
@@ -123,44 +123,13 @@
                     marker.map = mapView_;
                     NSLog(@"marker: %@", marker);
                     
-                    
-                    
-                    
-                    
-                    
-                    
-//                    PFObject *post = objects[0];
-//                    NSDate *date = [post createdAt];
-//                    
-//                    NSLog(@"%@", date);
-//                    //get date posted
-//                    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-//                    [formatter setDateFormat:@"yyyy-MM-dd"];
-//                    NSString *stringFromDate = [formatter stringFromDate:date];
-//                    NSLog(@"DATE POSTED: %@", stringFromDate);
-//                    
-//                    //get current date
-//                    NSDateFormatter *currentFormat = [[NSDateFormatter alloc]init];
-//                    [currentFormat setDateFormat:@"yyyy-MM-dd"];
-//                    NSString *currentDate = [currentFormat stringFromDate:[NSDate date]];
-//                    NSLog(@"CURRENT DATE: %@", currentDate);
-//                    
-//                    //get difference of days
-//                    NSDateFormatter *diffFormat = [[NSDateFormatter alloc]init];
-//                    [diffFormat setDateFormat:@"yyyy-MM-dd"];
-//                    NSDate *start = [diffFormat dateFromString:stringFromDate];
-//                    NSDate *end = [diffFormat dateFromString:currentDate];
-//                    NSCalendar *calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-//                    NSDateComponents *gregComps = [calendar components:NSCalendarUnitDay fromDate:start toDate:end options:NSCalendarWrapComponents];
-//                    
-//                    NSLog(@"DAYS SINCE POST: %ld", [gregComps day]);
-                    
-                    
-                    for (PFObject *post in objects) {
+                    for (PFObject *post in objects)
+                    {
                         PFRelation *userRelation = [post relationForKey:@"username"];
                         PFQuery *userUsername = [userRelation query];
                         [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
-                            for (PFObject *username in user) {
+                            for (PFObject *username in user)
+                            {
                                 NSLog(@"USERNAME: %@", username[@"username"]);
                             }
                         }];
@@ -229,7 +198,7 @@
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
-    CGFloat coordinateDifference = 0.1;
+    CGFloat coordinateDifference = 0.05;
     
     CGFloat firstLatitude = coordinate.latitude;
     firstLatitude += coordinateDifference;

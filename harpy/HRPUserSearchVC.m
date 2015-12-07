@@ -156,6 +156,15 @@
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    if([searchText length] == 0) {
+        [searchBar performSelector: @selector(resignFirstResponder)
+                        withObject: nil
+                        afterDelay: 0.1];
+        
+        [self.users removeAllObjects];
+        [self.userTableView reloadData];
+    }
+    
     if (![searchText isEqualToString:@""]) {
         PFQuery *userQuery = [PFUser query];
         searchText = [searchText lowercaseString];

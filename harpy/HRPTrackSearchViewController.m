@@ -157,6 +157,9 @@
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
     if ([searchText isEqualToString:@""]) {
+        [searchBar performSelector: @selector(resignFirstResponder)
+                        withObject: nil
+                        afterDelay: 0.1];
         self.filteredSongArray = self.songArray;
         [self.songTableView reloadData];
     }
@@ -213,12 +216,15 @@
     
     UILabel *songNameLabel = (UILabel *)[cell viewWithTag:1];
     songNameLabel.text = track.songTitle;
+    songNameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:15.0];
     
     UILabel *artistNameLabel = (UILabel *)[cell viewWithTag:2];
     artistNameLabel.text = track.artistName;
+    artistNameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
     
     UILabel *albumLabel = (UILabel *)[cell viewWithTag:3];
     albumLabel.text = track.albumName;
+    albumLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
     
     UIImageView *coverArt = (UIImageView *)[cell viewWithTag:4];
     if (track.spotifyLogo == nil) {

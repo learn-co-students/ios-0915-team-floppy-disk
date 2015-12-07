@@ -4,6 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SF-UI-Display-Regular.otf">
@@ -240,9 +241,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hmL-Ua-R5A">
-                                <rect key="frame" x="0.0" y="72" width="212" height="212"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hmL-Ua-R5A">
+                                <rect key="frame" x="0.0" y="72" width="207" height="207"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hmL-Ua-R5A" secondAttribute="height" multiplier="1:1" id="wfE-R9-toY"/>
+                                </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wFB-rZ-828">
                                 <rect key="frame" x="6" y="292" width="403" height="73"/>
@@ -251,8 +255,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWf-66-W5K">
-                                <rect key="frame" x="0.0" y="192" width="212" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWf-66-W5K">
+                                <rect key="frame" x="0.0" y="219" width="207" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Upload/Take Photo">
@@ -262,27 +266,33 @@
                                     <action selector="uploadPhotoButtonTapped:" destination="qmp-pb-MEz" eventType="touchUpInside" id="54S-9g-Aeh"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ4-6d-FnU">
-                                <rect key="frame" x="220" y="83" width="194" height="21"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Y0x-Ue-VlP">
+                                <rect key="frame" x="213" y="84" width="197" height="69"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ4-6d-FnU">
+                                        <rect key="frame" x="0.0" y="0.0" width="197" height="16"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FY1-u9-jg6">
+                                        <rect key="frame" x="0.0" y="28" width="197" height="15"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y83-1q-Vj3">
+                                        <rect key="frame" x="0.0" y="54" width="197" height="15"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Album Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y83-1q-Vj3">
-                                <rect key="frame" x="220" y="149" width="194" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FY1-u9-jg6">
-                                <rect key="frame" x="220" y="117" width="194" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCg-wB-2HR">
                                 <rect key="frame" x="52" y="373" width="310" height="30"/>
                                 <animations/>
@@ -294,8 +304,8 @@
                                     <action selector="postTrackButtonTapped:" destination="qmp-pb-MEz" eventType="touchUpInside" id="7bj-nz-yET"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YH-uc-rg9">
-                                <rect key="frame" x="220" y="207" width="194" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YH-uc-rg9">
+                                <rect key="frame" x="213" y="206" width="197" height="15.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.76231317929999998" green="0.035230366200000002" blue="0.027155836480000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -304,6 +314,21 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="2YH-uc-rg9" firstAttribute="top" secondItem="Y0x-Ue-VlP" secondAttribute="bottom" constant="54" id="52t-su-Yhg"/>
+                            <constraint firstItem="Y0x-Ue-VlP" firstAttribute="width" secondItem="hmL-Ua-R5A" secondAttribute="width" multiplier="0.95" id="7PF-CD-SSe"/>
+                            <constraint firstItem="2YH-uc-rg9" firstAttribute="width" secondItem="Y0x-Ue-VlP" secondAttribute="width" id="C4l-uu-874"/>
+                            <constraint firstItem="zWf-66-W5K" firstAttribute="top" secondItem="hmL-Ua-R5A" secondAttribute="bottom" constant="-60" id="FYX-Lc-m42"/>
+                            <constraint firstItem="hmL-Ua-R5A" firstAttribute="leading" secondItem="Jd8-fp-cMY" secondAttribute="leadingMargin" constant="-20" id="SIE-Pd-JTF"/>
+                            <constraint firstItem="Y0x-Ue-VlP" firstAttribute="top" secondItem="2ce-r9-Swi" secondAttribute="bottom" constant="20" id="X6C-C3-M5p"/>
+                            <constraint firstItem="zWf-66-W5K" firstAttribute="centerX" secondItem="hmL-Ua-R5A" secondAttribute="centerX" id="beW-gk-pz8"/>
+                            <constraint firstItem="zWf-66-W5K" firstAttribute="width" secondItem="hmL-Ua-R5A" secondAttribute="width" id="fvn-NB-ayT"/>
+                            <constraint firstItem="2YH-uc-rg9" firstAttribute="height" secondItem="qQ4-6d-FnU" secondAttribute="height" id="gy7-Cf-fd1"/>
+                            <constraint firstItem="hmL-Ua-R5A" firstAttribute="top" secondItem="2ce-r9-Swi" secondAttribute="bottom" constant="8" id="obi-Oy-wsq"/>
+                            <constraint firstItem="hmL-Ua-R5A" firstAttribute="width" secondItem="Jd8-fp-cMY" secondAttribute="width" multiplier="0.5" id="qED-bR-4pi"/>
+                            <constraint firstItem="Y0x-Ue-VlP" firstAttribute="trailing" secondItem="Jd8-fp-cMY" secondAttribute="trailingMargin" constant="16" id="rfF-NR-cKT"/>
+                            <constraint firstItem="2YH-uc-rg9" firstAttribute="centerX" secondItem="Y0x-Ue-VlP" secondAttribute="centerX" id="ua0-zd-UpV"/>
+                        </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>

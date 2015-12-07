@@ -59,6 +59,7 @@
     [self.postSongButton setBackgroundColor:[UIColor colorWithRed:0.18 green:0.21 blue:0.31 alpha:1.0]];
     
     mapView_.settings.scrollGestures = YES;
+    self.mapView.delegate = self;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -119,6 +120,41 @@
                     marker.position = postCoordinate;
                     marker.map = mapView_;
                     NSLog(@"marker: %@", marker);
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+//                    PFObject *post = objects[0];
+//                    NSDate *date = [post createdAt];
+//                    
+//                    NSLog(@"%@", date);
+//                    //get date posted
+//                    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+//                    [formatter setDateFormat:@"yyyy-MM-dd"];
+//                    NSString *stringFromDate = [formatter stringFromDate:date];
+//                    NSLog(@"DATE POSTED: %@", stringFromDate);
+//                    
+//                    //get current date
+//                    NSDateFormatter *currentFormat = [[NSDateFormatter alloc]init];
+//                    [currentFormat setDateFormat:@"yyyy-MM-dd"];
+//                    NSString *currentDate = [currentFormat stringFromDate:[NSDate date]];
+//                    NSLog(@"CURRENT DATE: %@", currentDate);
+//                    
+//                    //get difference of days
+//                    NSDateFormatter *diffFormat = [[NSDateFormatter alloc]init];
+//                    [diffFormat setDateFormat:@"yyyy-MM-dd"];
+//                    NSDate *start = [diffFormat dateFromString:stringFromDate];
+//                    NSDate *end = [diffFormat dateFromString:currentDate];
+//                    NSCalendar *calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+//                    NSDateComponents *gregComps = [calendar components:NSCalendarUnitDay fromDate:start toDate:end options:NSCalendarWrapComponents];
+//                    
+//                    NSLog(@"DAYS SINCE POST: %ld", [gregComps day]);
+                    
                     
                     for (PFObject *post in objects) {
                         PFRelation *userRelation = [post relationForKey:@"username"];
@@ -337,40 +373,25 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//    NSLog(@"alert controller method hit");
-//    UIAlertController *confirmPinAlert = [UIAlertController alertControllerWithTitle:@"Confirm Pin" message:@"Post song here?" preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        
-//        CLLocationCoordinate2D coordinatesAtMapCenter = [self findCoordinatesAtMapCenter];
-//        
-//        NSLog(@"inside the block");
-//
     if([segue.identifier isEqualToString:@"showTrackViews"])
     {
         UINavigationController *navController = segue.destinationViewController;
         HRPTrackSearchViewController *destinVC = navController.viewControllers.firstObject;
-        
-//        GMSMarker *marker = [[GMSMarker alloc] init];
-//        marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-//        marker.position = CLLocationCoordinate2DMake(coordinatesAtMapCenter.latitude, coordinatesAtMapCenter.longitude);
-//        marker.map = mapView_;
-//        
-//        NSLog(@"marker: %@", marker);
-//        NSLog(@"marker.icon = %@", marker.icon);
-//        NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
-//        NSLog(@"marker.map = %@", marker.map);
-//        
-//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-//    
-//    [confirmPinAlert addAction:confirmAction];
-//    [confirmPinAlert addAction:cancelAction];
-    
-//    [self presentViewController:confirmPinAlert animated:YES completion:nil];
     
         destinVC.post = [self postWithCurrentMapPosition];
      }
-//    }];
+}
+
+-(void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
+    
+}
+
+-(BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"postTable" bundle:nil];
+    UIViewController *postView = [storyboard instantiateViewControllerWithIdentifier:@"postViewController"];
+    //postView.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:postView animated:YES completion:nil];
+    return YES;
 }
 
 @end

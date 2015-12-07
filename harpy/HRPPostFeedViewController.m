@@ -17,7 +17,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *artistNameLabel;
 @property (strong, nonatomic) IBOutlet UITableView *postTableView;
 
+@property (strong, nonatomic) SPTAudioStreamingController *player;
+
 @end
+
 
 @implementation HRPPostFeedViewController
 
@@ -27,108 +30,104 @@
     self.postTableView.delegate = self;
     self.postTableView.dataSource = self;
     
+    //self.postTableView = [UITableView new];
+    
     self.playPauseLabel.text = @"";
     self.songnameLabel.text = @"";
     self.artistNameLabel.text = @"";
 }
 
 -(void)initializeEmptyPostArray {
-    self.postsArray = [NSMutableArray new];
+    //self.postsArray = [NSMutableArray new];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSUInteger count = self.postsArray.count;
-    NSInteger numberOfRows = (NSInteger)count * 2;
-    return numberOfRows;
+    return self.postsArray.count;
 }
 
 //height method
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self.postTableView dequeueReusableCellWithIdentifier:@"postContentCell" forIndexPath:indexPath];
     
-    if (indexPath.row % 2 == 0) {
-        UITableViewCell *cell2 = [self.postTableView dequeueReusableCellWithIdentifier:@"postContentCell" forIndexPath:indexPath];
-        
-        NSUInteger arraySpot = indexPath.row - (indexPath.row/2);
-        
-        UIButton *playSongButton = (UIButton *)[cell2 viewWithTag:1];
-        //add button actions
-        
-        UIImageView *coverArt = (UIImageView *)[cell2 viewWithTag:2];
-        //use arraySpot?
-        PFFile *albumFile = self.postsArray[0][@"albumArt"];
-        if (albumFile) {
-            [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    if (!error) {
-                        coverArt.image = [UIImage imageWithData:data];
-                    } else {
-                        coverArt.image = [UIImage imageNamed:@"spotify"];
-                    }
-                }];
-            }];
-        }
-        
-        UIImageView *spotifyLogo = (UIImageView *)[cell2 viewWithTag:3];
-        spotifyLogo.image = [UIImage imageNamed:@"spotify"];
-        
-        UILabel *likesLabel = (UILabel *)[cell2 viewWithTag:4];
-        //relation
-        
-        UILabel *commentsLabel = (UILabel *)[cell2 viewWithTag:5];
-        commentsLabel.text = self.postsArray[0][@"comments"];
-        
-        UILabel *captionLabel = (UILabel *)[cell2 viewWithTag:6];
-        captionLabel.text = self.postsArray[0][@"caption"];
-        
-        return cell2;
-    } else {
-        UITableViewCell *cell1 = [self.postTableView dequeueReusableCellWithIdentifier:@"userInfoCell" forIndexPath:indexPath];
-        
-        NSUInteger arraySpot = 0;
-        PFObject *post = [[PFObject alloc]init];
-        if (indexPath.row > 1) {
-            arraySpot = (indexPath.row + 1) / 2;
-            post = self.postsArray[arraySpot];
-        } else if (indexPath.row == 1) {
-            arraySpot = 1;
-            post = self.postsArray[arraySpot];
-        }
-        
-        //add cell properties
-        UILabel *usernameLabel = (UILabel *)[cell1 viewWithTag:2];
-        UIImageView *profileThumbnail = (UIImageView *)[cell1 viewWithTag:1];
-        for (PFObject *post in self.postsArray) {
-            PFRelation *userRelation = [post relationForKey:@"username"];
-            PFQuery *postUsername = [userRelation query];
-            [postUsername findObjectsInBackgroundWithBlock:^(NSArray * users, NSError * error) {
-                for (PFObject *username in users) {
-                    NSString *usernameFromBlock = username[@"username"];
-                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                        usernameLabel.text = usernameFromBlock;
-                    }];
-                    [self getUserProfilePictureForUser:usernameFromBlock WithCompletion:^(NSData *imageData) {
-                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            profileThumbnail.image = [UIImage imageWithData:imageData];
-                        }];
-                    }];
+    NSDictionary *postsFromArray = self.postsArray[indexPath.row];
+    
+    UIButton *playSongButton = (UIButton *)[cell viewWithTag:1];
+    [playSongButton setTitle:@"Play" forState:UIControlStateNormal];
+    [playSongButton addTarget:self action:@selector(playButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIImageView *coverArt = (UIImageView *)[cell viewWithTag:2];
+    //use arraySpot?
+    PFFile *albumFile = postsFromArray[@"albumArt"];
+    if (albumFile) {
+        [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                if (!error) {
+                    coverArt.image = [UIImage imageWithData:data];
+                } else {
+                    coverArt.image = [UIImage imageNamed:@"spotify"];
                 }
             }];
-        }
-        
-        UILabel *daysLabel = (UILabel *)[cell1 viewWithTag:3];
-        NSInteger daysSincePost = [self getDaysSincePost:post];
-        daysLabel.text = [NSString stringWithFormat:@"%ldd", daysSincePost];
-        
-        
-        
-        return cell1;
+        }];
     }
+    
+    UIImageView *spotifyLogo = (UIImageView *)[cell viewWithTag:3];
+    spotifyLogo.image = [UIImage imageNamed:@"spotify"];
+    
+    UILabel *likesLabel = (UILabel *)[cell viewWithTag:4];
+    //relation
+    
+    UILabel *commentsLabel = (UILabel *)[cell viewWithTag:5];
+    //commentsLabel.text = self.postsArray[0][@"comments"];
+    
+    UILabel *captionLabel = (UILabel *)[cell viewWithTag:6];
+    captionLabel.text = postsFromArray[@"caption"];
+    
+
+//        NSUInteger arraySpot = 0;
+//        NSDictionary *post = [[NSDictionary alloc]init];
+//        if (indexPath.row > 1) {
+//            arraySpot = (indexPath.row + 1) / 2;
+//            post = self.postsArray[arraySpot];
+//        } else if (indexPath.row == 1) {
+//            arraySpot = indexPath.row;
+//            post = self.postsArray[arraySpot];
+//        }
+
+    //add cell properties
+    UILabel *usernameLabel = (UILabel *)[cell viewWithTag:8];
+    UIImageView *profileThumbnail = (UIImageView *)[cell viewWithTag:7];
+    for (PFObject *post in self.postsArray) {
+        PFRelation *userRelation = [post relationForKey:@"username"];
+        PFQuery *postUsername = [userRelation query];
+        [postUsername findObjectsInBackgroundWithBlock:^(NSArray * users, NSError * error) {
+            for (PFObject *username in users) {
+                NSString *usernameFromBlock = username[@"username"];
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    usernameLabel.text = usernameFromBlock;
+                }];
+                [self getUserProfilePictureForUser:usernameFromBlock WithCompletion:^(NSData *imageData) {
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        profileThumbnail.image = [UIImage imageWithData:imageData];
+                    }];
+                }];
+            }
+        }];
+    }
+    
+    UILabel *daysLabel = (UILabel *)[cell viewWithTag:9];
+    PFObject *postInDictionary = self.postsArray[0];
+    NSInteger daysSincePost = [self getDaysSincePost:postInDictionary];
+    daysLabel.text = [NSString stringWithFormat:@"%ldd", daysSincePost];
+    
+    
+    
+    return cell;
 }
 
 -(NSInteger)getDaysSincePost:(PFObject *)post {
@@ -176,6 +175,74 @@
             }
         }
     }];
+}
+
+-(void)handleNewSession {
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    
+    if (self.player == nil) {
+        self.player = [[SPTAudioStreamingController alloc] initWithClientId:auth.clientID];
+        self.player.playbackDelegate = self;
+        self.player.diskCache = [[SPTDiskCache alloc] initWithCapacity:1024 * 1024 * 64];
+    }
+    
+    [self.player loginWithSession:auth.session callback:^(NSError *error) {
+        
+        NSLog(@"%@", error);
+    }];
+}
+
+- (IBAction)playButtonTapped:(UIButton *)sender {
+    if ([sender.titleLabel.text isEqualToString:@"Play"]) {
+    
+        NSIndexPath *indexPath = [self.postTableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+        
+        NSDictionary *postInView = self.postsArray[indexPath.row];
+        
+        
+
+        PFFile *albumFile = postInView[@"albumArt"];
+        if (albumFile) {
+            [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    if (!error) {
+                        self.albumArtView.image = [UIImage imageWithData:data];
+                    } else {
+                        self.albumArtView.image = [UIImage imageNamed:@"spotify"];
+                    }
+                }];
+            }];
+        }
+        self.songnameLabel.text = postInView[@"songTitle"];
+        self.artistNameLabel.text = postInView[@"artistName"];
+        self.playPauseLabel.text = @"Playing";
+        
+        [self handleNewSession];
+        NSString *urlString = postInView[@"songURL"];
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
+            NSLog(@"%@", error);
+            
+            [sender setTitle:@"Stop" forState:UIControlStateNormal];
+            
+        }];
+    } else if ([sender.titleLabel.text isEqualToString:@"Stop"]) {
+        [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+        [sender setTitle:@"Play" forState:UIControlStateNormal];
+
+    }
+
+}
+
+- (IBAction)playerViewTapped:(UITapGestureRecognizer *)sender {
+    [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+    
+    if ([self.playPauseLabel.text isEqualToString:@"Playing"]) {
+        self.playPauseLabel.text = @"Paused";
+    } else if ([self.playPauseLabel.text isEqualToString:@"Paused"]) {
+        self.playPauseLabel.text = @"Playing";
+    }
 }
 
 @end

@@ -14,6 +14,7 @@
 #import "HRPPost.h"
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
+#import "HRPPostFeedViewController.h"
 @import GoogleMaps;
 
 @interface HRPMapsViewController () <GMSMapViewDelegate>
@@ -102,6 +103,7 @@
             if (!error)
             {
                 self.parsePosts = objects;
+                //[self.parsePosts arrayByAddingObjectsFromArray:objects];
                 NSLog(@"PARSE POSTS: %@", self.parsePosts);
                 
                 for (NSUInteger i = 0; i < self.parsePosts.count; i++)
@@ -120,8 +122,6 @@
                     marker.position = postCoordinate;
                     marker.map = mapView_;
                     NSLog(@"marker: %@", marker);
-                    
-                    
                     
                     
                     
@@ -391,10 +391,25 @@
 }
 
 -(BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"postTable" bundle:nil];
-    UIViewController *postView = [storyboard instantiateViewControllerWithIdentifier:@"postViewController"];
-    //postView.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [self presentViewController:postView animated:YES completion:nil];
+    
+    for (NSDictionary *post in self.parsePosts) {
+        PFGeoPoint *postGeo = post[@"locationGeoPoint"];
+        if (marker.position.latitude == postGeo.latitude &&
+            marker.position.longitude == postGeo.longitude) {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"postTable" bundle:nil];
+            HRPPostFeedViewController *postView = [storyboard instantiateViewControllerWithIdentifier:@"postViewController"];
+            postView.postsArray = [NSMutableArray new];
+            [postView.postsArray addObject:post];
+            [self presentViewController:postView animated:YES completion:nil];
+        }
+    }
+//    NSLog(@"%f", marker.position.latitude);
+//    NSDictionary *post = self.parsePosts[0];
+//    PFGeoPoint *geo = post[@"locationGeoPoint"];
+//    NSLog(@"%f", geo.latitude);
+    
+    
+    
     return YES;
 }
 

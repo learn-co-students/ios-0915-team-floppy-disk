@@ -83,11 +83,20 @@
                         <outlet property="postSongButton" destination="Cey-M4-euM" id="SDk-bl-Lag"/>
                         <segue destination="jZz-Vg-kOe" kind="presentation" identifier="showTrackViews" id="rQd-sp-5dF"/>
                         <segue destination="Zn9-Nw-Eau" kind="show" identifier="showUserProfile" id="REI-F8-dvx"/>
+                        <segue destination="Y8w-4l-UUr" kind="presentation" identifier="showPostViewSegue" id="W8i-jA-RnL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUG-Vo-6zZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1039" y="231"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="Jgd-AS-Azx">
+            <objects>
+                <viewControllerPlaceholder id="Y8w-4l-UUr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GRV-mX-Is2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1443" y="-274"/>
         </scene>
         <!--USER SEARCH-->
         <scene sceneID="XJO-td-Cby">

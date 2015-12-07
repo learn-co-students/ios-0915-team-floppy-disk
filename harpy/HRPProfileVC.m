@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *shortBio;
 @property (weak, nonatomic) IBOutlet UIButton *mapviewButton;
 @property (weak, nonatomic) IBOutlet UIButton *listViewButton;
+@property (weak, nonatomic) IBOutlet UITableView *postsTableview;
+@property (weak, nonatomic) IBOutlet UICollectionView *postsCollectionview;
 
 @property (nonatomic) PFUser *currentUser;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
@@ -86,6 +88,63 @@
     NSString *shortBio = currentUser[@"shortBio"];
     self.shortBio.text = shortBio;
 }
+- (void)setupPostsTableview
+{
+    
+}
+- (void)setupPostsCollectionview
+{
+    
+}
+- (void)queryForHRPosts
+{
+    
+        PFQuery *query = [PFQuery queryWithClassName:@"HRPPost"];
+    
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+         {
+             
+             if (!error)
+             {
+                 self.parsePosts = objects;
+                 NSLog(@"PARSE POSTS: %@", self.parsePosts);
+                 
+                 for (NSUInteger i = 0; i < self.parsePosts.count; i++)
+                 {
+                     NSDictionary *HRPPosts = self.parsePosts[i];
+                     NSLog(@"PARSE DICTIONARY: %@", HRPPosts);
+                     
+                     PFGeoPoint *HRPGeoPoint = HRPPosts[@"locationGeoPoint"];
+                     NSLog(@"geoPointString %@", HRPGeoPoint);
+                     
+                     CLLocationCoordinate2D postCoordinate = CLLocationCoordinate2DMake(HRPGeoPoint.latitude, HRPGeoPoint.longitude);
+                     NSLog(@"postCoordinate %f, %f", postCoordinate.latitude, postCoordinate.longitude);
+                     
+                     GMSMarker *marker = [[GMSMarker alloc] init];
+                     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+                     marker.position = postCoordinate;
+                     marker.map = mapView_;
+                     NSLog(@"marker: %@", marker);
+                     
+                     for (PFObject *post in objects) {
+                         PFRelation *userRelation = [post relationForKey:@"username"];
+                         PFQuery *userUsername = [userRelation query];
+                         [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
+                             for (PFObject *username in user) {
+                                 NSLog(@"USERNAME: %@", username[@"username"]);
+                             }
+                         }];
+                     }
+                 }
+                 
+                 
+             } else
+             {
+                 NSLog(@"Error: %@ %@", error, [error userInfo]);
+             }
+         }];
+}
+
 - (void)retrieveUserAvatar
 {
     PFQuery *userQuery = [PFUser query];

@@ -259,7 +259,7 @@
 - (void)setCamera
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:15];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:17];
     
     //this controls the map size on the view
     CGFloat h = self.topLayoutGuide.length;
@@ -306,6 +306,10 @@
 
 #pragma mark - Action Methods
 
+- (IBAction)profileButtonTapped:(id)sender
+{
+    [self performSegueWithIdentifier:@"showUserProfile" sender:self];
+}
 - (IBAction)postSongButtonTapped:(id)sender
 {
     NSLog(@"method entered");

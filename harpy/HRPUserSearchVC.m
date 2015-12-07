@@ -162,7 +162,7 @@
                         afterDelay: 0.1];
         
         [self.users removeAllObjects];
-        [self.userTableView reloadData];
+        
     }
     
     if (![searchText isEqualToString:@""]) {
@@ -249,10 +249,9 @@
         [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
             if (!error)
             {
-                UIImageView *imageView = (UIImageView *)[cell viewWithTag:2];
-                imageView.layer.masksToBounds = YES;
-                UIImage *image = [UIImage imageWithData:data];
-                imageView.image = image;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.imageView.image = [UIImage imageWithData:data];
+                cell.imageView.highlightedImage = [UIImage imageWithData:data];
             }
             else
             {

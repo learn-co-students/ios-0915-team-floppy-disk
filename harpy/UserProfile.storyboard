@@ -248,22 +248,20 @@
                                                     <constraint firstAttribute="height" constant="80" id="u53-oD-eHN"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CwI-Fd-IuE">
-                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="itemSize" width="65" height="63"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rQO-Rh-eFa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BZJ-Ty-TVz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="63"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="63"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
-                                                        <animations/>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
@@ -280,24 +278,29 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="4bH-p9-MYR" userLabel="big stackView">
-                                                                    <rect key="frame" x="8" y="11" width="398" height="50"/>
+                                                                    <rect key="frame" x="8" y="11" width="398" height="45"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dGR-Yk-uSY">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                                             <accessibility key="accessibilityConfiguration" label="2"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" secondItem="dGR-Yk-uSY" secondAttribute="height" multiplier="1:1" id="a8R-kn-QtW"/>
                                                                                 <constraint firstAttribute="height" constant="50" id="dcJ-GF-ekY"/>
                                                                             </constraints>
+                                                                            <variation key="default">
+                                                                                <mask key="constraints">
+                                                                                    <exclude reference="dcJ-GF-ekY"/>
+                                                                                </mask>
+                                                                            </variation>
                                                                         </imageView>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="M6g-Co-aYz">
-                                                                            <rect key="frame" x="65" y="0.0" width="333" height="50"/>
+                                                                            <rect key="frame" x="60" y="0.0" width="338" height="45"/>
                                                                             <subviews>
-                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Elo-mA-axo">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="289" height="50"/>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Elo-mA-axo">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="294" height="45"/>
                                                                                     <subviews>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="song title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8D-UP-ilQ">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="289" height="25"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="294" height="15"/>
                                                                                             <accessibility key="accessibilityConfiguration" label="1"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="25" id="3tU-jz-Gbg"/>
@@ -305,29 +308,29 @@
                                                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="15"/>
                                                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                             <nil key="highlightedColor"/>
+                                                                                            <variation key="default">
+                                                                                                <mask key="constraints">
+                                                                                                    <exclude reference="3tU-jz-Gbg"/>
+                                                                                                </mask>
+                                                                                            </variation>
                                                                                         </label>
-                                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qK2-mC-QKt">
-                                                                                            <rect key="frame" x="0.0" y="25" width="289" height="25"/>
-                                                                                            <subviews>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYI-JC-dud">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="289" height="10"/>
-                                                                                                    <accessibility key="accessibilityConfiguration" label="3"/>
-                                                                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
-                                                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                                    <nil key="highlightedColor"/>
-                                                                                                </label>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10g-nX-XYc">
-                                                                                                    <rect key="frame" x="0.0" y="10" width="289" height="15"/>
-                                                                                                    <accessibility key="accessibilityConfiguration" label="4"/>
-                                                                                                    <constraints>
-                                                                                                        <constraint firstAttribute="height" constant="15" id="1d6-4F-2Ek"/>
-                                                                                                    </constraints>
-                                                                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
-                                                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                                    <nil key="highlightedColor"/>
-                                                                                                </label>
-                                                                                            </subviews>
-                                                                                        </stackView>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYI-JC-dud">
+                                                                                            <rect key="frame" x="0.0" y="15" width="294" height="15"/>
+                                                                                            <accessibility key="accessibilityConfiguration" label="3"/>
+                                                                                            <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
+                                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10g-nX-XYc">
+                                                                                            <rect key="frame" x="0.0" y="30" width="294" height="15"/>
+                                                                                            <accessibility key="accessibilityConfiguration" label="4"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="height" constant="15" id="1d6-4F-2Ek"/>
+                                                                                            </constraints>
+                                                                                            <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
+                                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
                                                                                     </subviews>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="85" id="txV-MV-m3r"/>
@@ -339,10 +342,10 @@
                                                                                     </variation>
                                                                                 </stackView>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6R7-2X-MQD">
-                                                                                    <rect key="frame" x="293" y="0.0" width="40" height="50"/>
+                                                                                    <rect key="frame" x="298" y="0.0" width="40" height="45"/>
                                                                                     <subviews>
                                                                                         <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V77-v1-eq7">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="45"/>
                                                                                             <state key="normal" image="play_filled"/>
                                                                                         </button>
                                                                                     </subviews>
@@ -449,10 +452,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-dJ-A2q">
-                                <rect key="frame" x="-5" y="150" width="419" height="50"/>
+                                <rect key="frame" x="-29" y="150" width="506" height="50"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="     Edit Profile">
+                                <state key="normal" title="          Edit Profile">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -475,22 +478,11 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bnf-8D-i58">
-                                <rect key="frame" x="-5" y="200" width="419" height="50"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="     Change Password">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="7Cp-GL-eIi" kind="show" id="tbN-tb-0EM"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Uu-KA-FgK">
-                                <rect key="frame" x="-5" y="250" width="419" height="50"/>
+                                <rect key="frame" x="-29" y="250" width="506" height="50"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="     Posts liked">
+                                <state key="normal" title="          Posts liked">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -521,6 +513,17 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="logout:" destination="Ozf-ZG-XMv" eventType="touchUpInside" id="6W8-N0-lxJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bnf-8D-i58">
+                                <rect key="frame" x="-29" y="200" width="506" height="50"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="          Change Password">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="7Cp-GL-eIi" kind="show" id="tbN-tb-0EM"/>
                                 </connections>
                             </button>
                         </subviews>

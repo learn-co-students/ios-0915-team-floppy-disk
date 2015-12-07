@@ -54,25 +54,25 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="257" height="85"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="song title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vy-KX-fV7">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="257" height="47"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="257" height="35"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="47" id="SE4-E1-z7k"/>
+                                                                                <constraint firstAttribute="height" constant="35" id="SE4-E1-z7k"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="15"/>
                                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="91l-xw-tmg">
-                                                                            <rect key="frame" x="0.0" y="47" width="257" height="38"/>
+                                                                            <rect key="frame" x="0.0" y="35" width="257" height="50"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAR-oD-DVh">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="257" height="23"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="257" height="35"/>
                                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHx-uH-KFG">
-                                                                                    <rect key="frame" x="0.0" y="23" width="257" height="15"/>
+                                                                                    <rect key="frame" x="0.0" y="35" width="257" height="15"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="15" id="Wlv-s1-Lds"/>
                                                                                     </constraints>
@@ -90,9 +90,9 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ruP-Fg-ZlA">
                                                                     <rect key="frame" x="260" y="0.0" width="40" height="85"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7c-kV-oYy">
+                                                                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7c-kV-oYy">
                                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="55"/>
-                                                                            <state key="normal" title="PLAY"/>
+                                                                            <state key="normal" image="play_filled"/>
                                                                             <connections>
                                                                                 <action selector="cellPlayButtonTapped:" destination="1rH-bZ-uSV" eventType="touchUpInside" id="leH-pI-1mp"/>
                                                                             </connections>
@@ -182,7 +182,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SEARCH SONGS" id="ugX-8d-URQ">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="EQ6-n6-V3w">
+                        <barButtonItem key="leftBarButtonItem" image="left_Arrow" style="plain" id="EQ6-n6-V3w">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="1rH-bZ-uSV" id="EfP-q2-jxd"/>
@@ -313,4 +313,8 @@
             <point key="canvasLocation" x="311" y="222"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="left_Arrow" width="22" height="16"/>
+        <image name="play_filled" width="32" height="32"/>
+    </resources>
 </document>

@@ -21,6 +21,11 @@
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
+            <string>SFUIDisplay-Regular</string>
+            <string>SFUIDisplay-Regular</string>
+        </mutableArray>
+        <mutableArray key="SF-UI-Display-Semibold.otf">
+            <string>SFUIDisplay-Semibold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -262,10 +267,103 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
                                                 <rect key="frame" x="0.0" y="115" width="414" height="287"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postsCell" rowHeight="75" id="Gkq-m9-C2v">
+                                                        <rect key="frame" x="0.0" y="28" width="414" height="75"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gkq-m9-C2v" id="beD-cB-AAV">
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="74"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="4bH-p9-MYR" userLabel="big stackView">
+                                                                    <rect key="frame" x="8" y="11" width="398" height="50"/>
+                                                                    <subviews>
+                                                                        <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dGR-Yk-uSY">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                            <accessibility key="accessibilityConfiguration" label="2"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" secondItem="dGR-Yk-uSY" secondAttribute="height" multiplier="1:1" id="a8R-kn-QtW"/>
+                                                                                <constraint firstAttribute="height" constant="50" id="dcJ-GF-ekY"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="M6g-Co-aYz">
+                                                                            <rect key="frame" x="65" y="0.0" width="333" height="50"/>
+                                                                            <subviews>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Elo-mA-axo">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="289" height="50"/>
+                                                                                    <subviews>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="song title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8D-UP-ilQ">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="289" height="25"/>
+                                                                                            <accessibility key="accessibilityConfiguration" label="1"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="height" constant="25" id="3tU-jz-Gbg"/>
+                                                                                            </constraints>
+                                                                                            <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="15"/>
+                                                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
+                                                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qK2-mC-QKt">
+                                                                                            <rect key="frame" x="0.0" y="25" width="289" height="25"/>
+                                                                                            <subviews>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYI-JC-dud">
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="289" height="10"/>
+                                                                                                    <accessibility key="accessibilityConfiguration" label="3"/>
+                                                                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
+                                                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                                    <nil key="highlightedColor"/>
+                                                                                                </label>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10g-nX-XYc">
+                                                                                                    <rect key="frame" x="0.0" y="10" width="289" height="15"/>
+                                                                                                    <accessibility key="accessibilityConfiguration" label="4"/>
+                                                                                                    <constraints>
+                                                                                                        <constraint firstAttribute="height" constant="15" id="1d6-4F-2Ek"/>
+                                                                                                    </constraints>
+                                                                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
+                                                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                                    <nil key="highlightedColor"/>
+                                                                                                </label>
+                                                                                            </subviews>
+                                                                                        </stackView>
+                                                                                    </subviews>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="height" constant="85" id="txV-MV-m3r"/>
+                                                                                    </constraints>
+                                                                                    <variation key="default">
+                                                                                        <mask key="constraints">
+                                                                                            <exclude reference="txV-MV-m3r"/>
+                                                                                        </mask>
+                                                                                    </variation>
+                                                                                </stackView>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6R7-2X-MQD">
+                                                                                    <rect key="frame" x="293" y="0.0" width="40" height="50"/>
+                                                                                    <subviews>
+                                                                                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V77-v1-eq7">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
+                                                                                            <state key="normal" image="play_filled"/>
+                                                                                        </button>
+                                                                                    </subviews>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="width" constant="40" id="aFL-3d-BdC"/>
+                                                                                    </constraints>
+                                                                                </stackView>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="4bH-p9-MYR" firstAttribute="leading" secondItem="beD-cB-AAV" secondAttribute="leadingMargin" id="Afo-n2-7O1"/>
+                                                                <constraint firstItem="4bH-p9-MYR" firstAttribute="centerY" secondItem="beD-cB-AAV" secondAttribute="centerY" id="BHP-7U-ddY"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="4bH-p9-MYR" secondAttribute="trailing" id="c4a-8B-IGa"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-Uc-7cS" userLabel="Music Player View">
                                                 <rect key="frame" x="0.0" y="402" width="414" height="66"/>
@@ -296,19 +394,11 @@
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="centerX" secondItem="zOA-Zn-puh" secondAttribute="centerX" id="EcK-0Y-jff"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="top" secondItem="Pb1-mO-Aqd" secondAttribute="bottom" constant="20" id="M4B-Yd-D4U"/>
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="width" secondItem="zOA-Zn-puh" secondAttribute="width" id="Nrd-6D-Fzw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="z2b-0c-iv9" secondAttribute="trailing" id="WxR-Yg-jSi"/>
-                            <constraint firstItem="z2b-0c-iv9" firstAttribute="leading" secondItem="zOA-Zn-puh" secondAttribute="leadingMargin" id="cQq-L8-m3A"/>
                             <constraint firstItem="EU0-Np-qFi" firstAttribute="top" secondItem="z2b-0c-iv9" secondAttribute="bottom" id="jGc-HU-l40"/>
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="top" secondItem="qqz-ns-WvY" secondAttribute="bottom" constant="7" id="lAy-yh-jJ4"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="height" secondItem="zOA-Zn-puh" secondAttribute="height" multiplier="0.24" id="lJ0-zA-zog"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="leading" secondItem="zOA-Zn-puh" secondAttribute="leadingMargin" id="tLP-v1-Bku"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="WxR-Yg-jSi"/>
-                                <exclude reference="cQq-L8-m3A"/>
-                            </mask>
-                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="EIy-1h-741">
@@ -599,6 +689,7 @@
         <image name="left_Arrow" width="22" height="16"/>
         <image name="listview" width="17" height="13"/>
         <image name="mapview" width="10" height="14"/>
+        <image name="play_filled" width="32" height="32"/>
         <image name="white_backround" width="201" height="22"/>
     </resources>
 </document>

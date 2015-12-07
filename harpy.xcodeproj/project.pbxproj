@@ -319,9 +319,9 @@
 				3BAC25281C0CA4F6004C6790 /* HRPPost.m */,
 				3BAC25201C04B381004C6790 /* HRPTrackSearchViewController.h */,
 				3BAC25211C04B381004C6790 /* HRPTrackSearchViewController.m */,
+				3B0EFCCE1C11F0BC0086545B /* HRPPostFeedViewController.h */,
 				3BAC25231C050D41004C6790 /* HRPPostPreviewViewController.h */,
 				3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */,
-				3B0EFCCE1C11F0BC0086545B /* HRPPostFeedViewController.h */,
 				3B0EFCCF1C11F0BC0086545B /* HRPPostFeedViewController.m */,
 			);
 			name = Spotify;

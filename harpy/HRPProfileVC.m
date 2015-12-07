@@ -13,7 +13,7 @@
 #import <QuartzCore/QuartzCore.h> // Needed to round UIImage
 #import "HRPMapsViewController.h"
 
-@interface HRPProfileVC ()
+@interface HRPProfileVC () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *postCount;
 @property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
@@ -24,8 +24,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *listViewButton;
 @property (weak, nonatomic) IBOutlet UITableView *postsTableview;
 @property (weak, nonatomic) IBOutlet UICollectionView *postsCollectionview;
+@property (nonatomic, strong) NSArray *userPosts;
 
 @property (nonatomic) PFUser *currentUser;
+@property (nonatomic) PFObject *currentUserObject;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
 @end
@@ -38,13 +40,21 @@
 {
     [super viewDidLoad];
     [self setupUserProfile];
+    [self retrieveUser];
+    
+    self.postsTableview.delegate = self;
+    self.postsTableview.dataSource = self;
+    self.postsTableview.delegate = self;
     
     self.parseService = [HRPParseNetworkService sharedService];
     self.currentUser = [PFUser currentUser];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self retrieveHRPosts];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self retrieveUserAvatar];
+
 }
 - (void)didReceiveMemoryWarning
 {
@@ -96,56 +106,10 @@
 {
     
 }
-- (void)queryForHRPosts
-{
-    
-        PFQuery *query = [PFQuery queryWithClassName:@"HRPPost"];
-    
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-         {
-             
-             if (!error)
-             {
-                 self.parsePosts = objects;
-                 NSLog(@"PARSE POSTS: %@", self.parsePosts);
-                 
-                 for (NSUInteger i = 0; i < self.parsePosts.count; i++)
-                 {
-                     NSDictionary *HRPPosts = self.parsePosts[i];
-                     NSLog(@"PARSE DICTIONARY: %@", HRPPosts);
-                     
-                     PFGeoPoint *HRPGeoPoint = HRPPosts[@"locationGeoPoint"];
-                     NSLog(@"geoPointString %@", HRPGeoPoint);
-                     
-                     CLLocationCoordinate2D postCoordinate = CLLocationCoordinate2DMake(HRPGeoPoint.latitude, HRPGeoPoint.longitude);
-                     NSLog(@"postCoordinate %f, %f", postCoordinate.latitude, postCoordinate.longitude);
-                     
-                     GMSMarker *marker = [[GMSMarker alloc] init];
-                     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-                     marker.position = postCoordinate;
-                     marker.map = mapView_;
-                     NSLog(@"marker: %@", marker);
-                     
-                     for (PFObject *post in objects) {
-                         PFRelation *userRelation = [post relationForKey:@"username"];
-                         PFQuery *userUsername = [userRelation query];
-                         [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
-                             for (PFObject *username in user) {
-                                 NSLog(@"USERNAME: %@", username[@"username"]);
-                             }
-                         }];
-                     }
-                 }
-                 
-                 
-             } else
-             {
-                 NSLog(@"Error: %@ %@", error, [error userInfo]);
-             }
-         }];
-}
 
-- (void)retrieveUserAvatar
+#pragma mark - Parse Queries
+
+- (void)retrieveUser
 {
     PFQuery *userQuery = [PFUser query];
     [userQuery whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
@@ -153,19 +117,8 @@
         if (!error)
         {
             NSLog(@"USER: %@", objects);
-            PFObject *user = [objects objectAtIndex:0];
-            PFFile *file = [user objectForKey:@"userAvatar"];
-            NSLog(@"FILE: %@", file);
-            
-            [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
-            {
-                if (!error)
-                {
-                    self.userAvatar.image = [UIImage imageWithData:data];
-                    UIImage *image = [UIImage imageWithData:data];
-                    NSLog(@"IMAGE: %@", image);
-                }
-            }];
+            self.currentUserObject = [objects objectAtIndex:0];
+            [self retrieveUserAvatar];
         }
         else
         {
@@ -173,6 +126,56 @@
         }
     }];
 }
+- (void)retrieveUserAvatar
+{
+    PFFile *file = [self.currentUserObject objectForKey:@"userAvatar"];
+    NSLog(@"FILE: %@", file);
+    
+    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+     {
+         if (!error)
+         {
+             self.userAvatar.image = [UIImage imageWithData:data];
+             UIImage *image = [UIImage imageWithData:data];
+             NSLog(@"IMAGE: %@", image);
+         }
+     }];
+}
+- (void)retrieveHRPosts
+{
+    PFRelation *userPosts = [[PFUser currentUser] relationForKey:@"HRPPosts"];
+    PFQuery *query = [userPosts query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (!error)
+        {
+            self.userPosts = objects;
+            [self.postsTableview reloadData];
+            NSLog(@"PARSE POSTS: %@", self.userPosts);
+        }
+        else
+        {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+//- (UIImage *)retrieveParsePhoto:(PFFile *)photoOrAlbumArt
+//{
+//    NSLog(@"FILE: %@", photoOrAlbumArt);
+//    
+//    [photoOrAlbumArt getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+//     {
+//         if (!error)
+//         {
+//             UIImage *image = [UIImage imageWithData:data];
+//             NSLog(@"IMAGE: %@", image);
+//         }
+//     }];
+//    
+//    return image;
+//}
+
+#pragma mark - Helper methods
+
 - (UIView*)createCircleViewWithRadius:(int)radius
 {
     // circle view
@@ -211,6 +214,72 @@
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+#pragma mark - UITableViewDataSource Methods
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.userPosts.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 75.0;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self.postsTableview dequeueReusableCellWithIdentifier:@"postsCell" forIndexPath:indexPath];
+    NSDictionary *HRPPosts = [self.userPosts objectAtIndex:[indexPath row]];
+    
+    UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.imageView.image = [UIImage imageNamed:@"periwinkleImage.png"];
+    [cell.imageView.layer setBorderColor: [ironColor CGColor]];
+    [cell.imageView.layer setBorderWidth: 1.0];
+    cell.imageView.layer.masksToBounds = YES;
+    
+    PFFile *albumArt = HRPPosts[@"albumArt"];
+    if (albumArt)
+    {
+        [albumArt getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error)
+            {
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.imageView.image = [UIImage imageWithData:data];
+                cell.imageView.highlightedImage = [UIImage imageWithData:data];
+            }
+            else
+            {
+                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
+
+    UILabel *songTitleLabel = (UILabel *)[cell viewWithTag:1];
+    NSString *songTitleString = HRPPosts[@"songTitle"];
+    songTitleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:15.0];
+    songTitleLabel.text = songTitleString;
+    
+    UILabel *artistNameLabel = (UILabel *)[cell viewWithTag:3];
+    NSString *artistNameString = HRPPosts[@"artistName"];
+    artistNameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
+    artistNameLabel.text = artistNameString;
+    
+    UILabel *albumNameLabel = (UILabel *)[cell viewWithTag:4];
+    NSString *albumNameString = HRPPosts[@"albumName"];
+    albumNameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
+    albumNameLabel.text = albumNameString;
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"cell selected at %ld", indexPath.row);
 }
 
 #pragma mark - Naviagation

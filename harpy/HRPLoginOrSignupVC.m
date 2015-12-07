@@ -342,6 +342,8 @@
 {
     NSLog(@"CLICKED: login button");
     
+    NSString *usernameStringLowercased = [self.userName.text lowercaseString];
+    
     SPTAuth *auth = [SPTAuth defaultInstance];
     
     if ((self.userName.text.length == 0)  || (self.password.text.length ==  0))
@@ -350,7 +352,7 @@
     }
     else
     {
-        [self.parseService loginApp:self.userName.text password:self.password.text completionHandler:^(HRPUser *user, NSError *error)
+        [self.parseService loginApp:usernameStringLowercased password:self.password.text completionHandler:^(HRPUser *user, NSError *error)
         {
             if (user)
             {

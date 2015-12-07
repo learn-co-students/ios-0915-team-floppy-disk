@@ -56,8 +56,35 @@
         
         NSUInteger arraySpot = indexPath.row - (indexPath.row/2);
         
+        UIButton *playSongButton = (UIButton *)[cell2 viewWithTag:1];
+        //add button actions
         
-        //add cell properties
+        UIImageView *coverArt = (UIImageView *)[cell2 viewWithTag:2];
+        //use arraySpot?
+        PFFile *albumFile = self.postsArray[0][@"albumArt"];
+        if (albumFile) {
+            [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    if (!error) {
+                        coverArt.image = [UIImage imageWithData:data];
+                    } else {
+                        coverArt.image = [UIImage imageNamed:@"spotify"];
+                    }
+                }];
+            }];
+        }
+        
+        UIImageView *spotifyLogo = (UIImageView *)[cell2 viewWithTag:3];
+        spotifyLogo.image = [UIImage imageNamed:@"spotify"];
+        
+        UILabel *likesLabel = (UILabel *)[cell2 viewWithTag:4];
+        //relation
+        
+        UILabel *commentsLabel = (UILabel *)[cell2 viewWithTag:5];
+        commentsLabel.text = self.postsArray[0][@"comments"];
+        
+        UILabel *captionLabel = (UILabel *)[cell2 viewWithTag:6];
+        captionLabel.text = self.postsArray[0][@"caption"];
         
         return cell2;
     } else {
@@ -74,9 +101,81 @@
         }
         
         //add cell properties
+        UILabel *usernameLabel = (UILabel *)[cell1 viewWithTag:2];
+        UIImageView *profileThumbnail = (UIImageView *)[cell1 viewWithTag:1];
+        for (PFObject *post in self.postsArray) {
+            PFRelation *userRelation = [post relationForKey:@"username"];
+            PFQuery *postUsername = [userRelation query];
+            [postUsername findObjectsInBackgroundWithBlock:^(NSArray * users, NSError * error) {
+                for (PFObject *username in users) {
+                    NSString *usernameFromBlock = username[@"username"];
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        usernameLabel.text = usernameFromBlock;
+                    }];
+                    [self getUserProfilePictureForUser:usernameFromBlock WithCompletion:^(NSData *imageData) {
+                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                            profileThumbnail.image = [UIImage imageWithData:imageData];
+                        }];
+                    }];
+                }
+            }];
+        }
+        
+        UILabel *daysLabel = (UILabel *)[cell1 viewWithTag:3];
+        NSInteger daysSincePost = [self getDaysSincePost:post];
+        daysLabel.text = [NSString stringWithFormat:@"%ldd", daysSincePost];
+        
+        
         
         return cell1;
     }
+}
+
+-(NSInteger)getDaysSincePost:(PFObject *)post {
+    
+    NSDate *date = [post createdAt];
+    
+    NSLog(@"%@", date);
+    //get date posted
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *stringFromDate = [formatter stringFromDate:date];
+    NSLog(@"DATE POSTED: %@", stringFromDate);
+    
+    //get current date
+    NSDateFormatter *currentFormat = [[NSDateFormatter alloc]init];
+    [currentFormat setDateFormat:@"yyyy-MM-dd"];
+    NSString *currentDate = [currentFormat stringFromDate:[NSDate date]];
+    NSLog(@"CURRENT DATE: %@", currentDate);
+    
+    //get difference of days
+    NSDateFormatter *diffFormat = [[NSDateFormatter alloc]init];
+    [diffFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDate *start = [diffFormat dateFromString:stringFromDate];
+    NSDate *end = [diffFormat dateFromString:currentDate];
+    NSCalendar *calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *gregComps = [calendar components:NSCalendarUnitDay fromDate:start toDate:end options:NSCalendarWrapComponents];
+    
+    NSLog(@"DAYS SINCE POST: %ld", [gregComps day]);
+    
+    return [gregComps day];
+}
+
+-(void)getUserProfilePictureForUser:(NSString *)user WithCompletion:(void (^)(NSData *imageData))completion{
+    
+    PFQuery *userQuery = [PFUser query];
+    [userQuery whereKey:@"username" matchesRegex:user];
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error) {
+        if (!error) {
+            PFUser *userFromSearch = user[0];
+            PFFile *imageFile  = [userFromSearch objectForKey:@"userAvatar"];
+            if (imageFile) {
+                [imageFile getDataInBackgroundWithBlock:^(NSData * data, NSError * error) {
+                    completion(data);
+                }];
+            }
+        }
+    }];
 }
 
 @end

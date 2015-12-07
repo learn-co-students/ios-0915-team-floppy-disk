@@ -122,6 +122,7 @@
                                                 <constraint firstItem="1Gu-IZ-obB" firstAttribute="centerY" secondItem="tD8-Om-UFP" secondAttribute="centerY" constant="-3.5" id="lZm-0o-RUq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="ckb-wR-WKR" firstAttribute="leading" secondItem="Hdp-aM-CsO" secondAttribute="leading" constant="8" id="2V0-V8-kcZ"/>
                                         </constraints>

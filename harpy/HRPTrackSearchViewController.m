@@ -32,7 +32,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupTableViewUI];
+    [self.songSearchBar setShowsCancelButton:NO animated:NO];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.songTableView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
     
     self.songSearchBar.delegate = self;
     self.songTableView.delegate = self;
@@ -47,9 +51,76 @@
     [super viewWillAppear:animated];
 }
 
--(void)initializeEmptySongArray {
+#pragma mark - UIScrollViewDelegate
+
+- (void)changeScrollBarColorFor:(UIScrollView *)scrollView
+{
+    for ( UIView *view in scrollView.subviews ) {
+        
+        if (view.tag == 0 && [view isKindOfClass:UIImageView.class])
+        {
+            UIImageView *imageView = (UIImageView *)view;
+            imageView.backgroundColor = [UIColor darkGrayColor];
+        }
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    float shadowOffset = (scrollView.contentOffset.y/1);
+    
+    // Make sure that the offset doesn't exceed 3 or drop below 0.5
+    shadowOffset = MIN(MAX(shadowOffset, 0), 1);
+    
+    //Ensure that the shadow radius is between 1 and 3
+    float shadowRadius = MIN(MAX(shadowOffset, 0), 1);
+    
+    self.songSearchBar.layer.shadowOffset = CGSizeMake(0, shadowOffset);
+    self.songSearchBar.layer.shadowRadius = shadowRadius;
+    self.songSearchBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.songSearchBar.layer.shadowOpacity = 0.20;
+}
+
+#pragma mark - Setup methods
+
+-(void)initializeEmptySongArray
+{
     self.songArray = [NSMutableArray new];
 }
+-(void) setupTableViewUI
+{
+    self.songSearchBar.keyboardAppearance = UIKeyboardAppearanceDark;
+    
+    UIImage *whiteColorImage = [self imageWithColor:[UIColor whiteColor]];
+    self.songTableView.backgroundColor = [UIColor clearColor];
+    
+    UIColor *desertStormColor = [UIColor colorWithHue:0 saturation:0 brightness:0.97 alpha:1];
+    self.view.backgroundColor = desertStormColor;
+    [[self searchSubviewsForTextFieldIn:self.songSearchBar] setBackgroundColor:[UIColor whiteColor]];
+    self.songSearchBar.backgroundImage = whiteColorImage;
+    [self.view bringSubviewToFront:self.songSearchBar];
+    
+    for (id object in [[[self.songSearchBar subviews] objectAtIndex:0] subviews])
+    {
+        if ([object isKindOfClass:[UITextField class]])
+        {
+            UITextField *textFieldObject = (UITextField *)object;
+            UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+            textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:14.0];
+            textFieldObject.placeholder = @"Type to search";
+            textFieldObject.layer.borderColor = [ironColor CGColor];
+            textFieldObject.layer.borderWidth = 1.0;
+            textFieldObject.layer.cornerRadius = 13;
+            
+            
+            break;
+        }
+    }
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[self.songSearchBar class], nil] setTintColor:[UIColor darkGrayColor]];
+}
+
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -64,36 +135,24 @@
     }
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 95.0;
+#pragma mark - Helper methods
+
+- (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
-    
-    HRPTrack *track  = self.filteredSongArray[indexPath.row];
-    
-    UILabel *songNameLabel = (UILabel *)[cell viewWithTag:1];
-    songNameLabel.text = track.songTitle;
-    
-    UILabel *artistNameLabel = (UILabel *)[cell viewWithTag:2];
-    artistNameLabel.text = track.artistName;
-    
-    UILabel *albumLabel = (UILabel *)[cell viewWithTag:3];
-    albumLabel.text = track.albumName;
-    
-    UIImageView *coverArt = (UIImageView *)[cell viewWithTag:4];
-    if (track.spotifyLogo == nil) {
-        coverArt.image = [UIImage imageWithData:track.albumCoverArt];
-    } else {
-        coverArt.image = track.spotifyLogo;
-    }
-    
-    UIButton *playTrackButton = (UIButton *)[cell viewWithTag:5];
-    [playTrackButton addTarget:self action:@selector(cellPlayButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    return cell;
-}
+#pragma mark - Search bar methods
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
@@ -111,12 +170,26 @@
     
 }
 
+- (UITextField*)searchSubviewsForTextFieldIn:(UIView*)view
+{
+    if ([view isKindOfClass:[UITextField class]]) {
+        return (UITextField*)view;
+    }
+    UITextField *searchedTextField;
+    for (UIView *subview in view.subviews) {
+        searchedTextField = [self searchSubviewsForTextFieldIn:subview];
+        if (searchedTextField) {
+            break;
+        }
+    }
+    return searchedTextField;
+}
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    NSLog(@"searchBarCancelButtonClicked called");
     [searchBar resignFirstResponder];
     
 }
-
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     
     searchBar.text = [NSString stringWithFormat:@""];
@@ -125,6 +198,42 @@
     [searchBar resignFirstResponder];
 }
 
+#pragma mark - UITableViewDataSource Methods
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 95.0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
+    
+    UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    
+    HRPTrack *track  = self.filteredSongArray[indexPath.row];
+    
+    UILabel *songNameLabel = (UILabel *)[cell viewWithTag:1];
+    songNameLabel.text = track.songTitle;
+    
+    UILabel *artistNameLabel = (UILabel *)[cell viewWithTag:2];
+    artistNameLabel.text = track.artistName;
+    
+    UILabel *albumLabel = (UILabel *)[cell viewWithTag:3];
+    albumLabel.text = track.albumName;
+    
+    UIImageView *coverArt = (UIImageView *)[cell viewWithTag:4];
+    if (track.spotifyLogo == nil) {
+        coverArt.image = [UIImage imageWithData:track.albumCoverArt];
+        [coverArt.layer setBorderColor: [ironColor CGColor]];
+    } else {
+        coverArt.image = track.spotifyLogo;
+        [coverArt.layer setBorderColor: [ironColor CGColor]];
+    }
+    
+    UIButton *playTrackButton = (UIButton *)[cell viewWithTag:5];
+    [playTrackButton addTarget:self action:@selector(cellPlayButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return cell;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     

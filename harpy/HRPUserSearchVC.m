@@ -31,6 +31,9 @@
     [super viewDidLoad];
     [self setupTableViewUI];
     
+    [self.userSearchBar setShowsCancelButton:NO animated:NO];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.userTableView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
     
     self.userTableView.delegate = self;
@@ -63,8 +66,6 @@
     [super viewWillAppear:animated];
 }
 
-
-
 #pragma mark - UIScrollViewDelegate
 
 - (void)changeScrollBarColorFor:(UIScrollView *)scrollView
@@ -81,7 +82,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
-    float shadowOffset = (scrollView.contentOffset.y/100);
+    float shadowOffset = (scrollView.contentOffset.y/1);
     
     // Make sure that the offset doesn't exceed 3 or drop below 0.5
     shadowOffset = MIN(MAX(shadowOffset, 0), 1);
@@ -92,13 +93,8 @@
     self.userSearchBar.layer.shadowOffset = CGSizeMake(0, shadowOffset);
     self.userSearchBar.layer.shadowRadius = shadowRadius;
     self.userSearchBar.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.userSearchBar.layer.shadowOpacity = 0.25;
+    self.userSearchBar.layer.shadowOpacity = 0.20;
 }
-
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    //[self changeScrollBarColorFor:scrollView];
-//}
 
 #pragma mark - Setup methods
 
@@ -110,22 +106,14 @@
 {
     self.userSearchBar.keyboardAppearance = UIKeyboardAppearanceDark;
     
-    UIColor *desertStormGreyUIColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0];
-    UIImage *desertStormGreyColorImage = [self imageWithColor:desertStormGreyUIColor];
-    
+    UIImage *whiteColorImage = [self imageWithColor:[UIColor whiteColor]];
     self.userTableView.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = desertStormGreyUIColor;
     
-    [[self searchSubviewsForTextFieldIn:self.userSearchBar] setBackgroundColor:desertStormGreyUIColor];
-    self.userSearchBar.backgroundImage = desertStormGreyColorImage;
-//    self.userSearchBar.layer.shadowOffset = CGSizeMake(50.0f, 10.0f);
-//    self.userSearchBar.layer.shadowColor = [[UIColor redColor] CGColor];
-//    self.userSearchBar.layer.shadowRadius = 50.0f;
-//    self.userSearchBar.layer.opacity = 2.0f;
-    
+    UIColor *desertStormColor = [UIColor colorWithHue:0 saturation:0 brightness:0.97 alpha:1];
+    self.view.backgroundColor = desertStormColor;
+    [[self searchSubviewsForTextFieldIn:self.userSearchBar] setBackgroundColor:[UIColor whiteColor]];
+    self.userSearchBar.backgroundImage = whiteColorImage;
     [self.view bringSubviewToFront:self.userSearchBar];
-    
-    
     
     for (id object in [[[self.userSearchBar subviews] objectAtIndex:0] subviews])
     {
@@ -134,9 +122,12 @@
             UITextField *textFieldObject = (UITextField *)object;
             UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
             textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:14.0];
+            textFieldObject.placeholder = @"Type to search";
             textFieldObject.layer.borderColor = [ironColor CGColor];
             textFieldObject.layer.borderWidth = 1.0;
             textFieldObject.layer.cornerRadius = 13;
+            
+
             break;
         }
     }
@@ -165,6 +156,15 @@
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    if([searchText length] == 0) {
+        [searchBar performSelector: @selector(resignFirstResponder)
+                        withObject: nil
+                        afterDelay: 0.1];
+        
+        [self.users removeAllObjects];
+        [self.userTableView reloadData];
+    }
+    
     if (![searchText isEqualToString:@""]) {
         PFQuery *userQuery = [PFUser query];
         searchText = [searchText lowercaseString];
@@ -200,6 +200,7 @@
 }
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    NSLog(@"searchBarCancelButtonClicked called");
     [searchBar resignFirstResponder];
     
 }

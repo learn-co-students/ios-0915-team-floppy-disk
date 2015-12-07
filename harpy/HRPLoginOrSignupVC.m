@@ -342,6 +342,8 @@
 {
     NSLog(@"CLICKED: login button");
     
+    NSString *usernameStringLowercased = [self.userName.text lowercaseString];
+    
     SPTAuth *auth = [SPTAuth defaultInstance];
     
     if ((self.userName.text.length == 0)  || (self.password.text.length ==  0))
@@ -350,7 +352,7 @@
     }
     else
     {
-        [self.parseService loginApp:self.userName.text password:self.password.text completionHandler:^(HRPUser *user, NSError *error)
+        [self.parseService loginApp:usernameStringLowercased password:self.password.text completionHandler:^(HRPUser *user, NSError *error)
         {
             if (user)
             {
@@ -493,14 +495,15 @@
     user.password = self.passwordConfirm.text;
     user.email = self.email.text;
     
-    SPTAuth *auth = [SPTAuth defaultInstance];
-    SPTSession *session = auth.session;
-    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, NSString *object) {
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            user[@"spotifyCanonical"] = object;
-            auth.sessionUserDefaultsKey = object;
-        }];
-    }];
+/* UNCOMMENT THESE LINE WHEN TESTING SPOTIFY LOGINS */
+//    SPTAuth *auth = [SPTAuth defaultInstance];
+//    SPTSession *session = auth.session;
+//    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, NSString *object) {
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//            user[@"spotifyCanonical"] = object;
+//            auth.sessionUserDefaultsKey = object;
+//        }];
+//    }];
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         
@@ -601,7 +604,8 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Do you have a Spotify account?" preferredStyle:(UIAlertControllerStyleActionSheet)];
     UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         self.spotifyPremium = YES;
-        [self spotifyLoginPopup];
+        [self createParseUser]; // DELETE THESE LINE WHEN TESTING SPOTIFY CALL BACKS
+        //[self spotifyLoginPopup];
     }];
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         self.spotifyPremium = NO;

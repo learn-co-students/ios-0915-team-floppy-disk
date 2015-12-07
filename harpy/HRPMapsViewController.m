@@ -100,15 +100,16 @@
             if (!error)
             {
                 self.parsePosts = objects;
-                NSLog(@"PARSE POSTS: %@", self.parsePosts);
+                NSLog(@"THERE ARE %lu PARSE POSTS.", self.parsePosts.count);
                 
                 for (NSUInteger i = 0; i < self.parsePosts.count; i++)
                 {
                     NSDictionary *HRPPosts = self.parsePosts[i];
-                    NSLog(@"PARSE DICTIONARY: %@", HRPPosts);
+//                    NSLog(@"PARSE DICTIONARY: %@", HRPPosts);
+                    NSLog(@"POSTED SONG: %@", HRPPosts[@"songTitle"]);
                     
                     PFGeoPoint *HRPGeoPoint = HRPPosts[@"locationGeoPoint"];
-                    NSLog(@"geoPointString %@", HRPGeoPoint);
+                    NSLog(@"geoPointString %f, %f", HRPGeoPoint.latitude, HRPGeoPoint.longitude);
                     
                     CLLocationCoordinate2D postCoordinate = CLLocationCoordinate2DMake(HRPGeoPoint.latitude, HRPGeoPoint.longitude);
                     NSLog(@"postCoordinate %f, %f", postCoordinate.latitude, postCoordinate.longitude);
@@ -119,11 +120,13 @@
                     marker.map = mapView_;
                     NSLog(@"marker: %@", marker);
                     
-                    for (PFObject *post in objects) {
+                    for (PFObject *post in objects)
+                    {
                         PFRelation *userRelation = [post relationForKey:@"username"];
                         PFQuery *userUsername = [userRelation query];
                         [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
-                            for (PFObject *username in user) {
+                            for (PFObject *username in user)
+                            {
                                 NSLog(@"USERNAME: %@", username[@"username"]);
                             }
                         }];
@@ -192,7 +195,7 @@
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
-    CGFloat coordinateDifference = 0.1;
+    CGFloat coordinateDifference = 0.05;
     
     CGFloat firstLatitude = coordinate.latitude;
     firstLatitude += coordinateDifference;

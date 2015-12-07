@@ -238,7 +238,7 @@
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-h3-Haf">
                                                 <rect key="frame" x="0.0" y="35" width="414" height="80"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="u53-oD-eHN"/>
                                                 </constraints>
@@ -265,12 +265,12 @@
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
                                                 <rect key="frame" x="0.0" y="115" width="414" height="287"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.5" colorSpace="calibratedRGB"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-Uc-7cS" userLabel="Music Player View">
                                                 <rect key="frame" x="0.0" y="402" width="414" height="66"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.50196081399917603" green="1" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="66" id="ICf-IV-zAl"/>
                                                 </constraints>
@@ -334,6 +334,8 @@
                         <outlet property="listViewButton" destination="T85-q9-sIW" id="gVE-9q-VDE"/>
                         <outlet property="mapviewButton" destination="Rao-gA-5hf" id="1zT-Ed-BW0"/>
                         <outlet property="postCount" destination="WKN-52-CPh" id="690-xW-jxs"/>
+                        <outlet property="postsCollectionview" destination="XLQ-h3-Haf" id="We6-BP-NAh"/>
+                        <outlet property="postsTableview" destination="Vq5-Qg-IsN" id="yOC-22-NSu"/>
                         <outlet property="realName" destination="AMC-o8-0dn" id="ue2-5y-XdD"/>
                         <outlet property="settingsButton" destination="3Ig-pX-UYg" id="Avg-G0-PVv"/>
                         <outlet property="shortBio" destination="ghN-tF-V6Z" id="cAW-T9-5jt"/>

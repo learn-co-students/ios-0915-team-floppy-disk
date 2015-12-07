@@ -249,9 +249,10 @@
         [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
             if (!error)
             {
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.imageView.image = [UIImage imageWithData:data];
-                cell.imageView.highlightedImage = [UIImage imageWithData:data];
+                UIImageView *imageView = (UIImageView *)[cell viewWithTag:2];
+                imageView.layer.masksToBounds = YES;
+                UIImage *image = [UIImage imageWithData:data];
+                imageView.image = image;
             }
             else
             {

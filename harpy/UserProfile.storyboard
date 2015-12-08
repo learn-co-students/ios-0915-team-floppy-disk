@@ -150,6 +150,9 @@
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="18"/>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="followOrEditButtonClicked:" destination="C0a-CR-bU2" eventType="touchUpInside" id="cGk-gb-aKM"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <animations/>

@@ -43,6 +43,7 @@
     [super viewDidLoad];
     [self setupUserProfile];
     [self retrieveUser];
+    [self setupFollowersAndFans];
     
     self.postsTableview.delegate = self;
     self.postsTableview.dataSource = self;
@@ -59,10 +60,6 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self retrieveHRPosts];
 }
-- (void)viewWillAppear:(BOOL)animated
-{
-
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -70,6 +67,11 @@
 
 #pragma mark - Profile Setup
 
+- (void)setupFollowersAndFans
+{
+    PFRelation *followingCount = self.user[@"following"];
+    NSLog(@"FOLLOWERS:", followingCount);
+}
 - (void)setupUserProfile
 {
     self.userAvatar.clipsToBounds = YES;
@@ -292,6 +294,27 @@
 - (IBAction)mapmenuClicked:(id)sender
 {
     NSLog(@"Map menu clicked");
+}
+- (IBAction)followOrEditButtonClicked:(id)sender
+{
+    if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])
+    {
+        PFRelation *relationFollow = [[PFUser currentUser] objectForKey:@"following"];
+        [relationFollow addObject:self.user];
+        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            NSLog(@"FOLLOWER SAVED");
+            
+            PFRelation *relation = [[PFUser currentUser] objectForKey:@"following"];
+            PFQuery *query = [relation query];
+            [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                NSLog(@"FOLLOWER ARRAY: ", objects);
+            }];
+        }];
+    }
+    else
+    {
+        
+    }
 }
 
 @end

@@ -54,7 +54,19 @@
     [self setHiddenStatus];
     
     self.underline = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 55, 0.5)];
-    [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.05, 0)];
+    
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
+    {
+        [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.5, 0)];
+    }
+    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
+    {
+        [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.5, 0)];
+    }
+    else
+    {
+        [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.05, 0)];
+    }
     self.underline.backgroundColor = [UIColor whiteColor];
     [self.underlineView addSubview:self.underline];
     
@@ -110,22 +122,26 @@
 -(void)setupSignup
 {
     int fieldHeight = 30;
+    int fieldWidth = 275;
     int radius = 20;
 
     if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
     {
-        fieldHeight = 40;
-        radius = 25;
+        fieldHeight = 45;
+        fieldWidth = 315;
+        radius = 27;
     }
     else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
     {
-        // 6s
+        fieldHeight = 53;
+        fieldWidth = 345;
+        radius = 32;
     }
     
-    [self setupEmailWithFieldHeight:fieldHeight];
-    [self setupNewUsernameWithFieldHeight:fieldHeight];
-    [self setupNewPasswordWithFieldHeight:fieldHeight];
-    [self setupConfirmPasswordnameWithFieldHeight:fieldHeight];
+    [self setupEmailWithFieldHeight:fieldHeight withFeildWidth:fieldWidth];
+    [self setupNewUsernameWithFieldHeight:fieldHeight withFeildWidth:fieldWidth];
+    [self setupNewPasswordWithFieldHeight:fieldHeight withFeildWidth:fieldWidth];
+    [self setupConfirmPasswordnameWithFieldHeight:fieldHeight withFeildWidth:fieldWidth];
     
     NSArray *textFields = @[ self.email, self.userNameNew, self.passwordNew, self.passwordConfirm ];
     
@@ -136,37 +152,37 @@
     [self.signup setTitle:@"SIGN UP" forState:UIControlStateNormal];
     [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //are these used? (blackColor, StateHighlighted)
     
-    [self setupCommonPropertiesForButton:self.signup withFieldHeight:fieldHeight andCornerRadius:radius];
+    [self setupCommonPropertiesForButton:self.signup withFieldHeight:fieldHeight fieldWidth:fieldWidth andCornerRadius:radius];
 }
 
-- (void)setupEmailWithFieldHeight:(int)fieldHeight
+- (void)setupEmailWithFieldHeight:(int)fieldHeight withFeildWidth:(int)fieldWidth
 {
-    self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, fieldWidth, fieldHeight + 8)];
     self.email.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"EMAIL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.email.returnKeyType = UIReturnKeyNext;
     [self.email setCenter: CGPointMake(self.view.center.x, self.email.center.y + fieldHeight / 2)]; // 15!!
 }
 
-- (void)setupNewUsernameWithFieldHeight:(int)fieldHeight
+- (void)setupNewUsernameWithFieldHeight:(int)fieldHeight withFeildWidth:(int)fieldWidth
 {
-    self.userNameNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.userNameNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, fieldWidth, fieldHeight + 8)];
     self.userNameNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.userNameNew.returnKeyType = UIReturnKeyNext;
     [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + fieldHeight * 2.16)]; // 65!!
 }
 
-- (void)setupNewPasswordWithFieldHeight:(int)fieldHeight
+- (void)setupNewPasswordWithFieldHeight:(int)fieldHeight withFeildWidth:(int)fieldWidth
 {
-    self.passwordNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.passwordNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, fieldWidth, fieldHeight + 8)];
     self.passwordNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.passwordNew.returnKeyType = UIReturnKeyNext;
     self.passwordNew.secureTextEntry = YES;
     [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + fieldHeight * 3.83)]; // 115!!
 }
 
-- (void)setupConfirmPasswordnameWithFieldHeight:(int)fieldHeight
+- (void)setupConfirmPasswordnameWithFieldHeight:(int)fieldHeight withFeildWidth:(int)fieldWidth
 {
-    self.passwordConfirm = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.passwordConfirm = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, fieldWidth, fieldHeight + 8)];
     self.passwordConfirm.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"CONFIRM PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.passwordConfirm.returnKeyType = UIReturnKeyGo;
     self.passwordConfirm.secureTextEntry = YES;
@@ -175,20 +191,24 @@
 -(void)setupLogin
 {
     int fieldHeight = 30;
+    int fieldWidth = 275;
     int radius = 20;
     
     if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
     {
-        fieldHeight = 40;
-        radius = 25;
+        fieldHeight = 45;
+        fieldWidth = 315;
+        radius = 27;
     }
     else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
     {
-        // 6s
+        fieldHeight = 53;
+        fieldWidth = 345;
+        radius = 32;
     }
     
-    [self setupUsernameWithFieldHeight:fieldHeight];
-    [self setupPasswordWithFieldHeight:fieldHeight];
+    [self setupUsernameWithFieldHeight:fieldHeight withFeildWidth:fieldWidth];
+    [self setupPasswordWithFieldHeight:fieldHeight withFeildWidth:fieldWidth];
     
     NSArray *textFields = @[ self.userName, self.password ];
     
@@ -199,21 +219,21 @@
     [self.login setTitle:@"LOG IN" forState:UIControlStateNormal];
     [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //are these used?
     
-    [self setupCommonPropertiesForButton:self.login withFieldHeight:fieldHeight andCornerRadius:radius];
+    [self setupCommonPropertiesForButton:self.login withFieldHeight:fieldHeight fieldWidth:fieldWidth andCornerRadius:radius];
 }
 
-- (void)setupUsernameWithFieldHeight:(int)fieldHeight
+- (void)setupUsernameWithFieldHeight:(int)fieldHeight withFeildWidth:(int)fieldWidth
 {
-    self.userName = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.userName = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, fieldWidth, fieldHeight + 8)];
     self.userName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.userName.returnKeyType = UIReturnKeyDone;
     self.userName.returnKeyType = UIReturnKeyDefault;
     [self.userName setCenter: CGPointMake(self.view.center.x, self.userName.center.y + fieldHeight / 2)]; // !!
 }
 
-- (void)setupPasswordWithFieldHeight:(int)fieldHeight
+- (void)setupPasswordWithFieldHeight:(int)fieldHeight withFeildWidth:(int)fieldWidth
 {
-    self.password = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
+    self.password = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, fieldWidth, fieldHeight + 8)];
     self.password.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.password.returnKeyType = UIReturnKeyDone;
     self.password.returnKeyType = UIReturnKeyDefault;
@@ -250,9 +270,9 @@
     }
 }
 
-- (void)setupCommonPropertiesForButton:(UIButton *)button withFieldHeight:(int)fieldHeight andCornerRadius:(int)cornerRadius
+- (void)setupCommonPropertiesForButton:(UIButton *)button withFieldHeight:(int)fieldHeight fieldWidth:(int)fieldWidth andCornerRadius:(int)cornerRadius
 {
-    [button setFrame:CGRectMake(0, 0, 275, fieldHeight + 10)];
+    [button setFrame:CGRectMake(0, 0, fieldWidth, fieldHeight + 10)];
     [button setCenter: CGPointMake(self.view.center.x, self.signup.center.y + fieldHeight * 7.16)];
     
     button.layer.cornerRadius = cornerRadius;
@@ -280,13 +300,36 @@
     self.userName.hidden = YES;
     self.userNameNew.hidden = NO;
     
-    [UIView animateKeyframesWithDuration:1
-                                   delay:0
-                                 options:UIViewAnimationCurveLinear
-                              animations:^{
-                                  [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.05, 0)];
-                              }
-                              completion:nil];
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
+    {
+        [UIView animateKeyframesWithDuration:1
+                                       delay:0
+                                     options:UIViewAnimationCurveLinear
+                                  animations:^{
+                                      [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.5, 0)];
+                                  }
+                                  completion:nil];
+    }
+    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
+    {
+        [UIView animateKeyframesWithDuration:1
+                                       delay:0
+                                     options:UIViewAnimationCurveLinear
+                                  animations:^{
+                                      [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.5, 0)];
+                                  }
+                                  completion:nil];
+    }
+    else
+    {
+        [UIView animateKeyframesWithDuration:1
+                                       delay:0
+                                     options:UIViewAnimationCurveLinear
+                                  animations:^{
+                                      [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.05, 0)];
+                                  }
+                                  completion:nil];
+    }
 }
 
 - (IBAction)logIn:(id)sender
@@ -300,14 +343,39 @@
     self.userName.hidden = NO;
     self.userNameNew.hidden = YES;
     
-    [UIView animateKeyframesWithDuration:1
-                                   delay:0
-                                 options:UIViewAnimationCurveLinear
-                              animations:^{
-                                  [self.login  setCenter: CGPointMake(self.view.center.x, (self.login.frame.size.height * 3.83) - 20)];
-                                  [self.underline setCenter: CGPointMake(self.view.frame.size.width - (self.view.frame.size.width / 5.3), 0)];
-                              }
-                              completion:nil];
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
+    {
+        [UIView animateKeyframesWithDuration:1
+                                       delay:0
+                                     options:UIViewAnimationCurveLinear
+                                  animations:^{
+                                      [self.login  setCenter: CGPointMake(self.view.center.x, (self.login.frame.size.height * 3.83) - 20)];
+                                      [self.underline setCenter: CGPointMake(self.view.frame.size.width - (self.view.frame.size.width / 5.6), 0)];
+                                  }
+                                  completion:nil];
+    }
+    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
+    {
+        [UIView animateKeyframesWithDuration:1
+                                       delay:0
+                                     options:UIViewAnimationCurveLinear
+                                  animations:^{
+                                      [self.login  setCenter: CGPointMake(self.view.center.x, (self.login.frame.size.height * 3.83) - 10)];
+                                      [self.underline setCenter: CGPointMake(self.view.frame.size.width - (self.view.frame.size.width / 5.8), 0)];
+                                  }
+                                  completion:nil];
+    }
+    else
+    {
+        [UIView animateKeyframesWithDuration:1
+                                       delay:0
+                                     options:UIViewAnimationCurveLinear
+                                  animations:^{
+                                      [self.login  setCenter: CGPointMake(self.view.center.x, (self.login.frame.size.height * 3.83) - 20)];
+                                      [self.underline setCenter: CGPointMake(self.view.frame.size.width - (self.view.frame.size.width / 5.3), 0)];
+                                  }
+                                  completion:nil];
+    }
 }
 
 -(void)signupButtonClicked:(UIButton *)sender

@@ -15,7 +15,12 @@
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 @property (weak, nonatomic) UIImage *userImage;
 @property (weak, nonatomic) UIImageView *userAvatar;
+@property (weak, nonatomic) UITextField *realNameTextField;
+@property (weak, nonatomic) UITextField *shortBioTextField;
+
 @property (weak, nonatomic) UIButton *photoButton;
+@property (nonatomic) PFFile *ownedImageFile;
+@property (nonatomic) PFUser *currentUser;
 
 @end
 
@@ -25,9 +30,12 @@
 {
     [super viewDidLoad];
     
+    self.currentUser = [PFUser currentUser];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.view.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.98 alpha:1];
     [self.photoButton setBackgroundImage:nil forState:UIControlStateNormal];
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.tableView addGestureRecognizer:gestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +52,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,13 +93,35 @@
             }];
         }
     }
-    if (indexPath.row == 2) {
+    if (indexPath.row == 2)
+    {
         cell = [tableView dequeueReusableCellWithIdentifier:@"nameInputCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        NSString *realNameString = self.currentUser[@"realName"];
+        self.realNameTextField = (UITextField *)[cell viewWithTag:3];
+        self.realNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:realNameString attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
+        self.realNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.realNameTextField.keyboardAppearance = UIKeyboardAppearanceDark;
+        self.realNameTextField.borderStyle = NO;
+    }
+    if (indexPath.row == 3)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"bioInputCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        NSString *shortBioString = self.currentUser[@"shortBio"];
+        self.shortBioTextField = (UITextField *)[cell viewWithTag:4];
+        self.shortBioTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:shortBioString attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
+        self.shortBioTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.shortBioTextField.keyboardAppearance = UIKeyboardAppearanceDark;
+        self.shortBioTextField.borderStyle = NO;
     }
     
     return cell;
 }
+
+#pragma mark - Overrides
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -109,6 +139,10 @@
     {
         customTableCellHeight = self.view.frame.size.height/13;
     }
+    if (indexPath.row == 3)
+    {
+        customTableCellHeight = self.view.frame.size.height/13;
+    }
     
     return customTableCellHeight;
 }
@@ -120,17 +154,31 @@
         [self onSelectProfileImageButtonTapped];
     }
 }
+- (void)handleSingleTap:(UITapGestureRecognizer *) sender
+{
+    [self.view endEditing:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+
+    return YES;
+}
+- (void) hideKeyboard {
+    [self.realNameTextField resignFirstResponder];
+    [self.shortBioTextField resignFirstResponder];
+}
 
 #pragma mark - UIImagePicker Delegate Methods
 
 - (void)setImage:(UIImage *)image withCompletion:(void(^)())completion
 {
-    PFUser *currentUser = [PFUser currentUser];
     NSData *data = UIImagePNGRepresentation(image);
-    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:data];
-    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    self.ownedImageFile = [PFFile fileWithName:@"image.png" data:data];
+    [self.ownedImageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            currentUser[@"userAvatar"] = imageFile;
+            self.currentUser[@"userAvatar"] = self.ownedImageFile;
             NSLog(@"PARSE: uploaded userAvatar");
         }
         completion();
@@ -161,17 +209,30 @@
 }
 - (IBAction)saveButtonPressed:(id)sender
 {
-    PFUser *user = [PFUser currentUser];
+    PFFile *oldImageFile = [self.currentUser objectForKey:@"userAvatar"];
     
-    if (self.userAvatar != nil)
+    if (self.ownedImageFile != oldImageFile)
     {
         NSData *selectedImage = UIImageJPEGRepresentation(self.userImage, 1);
         PFFile *imageFile = [PFFile fileWithName:@"image" data:selectedImage];
-        [user setObject:imageFile forKey:@"userAvatar"];
+        [self.currentUser setObject:imageFile forKey:@"userAvatar"];
     }
-
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded){ NSLog(@"save user with new image success!"); }
+    if (self.realNameTextField != nil)
+    {
+        NSString *newName = self.realNameTextField.text;
+        self.currentUser[@"realName"] = newName;
+    }
+    if (self.shortBioTextField != nil)
+    {
+        NSString *newBio = self.shortBioTextField.text;
+        self.currentUser[@"shortBio"] = newBio;
+    }
+    
+    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"save user with new image success!");
+        }
     }];
 }
 

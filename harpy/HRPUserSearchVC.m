@@ -162,7 +162,7 @@
                         afterDelay: 0.1];
         
         [self.users removeAllObjects];
-        [self.userTableView reloadData];
+        
     }
     
     if (![searchText isEqualToString:@""]) {

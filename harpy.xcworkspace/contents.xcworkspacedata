@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:outsideUserProfile.storyboard">
-   </FileRef>
-   <FileRef
       location = "group:harpy.xcodeproj">
    </FileRef>
    <FileRef

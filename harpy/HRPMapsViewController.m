@@ -17,10 +17,11 @@
 #import "HRPPostFeedViewController.h"
 @import GoogleMaps;
 
-@interface HRPMapsViewController () <GMSMapViewDelegate>
+@interface HRPMapsViewController () <GMSMapViewDelegate, SPTAuthViewDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (strong, nonatomic) GMSMarker *defaultMarker;
+@property (atomic, readwrite) SPTAuthViewController *authViewController;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
 @property (weak, nonatomic) IBOutlet UIButton *postSongButton;
 @property (nonatomic, assign) BOOL readyToPin;
@@ -43,9 +44,7 @@
     self.navCont = self.navigationController;
     
     [super viewDidLoad];
-    
-    [self initializeSpotify];
-    
+        
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
     self.title = @"HARPY";
@@ -64,10 +63,32 @@
     
     mapView_.settings.scrollGestures = YES;
     self.mapView.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionUpdatedNotification:) name:@"sessionUpdated" object:nil];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    
+    NSLog(@"VIEW WILL APPEAR");
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    
+    if (auth.session == nil)
+    {
+        NSLog(@"STATEMENT 1 TRUE");
+        [self openLogInPage];
+    }
+    if ([auth.session isValid])
+    {
+        NSLog(@"STATEMENT 2 TRUE");
+    }
+    if (![auth.session isValid] && auth.hasTokenRefreshService)
+    {
+        NSLog(@"STATEMENT 3 TRUE");
+        [self renewTokenAndSegue];
+    }
+    
     [super viewDidAppear:animated];
     [self.locationManager startUpdatingLocation];
     [self queryForHRPosts];
@@ -368,6 +389,7 @@
         if (marker.position.latitude == postGeo.latitude &&
             marker.position.longitude == postGeo.longitude) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"postTable" bundle:nil];
+            //MAKE NAV CONTROLLER HERE
             HRPPostFeedViewController *postView = [storyboard instantiateViewControllerWithIdentifier:@"postViewController"];
             postView.postsArray = [NSMutableArray new];
             [postView.postsArray addObject:post];
@@ -377,17 +399,59 @@
     return YES;
 }
 
--(void)initializeSpotify {
-    NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
-    NSString *spotifyClientId = [plistDictionary objectForKey:@"spotifyClientId"];
+//spotify login methods
+
+
+-(void)showSafariVCForSpotifyLogin
+{
+    //safari VC stuff
+}
+
+-(void)sessionUpdatedNotification:(NSNotification *)notification
+{
     SPTAuth *auth = [SPTAuth defaultInstance];
-    auth.clientID = spotifyClientId;
-    auth.requestedScopes = @[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope];
-    auth.redirectURL = [NSURL URLWithString:@"harpy-app://authorize"];
-    auth.tokenSwapURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/swap"];
-    auth.tokenRefreshURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/refresh"];
-    PFUser *current = [PFUser currentUser];
-    auth.sessionUserDefaultsKey = current[@"spotifyCanonical"];
+    if (auth.session && [auth.session isValid])
+    {
+        //stay on map
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+-(void)renewTokenAndSegue
+{
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    
+    [auth renewSession:auth.session callback:^(NSError *error, SPTSession *session) {
+        auth.session = session;
+        
+        //stay on map
+    }];
+}
+
+-(void)openLogInPage
+{
+    self.authViewController = [SPTAuthViewController authenticationViewController];
+    self.authViewController.delegate = self;
+    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.definesPresentationContext = YES;
+    
+    [self presentViewController:self.authViewController animated:NO completion:nil];
+}
+
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
+{
+    
+}
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
+{
+    
+}
+-(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
+{
+    
 }
 
 @end

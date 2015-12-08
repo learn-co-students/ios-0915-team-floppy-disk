@@ -66,11 +66,9 @@
     
     self.parseService = [HRPParseNetworkService sharedService];
     
-    //    for (UIView *view in self.view.subviews)
-    //    {
-    //        [view removeConstraints: self.view.constraints];
-    //        view.translatesAutoresizingMaskIntoConstraints = NO;
-    //    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginCompleted:) name:@"sessionUpdated" object:nil];
+
 }
 
 - (void)setHiddenStatus
@@ -632,23 +630,23 @@
 
 -(void)spotifySignupPopup
 {
-    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.spotify.com/signup/"]];
-    [self presentViewController:safariVC animated:YES];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginCompleted:) name:@"sessionUpdated" object:nil];
+    NSURL *spotifyURL = [NSURL URLWithString:@"https://www.spotify.com/signup/"];
+    
+    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:spotifyURL];
+    [self presentViewController:safariVC animated:YES];
 }
 
 -(void)loginCompleted:(NSNotification *)notification
 {
     [self dismissViewControllerAnimated:YES];
     
-    
     SPTAuth *auth = [SPTAuth defaultInstance];
     if (auth.session && [auth.session isValid])
     {
         [self createParseUser];
         [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogInNotificationName object:nil];
-
+        
         [self showCreateProfileView];
     }
 }

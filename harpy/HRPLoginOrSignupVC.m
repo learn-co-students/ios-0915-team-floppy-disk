@@ -20,9 +20,7 @@
 
 @interface HRPLoginOrSignupVC () <SPTAuthViewDelegate, UITextFieldDelegate>
 
-//@property (nonatomic) BOOL blockUserBool; TODO
 @property (nonatomic) BOOL spotifyPremium; // add to parse
-
 @property (nonatomic) UIButton *login;
 @property (nonatomic) UIButton *signup;
 @property (nonatomic) UIGestureRecognizer *tapper;
@@ -64,14 +62,7 @@
     [self.view addGestureRecognizer:self.tapper];
     
     self.parseService = [HRPParseNetworkService sharedService];
-    
-    //    for (UIView *view in self.view.subviews)
-    //    {
-    //        [view removeConstraints: self.view.constraints];
-    //        view.translatesAutoresizingMaskIntoConstraints = NO;
-    //    }
 }
-
 - (void)setHiddenStatus
 {
     self.email.hidden = NO;
@@ -118,6 +109,17 @@
 -(void)setupSignup
 {
     int fieldHeight = 30;
+    int radius = 20;
+
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
+    {
+        fieldHeight = 40;
+        radius = 25;
+    }
+    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
+    {
+        // 6s
+    }
     
     [self setupEmailWithFieldHeight:fieldHeight];
     [self setupNewUsernameWithFieldHeight:fieldHeight];
@@ -126,8 +128,14 @@
     
     NSArray *textFields = @[ self.email, self.userNameNew, self.passwordNew, self.passwordConfirm ];
     
-    [self setupCommonPropertiesForTextFields:textFields];
-    [self setupSignupButton];
+    [self setupCommonPropertiesForTextFields:textFields withCornerRadius:radius];
+    
+    self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.signup addTarget:self action:@selector(signupButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.signup setTitle:@"SIGN UP" forState:UIControlStateNormal];
+    [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //are these used? (blackColor, StateHighlighted)
+    
+    [self setupCommonPropertiesForButton:self.signup withFieldHeight:fieldHeight andCornerRadius:radius];
 }
 
 - (void)setupEmailWithFieldHeight:(int)fieldHeight
@@ -135,7 +143,7 @@
     self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
     self.email.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"EMAIL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.email.returnKeyType = UIReturnKeyNext;
-    [self.email setCenter: CGPointMake(self.view.center.x, self.email.center.y + 15)]; // !!
+    [self.email setCenter: CGPointMake(self.view.center.x, self.email.center.y + fieldHeight / 2)]; // 15!!
 }
 
 - (void)setupNewUsernameWithFieldHeight:(int)fieldHeight
@@ -143,7 +151,7 @@
     self.userNameNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
     self.userNameNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.userNameNew.returnKeyType = UIReturnKeyNext;
-    [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + 65)]; // !!
+    [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + fieldHeight * 2.16)]; // 65!!
 }
 
 - (void)setupNewPasswordWithFieldHeight:(int)fieldHeight
@@ -152,7 +160,7 @@
     self.passwordNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.passwordNew.returnKeyType = UIReturnKeyNext;
     self.passwordNew.secureTextEntry = YES;
-    [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + 115)]; // !!
+    [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + fieldHeight * 3.83)]; // 115!!
 }
 
 - (void)setupConfirmPasswordnameWithFieldHeight:(int)fieldHeight
@@ -161,30 +169,36 @@
     self.passwordConfirm.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"CONFIRM PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.passwordConfirm.returnKeyType = UIReturnKeyGo;
     self.passwordConfirm.secureTextEntry = YES;
-    [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + 165)]; // !!
+    [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + fieldHeight * 5.5)]; // 165!!
 }
-
-- (void)setupSignupButton
-{
-    self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.signup addTarget:self action:@selector(signupButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.signup setTitle:@"SIGN UP" forState:UIControlStateNormal];
-    [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //are these used? (blackColor, StateHighlighted)
-    
-    [self setupCommonPropertiesForButton:self.signup];
-}
-
 -(void)setupLogin
 {
     int fieldHeight = 30;
+    int radius = 20;
+    
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
+    {
+        fieldHeight = 40;
+        radius = 25;
+    }
+    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
+    {
+        // 6s
+    }
     
     [self setupUsernameWithFieldHeight:fieldHeight];
     [self setupPasswordWithFieldHeight:fieldHeight];
     
     NSArray *textFields = @[ self.userName, self.password ];
     
-    [self setupCommonPropertiesForTextFields:textFields];
-    [self setupLoginButton];
+    [self setupCommonPropertiesForTextFields:textFields withCornerRadius:radius];
+    
+    self.login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.login addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.login setTitle:@"LOG IN" forState:UIControlStateNormal];
+    [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //are these used?
+    
+    [self setupCommonPropertiesForButton:self.login withFieldHeight:fieldHeight andCornerRadius:radius];
 }
 
 - (void)setupUsernameWithFieldHeight:(int)fieldHeight
@@ -193,7 +207,7 @@
     self.userName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.userName.returnKeyType = UIReturnKeyDone;
     self.userName.returnKeyType = UIReturnKeyDefault;
-    [self.userName setCenter: CGPointMake(self.view.center.x, self.userName.center.y + 15)]; // !!
+    [self.userName setCenter: CGPointMake(self.view.center.x, self.userName.center.y + fieldHeight / 2)]; // !!
 }
 
 - (void)setupPasswordWithFieldHeight:(int)fieldHeight
@@ -203,20 +217,10 @@
     self.password.returnKeyType = UIReturnKeyDone;
     self.password.returnKeyType = UIReturnKeyDefault;
     self.password.secureTextEntry = YES;
-    [self.password setCenter: CGPointMake(self.view.center.x, self.password.center.y + 65)]; // !!
+    [self.password setCenter: CGPointMake(self.view.center.x, self.password.center.y + fieldHeight * 2.16)]; // !!
 }
 
-- (void)setupLoginButton
-{
-    self.login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.login addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.login setTitle:@"LOG IN" forState:UIControlStateNormal];
-    [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //are these used?
-    
-    [self setupCommonPropertiesForButton:self.login];
-}
-
-- (void)setupCommonPropertiesForTextFields:(NSArray *)textFields
+- (void)setupCommonPropertiesForTextFields:(NSArray *)textFields withCornerRadius:(int)radius
 {
     for (NSUInteger i = 0; i < textFields.count; i++)
     {
@@ -234,7 +238,7 @@
         
         textField.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
         textField.layer.borderWidth = 1;
-        textField.layer.cornerRadius = 20.0f;
+        textField.layer.cornerRadius = radius;
         
         textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
         textField.leftViewMode = UITextFieldViewModeAlways;
@@ -245,12 +249,12 @@
     }
 }
 
-- (void)setupCommonPropertiesForButton:(UIButton *)button
+- (void)setupCommonPropertiesForButton:(UIButton *)button withFieldHeight:(int)fieldHeight andCornerRadius:(int)cornerRadius
 {
-    [button setFrame:CGRectMake(0, 0, 275, 40)];
-    [button setCenter: CGPointMake(self.view.center.x, self.signup.center.y + 215)];
+    [button setFrame:CGRectMake(0, 0, 275, fieldHeight + 10)];
+    [button setCenter: CGPointMake(self.view.center.x, self.signup.center.y + fieldHeight * 7.16)];
     
-    button.layer.cornerRadius = 20.0f;
+    button.layer.cornerRadius = cornerRadius;
     button.layer.backgroundColor = [[UIColor colorWithRed:0.17 green:0.62 blue:0.90 alpha:1.0]CGColor];
     
     button.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
@@ -279,7 +283,7 @@
                                    delay:0
                                  options:UIViewAnimationCurveLinear
                               animations:^{
-                                  [self.underline setCenter: CGPointMake(27, 0)];
+                                  [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.2, 0)];
                               }
                               completion:nil];
 }
@@ -299,8 +303,8 @@
                                    delay:0
                                  options:UIViewAnimationCurveLinear
                               animations:^{
-                                  [self.login  setCenter: CGPointMake(self.view.center.x, 135)];
-                                  [self.underline setCenter: CGPointMake(222, 0)];
+                                  [self.login  setCenter: CGPointMake(self.view.center.x, (self.login.frame.size.height * 3.83) - 20)];
+                                  [self.underline setCenter: CGPointMake(self.view.frame.size.width - (self.view.frame.size.width / 5.3), 0)];
                               }
                               completion:nil];
 }

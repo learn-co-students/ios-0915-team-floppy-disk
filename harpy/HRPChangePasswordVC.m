@@ -26,7 +26,8 @@
 #pragma mark - Setup methods
 
 
-- (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
+- (IBAction)backButtonTapped:(UIBarButtonItem *)sender
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
 

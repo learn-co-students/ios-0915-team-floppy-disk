@@ -52,7 +52,6 @@
 		E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */; };
 		E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */; };
 		E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */; };
-		E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */; };
 		E9FA64E51C04BC63008DDE69 /* HRPChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */; };
 		E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA651D1C056C55008DDE69 /* HRPUserSearchVC.m */; };
 		E9FA65461C0901BB008DDE69 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9FA65451C0901BB008DDE69 /* loading.gif */; };
@@ -148,8 +147,6 @@
 		E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrackViews.storyboard; sourceTree = "<group>"; };
 		E9FA64D91C03BD90008DDE69 /* HRPProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPProfileVC.h; sourceTree = "<group>"; };
 		E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPProfileVC.m; sourceTree = "<group>"; };
-		E9FA64E01C03CA0F008DDE69 /* HRPSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSettingsVC.h; sourceTree = "<group>"; };
-		E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSettingsVC.m; sourceTree = "<group>"; };
 		E9FA64E31C04BC63008DDE69 /* HRPChangePasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPChangePasswordVC.h; sourceTree = "<group>"; };
 		E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPChangePasswordVC.m; sourceTree = "<group>"; };
 		E9FA651C1C056C55008DDE69 /* HRPUserSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPUserSearchVC.h; sourceTree = "<group>"; };
@@ -338,8 +335,6 @@
 				E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */,
 				E9F4DE2B1C162B77004396FC /* HRPEditProfileTableVC.h */,
 				E9F4DE2C1C162B77004396FC /* HRPEditProfileTableVC.m */,
-				E9FA64E01C03CA0F008DDE69 /* HRPSettingsVC.h */,
-				E9FA64E11C03CA0F008DDE69 /* HRPSettingsVC.m */,
 				E9F4DE2E1C163745004396FC /* HRPSettingsTableVC.h */,
 				E9F4DE2F1C163745004396FC /* HRPSettingsTableVC.m */,
 				E9FA64E31C04BC63008DDE69 /* HRPChangePasswordVC.h */,
@@ -512,7 +507,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9FA64E21C03CA0F008DDE69 /* HRPSettingsVC.m in Sources */,
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
 				E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */,
 				E9F4DE2D1C162B77004396FC /* HRPEditProfileTableVC.m in Sources */,

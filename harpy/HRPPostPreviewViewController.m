@@ -42,9 +42,9 @@
 }
 
 
-- (IBAction)cancelButtonTapped:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//- (IBAction)cancelButtonTapped:(UIBarButtonItem *)sender {
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 - (IBAction)uploadPhotoButtonTapped:(UIButton *)sender {
     //upload photo
@@ -67,6 +67,15 @@
     
 }
 
-
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:YES];
+    
+    self.albumArtImageView = nil;
+    self.songTitleLabel = nil;
+    self.artistNameLabel = nil;
+    self.albumNameLabel = nil;
+    self.locationLabel = nil;
+    self.postCaptionTextView = nil;
+}
 
 @end

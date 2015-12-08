@@ -44,6 +44,8 @@
 
     [self initializeEmptySongArray];
     self.playStatusLabel.text = @"";
+    self.playerSongLabel.text = @"";
+    self.playerArtistLabel.text = @"";
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -150,6 +152,7 @@
     UIGraphicsEndImageContext();
     
     return image;
+
 }
 
 #pragma mark - Search bar methods
@@ -270,6 +273,13 @@
     }];
 }
 
+-(void)cellPostButtonTapped:(UIButton *)sender {
+    if ([self.player isPlaying] == YES) {
+        [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+    }
+    self.player = nil;
+}
+
 
 - (IBAction)playerViewTapped:(UITapGestureRecognizer *)sender {
     
@@ -301,6 +311,11 @@
 }
 
 - (IBAction)cancelButtonTapped:(id)sender {
+    
+    if ([self.player isPlaying] == YES) {
+        [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+    }
+    self.player = nil;
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

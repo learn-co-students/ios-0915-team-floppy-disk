@@ -604,19 +604,19 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Do you have a Spotify account?" preferredStyle:(UIAlertControllerStyleActionSheet)];
     UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         self.spotifyPremium = YES;
-        [self createParseUser]; // DELETE THESE LINE WHEN TESTING SPOTIFY CALL BACKS
-        //[self spotifyLoginPopup];
+        //[self createParseUser]; // DELETE THESE LINE WHEN TESTING SPOTIFY CALL BACKS
+        [self spotifyLoginPopup];
     }];
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         self.spotifyPremium = NO;
         [self spotifySignupPopup];
         
-        //        SPTAuth *auth = [SPTAuth defaultInstance];
-        //        if (auth.session && [auth.session isValid])
-        //        {
-        //            [self createParseUser];
-        //            [self showCreateProfileView];
-        //        }
+                SPTAuth *auth = [SPTAuth defaultInstance];
+                if (auth.session && [auth.session isValid])
+                {
+                    [self createParseUser];
+                    [self showCreateProfileView];
+                }
     }];
     [alert addAction:yes];
     [alert addAction:no];

@@ -40,7 +40,7 @@
         <!--ProfileVC-->
         <scene sceneID="OrC-QT-U3k">
             <objects>
-                <viewController id="C0a-CR-bU2" customClass="HRPProfileVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profileViewController" id="C0a-CR-bU2" customClass="HRPProfileVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pb1-mO-Aqd"/>
                         <viewControllerLayoutGuide type="bottom" id="EU0-Np-qFi"/>
@@ -248,7 +248,7 @@
                                                     <constraint firstAttribute="height" constant="35" id="8v7-eW-hxS"/>
                                                 </constraints>
                                             </stackView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
                                                 <rect key="frame" x="0.0" y="35" width="414" height="367"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -406,20 +406,21 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="fansCountLabel" destination="NBs-co-kAi" id="VSh-s3-X6a"/>
+                        <outlet property="followOrEditButton" destination="zR0-et-59C" id="BU3-J1-xZv"/>
                         <outlet property="followingCountLabel" destination="BDy-kN-Rnf" id="7fp-hs-2jw"/>
                         <outlet property="listViewButton" destination="T85-q9-sIW" id="gVE-9q-VDE"/>
                         <outlet property="mapviewButton" destination="Rao-gA-5hf" id="1zT-Ed-BW0"/>
                         <outlet property="postCount" destination="WKN-52-CPh" id="690-xW-jxs"/>
                         <outlet property="postsTableview" destination="Vq5-Qg-IsN" id="yOC-22-NSu"/>
                         <outlet property="realName" destination="AMC-o8-0dn" id="ue2-5y-XdD"/>
-                        <outlet property="settingsButton" destination="3Ig-pX-UYg" id="Avg-G0-PVv"/>
+                        <outlet property="settingsButton" destination="3Ig-pX-UYg" id="AgZ-3w-bfa"/>
                         <outlet property="shortBio" destination="ghN-tF-V6Z" id="cAW-T9-5jt"/>
                         <outlet property="userAvatar" destination="iBy-4X-gNf" id="wwQ-eL-kIB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5T-88-61l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1589" y="337"/>
+            <point key="canvasLocation" x="2401" y="337"/>
         </scene>
         <!--SETTINGS-->
         <scene sceneID="90s-cT-D44">
@@ -530,7 +531,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vni-ra-AD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2194" y="337"/>
+            <point key="canvasLocation" x="3006" y="337"/>
         </scene>
         <!--PASSWORD-->
         <scene sceneID="VkC-39-C6N">
@@ -735,7 +736,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFJ-Ld-wSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3397" y="337"/>
+            <point key="canvasLocation" x="4209" y="337"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="431-O3-Kiz">
@@ -754,7 +755,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rNA-bI-JMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2804" y="337"/>
+            <point key="canvasLocation" x="3616" y="337"/>
         </scene>
     </scenes>
     <resources>

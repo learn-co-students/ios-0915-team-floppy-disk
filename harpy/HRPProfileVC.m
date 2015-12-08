@@ -15,6 +15,8 @@
 
 @interface HRPProfileVC () <UITableViewDelegate, UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *followOrEditButton;
 @property (weak, nonatomic) IBOutlet UILabel *postCount;
 @property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fansCountLabel;
@@ -23,11 +25,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *mapviewButton;
 @property (weak, nonatomic) IBOutlet UIButton *listViewButton;
 @property (weak, nonatomic) IBOutlet UITableView *postsTableview;
-@property (weak, nonatomic) IBOutlet UICollectionView *postsCollectionview;
 @property (nonatomic, strong) NSArray *userPosts;
 
 @property (nonatomic) PFUser *currentUser;
-@property (nonatomic) PFObject *currentUserObject;
+@property (nonatomic) BOOL isCurrentUser;
+@property (nonatomic) PFObject *userObject;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
 @end
@@ -47,7 +49,12 @@
     self.postsTableview.delegate = self;
     
     self.parseService = [HRPParseNetworkService sharedService];
-    self.currentUser = [PFUser currentUser];
+    
+    if (self.user != [PFUser currentUser])
+    {
+        self.navigationItem.rightBarButtonItem = nil;
+        [self.followOrEditButton setTitle:@"Follow" forState:UIControlStateNormal];
+    }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self retrieveHRPosts];
@@ -87,24 +94,15 @@
     
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
-    PFUser *currentUser = [PFUser currentUser];
-    NSString *usernameString = currentUser.username;
+    NSString *usernameString = self.user.username;
     usernameString = [usernameString uppercaseString];
     self.navigationItem.title = usernameString;
     
-    NSString *realName = currentUser[@"realName"];
+    NSString *realName = self.user[@"realName"];
     self.realName.text = realName;
     
-    NSString *shortBio = currentUser[@"shortBio"];
+    NSString *shortBio = self.user[@"shortBio"];
     self.shortBio.text = shortBio;
-}
-- (void)setupPostsTableview
-{
-    
-}
-- (void)setupPostsCollectionview
-{
-    
 }
 
 #pragma mark - Parse Queries
@@ -112,12 +110,12 @@
 - (void)retrieveUser
 {
     PFQuery *userQuery = [PFUser query];
-    [userQuery whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
+    [userQuery whereKey:@"objectId" equalTo:self.user.objectId];
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
             NSLog(@"USER: %@", objects);
-            self.currentUserObject = [objects objectAtIndex:0];
+            self.userObject = [objects objectAtIndex:0];
             [self retrieveUserAvatar];
         }
         else
@@ -128,7 +126,7 @@
 }
 - (void)retrieveUserAvatar
 {
-    PFFile *file = [self.currentUserObject objectForKey:@"userAvatar"];
+    PFFile *file = [self.userObject objectForKey:@"userAvatar"];
     NSLog(@"FILE: %@", file);
     
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
@@ -143,7 +141,7 @@
 }
 - (void)retrieveHRPosts
 {
-    PFRelation *userPosts = [[PFUser currentUser] relationForKey:@"HRPPosts"];
+    PFRelation *userPosts = [self.user relationForKey:@"HRPPosts"];
     PFQuery *query = [userPosts query];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error)

@@ -9,6 +9,7 @@
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 #import "HRPMapsViewController.h"
+#import "HRPProfileVC.h"
 #import "HRPLocationManager.h"
 #import "HRPTrackSearchViewController.h"
 #import "HRPPost.h"
@@ -277,7 +278,10 @@
 
 - (IBAction)profileButtonTapped:(id)sender
 {
-    [self performSegueWithIdentifier:@"showUserProfile" sender:self];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"UserProfile" bundle:nil];
+    HRPProfileVC *profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileViewController"];
+    profileView.user = [PFUser currentUser];
+    [self.navigationController pushViewController:profileView animated:YES];
 }
 - (IBAction)postSongButtonTapped:(id)sender
 {

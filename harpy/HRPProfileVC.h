@@ -12,7 +12,7 @@
 
 @interface HRPProfileVC : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
 @property (nonatomic, retain) IBOutlet UIImageView *userAvatar;
+@property (nonatomic) PFUser *user;
 
 @end

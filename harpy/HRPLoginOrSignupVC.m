@@ -38,7 +38,6 @@
 
 @property (nonatomic) UIView *underline;
 @property (weak, nonatomic) IBOutlet UIView *underlineView;
-//@property (nonatomic, strong) HRPSignupVC *sendToSignupVC;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
 @end

@@ -33,6 +33,8 @@
                                                              NSForegroundColorAttributeName:[UIColor whiteColor]
                                                              }];
 
+    [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]].translucent = YES;
+    [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]].tintColor = [UIColor whiteColor];
     
 
     NSLog(@"width is :%f",[[UIScreen mainScreen] bounds].size.width);

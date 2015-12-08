@@ -656,21 +656,11 @@
                                                 <constraint firstAttribute="width" secondItem="CwL-BR-lfp" secondAttribute="height" multiplier="1:1" id="Dqo-bK-LoC"/>
                                             </constraints>
                                         </imageView>
-                                        <button opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7u7-nY-Jyc">
-                                            <rect key="frame" x="150" y="9" width="115" height="115"/>
-                                            <state key="normal">
-                                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="7u7-nY-Jyc" firstAttribute="height" secondItem="CwL-BR-lfp" secondAttribute="height" id="8Sy-hx-i3c"/>
                                         <constraint firstItem="CwL-BR-lfp" firstAttribute="centerY" secondItem="scx-EA-UlD" secondAttribute="centerY" id="Iyf-Jj-8ZP"/>
                                         <constraint firstItem="CwL-BR-lfp" firstAttribute="centerX" secondItem="scx-EA-UlD" secondAttribute="centerX" id="cNs-t3-a2z"/>
-                                        <constraint firstItem="7u7-nY-Jyc" firstAttribute="leading" secondItem="CwL-BR-lfp" secondAttribute="leading" id="kPj-YE-xUU"/>
-                                        <constraint firstItem="7u7-nY-Jyc" firstAttribute="top" secondItem="CwL-BR-lfp" secondAttribute="top" id="lRG-iK-X6r"/>
                                         <constraint firstItem="CwL-BR-lfp" firstAttribute="top" secondItem="scx-EA-UlD" secondAttribute="topMargin" constant="1" id="mo2-i0-fCN"/>
-                                        <constraint firstItem="7u7-nY-Jyc" firstAttribute="width" secondItem="CwL-BR-lfp" secondAttribute="width" id="pxp-be-Yah"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>

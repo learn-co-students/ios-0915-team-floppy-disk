@@ -78,7 +78,7 @@
             [self.userAvatar addGestureRecognizer:tapGesture];
             
             self.userAvatar.image = [UIImage imageNamed:@"periwinkleImage.png"];
-            self.userAvatar.layer.cornerRadius =  47;
+            self.userAvatar.layer.cornerRadius =  self.userAvatar.frame.size.height/2;
             [self.userAvatar.layer setBorderColor: [ironColor CGColor]];
             [self.userAvatar.layer setBorderWidth: 1.0];
             self.userAvatar.layer.masksToBounds = YES;

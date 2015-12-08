@@ -136,7 +136,6 @@
         completion();
     }];
 }
-
 - (void)onSelectProfileImageButtonTapped
 {
     UIImagePickerController *pickerController = [UIImagePickerController new];
@@ -146,24 +145,12 @@
     
     [self presentViewController:pickerController animated:YES completion:nil];
 }
-
-
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     self.userImage = [info objectForKey:UIImagePickerControllerEditedImage];
     self.userAvatar.image = self.userImage;
     
     [picker dismissViewControllerAnimated:YES completion:nil];
-    
-    if (self.userAvatar != nil)
-    {
-        [self.photoButton setBackgroundImage:nil forState:UIControlStateNormal];
-        
-        PFUser *currentuser = [PFUser currentUser];
-        NSData *selectedImage = UIImageJPEGRepresentation(self.userImage, 1);
-        PFFile *imageFile = [PFFile fileWithName:@"image" data:selectedImage];
-        currentuser[@"userAvatar"] = imageFile;
-    }
 }
 
 #pragma mark - Action Methods
@@ -171,6 +158,21 @@
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)saveButtonPressed:(id)sender
+{
+    PFUser *user = [PFUser currentUser];
+    
+    if (self.userAvatar != nil)
+    {
+        NSData *selectedImage = UIImageJPEGRepresentation(self.userImage, 1);
+        PFFile *imageFile = [PFFile fileWithName:@"image" data:selectedImage];
+        [user setObject:imageFile forKey:@"userAvatar"];
+    }
+
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded){ NSLog(@"save user with new image success!"); }
+    }];
 }
 
 

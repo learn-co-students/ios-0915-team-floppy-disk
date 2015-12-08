@@ -97,8 +97,8 @@
 {
     self.authViewController = [SPTAuthViewController authenticationViewController];
     self.authViewController.delegate = self;
-    self.authViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
     self.definesPresentationContext = YES;

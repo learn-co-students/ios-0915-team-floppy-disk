@@ -229,11 +229,6 @@
 {
     UITableViewCell *cell = [self.userTableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
     PFUser *user = [self.users objectAtIndex:[indexPath row]];
-//    
-//    // NSInteger indexToUse =  [self integerToUseToGrabDataFromSomeArray:indexPath];
-//    PFUSer *currentPerson = self.users[indexToUse];
-//    
-    
     
     UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
     

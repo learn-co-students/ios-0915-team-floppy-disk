@@ -14,6 +14,7 @@
 #import "HRPPost.h"
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
+#import "HRPPostFeedViewController.h"
 @import GoogleMaps;
 
 @interface HRPMapsViewController () <GMSMapViewDelegate>
@@ -59,6 +60,7 @@
     [self.postSongButton setBackgroundColor:[UIColor colorWithRed:0.18 green:0.21 blue:0.31 alpha:1.0]];
     
     mapView_.settings.scrollGestures = YES;
+    self.mapView.delegate = self;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -87,6 +89,7 @@
         
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
         {
+            
             [self.activityIndicator stopAnimating];
             
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
@@ -100,15 +103,16 @@
             if (!error)
             {
                 self.parsePosts = objects;
-                NSLog(@"PARSE POSTS: %@", self.parsePosts);
+                NSLog(@"THERE ARE %lu PARSE POSTS.", self.parsePosts.count);
                 
                 for (NSUInteger i = 0; i < self.parsePosts.count; i++)
                 {
                     NSDictionary *HRPPosts = self.parsePosts[i];
-                    NSLog(@"PARSE DICTIONARY: %@", HRPPosts);
+//                    NSLog(@"PARSE DICTIONARY: %@", HRPPosts);
+                    NSLog(@"POSTED SONG: %@", HRPPosts[@"songTitle"]);
                     
                     PFGeoPoint *HRPGeoPoint = HRPPosts[@"locationGeoPoint"];
-                    NSLog(@"geoPointString %@", HRPGeoPoint);
+                    NSLog(@"geoPointString %f, %f", HRPGeoPoint.latitude, HRPGeoPoint.longitude);
                     
                     CLLocationCoordinate2D postCoordinate = CLLocationCoordinate2DMake(HRPGeoPoint.latitude, HRPGeoPoint.longitude);
                     NSLog(@"postCoordinate %f, %f", postCoordinate.latitude, postCoordinate.longitude);
@@ -119,11 +123,13 @@
                     marker.map = mapView_;
                     NSLog(@"marker: %@", marker);
                     
-                    for (PFObject *post in objects) {
+                    for (PFObject *post in objects)
+                    {
                         PFRelation *userRelation = [post relationForKey:@"username"];
                         PFQuery *userUsername = [userRelation query];
                         [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
-                            for (PFObject *username in user) {
+                            for (PFObject *username in user)
+                            {
                                 NSLog(@"USERNAME: %@", username[@"username"]);
                             }
                         }];
@@ -192,7 +198,7 @@
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
-    CGFloat coordinateDifference = 0.1;
+    CGFloat coordinateDifference = 0.05;
     
     CGFloat firstLatitude = coordinate.latitude;
     firstLatitude += coordinateDifference;
@@ -340,40 +346,40 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//    NSLog(@"alert controller method hit");
-//    UIAlertController *confirmPinAlert = [UIAlertController alertControllerWithTitle:@"Confirm Pin" message:@"Post song here?" preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        
-//        CLLocationCoordinate2D coordinatesAtMapCenter = [self findCoordinatesAtMapCenter];
-//        
-//        NSLog(@"inside the block");
-//
     if([segue.identifier isEqualToString:@"showTrackViews"])
     {
         UINavigationController *navController = segue.destinationViewController;
         HRPTrackSearchViewController *destinVC = navController.viewControllers.firstObject;
-        
-//        GMSMarker *marker = [[GMSMarker alloc] init];
-//        marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-//        marker.position = CLLocationCoordinate2DMake(coordinatesAtMapCenter.latitude, coordinatesAtMapCenter.longitude);
-//        marker.map = mapView_;
-//        
-//        NSLog(@"marker: %@", marker);
-//        NSLog(@"marker.icon = %@", marker.icon);
-//        NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
-//        NSLog(@"marker.map = %@", marker.map);
-//        
-//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-//    
-//    [confirmPinAlert addAction:confirmAction];
-//    [confirmPinAlert addAction:cancelAction];
-    
-//    [self presentViewController:confirmPinAlert animated:YES completion:nil];
     
         destinVC.post = [self postWithCurrentMapPosition];
      }
-//    }];
+}
+
+-(void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
+    
+}
+
+-(BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
+    
+    for (NSDictionary *post in self.parsePosts) {
+        PFGeoPoint *postGeo = post[@"locationGeoPoint"];
+        if (marker.position.latitude == postGeo.latitude &&
+            marker.position.longitude == postGeo.longitude) {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"postTable" bundle:nil];
+            HRPPostFeedViewController *postView = [storyboard instantiateViewControllerWithIdentifier:@"postViewController"];
+            postView.postsArray = [NSMutableArray new];
+            [postView.postsArray addObject:post];
+            [self presentViewController:postView animated:YES completion:nil];
+        }
+    }
+//    NSLog(@"%f", marker.position.latitude);
+//    NSDictionary *post = self.parsePosts[0];
+//    PFGeoPoint *geo = post[@"locationGeoPoint"];
+//    NSLog(@"%f", geo.latitude);
+    
+    
+    
+    return YES;
 }
 
 @end

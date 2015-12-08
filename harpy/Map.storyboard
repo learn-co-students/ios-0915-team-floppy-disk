@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1rk-sK-M4k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1rk-sK-M4k">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -83,11 +83,20 @@
                         <outlet property="postSongButton" destination="Cey-M4-euM" id="SDk-bl-Lag"/>
                         <segue destination="jZz-Vg-kOe" kind="presentation" identifier="showTrackViews" id="rQd-sp-5dF"/>
                         <segue destination="Zn9-Nw-Eau" kind="show" identifier="showUserProfile" id="REI-F8-dvx"/>
+                        <segue destination="Y8w-4l-UUr" kind="presentation" identifier="showPostViewSegue" id="W8i-jA-RnL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUG-Vo-6zZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1039" y="231"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="Jgd-AS-Azx">
+            <objects>
+                <viewControllerPlaceholder id="Y8w-4l-UUr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GRV-mX-Is2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1443" y="-274"/>
         </scene>
         <!--USER SEARCH-->
         <scene sceneID="XJO-td-Cby">
@@ -119,7 +128,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="center" tableViewCell="m8I-1j-ZRe" id="QYb-hY-E8K">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="94.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qdj-aQ-Kht">

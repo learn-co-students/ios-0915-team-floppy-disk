@@ -94,6 +94,9 @@
 {
     NSLog(@"cell selected at %ld", indexPath.row);
     
+    if (indexPath.row == 1) {
+        [self performSegueWithIdentifier:@"sendToEditProfile" sender:self];
+    }
     if (indexPath.row == 3) {
         [self logoutclicked];
     }
@@ -101,9 +104,9 @@
 
 #pragma mark - Action Methods
 
-- (IBAction)backbuttonPressed:(id)sender
+- (IBAction)backButtonTapped:(UIBarButtonItem *)sender
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)logoutclicked

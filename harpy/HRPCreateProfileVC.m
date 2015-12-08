@@ -12,7 +12,6 @@
 
 @interface HRPCreateProfileVC () <UIImagePickerControllerDelegate>
 
-//@property (nonatomic) UIImage *userImage;
 @property (weak, nonatomic) IBOutlet UIButton *photoButton;
 @property (weak, nonatomic) IBOutlet UIView *inputView;
 @property (weak, nonatomic) IBOutlet UIImageView *userPhoto;

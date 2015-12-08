@@ -11,6 +11,7 @@
 #import "HRPTrack.h"
 #import "HRPTrackCreator.h"
 #import "HRPPostPreviewViewController.h"
+#import <Parse/Parse.h>
 
 @interface HRPTrackSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SPTAudioStreamingDelegate>
 
@@ -160,16 +161,19 @@
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
     if ([searchText isEqualToString:@""]) {
+        
         [searchBar performSelector: @selector(resignFirstResponder)
                         withObject: nil
                         afterDelay: 0.1];
+        
         self.filteredSongArray = self.songArray;
         [self.songTableView reloadData];
     }
     
     [HRPTrackCreator generateTracksFromSearch:searchText WithCompletion:^(NSArray *tracks) {
-        self.filteredSongArray = [NSMutableArray arrayWithArray:tracks];
+        
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            self.filteredSongArray = [tracks mutableCopy];
             [self.songTableView reloadData];
         }];
     }];
@@ -297,7 +301,6 @@
     
     if (self.player == nil) {
         self.player = [[SPTAudioStreamingController alloc] initWithClientId:auth.clientID];
-        //is this an audioStreamingDelegate issue? if so, must moce to AppDelegate
         self.player.playbackDelegate = self;
         self.player.diskCache = [[SPTDiskCache alloc] initWithCapacity:1024 * 1024 * 64];
     }

@@ -43,6 +43,9 @@
     self.navCont = self.navigationController;
     
     [super viewDidLoad];
+    
+    [self initializeSpotify];
+    
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
     self.title = @"HARPY";
@@ -67,6 +70,7 @@
 {
     [super viewDidAppear:animated];
     [self.locationManager startUpdatingLocation];
+    [self queryForHRPosts];
 }
 
 #pragma mark - Parse Geopoints
@@ -121,7 +125,6 @@
                     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
                     marker.position = postCoordinate;
                     marker.map = mapView_;
-                    NSLog(@"marker: %@", marker);
                     
                     for (PFObject *post in objects)
                     {
@@ -130,7 +133,6 @@
                         [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
                             for (PFObject *username in user)
                             {
-                                NSLog(@"USERNAME: %@", username[@"username"]);
                             }
                         }];
                     }
@@ -306,7 +308,7 @@
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
     marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
-    marker.map = mapView_;
+    //marker.map = mapView_;
     NSLog(@"marker in other method: %@", marker);
     
     CGFloat latitude = marker.position.latitude;
@@ -372,14 +374,20 @@
             [self presentViewController:postView animated:YES completion:nil];
         }
     }
-//    NSLog(@"%f", marker.position.latitude);
-//    NSDictionary *post = self.parsePosts[0];
-//    PFGeoPoint *geo = post[@"locationGeoPoint"];
-//    NSLog(@"%f", geo.latitude);
-    
-    
-    
     return YES;
+}
+
+-(void)initializeSpotify {
+    NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
+    NSString *spotifyClientId = [plistDictionary objectForKey:@"spotifyClientId"];
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    auth.clientID = spotifyClientId;
+    auth.requestedScopes = @[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope];
+    auth.redirectURL = [NSURL URLWithString:@"harpy-app://authorize"];
+    auth.tokenSwapURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/swap"];
+    auth.tokenRefreshURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/refresh"];
+    PFUser *current = [PFUser currentUser];
+    auth.sessionUserDefaultsKey = current[@"spotifyCanonical"];
 }
 
 @end

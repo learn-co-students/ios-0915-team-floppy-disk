@@ -10,7 +10,7 @@
 #import "HRPParseNetworkService.h"
 #import "Constants.h"
 
-@interface HRPEditProfileTableVC () <UIImagePickerControllerDelegate, UIGestureRecognizerDelegate>
+@interface HRPEditProfileTableVC () <UIImagePickerControllerDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 @property (weak, nonatomic) UIImage *userImage;
@@ -174,18 +174,6 @@
 
 #pragma mark - UIImagePicker Delegate Methods
 
-//- (void)setImage:(UIImage *)image withCompletion:(void(^)())completion
-//{
-//    NSData *data = UIImagePNGRepresentation(image);
-//    self.ownedImageFile = [PFFile fileWithName:@"image.png" data:data];
-//    [self.ownedImageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (succeeded) {
-//            self.currentUser[@"userAvatar"] = self.ownedImageFile;
-//            NSLog(@"PARSE: uploaded userAvatar");
-//        }
-//        completion();
-//    }];
-//}
 - (void)onSelectProfileImageButtonTapped
 {
     UIImagePickerController *pickerController = [UIImagePickerController new];
@@ -211,8 +199,6 @@
 }
 - (IBAction)saveButtonPressed:(id)sender
 {
-    PFFile *oldImageFile = [self.currentUser objectForKey:@"userAvatar"];
-    
     if (self.ownedImageFile)
     {
         [self.currentUser setObject:self.ownedImageFile forKey:@"userAvatar"];

@@ -54,6 +54,7 @@
     [self setHiddenStatus];
     
     self.underline = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 55, 0.5)];
+    [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.05, 0)];
     self.underline.backgroundColor = [UIColor whiteColor];
     [self.underlineView addSubview:self.underline];
     
@@ -283,7 +284,7 @@
                                    delay:0
                                  options:UIViewAnimationCurveLinear
                               animations:^{
-                                  [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.2, 0)];
+                                  [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.05, 0)];
                               }
                               completion:nil];
 }

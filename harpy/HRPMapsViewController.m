@@ -41,10 +41,13 @@
 
 - (void)viewDidLoad
 {
+    
+    
     self.navCont = self.navigationController;
     
     [super viewDidLoad];
-        
+    
+    
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
     self.title = @"HARPY";
@@ -70,28 +73,37 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    
     NSLog(@"VIEW WILL APPEAR");
     SPTAuth *auth = [SPTAuth defaultInstance];
     
-    if (auth.session == nil)
-    {
-        NSLog(@"STATEMENT 1 TRUE");
-        [self openLogInPage];
-    }
     if ([auth.session isValid])
     {
-        NSLog(@"STATEMENT 2 TRUE");
+        NSLog(@"STATEMENT 1 TRUE");
+        [super viewDidAppear:animated];
+        [self.locationManager startUpdatingLocation];
+        [self queryForHRPosts];
+        return;
     }
-    if (![auth.session isValid] && auth.hasTokenRefreshService)
-    {
-        NSLog(@"STATEMENT 3 TRUE");
+    if (![auth.session isValid] && auth.hasTokenRefreshService) {
+        NSLog(@"STATEMENT 2 TRUE");
         [self renewTokenAndSegue];
+        [super viewDidAppear:animated];
+        [self.locationManager startUpdatingLocation];
+        [self queryForHRPosts];
+        return;
+    }
+    if (auth.session == nil) {
+        NSLog(@"STATEMENT 3 TRUE");
+        [self openLogInPage];
+        [super viewDidAppear:animated];
+        [self.locationManager startUpdatingLocation];
+        [self queryForHRPosts];
+        return;
     }
     
-    [super viewDidAppear:animated];
-    [self.locationManager startUpdatingLocation];
-    [self queryForHRPosts];
+//    [super viewDidAppear:animated];
+//    [self.locationManager startUpdatingLocation];
+//    [self queryForHRPosts];
 }
 
 #pragma mark - Parse Geopoints
@@ -389,11 +401,12 @@
         if (marker.position.latitude == postGeo.latitude &&
             marker.position.longitude == postGeo.longitude) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"postTable" bundle:nil];
-            //MAKE NAV CONTROLLER HERE
-            HRPPostFeedViewController *postView = [storyboard instantiateViewControllerWithIdentifier:@"postViewController"];
+            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"postViewNavController"];
+            HRPPostFeedViewController *postView = navController.viewControllers.firstObject;
             postView.postsArray = [NSMutableArray new];
             [postView.postsArray addObject:post];
-            [self presentViewController:postView animated:YES completion:nil];
+            [self.navigationController pushViewController:postView animated:YES];
+            //[self presentViewController:postView animated:YES completion:nil];
         }
     }
     return YES;

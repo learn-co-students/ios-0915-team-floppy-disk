@@ -35,11 +35,11 @@
     self.playPauseLabel.text = @"";
     self.songnameLabel.text = @"";
     self.artistNameLabel.text = @"";
+    
+    self.navigationItem.title = self.postsArray[0][@"songTitle"];
 }
 
--(void)initializeEmptyPostArray {
-    //self.postsArray = [NSMutableArray new];
-}
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -243,6 +243,16 @@
     } else if ([self.playPauseLabel.text isEqualToString:@"Paused"]) {
         self.playPauseLabel.text = @"Playing";
     }
+}
+
+- (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
+    
+    if ([self.player isPlaying] == YES) {
+        [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+    }
+    self.player = nil;
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

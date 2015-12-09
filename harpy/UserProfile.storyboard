@@ -65,7 +65,7 @@
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iBy-4X-gNf">
                                                                 <rect key="frame" x="0.0" y="0.0" width="118" height="118"/>
                                                                 <animations/>
-                                                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                                <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="iBy-4X-gNf" secondAttribute="height" multiplier="1:1" id="VLv-Vb-uA6"/>
                                                                     <constraint firstAttribute="height" constant="118" id="Yah-88-gDA"/>
@@ -465,18 +465,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAk-Zi-F0j">
-                                            <rect key="frame" x="16" y="8" width="381" height="27"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkr-FC-Xpk">
+                                            <rect key="frame" x="16" y="8" width="382" height="27"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="DAk-Zi-F0j" firstAttribute="leading" secondItem="QVf-RG-wcE" secondAttribute="leadingMargin" constant="8" id="4Li-5N-igo"/>
-                                        <constraint firstItem="DAk-Zi-F0j" firstAttribute="top" secondItem="QVf-RG-wcE" secondAttribute="topMargin" id="Tvx-MF-5jr"/>
-                                        <constraint firstAttribute="trailing" secondItem="DAk-Zi-F0j" secondAttribute="trailing" constant="17" id="pcF-4w-esl"/>
-                                        <constraint firstItem="DAk-Zi-F0j" firstAttribute="bottom" secondItem="QVf-RG-wcE" secondAttribute="bottomMargin" id="xPQ-vJ-u0h"/>
+                                        <constraint firstItem="Wkr-FC-Xpk" firstAttribute="centerX" secondItem="QVf-RG-wcE" secondAttribute="centerX" id="6XF-W4-0Uy"/>
+                                        <constraint firstItem="Wkr-FC-Xpk" firstAttribute="leading" secondItem="QVf-RG-wcE" secondAttribute="leadingMargin" constant="8" id="Upa-iM-ZID"/>
+                                        <constraint firstItem="Wkr-FC-Xpk" firstAttribute="bottom" secondItem="QVf-RG-wcE" secondAttribute="bottomMargin" id="aD2-BJ-kR5"/>
+                                        <constraint firstItem="Wkr-FC-Xpk" firstAttribute="top" secondItem="QVf-RG-wcE" secondAttribute="topMargin" id="wmK-5g-gQO"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -487,20 +486,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Account Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV7-Oi-n5Q">
-                                            <rect key="frame" x="16" y="8" width="378" height="27"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Account Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qB8-zJ-lLa">
+                                            <rect key="frame" x="18" y="8" width="380" height="27"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="mV7-Oi-n5Q" firstAttribute="leading" secondItem="Cdu-LZ-jbx" secondAttribute="leadingMargin" constant="8" id="Ay2-T6-8Hd"/>
-                                        <constraint firstAttribute="trailing" secondItem="mV7-Oi-n5Q" secondAttribute="trailing" constant="20" id="DMK-Um-gwG"/>
-                                        <constraint firstItem="mV7-Oi-n5Q" firstAttribute="top" secondItem="Cdu-LZ-jbx" secondAttribute="topMargin" id="IIF-IW-mol"/>
-                                        <constraint firstItem="mV7-Oi-n5Q" firstAttribute="bottom" secondItem="Cdu-LZ-jbx" secondAttribute="bottomMargin" id="Uqu-Mw-Gbb"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="qB8-zJ-lLa" secondAttribute="trailing" constant="8" id="4xL-L4-Hqd"/>
+                                        <constraint firstItem="qB8-zJ-lLa" firstAttribute="top" secondItem="Cdu-LZ-jbx" secondAttribute="topMargin" id="su2-jX-KVt"/>
+                                        <constraint firstItem="qB8-zJ-lLa" firstAttribute="bottom" secondItem="Cdu-LZ-jbx" secondAttribute="bottomMargin" id="yyB-Gz-V69"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstItem="qB8-zJ-lLa" firstAttribute="leading" secondItem="3J4-wW-wcm" secondAttribute="leading" constant="18" id="RYP-Lf-CCo"/>
+                                </constraints>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="spacyCell" rowHeight="400" id="25h-M9-2y7">
                                 <rect key="frame" x="0.0" y="193" width="414" height="400"/>
@@ -520,7 +520,6 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPP-VZ-Fc9">
                                             <rect key="frame" x="16" y="8" width="382" height="27"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

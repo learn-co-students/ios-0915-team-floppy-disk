@@ -21,6 +21,7 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.title = @"ACCOUNT INFORMATION";
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.view.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.98 alpha:1];
 }
@@ -104,7 +105,7 @@
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

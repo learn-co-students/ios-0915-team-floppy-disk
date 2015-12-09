@@ -35,9 +35,6 @@
 @end
 
 @implementation HRPMapsViewController
-{
-    GMSMapView *mapView_;
-}
 
 #pragma mark - Lifecycle
 
@@ -65,8 +62,11 @@
     [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.postSongButton setBackgroundColor:[UIColor blackColor]];
     
-    mapView_.settings.scrollGestures = YES;
+    self.mapView.settings.scrollGestures = YES;
     self.mapView.delegate = self;
+    
+// constrain map view - top left right -> view
+    // bottom -> postSongButton.top
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -126,7 +126,7 @@
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
                     marker.position = postCoordinate;
-                    marker.map = mapView_;
+                    marker.map = self.mapView;
                     NSLog(@"marker: %@", marker);
                     
 //                    for (PFObject *post in objects)
@@ -212,13 +212,13 @@
     [self setBounds];
     [self setCamera];
     
-    mapView_.delegate = self;
-    mapView_.indoorEnabled = NO;
+    self.mapView.delegate = self;
+    self.mapView.indoorEnabled = NO;
     
-    [mapView_ setMinZoom:13 maxZoom:mapView_.maxZoom];
+    [self.mapView setMinZoom:13 maxZoom:self.mapView.maxZoom];
     
-    mapView_.myLocationEnabled = YES;
-    mapView_.settings.myLocationButton = YES;
+    self.mapView.myLocationEnabled = YES;
+    self.mapView.settings.myLocationButton = YES;
     
     [self queryForHRPosts];
 }
@@ -262,9 +262,9 @@
     //this controls the map size on the view
     CGFloat h = self.topLayoutGuide.length;
     CGRect rect = CGRectMake(0, h, self.view.bounds.size.width, self.view.bounds.size.height - (self.view.bounds.size.height * 0.08));
-    mapView_ = [GMSMapView mapWithFrame:rect camera:camera];
+    self.mapView = [GMSMapView mapWithFrame:rect camera:camera];
     
-    [self.view insertSubview:mapView_ atIndex:0];
+    [self.view insertSubview:self.mapView atIndex:0];
 }
 
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position
@@ -276,15 +276,15 @@
     else
     {
         self.scrollGestures = NO;
-        [mapView_ animateToLocation:self.currentLocation.coordinate];
+        [self.mapView animateToLocation:self.currentLocation.coordinate];
     }
     if (!self.scrollGestures)
     {
-        mapView_.settings.scrollGestures = NO;
+        self.mapView.settings.scrollGestures = NO;
     }
     else
     {
-        mapView_.settings.scrollGestures = YES;
+        self.mapView.settings.scrollGestures = YES;
     }
 }
 
@@ -342,7 +342,7 @@
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
     marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
-    marker.map = mapView_;
+    marker.map = self.mapView;
     NSLog(@"marker in other method: %@", marker);
     
     CGFloat latitude = marker.position.latitude;
@@ -360,8 +360,8 @@
 
 - (CLLocationCoordinate2D)findCoordinatesAtMapCenter
 {
-    CGPoint point = mapView_.center;
-    return [mapView_.projection coordinateForPoint:point];
+    CGPoint point = self.mapView.center;
+    return [self.mapView.projection coordinateForPoint:point];
 }
 
 - (void)changeButtonBackground

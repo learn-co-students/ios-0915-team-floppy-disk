@@ -203,7 +203,7 @@
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
-    CGFloat coordinateDifference = 0.05;
+    CGFloat coordinateDifference = 0.002;
     
     CGFloat firstLatitude = coordinate.latitude;
     firstLatitude += coordinateDifference;

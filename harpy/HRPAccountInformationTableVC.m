@@ -1,22 +1,21 @@
 //
-//  HRPSettingsTableVC.m
+//  HRPAccountInformationTableVC.m
 //  harpy
 //
-//  Created by Kiara Robles on 12/7/15.
+//  Created by Kiara Robles on 12/8/15.
 //  Copyright © 2015 teamFloppyDisk. All rights reserved.
 //
 
-#import "HRPSettingsTableVC.h"
+#import "HRPAccountInformationTableVC.h"
 #import "HRPParseNetworkService.h"
-#import "Constants.h"
 
-@interface HRPSettingsTableVC ()
+@interface HRPAccountInformationTableVC ()
 
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
 @end
 
-@implementation HRPSettingsTableVC
+@implementation HRPAccountInformationTableVC
 
 - (void)viewDidLoad
 {
@@ -40,7 +39,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,23 +47,31 @@
     UITableViewCell *cell;
     
     if (indexPath.row == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"accountHeaderCell" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"emailHeaderCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (indexPath.row == 1) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"editProfileCell" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"emailCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (indexPath.row == 2) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"updateAccountCell" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"passwordHeaderCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (indexPath.row == 3) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"spacyCell" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"oldPasswordCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (indexPath.row == 4) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"logoutCell" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"newPasswordCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    if (indexPath.row == 5) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"comfirmPasswordCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    if (indexPath.row == 6) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"spacyCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
@@ -76,13 +83,13 @@
     CGFloat totalCellView = self.view.frame.size.height * 0.768;
     CGFloat customTableCellHeight = totalCellView/10;
     
-    if (indexPath.row == 0) // HeaderCell's
+    if (indexPath.row == 0 || indexPath.row == 2) // HeaderCell's
     {
         customTableCellHeight = totalCellView/8;
     }
-    if (indexPath.row == 3) // SpacerCells
+    if (indexPath.row == 6) // SpacerCells
     {
-        customTableCellHeight = totalCellView - (totalCellView/8 + totalCellView/10*3);
+        customTableCellHeight = totalCellView - (totalCellView/8*2 + totalCellView/10*4);
     }
     
     return customTableCellHeight;
@@ -91,15 +98,6 @@
 {
     NSLog(@"cell selected at %ld", indexPath.row);
     
-    if (indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"sendToEditProfile" sender:self];
-    }
-    if (indexPath.row == 2) {
-        [self performSegueWithIdentifier:@"sendToAccountInformation" sender:self];
-    }
-    if (indexPath.row == 4) {
-        [self logoutclicked];
-    }
 }
 
 #pragma mark - Action Methods
@@ -107,15 +105,6 @@
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)logoutclicked
-{
-    NSLog(@"CLICKED: logout button");
-    
-    [self.parseService logout];
-    [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogOutNotificationName object:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

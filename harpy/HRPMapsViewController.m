@@ -9,15 +9,18 @@
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 #import "HRPMapsViewController.h"
+#import "HRPProfileVC.h"
 #import "HRPLocationManager.h"
 #import "HRPTrackSearchViewController.h"
 #import "HRPPost.h"
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 #import "HRPPostFeedViewController.h"
+#import "UINavigationController+StatusBarStyle.h"
 @import GoogleMaps;
 
 @interface HRPMapsViewController () <GMSMapViewDelegate, SPTAuthViewDelegate>
+
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (strong, nonatomic) GMSMarker *defaultMarker;
@@ -29,13 +32,11 @@
 @property (nonatomic, strong) GMSCoordinateBounds *bounds;
 @property (nonatomic, strong) NSArray *parsePosts;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) CLLocation *newestLocation;
 
 @end
 
 @implementation HRPMapsViewController
-{
-    GMSMapView *mapView_;
-}
 
 #pragma mark - Lifecycle
 
@@ -44,6 +45,9 @@
     
     
     self.navCont = self.navigationController;
+    
+    self.navigationItem.leftBarButtonItem.enabled = YES;
+    self.navigationItem.rightBarButtonItem.enabled = YES;
     
     [super viewDidLoad];
     
@@ -62,13 +66,18 @@
     self.readyToPin = NO;
     
     [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.postSongButton setBackgroundColor:[UIColor colorWithRed:0.18 green:0.21 blue:0.31 alpha:1.0]];
+    [self.postSongButton setBackgroundColor:[UIColor blackColor]];
     
-    mapView_.settings.scrollGestures = YES;
+    self.mapView.settings.scrollGestures = YES;
     self.mapView.delegate = self;
     
+<<<<<<< HEAD
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionUpdatedNotification:) name:@"sessionUpdated" object:nil];
 
+=======
+// constrain map view - top left right -> view
+    // bottom -> postSongButton.top
+>>>>>>> master
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -117,7 +126,7 @@
         
         NSLog(@"CURRENT USER GEOPOINT: %@", currentUserGeoPoint);
         PFQuery *query = [PFQuery queryWithClassName:@"HRPPost"];
-        [query whereKey:@"locationGeoPoint" nearGeoPoint:currentUserGeoPoint withinMiles:100.0];
+        [query whereKey:@"locationGeoPoint" nearGeoPoint:currentUserGeoPoint withinMiles:3.5];
         query.limit = 10;
         
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
@@ -157,6 +166,7 @@
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
                     marker.position = postCoordinate;
+<<<<<<< HEAD
                     marker.map = mapView_;
                     
                     for (PFObject *post in objects)
@@ -169,6 +179,22 @@
                             }
                         }];
                     }
+=======
+                    marker.map = self.mapView;
+                    NSLog(@"marker: %@", marker);
+                    
+//                    for (PFObject *post in objects)
+//                    {
+//                        PFRelation *userRelation = [post relationForKey:@"username"];
+//                        PFQuery *userUsername = [userRelation query];
+//                        [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
+//                            for (PFObject *username in user)
+//                            {
+//                                NSLog(@"USERNAME: %@", username[@"username"]);
+//                            }
+//                        }];
+//                    }
+>>>>>>> master
                 }
                 
                 
@@ -204,13 +230,36 @@
     }
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"FOUND YOU: %@", self.locationManager.location);
-    self.currentLocation = self.locationManager.location;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        self.newestLocation = self.locationManager.location;
+        NSLog(@"FOUND YOU THE FIRST TIME: %@", self.locationManager.location);
+        self.currentLocation = self.locationManager.location;
+        [self updateMapWithCurrentLocation];
+    });
 
-    [manager stopUpdatingLocation];
-    [self updateMapWithCurrentLocation];
+    NSTimeInterval locationAge = -[self.newestLocation.timestamp timeIntervalSinceNow];
+    NSLog(@"locationAge %f", locationAge);
+    if (locationAge > 300) // 5 mins in seconds
+    {
+        CLLocation *compareLocation = self.locationManager.location;
+        double distance = [self.newestLocation distanceFromLocation:compareLocation];
+        NSLog(@"DISTANCE: %f", distance);
+        if (distance > 320) // 0.20 miles in meters
+        {
+            self.newestLocation = self.locationManager.location;
+            NSLog(@"FOUND YOU AGAIN @: %@", self.locationManager.location);
+            self.currentLocation = self.locationManager.location;
+            [self updateMapWithCurrentLocation];
+        }
+        else
+        {
+            NSLog(@"YOU DIDNT MOVE ENOUGH");
+            self.newestLocation = self.locationManager.location;
+        }
+    }
 }
 
 - (void)updateMapWithCurrentLocation
@@ -218,13 +267,13 @@
     [self setBounds];
     [self setCamera];
     
-    mapView_.delegate = self;
-    mapView_.indoorEnabled = NO;
+    self.mapView.delegate = self;
+    self.mapView.indoorEnabled = NO;
     
-    [mapView_ setMinZoom:13 maxZoom:mapView_.maxZoom];
+    [self.mapView setMinZoom:13 maxZoom:self.mapView.maxZoom];
     
-    mapView_.myLocationEnabled = YES;
-    mapView_.settings.myLocationButton = YES;
+    self.mapView.myLocationEnabled = YES;
+    self.mapView.settings.myLocationButton = YES;
     
     [self queryForHRPosts];
 }
@@ -233,7 +282,7 @@
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
-    CGFloat coordinateDifference = 0.05;
+    CGFloat coordinateDifference = 0.002;
     
     CGFloat firstLatitude = coordinate.latitude;
     firstLatitude += coordinateDifference;
@@ -268,9 +317,9 @@
     //this controls the map size on the view
     CGFloat h = self.topLayoutGuide.length;
     CGRect rect = CGRectMake(0, h, self.view.bounds.size.width, self.view.bounds.size.height - (self.view.bounds.size.height * 0.08));
-    mapView_ = [GMSMapView mapWithFrame:rect camera:camera];
+    self.mapView = [GMSMapView mapWithFrame:rect camera:camera];
     
-    [self.view insertSubview:mapView_ atIndex:0];
+    [self.view insertSubview:self.mapView atIndex:0];
 }
 
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position
@@ -282,15 +331,15 @@
     else
     {
         self.scrollGestures = NO;
-        [mapView_ animateToLocation:self.currentLocation.coordinate];
+        [self.mapView animateToLocation:self.currentLocation.coordinate];
     }
     if (!self.scrollGestures)
     {
-        mapView_.settings.scrollGestures = NO;
+        self.mapView.settings.scrollGestures = NO;
     }
     else
     {
-        mapView_.settings.scrollGestures = YES;
+        self.mapView.settings.scrollGestures = YES;
     }
 }
 
@@ -312,13 +361,20 @@
 
 - (IBAction)profileButtonTapped:(id)sender
 {
-    [self performSegueWithIdentifier:@"showUserProfile" sender:self];
+    self.navigationItem.leftBarButtonItem.enabled = NO;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"UserProfile" bundle:nil];
+    HRPProfileVC *profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileViewController"];
+    profileView.user = [PFUser currentUser];
+    [self.navigationController pushViewController:profileView animated:YES];
 }
 - (IBAction)postSongButtonTapped:(id)sender
 {
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+        
     NSLog(@"method entered");
     NSLog(@"button text: %@", self.postSongButton.titleLabel.text);
-    
+        
     if (self.defaultMarkerImage.hidden)
     {
         NSLog(@"marker is hidden");
@@ -341,7 +397,11 @@
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
     marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
+<<<<<<< HEAD
     //marker.map = mapView_;
+=======
+    marker.map = self.mapView;
+>>>>>>> master
     NSLog(@"marker in other method: %@", marker);
     
     CGFloat latitude = marker.position.latitude;
@@ -359,8 +419,8 @@
 
 - (CLLocationCoordinate2D)findCoordinatesAtMapCenter
 {
-    CGPoint point = mapView_.center;
-    return [mapView_.projection coordinateForPoint:point];
+    CGPoint point = self.mapView.center;
+    return [self.mapView.projection coordinateForPoint:point];
 }
 
 - (void)changeButtonBackground

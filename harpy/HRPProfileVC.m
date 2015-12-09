@@ -8,6 +8,7 @@
 
 #import "HRPProfileVC.h"
 #import "HRPParseNetworkService.h"
+#import "HRPEditProfileTableVC.h"
 #import "HRPUser.h"
 #import "PFFile.h"
 #import <QuartzCore/QuartzCore.h> // Needed to round UIImage
@@ -15,6 +16,8 @@
 
 @interface HRPProfileVC () <UITableViewDelegate, UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *followOrEditButton;
 @property (weak, nonatomic) IBOutlet UILabel *postCount;
 @property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fansCountLabel;
@@ -23,11 +26,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *mapviewButton;
 @property (weak, nonatomic) IBOutlet UIButton *listViewButton;
 @property (weak, nonatomic) IBOutlet UITableView *postsTableview;
-@property (weak, nonatomic) IBOutlet UICollectionView *postsCollectionview;
 @property (nonatomic, strong) NSArray *userPosts;
+@property (weak, nonatomic) IBOutlet UIStackView *stackViewButtons;
 
 @property (nonatomic) PFUser *currentUser;
-@property (nonatomic) PFObject *currentUserObject;
+@property (nonatomic) BOOL isCurrentUser;
+@property (nonatomic) PFObject *userObject;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
 @end
@@ -41,20 +45,27 @@
     [super viewDidLoad];
     [self setupUserProfile];
     [self retrieveUser];
+    [self setupFollowersAndFans];
     
     self.postsTableview.delegate = self;
     self.postsTableview.dataSource = self;
     self.postsTableview.delegate = self;
     
     self.parseService = [HRPParseNetworkService sharedService];
-    self.currentUser = [PFUser currentUser];
+    
+    if (self.user != [PFUser currentUser])
+    {
+        self.navigationItem.rightBarButtonItem = nil;
+        [self.followOrEditButton setTitle:@"Follow" forState:UIControlStateNormal];
+    }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.stackViewButtons.clipsToBounds = NO;
+//    self.stackViewButtons.layer.shadowOffset = CGSizeMake(-15, 20);
+//    self.stackViewButtons.layer.shadowRadius = 5;
+//    self.stackViewButtons.layer.shadowOpacity = 0.5;
+//    [self.view bringSubviewToFront:self.stackViewButtons];
     [self retrieveHRPosts];
-}
-- (void)viewWillAppear:(BOOL)animated
-{
-
 }
 - (void)didReceiveMemoryWarning
 {
@@ -63,6 +74,11 @@
 
 #pragma mark - Profile Setup
 
+- (void)setupFollowersAndFans
+{
+    PFRelation *followingCount = self.user[@"following"];
+    NSLog(@"FOLLOWERS: %@", followingCount);
+}
 - (void)setupUserProfile
 {
     self.userAvatar.clipsToBounds = YES;
@@ -87,24 +103,46 @@
     
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
-    PFUser *currentUser = [PFUser currentUser];
-    NSString *usernameString = currentUser.username;
+    NSString *usernameString = self.user.username;
     usernameString = [usernameString uppercaseString];
     self.navigationItem.title = usernameString;
     
-    NSString *realName = currentUser[@"realName"];
+    NSString *realName = self.user[@"realName"];
     self.realName.text = realName;
     
-    NSString *shortBio = currentUser[@"shortBio"];
+    NSString *shortBio = self.user[@"shortBio"];
     self.shortBio.text = shortBio;
 }
-- (void)setupPostsTableview
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)changeScrollBarColorFor:(UIScrollView *)scrollView
 {
-    
+    for ( UIView *view in scrollView.subviews ) {
+        
+        if (view.tag == 0 && [view isKindOfClass:UIImageView.class])
+        {
+            UIImageView *imageView = (UIImageView *)view;
+            imageView.backgroundColor = [UIColor darkGrayColor];
+        }
+    }
 }
-- (void)setupPostsCollectionview
-{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
+    NSLog(@"scrollViewDidScroll");
+    
+    float shadowOffset = (scrollView.contentOffset.y/1);
+    
+    // Make sure that the offset doesn't exceed 3 or drop below 0.5
+    shadowOffset = MIN(MAX(shadowOffset, 0), 1);
+    
+    //Ensure that the shadow radius is between 1 and 3
+    float shadowRadius = MIN(MAX(shadowOffset, 0), 1);
+    
+    self.stackViewButtons.layer.shadowOffset = CGSizeMake(100, shadowOffset);
+    self.stackViewButtons.layer.shadowRadius = shadowRadius;
+    self.stackViewButtons.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.stackViewButtons.layer.shadowOpacity = 0.20;
 }
 
 #pragma mark - Parse Queries
@@ -112,12 +150,12 @@
 - (void)retrieveUser
 {
     PFQuery *userQuery = [PFUser query];
-    [userQuery whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
+    [userQuery whereKey:@"objectId" equalTo:self.user.objectId];
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
             NSLog(@"USER: %@", objects);
-            self.currentUserObject = [objects objectAtIndex:0];
+            self.userObject = [objects objectAtIndex:0];
             [self retrieveUserAvatar];
         }
         else
@@ -128,7 +166,7 @@
 }
 - (void)retrieveUserAvatar
 {
-    PFFile *file = [self.currentUserObject objectForKey:@"userAvatar"];
+    PFFile *file = [self.userObject objectForKey:@"userAvatar"];
     NSLog(@"FILE: %@", file);
     
     [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
@@ -143,7 +181,7 @@
 }
 - (void)retrieveHRPosts
 {
-    PFRelation *userPosts = [[PFUser currentUser] relationForKey:@"HRPPosts"];
+    PFRelation *userPosts = [self.user relationForKey:@"HRPPosts"];
     PFQuery *query = [userPosts query];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error)
@@ -158,21 +196,7 @@
         }
     }];
 }
-//- (UIImage *)retrieveParsePhoto:(PFFile *)photoOrAlbumArt
-//{
-//    NSLog(@"FILE: %@", photoOrAlbumArt);
-//    
-//    [photoOrAlbumArt getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
-//     {
-//         if (!error)
-//         {
-//             UIImage *image = [UIImage imageWithData:data];
-//             NSLog(@"IMAGE: %@", image);
-//         }
-//     }];
-//    
-//    return image;
-//}
+
 
 #pragma mark - Helper methods
 
@@ -225,10 +249,6 @@
 {
     return self.userPosts.count;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 75.0;
-}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self.postsTableview dequeueReusableCellWithIdentifier:@"postsCell" forIndexPath:indexPath];
@@ -272,9 +292,18 @@
     return cell;
 }
 
+#pragma mark - Overrides
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"cell selected at %ld", indexPath.row);
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat customTableCellHeight = self.postsTableview.frame.size.height/3;
+    
+    return customTableCellHeight;
 }
 
 #pragma mark - Naviagation
@@ -294,6 +323,47 @@
 - (IBAction)mapmenuClicked:(id)sender
 {
     NSLog(@"Map menu clicked");
+}
+- (IBAction)followOrEditButtonClicked:(id)sender
+{
+    if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])
+    {
+        PFUser *currentUser = [PFUser currentUser];
+        PFRelation *followingRelation = [currentUser relationForKey:@"following"];
+//        PFObject *object = [PFObject objectWithClassName:@"User"];
+//        object[@"objectId"] = self.user.objectId;
+        [followingRelation addObject:self.user];
+        
+        PFRelation *fanRelation = [self.user relationForKey:@"fans"];
+        [fanRelation addObject: currentUser];
+        
+
+        [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (error != nil)
+            {
+                NSLog(@"followers saved!!!!!!!!!");
+                [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (error != nil)
+                    {
+                        NSLog(@"followers saved!!!!!!!!!");
+                    }
+                    else
+                    {
+                        NSLog(@"followers saved!!!!!!!!!");
+                    }
+                }];
+            }
+            else
+            {
+                NSLog(@"followers saved!!!!!!!!!");
+            }
+        }];
+    }
+    else if ([self.followOrEditButton.titleLabel.text isEqual: @"Edit Profile"])
+    {
+        HRPEditProfileTableVC *editProfileView = [[HRPEditProfileTableVC alloc] init];
+        [self presentViewController:editProfileView animated:YES completion:nil];
+    }
 }
 
 @end

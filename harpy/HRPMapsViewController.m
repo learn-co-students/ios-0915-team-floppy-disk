@@ -85,7 +85,7 @@
         
         NSLog(@"CURRENT USER GEOPOINT: %@", currentUserGeoPoint);
         PFQuery *query = [PFQuery queryWithClassName:@"HRPPost"];
-        [query whereKey:@"locationGeoPoint" nearGeoPoint:currentUserGeoPoint withinMiles:100.0];
+        [query whereKey:@"locationGeoPoint" nearGeoPoint:currentUserGeoPoint withinMiles:3.5];
         query.limit = 10;
         
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
@@ -174,13 +174,29 @@
     }
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"FOUND YOU: %@", self.locationManager.location);
-    self.currentLocation = self.locationManager.location;
-
-    [manager stopUpdatingLocation];
-    [self updateMapWithCurrentLocation];
+    CLLocation *newLocation = locations.lastObject;
+    
+    NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
+    if (locationAge > 5.0) return;
+    
+    if (newLocation.horizontalAccuracy < 0) return;
+    
+    NSLog(@"Location updated to = %@", newLocation);
+    CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:_currentLocation.coordinate.latitude longitude:_currentLocation.coordinate.longitude];
+    CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
+    double distance = [loc1 distanceFromLocation:loc2];
+    _currentLocation = newLocation;
+    
+    if(distance > 20)
+    {
+        NSLog(@"FOUND YOU IN A NEW SPOT: %@", self.locationManager.location);
+        self.currentLocation = self.locationManager.location;
+        
+        [manager stopUpdatingLocation];
+        [self updateMapWithCurrentLocation];
+    }
 }
 
 - (void)updateMapWithCurrentLocation

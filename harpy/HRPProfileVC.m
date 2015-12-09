@@ -329,15 +329,29 @@
     if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])
     {
         PFUser *currentUser = [PFUser currentUser];
-        PFRelation *relation = [currentUser relationForKey:@"following"];
-        PFObject *object = [PFObject objectWithClassName:@"User"];
-        object[@"objectId"] = self.user.objectId;
-        [relation addObject:object];
+        PFRelation *followingRelation = [currentUser relationForKey:@"following"];
+//        PFObject *object = [PFObject objectWithClassName:@"User"];
+//        object[@"objectId"] = self.user.objectId;
+        [followingRelation addObject:self.user];
+        
+        PFRelation *fanRelation = [self.user relationForKey:@"fans"];
+        [fanRelation addObject: currentUser];
+        
 
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil)
             {
                 NSLog(@"followers saved!!!!!!!!!");
+                [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (error != nil)
+                    {
+                        NSLog(@"followers saved!!!!!!!!!");
+                    }
+                    else
+                    {
+                        NSLog(@"followers saved!!!!!!!!!");
+                    }
+                }];
             }
             else
             {

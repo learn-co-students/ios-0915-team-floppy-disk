@@ -46,13 +46,14 @@
 		E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */; };
 		E9F4DE2D1C162B77004396FC /* HRPEditProfileTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F4DE2C1C162B77004396FC /* HRPEditProfileTableVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9F4DE301C163745004396FC /* HRPSettingsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F4DE2F1C163745004396FC /* HRPSettingsTableVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9F69D4C1C17CE1700E9C784 /* HRPAccountInformationTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F69D4B1C17CE1700E9C784 /* HRPAccountInformationTableVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9F69D4F1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F69D4E1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m */; settings = {ASSET_TAGS = (); }; };
 		E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */; };
 		E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */; };
 		E9FA64D41C039E43008DDE69 /* HRPManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */; };
 		E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */; };
 		E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */; };
 		E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */; };
-		E9FA64E51C04BC63008DDE69 /* HRPChangePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */; };
 		E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA651D1C056C55008DDE69 /* HRPUserSearchVC.m */; };
 		E9FA65461C0901BB008DDE69 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9FA65451C0901BB008DDE69 /* loading.gif */; };
 /* End PBXBuildFile section */
@@ -137,6 +138,10 @@
 		E9F4DE2C1C162B77004396FC /* HRPEditProfileTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPEditProfileTableVC.m; sourceTree = "<group>"; };
 		E9F4DE2E1C163745004396FC /* HRPSettingsTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSettingsTableVC.h; sourceTree = "<group>"; };
 		E9F4DE2F1C163745004396FC /* HRPSettingsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSettingsTableVC.m; sourceTree = "<group>"; };
+		E9F69D4A1C17CE1700E9C784 /* HRPAccountInformationTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPAccountInformationTableVC.h; sourceTree = "<group>"; };
+		E9F69D4B1C17CE1700E9C784 /* HRPAccountInformationTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPAccountInformationTableVC.m; sourceTree = "<group>"; };
+		E9F69D4D1C17F81100E9C784 /* UINavigationController+StatusBarStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+StatusBarStyle.h"; sourceTree = "<group>"; };
+		E9F69D4E1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StatusBarStyle.m"; sourceTree = "<group>"; };
 		E9F8CE791BFE622F00979181 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PresentViewController.h"; sourceTree = "<group>"; };
@@ -147,8 +152,6 @@
 		E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrackViews.storyboard; sourceTree = "<group>"; };
 		E9FA64D91C03BD90008DDE69 /* HRPProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPProfileVC.h; sourceTree = "<group>"; };
 		E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPProfileVC.m; sourceTree = "<group>"; };
-		E9FA64E31C04BC63008DDE69 /* HRPChangePasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPChangePasswordVC.h; sourceTree = "<group>"; };
-		E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPChangePasswordVC.m; sourceTree = "<group>"; };
 		E9FA651C1C056C55008DDE69 /* HRPUserSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPUserSearchVC.h; sourceTree = "<group>"; };
 		E9FA651D1C056C55008DDE69 /* HRPUserSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPUserSearchVC.m; sourceTree = "<group>"; };
 		E9FA65451C0901BB008DDE69 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 		E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E9F69D4D1C17F81100E9C784 /* UINavigationController+StatusBarStyle.h */,
+				E9F69D4E1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m */,
 				E9E211131BFD3E2500739143 /* Keys.plist */,
 				E9335C6B1BFA7EBC002DD9C6 /* Info.plist */,
 				E9FA65451C0901BB008DDE69 /* loading.gif */,
@@ -333,12 +338,12 @@
 				E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */,
 				E9FA64D91C03BD90008DDE69 /* HRPProfileVC.h */,
 				E9FA64DA1C03BD90008DDE69 /* HRPProfileVC.m */,
-				E9F4DE2B1C162B77004396FC /* HRPEditProfileTableVC.h */,
-				E9F4DE2C1C162B77004396FC /* HRPEditProfileTableVC.m */,
 				E9F4DE2E1C163745004396FC /* HRPSettingsTableVC.h */,
 				E9F4DE2F1C163745004396FC /* HRPSettingsTableVC.m */,
-				E9FA64E31C04BC63008DDE69 /* HRPChangePasswordVC.h */,
-				E9FA64E41C04BC63008DDE69 /* HRPChangePasswordVC.m */,
+				E9F4DE2B1C162B77004396FC /* HRPEditProfileTableVC.h */,
+				E9F4DE2C1C162B77004396FC /* HRPEditProfileTableVC.m */,
+				E9F69D4A1C17CE1700E9C784 /* HRPAccountInformationTableVC.h */,
+				E9F69D4B1C17CE1700E9C784 /* HRPAccountInformationTableVC.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */,
 				3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */,
 				E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */,
+				E9F69D4F1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m in Sources */,
 				E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */,
 				E9F4DE301C163745004396FC /* HRPSettingsTableVC.m in Sources */,
 				E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */,
@@ -530,11 +536,11 @@
 				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
 				3B0EFCD01C11F0BC0086545B /* HRPPostFeedViewController.m in Sources */,
 				E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */,
+				E9F69D4C1C17CE1700E9C784 /* HRPAccountInformationTableVC.m in Sources */,
 				3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */,
 				E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */,
 				E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */,
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
-				E9FA64E51C04BC63008DDE69 /* HRPChangePasswordVC.m in Sources */,
 				E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */,
 				3BAC251C1BFF87EF004C6790 /* HRPTempTableViewController.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,

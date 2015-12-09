@@ -10,15 +10,13 @@
 #import "HRPParseNetworkService.h"
 #import "Constants.h"
 
-@interface HRPEditProfileTableVC () <UIImagePickerControllerDelegate>
+@interface HRPEditProfileTableVC () <UIImagePickerControllerDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 @property (weak, nonatomic) UIImage *userImage;
 @property (weak, nonatomic) UIImageView *userAvatar;
 @property (weak, nonatomic) UITextField *realNameTextField;
 @property (weak, nonatomic) UITextField *shortBioTextField;
-
-@property (weak, nonatomic) UIButton *photoButton;
 @property (nonatomic) PFFile *ownedImageFile;
 @property (nonatomic) PFUser *currentUser;
 
@@ -29,11 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.currentUser = [PFUser currentUser];
+    
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.view.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.98 alpha:1];
-    [self.photoButton setBackgroundImage:nil forState:UIControlStateNormal];
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.tableView addGestureRecognizer:gestureRecognizer];
 }
@@ -52,7 +49,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,14 +66,19 @@
         
         PFUser *currentUser = [PFUser currentUser];
         
-        self.photoButton = (UIButton *)[cell viewWithTag:2];
         UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+        self.userAvatar = (UIImageView *)[cell viewWithTag:1];
         PFFile *imageFile = [currentUser objectForKey:@"userAvatar"];
         if (imageFile)
         {
-            self.userAvatar = (UIImageView *)[cell viewWithTag:1];
+            self.userAvatar.userInteractionEnabled = YES;
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
+            tapGesture.numberOfTapsRequired = 1;
+            tapGesture.delegate = self;
+            [self.userAvatar addGestureRecognizer:tapGesture];
+            
             self.userAvatar.image = [UIImage imageNamed:@"periwinkleImage.png"];
-            self.userAvatar.layer.cornerRadius =  47;
+            self.userAvatar.layer.cornerRadius =  self.userAvatar.frame.size.height/2;
             [self.userAvatar.layer setBorderColor: [ironColor CGColor]];
             [self.userAvatar.layer setBorderWidth: 1.0];
             self.userAvatar.layer.masksToBounds = YES;
@@ -117,6 +119,11 @@
         self.shortBioTextField.keyboardAppearance = UIKeyboardAppearanceDark;
         self.shortBioTextField.borderStyle = NO;
     }
+    if (indexPath.row == 4)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"spacyCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     
     return cell;
 }
@@ -125,23 +132,20 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat customTableCellHeight = 0.0;
+    CGFloat totalCellView = self.view.frame.size.height * 0.768;
+    CGFloat customTableCellHeight = totalCellView/10;
     
     if (indexPath.row == 0)
     {
-        customTableCellHeight = self.view.frame.size.height/13;
+        customTableCellHeight = totalCellView/8;
     }
     if (indexPath.row == 1)
     {
-        customTableCellHeight = self.view.frame.size.height/5;
+        customTableCellHeight = totalCellView/4;
     }
-    if (indexPath.row == 2)
+    if (indexPath.row == 4)
     {
-        customTableCellHeight = self.view.frame.size.height/13;
-    }
-    if (indexPath.row == 3)
-    {
-        customTableCellHeight = self.view.frame.size.height/13;
+        customTableCellHeight = totalCellView - (totalCellView/8 + totalCellView/4 + totalCellView/10*2);
     }
     
     return customTableCellHeight;
@@ -172,18 +176,6 @@
 
 #pragma mark - UIImagePicker Delegate Methods
 
-- (void)setImage:(UIImage *)image withCompletion:(void(^)())completion
-{
-    NSData *data = UIImagePNGRepresentation(image);
-    self.ownedImageFile = [PFFile fileWithName:@"image.png" data:data];
-    [self.ownedImageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            self.currentUser[@"userAvatar"] = self.ownedImageFile;
-            NSLog(@"PARSE: uploaded userAvatar");
-        }
-        completion();
-    }];
-}
 - (void)onSelectProfileImageButtonTapped
 {
     UIImagePickerController *pickerController = [UIImagePickerController new];
@@ -209,20 +201,16 @@
 }
 - (IBAction)saveButtonPressed:(id)sender
 {
-    PFFile *oldImageFile = [self.currentUser objectForKey:@"userAvatar"];
-    
-    if (self.ownedImageFile != oldImageFile)
+    if (self.ownedImageFile)
     {
-        NSData *selectedImage = UIImageJPEGRepresentation(self.userImage, 1);
-        PFFile *imageFile = [PFFile fileWithName:@"image" data:selectedImage];
-        [self.currentUser setObject:imageFile forKey:@"userAvatar"];
+        [self.currentUser setObject:self.ownedImageFile forKey:@"userAvatar"];
     }
-    if (self.realNameTextField != nil)
+    if (![self.realNameTextField.text isEqual:@""])
     {
         NSString *newName = self.realNameTextField.text;
         self.currentUser[@"realName"] = newName;
     }
-    if (self.shortBioTextField != nil)
+    if (![self.shortBioTextField.text isEqual: @""])
     {
         NSString *newBio = self.shortBioTextField.text;
         self.currentUser[@"shortBio"] = newBio;
@@ -231,9 +219,15 @@
     [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
-            NSLog(@"save user with new image success!");
+            [self dismissViewControllerAnimated:YES completion:^{
+                NSLog(@"save user with new image success!");
+            }];
         }
     }];
+}
+- (void) tapGesture: (id)sender
+{
+    [self onSelectProfileImageButtonTapped];
 }
 
 

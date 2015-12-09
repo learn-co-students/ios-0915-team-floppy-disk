@@ -4,6 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SF-UI-Display-Heavy.otf">
@@ -178,32 +179,32 @@
                                 <rect key="frame" x="0.0" y="32" width="414" height="706"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7cS-Sl-gkU">
-                                        <rect key="frame" x="81" y="0.0" width="252" height="93"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="de9-Sz-5Nf">
-                                                <rect key="frame" x="0.0" y="0.0" width="252" height="93"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HARPY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHg-Fi-TRl">
-                                                        <rect key="frame" x="64" y="0.0" width="124" height="31"/>
+                                                        <rect key="frame" x="145" y="0.0" width="124" height="31"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Heavy" family="SF UI Display" pointSize="36"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="SfO-MN-eqH">
-                                                        <rect key="frame" x="0.0" y="43" width="252" height="50"/>
+                                                        <rect key="frame" x="48" y="43" width="318" height="50"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FIND LOCALLY CURATED MUSIC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkI-Kd-mFn">
-                                                                <rect key="frame" x="0.0" y="0.0" width="252" height="17"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIND LOCALLY CURATED MUSIC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkI-Kd-mFn">
+                                                                <rect key="frame" x="0.0" y="0.0" width="318" height="17"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="740" misplaced="YES" distribution="equalCentering" spacing="148" translatesAutoresizingMaskIntoConstraints="NO" id="kXI-9l-AAL" userLabel="Button Stack">
-                                                                <rect key="frame" x="0.0" y="21" width="252" height="29"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="740" distribution="equalCentering" spacing="148" translatesAutoresizingMaskIntoConstraints="NO" id="kXI-9l-AAL" userLabel="Button Stack">
+                                                                <rect key="frame" x="0.0" y="21" width="318" height="29"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsT-od-f2C">
+                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsT-od-f2C">
                                                                         <rect key="frame" x="0.0" y="0.0" width="53" height="29"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
@@ -214,8 +215,8 @@
                                                                             <action selector="signUp:" destination="oby-cU-EOK" eventType="touchUpInside" id="bud-9J-91O"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8R-Bx-o13">
-                                                                        <rect key="frame" x="208" y="0.0" width="44" height="29"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8R-Bx-o13">
+                                                                        <rect key="frame" x="274" y="0.0" width="44" height="29"/>
                                                                         <animations/>
                                                                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                                         <state key="normal" title="LOG IN">
@@ -235,14 +236,14 @@
                                                 <animations/>
                                             </stackView>
                                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t7c-rx-Yb8">
-                                                <rect key="frame" x="0.0" y="93" width="252" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="93" width="414" height="0.0"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstItem="SfO-MN-eqH" firstAttribute="width" secondItem="t7c-rx-Yb8" secondAttribute="width" id="4Yk-d8-S98"/>
+                                            <constraint firstItem="SfO-MN-eqH" firstAttribute="width" secondItem="t7c-rx-Yb8" secondAttribute="width" multiplier="0.77" id="4Yk-d8-S98"/>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EHt-Oq-Y8C">
@@ -270,6 +271,7 @@
                             <constraint firstAttribute="trailing" secondItem="I4c-WC-CZP" secondAttribute="trailing" id="MF5-7s-HJx"/>
                             <constraint firstItem="I4c-WC-CZP" firstAttribute="bottom" secondItem="kGa-Yp-Ouc" secondAttribute="top" id="RKs-Sc-DCI"/>
                             <constraint firstItem="I4c-WC-CZP" firstAttribute="top" secondItem="21C-I4-vPG" secondAttribute="top" id="aL2-hL-tVZ"/>
+                            <constraint firstItem="de9-Sz-5Nf" firstAttribute="width" secondItem="21C-I4-vPG" secondAttribute="width" id="flH-zk-v1P"/>
                             <constraint firstItem="I4c-WC-CZP" firstAttribute="centerX" secondItem="Pqv-M1-Q2r" secondAttribute="centerX" id="kdM-7A-uaC"/>
                         </constraints>
                     </view>

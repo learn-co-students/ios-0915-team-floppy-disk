@@ -58,7 +58,7 @@
     self.readyToPin = NO;
     
     [self.postSongButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.postSongButton setBackgroundColor:[UIColor colorWithRed:0.18 green:0.21 blue:0.31 alpha:1.0]];
+    [self.postSongButton setBackgroundColor:[UIColor blackColor]];
     
     mapView_.settings.scrollGestures = YES;
     self.mapView.delegate = self;

@@ -90,7 +90,7 @@
         
         
         auth.session = session;
-        auth.sessionUserDefaultsKey = nil;
+        //auth.sessionUserDefaultsKey = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"sessionUpdated" object:self];
         
     };

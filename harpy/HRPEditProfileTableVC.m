@@ -132,27 +132,20 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat customTableCellHeight = 0.0;
+    CGFloat totalCellView = self.view.frame.size.height * 0.768;
+    CGFloat customTableCellHeight = totalCellView/10;
     
     if (indexPath.row == 0)
     {
-        customTableCellHeight = self.view.frame.size.height/13;
+        customTableCellHeight = totalCellView/8;
     }
     if (indexPath.row == 1)
     {
-        customTableCellHeight = self.view.frame.size.height/5;
-    }
-    if (indexPath.row == 2)
-    {
-        customTableCellHeight = self.view.frame.size.height/13;
-    }
-    if (indexPath.row == 3)
-    {
-        customTableCellHeight = self.view.frame.size.height/13;
+        customTableCellHeight = totalCellView/4;
     }
     if (indexPath.row == 4)
     {
-        customTableCellHeight = self.view.frame.size.height/2.8;
+        customTableCellHeight = totalCellView - (totalCellView/8 + totalCellView/4 + totalCellView/10*2);
     }
     
     return customTableCellHeight;

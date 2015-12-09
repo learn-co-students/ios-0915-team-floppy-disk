@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *shortBio;
 @property (weak, nonatomic) IBOutlet UITableView *postsTableview;
 @property (nonatomic, strong) NSArray *userPosts;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic) PFUser *currentUser;
 @property (nonatomic) BOOL isCurrentUser;
@@ -159,26 +160,48 @@
 }
 - (void)retrieveUserAvatar
 {
-    PFFile *file = [self.userObject objectForKey:@"userAvatar"];
-    NSLog(@"FILE: %@", file);
-    
-    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
-     {
-         if (!error)
-         {
-             self.userAvatar.image = [UIImage imageWithData:data];
-             UIImage *image = [UIImage imageWithData:data];
-             NSLog(@"IMAGE: %@", image);
-         }
-     }];
+    UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    PFFile *imageFile = [self.user objectForKey:@"userAvatar"];
+    if (imageFile)
+    {
+        [self.userAvatar.layer setBorderColor: [ironColor CGColor]];
+        [self.userAvatar.layer setBorderWidth: 1.0];
+        self.userAvatar.layer.masksToBounds = YES;
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error)
+            {
+                self.userAvatar.image = [UIImage imageWithData:data];
+                self.userAvatar.highlightedImage = [UIImage imageWithData:data];
+            }
+            else
+            {
+                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
 }
 - (void)retrieveHRPosts
 {
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    self.navigationItem.titleView = self.activityIndicator;
+    [self.activityIndicator startAnimating];
     PFRelation *userPosts = [self.user relationForKey:@"HRPPosts"];
     PFQuery *query = [userPosts query];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error)
         {
+            [self.activityIndicator stopAnimating];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont boldSystemFontOfSize:18];
+            NSString *usernameString = self.user.username;
+            usernameString = [usernameString uppercaseString];
+            label.text = usernameString;
+            label.textAlignment = NSTextAlignmentCenter;
+            self.navigationItem.titleView = label;
+            
             self.userPosts = objects;
             [self.postsTableview reloadData];
             NSLog(@"PARSE POSTS: %@", self.userPosts);

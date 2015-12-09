@@ -32,7 +32,6 @@
                                                                  [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
                                                              NSForegroundColorAttributeName:[UIColor whiteColor]
                                                              }];
-
     [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]].translucent = YES;
     [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]].tintColor = [UIColor whiteColor];
     

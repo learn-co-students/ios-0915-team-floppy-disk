@@ -43,6 +43,9 @@
 {
     self.navCont = self.navigationController;
     
+    self.navigationItem.leftBarButtonItem.enabled = YES;
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    
     [super viewDidLoad];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
@@ -278,6 +281,8 @@
 
 - (IBAction)profileButtonTapped:(id)sender
 {
+    self.navigationItem.leftBarButtonItem.enabled = NO;
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"UserProfile" bundle:nil];
     HRPProfileVC *profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileViewController"];
     profileView.user = [PFUser currentUser];
@@ -285,6 +290,8 @@
 }
 - (IBAction)postSongButtonTapped:(id)sender
 {
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
     NSLog(@"method entered");
     NSLog(@"button text: %@", self.postSongButton.titleLabel.text);
     

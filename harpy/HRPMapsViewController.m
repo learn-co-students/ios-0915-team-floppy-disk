@@ -71,13 +71,8 @@
     self.mapView.settings.scrollGestures = YES;
     self.mapView.delegate = self;
     
-<<<<<<< HEAD
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionUpdatedNotification:) name:@"sessionUpdated" object:nil];
 
-=======
-// constrain map view - top left right -> view
-    // bottom -> postSongButton.top
->>>>>>> master
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -166,8 +161,7 @@
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
                     marker.position = postCoordinate;
-<<<<<<< HEAD
-                    marker.map = mapView_;
+                    marker.map = _mapView;
                     
                     for (PFObject *post in objects)
                     {
@@ -179,22 +173,8 @@
                             }
                         }];
                     }
-=======
-                    marker.map = self.mapView;
-                    NSLog(@"marker: %@", marker);
-                    
-//                    for (PFObject *post in objects)
-//                    {
-//                        PFRelation *userRelation = [post relationForKey:@"username"];
-//                        PFQuery *userUsername = [userRelation query];
-//                        [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
-//                            for (PFObject *username in user)
-//                            {
-//                                NSLog(@"USERNAME: %@", username[@"username"]);
-//                            }
-//                        }];
-//                    }
->>>>>>> master
+//FROM MERGE CONFLICT                    //marker.map = self.mapView;
+
                 }
                 
                 
@@ -397,11 +377,8 @@
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
     marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
-<<<<<<< HEAD
     //marker.map = mapView_;
-=======
     marker.map = self.mapView;
->>>>>>> master
     NSLog(@"marker in other method: %@", marker);
     
     CGFloat latitude = marker.position.latitude;

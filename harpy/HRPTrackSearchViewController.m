@@ -47,6 +47,14 @@
     self.playStatusLabel.text = @"";
     self.playerSongLabel.text = @"";
     self.playerArtistLabel.text = @"";
+    
+    self.navigationItem.hidesBackButton = YES;  // We do a custom image for the back button on the post preview VC
+    
+//    self.navigationController.navigationBar.backIndicatorImage = [UIImage new];
+//    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage new];
+//    
+//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left_Arrow"] style:UIBarButtonItemStylePlain target:nil action:nil];
+//    [self.navigationItem.backBarButtonItem setBackButtonTitlePositionAdjustment:UIOffsetMake(-60, 0) forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void) viewWillAppear:(BOOL)animated {

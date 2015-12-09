@@ -217,7 +217,6 @@
 }
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"searchBarCancelButtonClicked called");
     [searchBar resignFirstResponder];
     
 }

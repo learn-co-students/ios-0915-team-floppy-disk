@@ -30,6 +30,7 @@
 @property (nonatomic, strong) GMSCoordinateBounds *bounds;
 @property (nonatomic, strong) NSArray *parsePosts;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) CLLocation *newestLocation;
 
 @end
 
@@ -176,26 +177,33 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    CLLocation *newLocation = locations.lastObject;
-    
-    NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
-    if (locationAge > 5.0) return;
-    
-    if (newLocation.horizontalAccuracy < 0) return;
-    
-    NSLog(@"Location updated to = %@", newLocation);
-    CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:_currentLocation.coordinate.latitude longitude:_currentLocation.coordinate.longitude];
-    CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    double distance = [loc1 distanceFromLocation:loc2];
-    _currentLocation = newLocation;
-    
-    if(distance > 20)
-    {
-        NSLog(@"FOUND YOU IN A NEW SPOT: %@", self.locationManager.location);
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        self.newestLocation = self.locationManager.location;
+        NSLog(@"FOUND YOU THE FIRST TIME: %@", self.locationManager.location);
         self.currentLocation = self.locationManager.location;
-        
-        [manager stopUpdatingLocation];
         [self updateMapWithCurrentLocation];
+    });
+
+    NSTimeInterval locationAge = -[self.newestLocation.timestamp timeIntervalSinceNow];
+    NSLog(@"locationAge %f", locationAge);
+    if (locationAge > 300) // 5 mins in seconds
+    {
+        CLLocation *compareLocation = self.locationManager.location;
+        double distance = [self.newestLocation distanceFromLocation:compareLocation];
+        NSLog(@"DISTANCE: %f", distance);
+        if (distance > 320) // 0.20 miles in meters
+        {
+            self.newestLocation = self.locationManager.location;
+            NSLog(@"FOUND YOU AGAIN @: %@", self.locationManager.location);
+            self.currentLocation = self.locationManager.location;
+            [self updateMapWithCurrentLocation];
+        }
+        else
+        {
+            NSLog(@"YOU DIDNT MOVE ENOUGH");
+            self.newestLocation = self.locationManager.location;
+        }
     }
 }
 

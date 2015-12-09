@@ -82,7 +82,7 @@
     
     if (auth.session == nil) {
         NSLog(@"STATEMENT 3 TRUE");
-        [self openLogInPage];
+//        [self openLogInPage];
         [super viewDidAppear:animated];
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
@@ -161,20 +161,7 @@
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
                     marker.position = postCoordinate;
-                    marker.map = _mapView;
-                    
-                    for (PFObject *post in objects)
-                    {
-                        PFRelation *userRelation = [post relationForKey:@"username"];
-                        PFQuery *userUsername = [userRelation query];
-                        [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
-                            for (PFObject *username in user)
-                            {
-                            }
-                        }];
-                    }
-//FROM MERGE CONFLICT                    //marker.map = self.mapView;
-
+                    marker.map = self.mapView;
                 }
                 
                 
@@ -341,8 +328,6 @@
 
 - (IBAction)profileButtonTapped:(id)sender
 {
-    self.navigationItem.leftBarButtonItem.enabled = NO;
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"UserProfile" bundle:nil];
     HRPProfileVC *profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileViewController"];
     profileView.user = [PFUser currentUser];
@@ -350,8 +335,6 @@
 }
 - (IBAction)postSongButtonTapped:(id)sender
 {
-    self.navigationItem.rightBarButtonItem.enabled = NO;
-        
     NSLog(@"method entered");
     NSLog(@"button text: %@", self.postSongButton.titleLabel.text);
         
@@ -478,30 +461,30 @@
     }];
 }
 
--(void)openLogInPage
-{
-    self.authViewController = [SPTAuthViewController authenticationViewController];
-    self.authViewController.delegate = self;
-    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    self.definesPresentationContext = YES;
-    
-    [self presentViewController:self.authViewController animated:NO completion:nil];
-}
-
--(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
-{
-    
-}
--(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
-{
-    
-}
--(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
-{
-    
-}
+//-(void)openLogInPage
+//{
+//    self.authViewController = [SPTAuthViewController authenticationViewController];
+//    self.authViewController.delegate = self;
+//    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    
+//    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    self.definesPresentationContext = YES;
+//    
+//    [self presentViewController:self.authViewController animated:NO completion:nil];
+//}
+//
+//-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
+//{
+//    
+//}
+//-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
+//{
+//    
+//}
+//-(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
+//{
+//    
+//}
 
 @end

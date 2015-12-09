@@ -47,6 +47,7 @@
 		E9F4DE2D1C162B77004396FC /* HRPEditProfileTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F4DE2C1C162B77004396FC /* HRPEditProfileTableVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9F4DE301C163745004396FC /* HRPSettingsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F4DE2F1C163745004396FC /* HRPSettingsTableVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9F69D4C1C17CE1700E9C784 /* HRPAccountInformationTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F69D4B1C17CE1700E9C784 /* HRPAccountInformationTableVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9F69D4F1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F69D4E1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m */; settings = {ASSET_TAGS = (); }; };
 		E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */; };
 		E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */; };
 		E9FA64D41C039E43008DDE69 /* HRPManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */; };
@@ -139,6 +140,8 @@
 		E9F4DE2F1C163745004396FC /* HRPSettingsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSettingsTableVC.m; sourceTree = "<group>"; };
 		E9F69D4A1C17CE1700E9C784 /* HRPAccountInformationTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPAccountInformationTableVC.h; sourceTree = "<group>"; };
 		E9F69D4B1C17CE1700E9C784 /* HRPAccountInformationTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPAccountInformationTableVC.m; sourceTree = "<group>"; };
+		E9F69D4D1C17F81100E9C784 /* UINavigationController+StatusBarStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+StatusBarStyle.h"; sourceTree = "<group>"; };
+		E9F69D4E1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StatusBarStyle.m"; sourceTree = "<group>"; };
 		E9F8CE791BFE622F00979181 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PresentViewController.h"; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 		E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E9F69D4D1C17F81100E9C784 /* UINavigationController+StatusBarStyle.h */,
+				E9F69D4E1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m */,
 				E9E211131BFD3E2500739143 /* Keys.plist */,
 				E9335C6B1BFA7EBC002DD9C6 /* Info.plist */,
 				E9FA65451C0901BB008DDE69 /* loading.gif */,
@@ -516,6 +521,7 @@
 				3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */,
 				3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */,
 				E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */,
+				E9F69D4F1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m in Sources */,
 				E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */,
 				E9F4DE301C163745004396FC /* HRPSettingsTableVC.m in Sources */,
 				E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */,

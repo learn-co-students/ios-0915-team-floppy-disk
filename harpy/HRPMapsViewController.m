@@ -16,9 +16,10 @@
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 #import "HRPPostFeedViewController.h"
+#import "UINavigationController+StatusBarStyle.h"
 @import GoogleMaps;
 
-@interface HRPMapsViewController () <GMSMapViewDelegate>
+@interface HRPMapsViewController () <GMSMapViewDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (strong, nonatomic) GMSMarker *defaultMarker;
@@ -291,10 +292,10 @@
 - (IBAction)postSongButtonTapped:(id)sender
 {
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    
+        
     NSLog(@"method entered");
     NSLog(@"button text: %@", self.postSongButton.titleLabel.text);
-    
+        
     if (self.defaultMarkerImage.hidden)
     {
         NSLog(@"marker is hidden");

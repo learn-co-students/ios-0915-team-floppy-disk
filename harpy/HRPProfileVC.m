@@ -328,16 +328,21 @@
 {
     if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])
     {
-        PFRelation *relationFollow = [[PFUser currentUser] objectForKey:@"following"];
-        [relationFollow addObject:self.user];
-        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            NSLog(@"FOLLOWER SAVED");
-            
-            PFRelation *relation = [[PFUser currentUser] objectForKey:@"following"];
-            PFQuery *query = [relation query];
-            [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-                NSLog(@"FOLLOWER ARRAY: %@", objects);
-            }];
+        PFUser *currentUser = [PFUser currentUser];
+        PFRelation *relation = [currentUser relationForKey:@"following"];
+        PFObject *object = [PFObject objectWithClassName:@"User"];
+        object[@"objectId"] = self.user.objectId;
+        [relation addObject:object];
+
+        [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (error != nil)
+            {
+                NSLog(@"followers saved!!!!!!!!!");
+            }
+            else
+            {
+                NSLog(@"followers saved!!!!!!!!!");
+            }
         }];
     }
     else if ([self.followOrEditButton.titleLabel.text isEqual: @"Edit Profile"])

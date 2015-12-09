@@ -23,11 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *fansCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *realName;
 @property (weak, nonatomic) IBOutlet UILabel *shortBio;
-@property (weak, nonatomic) IBOutlet UIButton *mapviewButton;
-@property (weak, nonatomic) IBOutlet UIButton *listViewButton;
 @property (weak, nonatomic) IBOutlet UITableView *postsTableview;
 @property (nonatomic, strong) NSArray *userPosts;
-@property (weak, nonatomic) IBOutlet UIStackView *stackViewButtons;
 
 @property (nonatomic) PFUser *currentUser;
 @property (nonatomic) BOOL isCurrentUser;
@@ -60,11 +57,7 @@
     }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.stackViewButtons.clipsToBounds = NO;
-//    self.stackViewButtons.layer.shadowOffset = CGSizeMake(-15, 20);
-//    self.stackViewButtons.layer.shadowRadius = 5;
-//    self.stackViewButtons.layer.shadowOpacity = 0.5;
-//    [self.view bringSubviewToFront:self.stackViewButtons];
+
     [self retrieveHRPosts];
 }
 - (void)didReceiveMemoryWarning
@@ -139,10 +132,10 @@
     //Ensure that the shadow radius is between 1 and 3
     float shadowRadius = MIN(MAX(shadowOffset, 0), 1);
     
-    self.stackViewButtons.layer.shadowOffset = CGSizeMake(100, shadowOffset);
-    self.stackViewButtons.layer.shadowRadius = shadowRadius;
-    self.stackViewButtons.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.stackViewButtons.layer.shadowOpacity = 0.20;
+//    self.stackViewButtons.layer.shadowOffset = CGSizeMake(100, shadowOffset);
+//    self.stackViewButtons.layer.shadowRadius = shadowRadius;
+//    self.stackViewButtons.layer.shadowColor = [UIColor blackColor].CGColor;
+//    self.stackViewButtons.layer.shadowOpacity = 0.20;
 }
 
 #pragma mark - Parse Queries
@@ -316,14 +309,7 @@
 
 #pragma mark - Action methods
 
-- (IBAction)listmenuClicked:(id)sender
-{
-    
-}
-- (IBAction)mapmenuClicked:(id)sender
-{
-    NSLog(@"Map menu clicked");
-}
+
 - (IBAction)followOrEditButtonClicked:(id)sender
 {
     if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])

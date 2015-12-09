@@ -31,6 +31,7 @@
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
+            <string>SFUIDisplay-Regular</string>
         </mutableArray>
         <mutableArray key="SF-UI-Display-Semibold.otf">
             <string>SFUIDisplay-Semibold</string>
@@ -418,6 +419,7 @@
                         <outlet property="realName" destination="AMC-o8-0dn" id="ue2-5y-XdD"/>
                         <outlet property="settingsButton" destination="3Ig-pX-UYg" id="AgZ-3w-bfa"/>
                         <outlet property="shortBio" destination="ghN-tF-V6Z" id="cAW-T9-5jt"/>
+                        <outlet property="stackViewButtons" destination="eBw-lt-Qdj" id="N8b-SV-P45"/>
                         <outlet property="userAvatar" destination="iBy-4X-gNf" id="wwQ-eL-kIB"/>
                     </connections>
                 </viewController>
@@ -456,15 +458,15 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonCell" id="3Lr-Cz-usx">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="editProfileCell" id="3Lr-Cz-usx">
                                 <rect key="frame" x="0.0" y="105" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Lr-Cz-usx" id="QVf-RG-wcE">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAk-Zi-F0j">
-                                            <rect key="frame" x="16" y="8" width="398" height="27"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAk-Zi-F0j">
+                                            <rect key="frame" x="16" y="8" width="381" height="27"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -473,13 +475,35 @@
                                     <constraints>
                                         <constraint firstItem="DAk-Zi-F0j" firstAttribute="leading" secondItem="QVf-RG-wcE" secondAttribute="leadingMargin" constant="8" id="4Li-5N-igo"/>
                                         <constraint firstItem="DAk-Zi-F0j" firstAttribute="top" secondItem="QVf-RG-wcE" secondAttribute="topMargin" id="Tvx-MF-5jr"/>
-                                        <constraint firstAttribute="trailing" secondItem="DAk-Zi-F0j" secondAttribute="trailing" id="pcF-4w-esl"/>
+                                        <constraint firstAttribute="trailing" secondItem="DAk-Zi-F0j" secondAttribute="trailing" constant="17" id="pcF-4w-esl"/>
                                         <constraint firstItem="DAk-Zi-F0j" firstAttribute="bottom" secondItem="QVf-RG-wcE" secondAttribute="bottomMargin" id="xPQ-vJ-u0h"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="updateAccountCell" id="3J4-wW-wcm">
+                                <rect key="frame" x="0.0" y="149" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3J4-wW-wcm" id="Cdu-LZ-jbx">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Account Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV7-Oi-n5Q">
+                                            <rect key="frame" x="16" y="8" width="378" height="27"/>
+                                            <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mV7-Oi-n5Q" firstAttribute="leading" secondItem="Cdu-LZ-jbx" secondAttribute="leadingMargin" constant="8" id="Ay2-T6-8Hd"/>
+                                        <constraint firstAttribute="trailing" secondItem="mV7-Oi-n5Q" secondAttribute="trailing" constant="20" id="DMK-Um-gwG"/>
+                                        <constraint firstItem="mV7-Oi-n5Q" firstAttribute="top" secondItem="Cdu-LZ-jbx" secondAttribute="topMargin" id="IIF-IW-mol"/>
+                                        <constraint firstItem="mV7-Oi-n5Q" firstAttribute="bottom" secondItem="Cdu-LZ-jbx" secondAttribute="bottomMargin" id="Uqu-Mw-Gbb"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="spacyCell" rowHeight="400" id="25h-M9-2y7">
-                                <rect key="frame" x="0.0" y="149" width="414" height="400"/>
+                                <rect key="frame" x="0.0" y="193" width="414" height="400"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="25h-M9-2y7" id="IUd-HN-xun">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="399"/>
@@ -487,7 +511,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logoutCell" id="zKk-z4-dkB">
-                                <rect key="frame" x="0.0" y="549" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="593" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zKk-z4-dkB" id="Odz-eQ-oFU">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -588,7 +612,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBH-x2-132" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2606" y="1209"/>
+            <point key="canvasLocation" x="4201" y="1001"/>
         </scene>
         <!--EDIT PROFILE-->
         <scene sceneID="enX-eO-pZu">
@@ -739,7 +763,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFJ-Ld-wSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4209" y="337"/>
+            <point key="canvasLocation" x="4201" y="85"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="431-O3-Kiz">

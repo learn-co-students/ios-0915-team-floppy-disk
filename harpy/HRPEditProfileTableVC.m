@@ -49,7 +49,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -119,6 +119,11 @@
         self.shortBioTextField.keyboardAppearance = UIKeyboardAppearanceDark;
         self.shortBioTextField.borderStyle = NO;
     }
+    if (indexPath.row == 4)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"spacyCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     
     return cell;
 }
@@ -144,6 +149,10 @@
     if (indexPath.row == 3)
     {
         customTableCellHeight = self.view.frame.size.height/13;
+    }
+    if (indexPath.row == 4)
+    {
+        customTableCellHeight = self.view.frame.size.height/2.8;
     }
     
     return customTableCellHeight;

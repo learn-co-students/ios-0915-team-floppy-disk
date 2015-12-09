@@ -225,7 +225,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="724-2i-lEg">
                                         <rect key="frame" x="0.0" y="10" width="414" height="468"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="402"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -237,7 +237,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="74"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="4bH-p9-MYR" userLabel="big stackView">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="4bH-p9-MYR" userLabel="big stackView">
                                                                     <rect key="frame" x="8" y="11" width="398" height="45"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dGR-Yk-uSY">
@@ -321,7 +321,7 @@
                                                             <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="0.5" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="4bH-p9-MYR" firstAttribute="leading" secondItem="beD-cB-AAV" secondAttribute="leadingMargin" id="Afo-n2-7O1"/>
-                                                                <constraint firstItem="4bH-p9-MYR" firstAttribute="centerY" secondItem="beD-cB-AAV" secondAttribute="centerY" id="BHP-7U-ddY"/>
+                                                                <constraint firstItem="4bH-p9-MYR" firstAttribute="centerY" secondItem="beD-cB-AAV" secondAttribute="centerY" constant="-3.5" id="BHP-7U-ddY"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="4bH-p9-MYR" secondAttribute="trailing" id="c4a-8B-IGa"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
@@ -529,7 +529,7 @@
             </objects>
             <point key="canvasLocation" x="3006" y="337"/>
         </scene>
-        <!--EDIT SETTINGS-->
+        <!--EDIT PROFILE-->
         <scene sceneID="enX-eO-pZu">
             <objects>
                 <tableViewController id="PXg-Lr-28y" customClass="HRPEditProfileTableVC" sceneMemberID="viewController">
@@ -667,7 +667,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="EDIT SETTINGS" id="Hb5-bN-QOT">
+                    <navigationItem key="navigationItem" title="EDIT PROFILE" id="Hb5-bN-QOT">
                         <barButtonItem key="leftBarButtonItem" image="left_Arrow" id="Mg0-VK-06M">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>

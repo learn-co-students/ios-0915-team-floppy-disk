@@ -19,6 +19,7 @@
 @property (weak, nonatomic) UITextField *shortBioTextField;
 @property (nonatomic) PFFile *ownedImageFile;
 @property (nonatomic) PFUser *currentUser;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -64,11 +65,9 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"userPhotoCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        PFUser *currentUser = [PFUser currentUser];
-        
         UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
         self.userAvatar = (UIImageView *)[cell viewWithTag:1];
-        PFFile *imageFile = [currentUser objectForKey:@"userAvatar"];
+        PFFile *imageFile = [self.currentUser objectForKey:@"userAvatar"];
         if (imageFile)
         {
             self.userAvatar.userInteractionEnabled = YES;
@@ -216,9 +215,23 @@
         self.currentUser[@"shortBio"] = newBio;
     }
     
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    self.navigationItem.titleView = self.activityIndicator;
+    [self.activityIndicator startAnimating];
     [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
+            [self.activityIndicator stopAnimating];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont boldSystemFontOfSize:18];
+            label.text = @"EDIT PROFILE";
+            label.textAlignment = NSTextAlignmentCenter;
+            self.navigationItem.titleView = label;
+
+            
             [self dismissViewControllerAnimated:YES completion:^{
                 NSLog(@"save user with new image success!");
             }];

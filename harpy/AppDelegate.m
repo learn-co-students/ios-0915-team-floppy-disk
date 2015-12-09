@@ -27,12 +27,13 @@
 {
 
     
-    
     [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
                                                                  [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
                                                              NSForegroundColorAttributeName:[UIColor whiteColor]
                                                              }];
 
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]].translucent = YES;
     [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]].tintColor = [UIColor whiteColor];
     

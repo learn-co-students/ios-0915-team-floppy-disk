@@ -493,14 +493,14 @@
     user.email = self.email.text;
     
 /* UNCOMMENT THESE LINE WHEN TESTING SPOTIFY LOGINS */
-//    SPTAuth *auth = [SPTAuth defaultInstance];
-//    SPTSession *session = auth.session;
-//    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, NSString *object) {
-//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//            user[@"spotifyCanonical"] = object;
-//            auth.sessionUserDefaultsKey = object;
-//        }];
-//    }];
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    SPTSession *session = auth.session;
+    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, NSString *object) {
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            user[@"spotifyCanonical"] = object;
+            auth.sessionUserDefaultsKey = object;
+        }];
+    }];
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         

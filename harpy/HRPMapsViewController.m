@@ -76,6 +76,14 @@
     NSLog(@"VIEW WILL APPEAR");
     SPTAuth *auth = [SPTAuth defaultInstance];
     
+    if (auth.session == nil) {
+        NSLog(@"STATEMENT 3 TRUE");
+        [self openLogInPage];
+        [super viewDidAppear:animated];
+        [self.locationManager startUpdatingLocation];
+        [self queryForHRPosts];
+        return;
+    }
     if ([auth.session isValid])
     {
         NSLog(@"STATEMENT 1 TRUE");
@@ -87,14 +95,6 @@
     if (![auth.session isValid] && auth.hasTokenRefreshService) {
         NSLog(@"STATEMENT 2 TRUE");
         [self renewTokenAndSegue];
-        [super viewDidAppear:animated];
-        [self.locationManager startUpdatingLocation];
-        [self queryForHRPosts];
-        return;
-    }
-    if (auth.session == nil) {
-        NSLog(@"STATEMENT 3 TRUE");
-        [self openLogInPage];
         [super viewDidAppear:animated];
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];

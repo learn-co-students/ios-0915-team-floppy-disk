@@ -18,4 +18,6 @@
 /// The location manager used to receive location updates.
 @property (nonatomic,strong) CLLocationManager *locationManager;
 
+- (void)queryForHRPosts;
+
 @end

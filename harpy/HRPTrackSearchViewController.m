@@ -265,6 +265,9 @@
     UIButton *playTrackButton = (UIButton *)[cell viewWithTag:5];
     [playTrackButton addTarget:self action:@selector(cellPlayButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
+    UIButton *postTrackButton = (UIButton *)[cell viewWithTag:6];
+    [postTrackButton addTarget:self action:@selector(cellPostButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 

@@ -85,8 +85,8 @@
     SPTAuth *auth = [SPTAuth defaultInstance];
     
     if (auth.session == nil) {
-        NSLog(@"STATEMENT 3 TRUE");
-//        [self openLogInPage];
+        NSLog(@"STATEMENT 1 TRUE");
+        [self openLogInPage];
         [super viewDidAppear:animated];
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
@@ -94,14 +94,14 @@
     }
     if ([auth.session isValid])
     {
-        NSLog(@"STATEMENT 1 TRUE");
+        NSLog(@"STATEMENT 2 TRUE");
         [super viewDidAppear:animated];
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
         return;
     }
     if (![auth.session isValid] && auth.hasTokenRefreshService) {
-        NSLog(@"STATEMENT 2 TRUE");
+        NSLog(@"STATEMENT 3 TRUE");
         [self renewTokenAndSegue];
         [super viewDidAppear:animated];
         [self.locationManager startUpdatingLocation];
@@ -212,7 +212,6 @@
     });
 
     NSTimeInterval locationAge = -[self.newestLocation.timestamp timeIntervalSinceNow];
-    NSLog(@"locationAge %f", locationAge);
     if (locationAge > 300) // 5 mins in seconds
     {
         CLLocation *compareLocation = self.locationManager.location;
@@ -465,30 +464,30 @@
     }];
 }
 
-//-(void)openLogInPage
-//{
-//    self.authViewController = [SPTAuthViewController authenticationViewController];
-//    self.authViewController.delegate = self;
-//    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-//    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//    
-//    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-//    self.definesPresentationContext = YES;
-//    
-//    [self presentViewController:self.authViewController animated:NO completion:nil];
-//}
-//
-//-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
-//{
-//    
-//}
-//-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
-//{
-//    
-//}
-//-(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
-//{
-//    
-//}
+-(void)openLogInPage
+{
+    self.authViewController = [SPTAuthViewController authenticationViewController];
+    self.authViewController.delegate = self;
+    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.definesPresentationContext = YES;
+    
+    [self presentViewController:self.authViewController animated:NO completion:nil];
+}
+
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
+{
+    
+}
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
+{
+    
+}
+-(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
+{
+    
+}
 
 @end

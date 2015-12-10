@@ -20,6 +20,8 @@
 		3BC25DEB1C0E0F3D00A831CE /* postTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */; settings = {ASSET_TAGS = (); }; };
 		3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
+		E91B6FDF1C19E7B000FEC1AB /* HRPNetworkAlertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E91B6FDE1C19E7B000FEC1AB /* HRPNetworkAlertVC.m */; settings = {ASSET_TAGS = (); }; };
+		E91B6FE21C19EB0800FEC1AB /* HRPNetworkAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E91B6FE11C19EB0800FEC1AB /* HRPNetworkAlertView.m */; settings = {ASSET_TAGS = (); }; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
 		E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */; };
 		E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335C631BFA7EBC002DD9C6 /* Main.storyboard */; };
@@ -94,6 +96,10 @@
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		6DB65EC059DFF1DB09801C30 /* Pods-harpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-harpy/Pods-harpy.release.xcconfig"; sourceTree = "<group>"; };
 		8A0453F870576313A0151B46 /* libPods-harpy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harpy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E91B6FDD1C19E7B000FEC1AB /* HRPNetworkAlertVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPNetworkAlertVC.h; sourceTree = "<group>"; };
+		E91B6FDE1C19E7B000FEC1AB /* HRPNetworkAlertVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPNetworkAlertVC.m; sourceTree = "<group>"; };
+		E91B6FE01C19EB0800FEC1AB /* HRPNetworkAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPNetworkAlertView.h; sourceTree = "<group>"; };
+		E91B6FE11C19EB0800FEC1AB /* HRPNetworkAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPNetworkAlertView.m; sourceTree = "<group>"; };
 		E9335C571BFA7EBC002DD9C6 /* harpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = harpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335C5B1BFA7EBC002DD9C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E9335C5D1BFA7EBC002DD9C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -230,6 +236,10 @@
 				E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */,
 				E938012F1BFD1703004CC8A2 /* HRPParseNetworkService.h */,
 				E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */,
+				E91B6FE01C19EB0800FEC1AB /* HRPNetworkAlertView.h */,
+				E91B6FE11C19EB0800FEC1AB /* HRPNetworkAlertView.m */,
+				E91B6FDD1C19E7B000FEC1AB /* HRPNetworkAlertVC.h */,
+				E91B6FDE1C19E7B000FEC1AB /* HRPNetworkAlertVC.m */,
 				E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */,
 				3B0EFC4D1C10AE140086545B /* Constants.h */,
 				3B0EFC4E1C10AE140086545B /* Constants.m */,
@@ -513,6 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
+				E91B6FE21C19EB0800FEC1AB /* HRPNetworkAlertView.m in Sources */,
 				E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */,
 				E9F4DE2D1C162B77004396FC /* HRPEditProfileTableVC.m in Sources */,
 				3B0EFC4F1C10AE140086545B /* Constants.m in Sources */,
@@ -534,6 +545,7 @@
 				3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */,
 				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
 				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
+				E91B6FDF1C19E7B000FEC1AB /* HRPNetworkAlertVC.m in Sources */,
 				3B0EFCD01C11F0BC0086545B /* HRPPostFeedViewController.m in Sources */,
 				E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */,
 				E9F69D4C1C17CE1700E9C784 /* HRPAccountInformationTableVC.m in Sources */,

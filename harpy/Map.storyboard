@@ -81,6 +81,8 @@
                     <connections>
                         <outlet property="defaultMarkerImage" destination="yRa-kE-mpk" id="eOO-f4-qT4"/>
                         <outlet property="postSongButton" destination="Cey-M4-euM" id="SDk-bl-Lag"/>
+                        <outlet property="profileButton" destination="9iU-qM-S92" id="6yt-Qf-EwZ"/>
+                        <outlet property="searchButton" destination="hsx-PQ-LpY" id="hJ8-QW-hnm"/>
                         <segue destination="jZz-Vg-kOe" kind="presentation" identifier="showTrackViews" id="rQd-sp-5dF"/>
                         <segue destination="Zn9-Nw-Eau" kind="show" identifier="showUserProfile" id="REI-F8-dvx"/>
                         <segue destination="Y8w-4l-UUr" kind="presentation" identifier="showPostViewSegue" id="W8i-jA-RnL"/>

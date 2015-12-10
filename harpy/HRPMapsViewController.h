@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "CLLocationManager+Shared.h"
 
+@protocol loadNewPostPinsDelegate <NSObject>
+
+- (void)queryForHRPosts;
+
+@end
+
 @interface HRPMapsViewController : UIViewController <CLLocationManagerDelegate>
 
 @property (nonatomic) CLLocation *currentLocation;

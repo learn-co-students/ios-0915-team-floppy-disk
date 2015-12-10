@@ -60,7 +60,9 @@
     [self.post createPostForTrack:self.track withCaption:self.postCaptionTextView.text WithCompletion:^(BOOL success) {
         if (success) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                    [self.delegate queryForHRPosts];
+                }];
             }];
         }
     }];

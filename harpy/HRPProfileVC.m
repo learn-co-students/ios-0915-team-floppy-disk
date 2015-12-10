@@ -182,7 +182,7 @@
 }
 - (void)retrieveHRPosts
 {
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     self.navigationItem.titleView = self.activityIndicator;
     [self.activityIndicator startAnimating];
     PFRelation *userPosts = [self.user relationForKey:@"HRPPosts"];
@@ -191,16 +191,10 @@
         if (!error)
         {
             [self.activityIndicator stopAnimating];
-            
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
-            label.backgroundColor = [UIColor clearColor];
-            label.textColor = [UIColor whiteColor];
-            label.font = [UIFont boldSystemFontOfSize:18];
+            self.navigationItem.titleView = nil;
             NSString *usernameString = self.user.username;
             usernameString = [usernameString uppercaseString];
-            label.text = usernameString;
-            label.textAlignment = NSTextAlignmentCenter;
-            self.navigationItem.titleView = label;
+            self.navigationItem.title = usernameString;
             
             self.userPosts = objects;
             [self.postsTableview reloadData];

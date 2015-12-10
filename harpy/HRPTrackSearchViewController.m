@@ -23,7 +23,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *playStatusLabel;
 @property (strong, nonatomic) IBOutlet UILabel *playerSongLabel;
 @property (strong, nonatomic) IBOutlet UILabel *playerArtistLabel;
-
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @property (strong, nonatomic) SPTAudioStreamingController *player;
 
@@ -178,9 +178,22 @@
         [self.songTableView reloadData];
     }
     
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    self.navigationItem.titleView = self.activityIndicator;
+    [self.activityIndicator startAnimating];
     [HRPTrackCreator generateTracksFromSearch:searchText WithCompletion:^(NSArray *tracks) {
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.activityIndicator stopAnimating];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont boldSystemFontOfSize:18];
+            label.text = @"SEARCH SONGS";
+            label.textAlignment = NSTextAlignmentCenter;
+            self.navigationItem.titleView = label;
+            
             self.filteredSongArray = [tracks mutableCopy];
             [self.songTableView reloadData];
         }];
@@ -204,7 +217,6 @@
 }
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"searchBarCancelButtonClicked called");
     [searchBar resignFirstResponder];
     
 }

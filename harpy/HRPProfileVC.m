@@ -23,11 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *fansCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *realName;
 @property (weak, nonatomic) IBOutlet UILabel *shortBio;
-@property (weak, nonatomic) IBOutlet UIButton *mapviewButton;
-@property (weak, nonatomic) IBOutlet UIButton *listViewButton;
 @property (weak, nonatomic) IBOutlet UITableView *postsTableview;
 @property (nonatomic, strong) NSArray *userPosts;
-@property (weak, nonatomic) IBOutlet UIStackView *stackViewButtons;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic) PFUser *currentUser;
 @property (nonatomic) BOOL isCurrentUser;
@@ -60,11 +58,7 @@
     }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.stackViewButtons.clipsToBounds = NO;
-//    self.stackViewButtons.layer.shadowOffset = CGSizeMake(-15, 20);
-//    self.stackViewButtons.layer.shadowRadius = 5;
-//    self.stackViewButtons.layer.shadowOpacity = 0.5;
-//    [self.view bringSubviewToFront:self.stackViewButtons];
+
     [self retrieveHRPosts];
 }
 - (void)didReceiveMemoryWarning
@@ -139,10 +133,10 @@
     //Ensure that the shadow radius is between 1 and 3
     float shadowRadius = MIN(MAX(shadowOffset, 0), 1);
     
-    self.stackViewButtons.layer.shadowOffset = CGSizeMake(100, shadowOffset);
-    self.stackViewButtons.layer.shadowRadius = shadowRadius;
-    self.stackViewButtons.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.stackViewButtons.layer.shadowOpacity = 0.20;
+//    self.stackViewButtons.layer.shadowOffset = CGSizeMake(100, shadowOffset);
+//    self.stackViewButtons.layer.shadowRadius = shadowRadius;
+//    self.stackViewButtons.layer.shadowColor = [UIColor blackColor].CGColor;
+//    self.stackViewButtons.layer.shadowOpacity = 0.20;
 }
 
 #pragma mark - Parse Queries
@@ -166,26 +160,48 @@
 }
 - (void)retrieveUserAvatar
 {
-    PFFile *file = [self.userObject objectForKey:@"userAvatar"];
-    NSLog(@"FILE: %@", file);
-    
-    [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
-     {
-         if (!error)
-         {
-             self.userAvatar.image = [UIImage imageWithData:data];
-             UIImage *image = [UIImage imageWithData:data];
-             NSLog(@"IMAGE: %@", image);
-         }
-     }];
+    UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    PFFile *imageFile = [self.user objectForKey:@"userAvatar"];
+    if (imageFile)
+    {
+        [self.userAvatar.layer setBorderColor: [ironColor CGColor]];
+        [self.userAvatar.layer setBorderWidth: 1.0];
+        self.userAvatar.layer.masksToBounds = YES;
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error)
+            {
+                self.userAvatar.image = [UIImage imageWithData:data];
+                self.userAvatar.highlightedImage = [UIImage imageWithData:data];
+            }
+            else
+            {
+                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
 }
 - (void)retrieveHRPosts
 {
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    self.navigationItem.titleView = self.activityIndicator;
+    [self.activityIndicator startAnimating];
     PFRelation *userPosts = [self.user relationForKey:@"HRPPosts"];
     PFQuery *query = [userPosts query];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error)
         {
+            [self.activityIndicator stopAnimating];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont boldSystemFontOfSize:18];
+            NSString *usernameString = self.user.username;
+            usernameString = [usernameString uppercaseString];
+            label.text = usernameString;
+            label.textAlignment = NSTextAlignmentCenter;
+            self.navigationItem.titleView = label;
+            
             self.userPosts = objects;
             [self.postsTableview reloadData];
             NSLog(@"PARSE POSTS: %@", self.userPosts);
@@ -316,14 +332,7 @@
 
 #pragma mark - Action methods
 
-- (IBAction)listmenuClicked:(id)sender
-{
-    
-}
-- (IBAction)mapmenuClicked:(id)sender
-{
-    NSLog(@"Map menu clicked");
-}
+
 - (IBAction)followOrEditButtonClicked:(id)sender
 {
     if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])

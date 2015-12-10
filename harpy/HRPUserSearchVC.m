@@ -19,6 +19,7 @@
 @property(nonatomic) UIScrollViewIndicatorStyle indicatorStyle;
 @property (nonatomic) PFUser *user;
 @property (nonatomic) NSMutableArray *users;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
 @end
@@ -44,12 +45,26 @@
     
     [self initializeEmptyUsersArray];
     
+    
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    self.navigationItem.titleView = self.activityIndicator;
+    [self.activityIndicator startAnimating];
     PFQuery *userQuery = [PFUser query];
     userQuery.limit = 19;
     [userQuery orderByDescending:@"createdAt"];
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
         if (!error)
         {
+            [self.activityIndicator stopAnimating];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont boldSystemFontOfSize:18];
+            label.text = @"USER SEARCH";
+            label.textAlignment = NSTextAlignmentCenter;
+            self.navigationItem.titleView = label;
+            
             NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
             self.users = [objects mutableCopy];
             

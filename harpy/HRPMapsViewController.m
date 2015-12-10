@@ -72,7 +72,11 @@
     self.mapView.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionUpdatedNotification:) name:@"sessionUpdated" object:nil];
-
+    
+    [self.mapView.bottomAnchor constraintEqualToAnchor:self.postSongButton.topAnchor].active = YES;
+//    CGFloat viewHeight = self.view.frame.size.height;
+//    CGFloat buttonHeight = self.postSongButton.frame.size.height;
+//    CGFloat mapHeight = self.mapView
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -82,7 +86,7 @@
     
     if (auth.session == nil) {
         NSLog(@"STATEMENT 3 TRUE");
-        [self openLogInPage];
+//        [self openLogInPage];
         [super viewDidAppear:animated];
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
@@ -161,20 +165,7 @@
                     GMSMarker *marker = [[GMSMarker alloc] init];
                     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
                     marker.position = postCoordinate;
-                    marker.map = _mapView;
-                    
-                    for (PFObject *post in objects)
-                    {
-                        PFRelation *userRelation = [post relationForKey:@"username"];
-                        PFQuery *userUsername = [userRelation query];
-                        [userUsername  findObjectsInBackgroundWithBlock:^(NSArray * user, NSError * error2) {
-                            for (PFObject *username in user)
-                            {
-                            }
-                        }];
-                    }
-//FROM MERGE CONFLICT                    //marker.map = self.mapView;
-
+                    marker.map = self.mapView;
                 }
                 
                 
@@ -296,7 +287,7 @@
     
     //this controls the map size on the view
     CGFloat h = self.topLayoutGuide.length;
-    CGRect rect = CGRectMake(0, h, self.view.bounds.size.width, self.view.bounds.size.height - (self.view.bounds.size.height * 0.08));
+    CGRect rect = CGRectMake(0, h, self.view.bounds.size.width, self.view.bounds.size.height - self.navigationController.navigationBar.frame.size.height - self.postSongButton.frame.size.height - 20);
     self.mapView = [GMSMapView mapWithFrame:rect camera:camera];
     
     [self.view insertSubview:self.mapView atIndex:0];
@@ -341,8 +332,6 @@
 
 - (IBAction)profileButtonTapped:(id)sender
 {
-    self.navigationItem.leftBarButtonItem.enabled = NO;
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"UserProfile" bundle:nil];
     HRPProfileVC *profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileViewController"];
     profileView.user = [PFUser currentUser];
@@ -350,8 +339,6 @@
 }
 - (IBAction)postSongButtonTapped:(id)sender
 {
-    self.navigationItem.rightBarButtonItem.enabled = NO;
-        
     NSLog(@"method entered");
     NSLog(@"button text: %@", self.postSongButton.titleLabel.text);
         
@@ -478,30 +465,30 @@
     }];
 }
 
--(void)openLogInPage
-{
-    self.authViewController = [SPTAuthViewController authenticationViewController];
-    self.authViewController.delegate = self;
-    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    self.definesPresentationContext = YES;
-    
-    [self presentViewController:self.authViewController animated:NO completion:nil];
-}
-
--(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
-{
-    
-}
--(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
-{
-    
-}
--(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
-{
-    
-}
+//-(void)openLogInPage
+//{
+//    self.authViewController = [SPTAuthViewController authenticationViewController];
+//    self.authViewController.delegate = self;
+//    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    
+//    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    self.definesPresentationContext = YES;
+//    
+//    [self presentViewController:self.authViewController animated:NO completion:nil];
+//}
+//
+//-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
+//{
+//    
+//}
+//-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
+//{
+//    
+//}
+//-(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
+//{
+//    
+//}
 
 @end

@@ -72,7 +72,11 @@
     self.mapView.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionUpdatedNotification:) name:@"sessionUpdated" object:nil];
-
+    
+    [self.mapView.bottomAnchor constraintEqualToAnchor:self.postSongButton.topAnchor].active = YES;
+//    CGFloat viewHeight = self.view.frame.size.height;
+//    CGFloat buttonHeight = self.postSongButton.frame.size.height;
+//    CGFloat mapHeight = self.mapView
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -283,7 +287,7 @@
     
     //this controls the map size on the view
     CGFloat h = self.topLayoutGuide.length;
-    CGRect rect = CGRectMake(0, h, self.view.bounds.size.width, self.view.bounds.size.height - (self.view.bounds.size.height * 0.08));
+    CGRect rect = CGRectMake(0, h, self.view.bounds.size.width, self.view.bounds.size.height - self.navigationController.navigationBar.frame.size.height - self.postSongButton.frame.size.height - 20);
     self.mapView = [GMSMapView mapWithFrame:rect camera:camera];
     
     [self.view insertSubview:self.mapView atIndex:0];

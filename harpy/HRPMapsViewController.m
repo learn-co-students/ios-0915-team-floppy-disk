@@ -18,6 +18,8 @@
 #import "HRPPostFeedViewController.h"
 #import "HRPPostPreviewViewController.h"
 #import "UINavigationController+StatusBarStyle.h"
+#import "HRPNetworkAlertVC.h"
+#import "HRPUserSearchVC.h"
 @import GoogleMaps;
 
 @interface HRPMapsViewController () <GMSMapViewDelegate, SPTAuthViewDelegate>
@@ -34,6 +36,9 @@
 @property (nonatomic, strong) NSArray *parsePosts;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) CLLocation *newestLocation;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *searchButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *profileButton;
+@property (nonatomic) UIView *modalView;
 
 @end
 
@@ -84,31 +89,26 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"VIEW WILL APPEAR");
+    [super viewDidAppear:animated];
     SPTAuth *auth = [SPTAuth defaultInstance];
     
     if (auth.session == nil) {
-        NSLog(@"STATEMENT 1 TRUE");
-        [self openLogInPage];
-        [super viewDidAppear:animated];
-        [self.locationManager startUpdatingLocation];
-        [self queryForHRPosts];
-        return;
-    }
-    if ([auth.session isValid])
-    {
-        NSLog(@"STATEMENT 2 TRUE");
-        [super viewDidAppear:animated];
-        [self.locationManager startUpdatingLocation];
-        [self queryForHRPosts];
-        return;
-    }
-    if (![auth.session isValid] && auth.hasTokenRefreshService) {
         NSLog(@"STATEMENT 3 TRUE");
-        [self renewTokenAndSegue];
-        [super viewDidAppear:animated];
+        [self openLogInPage];
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
-        return;
+    }
+    else if ([auth.session isValid])
+    {
+        NSLog(@"STATEMENT 1 TRUE");
+        [self.locationManager startUpdatingLocation];
+        [self queryForHRPosts];
+    }
+    else if (![auth.session isValid] && auth.hasTokenRefreshService) {
+        NSLog(@"STATEMENT 2 TRUE");
+        [self renewTokenAndSegue];
+        [self.locationManager startUpdatingLocation];
+        [self queryForHRPosts];
     }
     
 //    [super viewDidAppear:animated];
@@ -136,26 +136,41 @@
         
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
         {
-            
             [self.activityIndicator stopAnimating];
-            
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
-            label.backgroundColor = [UIColor clearColor];
-            label.textColor = [UIColor whiteColor];
-            label.font = [UIFont boldSystemFontOfSize:18];
-            label.text = @"HARPY";
-            label.textAlignment = NSTextAlignmentCenter;
-            self.navigationItem.titleView = label;
 
             if (!error)
             {
+                [self.modalView removeFromSuperview];
+                
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
+                label.backgroundColor = [UIColor clearColor];
+                label.textColor = [UIColor whiteColor];
+                label.font = [UIFont boldSystemFontOfSize:18];
+                label.text = @"HARPY";
+                label.textAlignment = NSTextAlignmentCenter;
+                self.navigationItem.titleView = label;
+                
+                UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]init];
+                leftButton.action = @selector(profileSecondButtonTapped);
+                leftButton.image = [UIImage imageNamed:@"menu.png"];
+                leftButton.target = self;
+                leftButton.tintColor = [UIColor whiteColor];
+                self.navigationItem.leftBarButtonItem = leftButton;
+                
+                UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]init];
+                rightButton.action = @selector(sendToUserSearch);
+                rightButton.image = [UIImage imageNamed:@"search.png"];
+                rightButton.tintColor = [UIColor whiteColor];
+                rightButton.target = self;
+
+                self.navigationItem.rightBarButtonItem = rightButton;
+                
                 self.parsePosts = objects;
                 NSLog(@"THERE ARE %lu PARSE POSTS.", self.parsePosts.count);
                 
                 for (NSUInteger i = 0; i < self.parsePosts.count; i++)
                 {
                     NSDictionary *HRPPosts = self.parsePosts[i];
-//                    NSLog(@"PARSE DICTIONARY: %@", HRPPosts);
                     NSLog(@"POSTED SONG: %@", HRPPosts[@"songTitle"]);
                     
                     PFGeoPoint *HRPGeoPoint = HRPPosts[@"locationGeoPoint"];
@@ -169,13 +184,45 @@
                     marker.position = postCoordinate;
                     marker.map = self.mapView;
                 }
-                
-                
-            } else
+            }
+            else if ([error.domain isEqual:PFParseErrorDomain] && error.code == kPFErrorConnectionFailed)
             {
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
+//                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                NSLog(@"OH MY GOD THERE WAS AN INTERNET ERRORRRRRRRR");
+                [self alertOfflineView];
             }
         }];
+    }
+}
+
+-(void)alertOfflineView
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:18];
+    label.text = @"OFFLINE";
+    label.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = label;
+    
+    if (self.modalView == nil)
+    {
+        self.modalView = [[UIView alloc] initWithFrame:self.navigationController.view.bounds];
+        self.modalView.opaque = NO;
+        self.modalView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
+        [self.view addSubview:self.modalView];
+        
+        self.navigationItem.leftBarButtonItem = nil;
+        
+        UIImage* image = [UIImage imageNamed:@"refresh.png"];
+        CGRect frameimg = CGRectMake(0, 0, 20, 20);
+        UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
+        [someButton setBackgroundImage:image forState:UIControlStateNormal];
+        [someButton addTarget:self action:@selector(queryForHRPosts)
+             forControlEvents:UIControlEventTouchUpInside];
+        [someButton setShowsTouchWhenHighlighted:NO];
+        UIBarButtonItem *rightbutton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
+        self.navigationItem.rightBarButtonItem = rightbutton;
     }
 }
 
@@ -205,6 +252,7 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         self.newestLocation = self.locationManager.location;
@@ -214,21 +262,22 @@
     });
 
     NSTimeInterval locationAge = -[self.newestLocation.timestamp timeIntervalSinceNow];
+    //NSLog(@"locationAge %f", locationAge);
     if (locationAge > 300) // 5 mins in seconds
     {
         CLLocation *compareLocation = self.locationManager.location;
         double distance = [self.newestLocation distanceFromLocation:compareLocation];
-        NSLog(@"DISTANCE: %f", distance);
+        //NSLog(@"DISTANCE: %f", distance);
         if (distance > 320) // 0.20 miles in meters
         {
             self.newestLocation = self.locationManager.location;
-            NSLog(@"FOUND YOU AGAIN @: %@", self.locationManager.location);
+            //NSLog(@"FOUND YOU AGAIN @: %@", self.locationManager.location);
             self.currentLocation = self.locationManager.location;
             [self updateMapWithCurrentLocation];
         }
         else
         {
-            NSLog(@"YOU DIDNT MOVE ENOUGH");
+            //NSLog(@"YOU DIDNT MOVE ENOUGH");
             self.newestLocation = self.locationManager.location;
         }
     }
@@ -337,6 +386,17 @@
     HRPProfileVC *profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileViewController"];
     profileView.user = [PFUser currentUser];
     [self.navigationController pushViewController:profileView animated:YES];
+}
+- (void)profileSecondButtonTapped
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"UserProfile" bundle:nil];
+    HRPProfileVC *profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileViewController"];
+    profileView.user = [PFUser currentUser];
+    [self.navigationController pushViewController:profileView animated:YES];
+}
+-(void)sendToUserSearch
+{
+    [self performSegueWithIdentifier: @"showUserSearch" sender: self];
 }
 - (IBAction)postSongButtonTapped:(id)sender
 {

@@ -16,6 +16,7 @@
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 #import "HRPPostFeedViewController.h"
+#import "HRPPostPreviewViewController.h"
 #import "UINavigationController+StatusBarStyle.h"
 @import GoogleMaps;
 
@@ -74,9 +75,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionUpdatedNotification:) name:@"sessionUpdated" object:nil];
     
     [self.mapView.bottomAnchor constraintEqualToAnchor:self.postSongButton.topAnchor].active = YES;
-//    CGFloat viewHeight = self.view.frame.size.height;
-//    CGFloat buttonHeight = self.postSongButton.frame.size.height;
-//    CGFloat mapHeight = self.mapView
+
+    HRPPostPreviewViewController *newView = [[HRPPostPreviewViewController alloc]init];
+    newView.delegate = self;
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -364,7 +366,7 @@
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
     marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
     //marker.map = mapView_;
-    marker.map = self.mapView;
+    //marker.map = self.mapView;
     NSLog(@"marker in other method: %@", marker);
     
     CGFloat latitude = marker.position.latitude;
@@ -408,7 +410,6 @@
     {
         UINavigationController *navController = segue.destinationViewController;
         HRPTrackSearchViewController *destinVC = navController.viewControllers.firstObject;
-    
         destinVC.post = [self postWithCurrentMapPosition];
      }
 }

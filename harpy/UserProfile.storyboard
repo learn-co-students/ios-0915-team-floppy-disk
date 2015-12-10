@@ -79,8 +79,8 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-Gq-0cW">
                                                         <rect key="frame" x="138" y="0.0" width="236" height="118"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kol-El-JLY">
-                                                                <rect key="frame" x="0.0" y="0.0" width="236" height="32"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kol-El-JLY">
+                                                                <rect key="frame" x="0.0" y="0.0" width="236" height="31"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LTg-MC-nDo">
                                                                         <rect key="frame" x="0.0" y="0.0" width="236" height="16"/>
@@ -173,11 +173,11 @@
                                                     <constraint firstItem="9Zj-md-RCZ" firstAttribute="top" secondItem="bWa-9r-jn4" secondAttribute="top" id="t7Q-49-bjm"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="Glf-Ey-3Vu">
-                                                <rect key="frame" x="0.0" y="143" width="374" height="34"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="center" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="Glf-Ey-3Vu">
+                                                <rect key="frame" x="0.0" y="144" width="374" height="33"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ndr-9U-T52">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ndr-9U-T52">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="33"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMC-o8-0dn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
@@ -604,7 +604,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="54.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bV5-FC-MVL">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bV5-FC-MVL">
                                             <rect key="frame" x="16" y="16" width="382" height="21"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

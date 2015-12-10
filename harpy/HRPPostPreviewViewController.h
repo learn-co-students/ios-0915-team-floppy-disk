@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "HRPTrack.h"
 #import "HRPPost.h"
+#import "HRPMapsViewController.h"
 
 @interface HRPPostPreviewViewController : UIViewController
 
+@property (nonatomic, weak) id<loadNewPostPinsDelegate> delegate;
 @property (nonatomic, strong) HRPTrack *track;
 @property (nonatomic, strong) HRPPost *post;
 

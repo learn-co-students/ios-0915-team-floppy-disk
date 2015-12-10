@@ -13,8 +13,9 @@
 #import "PFFile.h"
 #import <QuartzCore/QuartzCore.h> // Needed to round UIImage
 #import "HRPMapsViewController.h"
+#import <Spotify/Spotify.h>
 
-@interface HRPProfileVC () <UITableViewDelegate, UITableViewDataSource>
+@interface HRPProfileVC () <UITableViewDelegate, UITableViewDataSource, SPTAudioStreamingDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
 @property (weak, nonatomic) IBOutlet UIButton *followOrEditButton;
@@ -31,6 +32,12 @@
 @property (nonatomic) BOOL isCurrentUser;
 @property (nonatomic) PFObject *userObject;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
+
+@property (strong, nonatomic) IBOutlet UIImageView *coverArtView;
+@property (strong, nonatomic) IBOutlet UILabel *playPauseLabel;
+@property (strong, nonatomic) IBOutlet UILabel *songNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *artistNameLabel;
+@property (strong, nonatomic) SPTAudioStreamingController *player;
 
 @end
 
@@ -56,6 +63,10 @@
         self.navigationItem.rightBarButtonItem = nil;
         [self.followOrEditButton setTitle:@"Follow" forState:UIControlStateNormal];
     }
+    
+    self.playPauseLabel.text = @"";
+    self.songNameLabel.text = @"";
+    self.artistNameLabel.text = @"";
     
     self.automaticallyAdjustsScrollViewInsets = NO;
 
@@ -123,7 +134,7 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
-    NSLog(@"scrollViewDidScroll");
+    //NSLog(@"scrollViewDidScroll");
     
     float shadowOffset = (scrollView.contentOffset.y/1);
     
@@ -305,6 +316,9 @@
     albumNameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
     albumNameLabel.text = albumNameString;
     
+    UIButton *playSongButton = (UIButton *)[cell viewWithTag:5];
+    [playSongButton addTarget:self action:@selector(playButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
@@ -326,6 +340,10 @@
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
     
+    if ([self.player isPlaying] == YES) {
+        [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+    }
+    self.player = nil;
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -373,6 +391,68 @@
         HRPEditProfileTableVC *editProfileView = [[HRPEditProfileTableVC alloc] init];
         [self presentViewController:editProfileView animated:YES completion:nil];
     }
+}
+
+-(void)handleNewSession {
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    
+    if (self.player == nil) {
+        self.player = [[SPTAudioStreamingController alloc] initWithClientId:auth.clientID];
+        self.player.playbackDelegate = self;
+        self.player.diskCache = [[SPTDiskCache alloc] initWithCapacity:1024 * 1024 * 64];
+    }
+    
+    [self.player loginWithSession:auth.session callback:^(NSError *error) {
+        if (error) {
+            NSLog(@"ERROR FROM PROFILE VC: SPOTIFY AUTH: %@", error);
+        }
+    }];
+}
+
+- (IBAction)playButtonTapped:(UIButton *)sender {
+    
+    NSLog(@"%@", self.userPosts);
+    //button should change to a pause
+    UITableViewCell *cell = (UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview];
+    
+    NSIndexPath *indexpath = [self.postsTableview indexPathForCell: cell];
+    //this is only hitting the first row!!!
+    
+    NSDictionary *postInView = self.userPosts[indexpath.row];
+    
+    PFFile *albumFile = postInView[@"albumArt"];
+    if (albumFile) {
+        [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                if (!error) {
+                    self.coverArtView.image = [UIImage imageWithData:data];
+                } else {
+                    self.coverArtView.image = [UIImage imageNamed:@"spotify"];
+                }
+            }];
+        }];
+    }
+    self.songNameLabel.text = postInView[@"songTitle"];
+    self.artistNameLabel.text = postInView[@"artistName"];
+    self.playPauseLabel.text = @"Playing";
+    
+    [self handleNewSession];
+    NSString *urlString = postInView[@"songURL"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
+        //do we want option to stop song?
+    }];
+}
+- (IBAction)playerViewTapped:(UITapGestureRecognizer *)sender {
+    [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+    
+    if ([self.playPauseLabel.text isEqualToString:@"Playing"]) {
+        self.playPauseLabel.text = @"Paused";
+    } else if ([self.playPauseLabel.text isEqualToString:@"Paused"]) {
+        self.playPauseLabel.text = @"Playing";
+    }
+    
 }
 
 @end

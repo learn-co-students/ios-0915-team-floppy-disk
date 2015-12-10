@@ -87,17 +87,6 @@
     
     UILabel *captionLabel = (UILabel *)[cell viewWithTag:6];
     captionLabel.text = postsFromArray[@"caption"];
-    
-
-//        NSUInteger arraySpot = 0;
-//        NSDictionary *post = [[NSDictionary alloc]init];
-//        if (indexPath.row > 1) {
-//            arraySpot = (indexPath.row + 1) / 2;
-//            post = self.postsArray[arraySpot];
-//        } else if (indexPath.row == 1) {
-//            arraySpot = indexPath.row;
-//            post = self.postsArray[arraySpot];
-//        }
 
     //add cell properties
     UILabel *usernameLabel = (UILabel *)[cell viewWithTag:8];
@@ -188,7 +177,7 @@
     
     [self.player loginWithSession:auth.session callback:^(NSError *error) {
         
-        NSLog(@"%@", error);
+        NSLog(@"ERROR FROM POST VC: SPOTIFY AUTH: %@", error);
     }];
 }
 

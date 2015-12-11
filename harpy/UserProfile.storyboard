@@ -341,7 +341,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-Uc-7cS" userLabel="Music Player View">
                                 <rect key="frame" x="0.0" y="692" width="414" height="89"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="47u-G3-Gq2">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="47u-G3-Gq2">
                                         <rect key="frame" x="18" y="18" width="378" height="54"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Js1-gV-nkQ">
@@ -351,7 +351,7 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="FaS-a7-wU2">
-                                                <rect key="frame" x="62" y="0.0" width="316" height="54"/>
+                                                <rect key="frame" x="64" y="0.0" width="314" height="54"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocQ-05-7eN">
                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="18"/>
@@ -381,7 +381,7 @@
                                     </stackView>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="89" id="ICf-IV-zAl"/>
                                     <constraint firstItem="47u-G3-Gq2" firstAttribute="leading" secondItem="8wm-Uc-7cS" secondAttribute="leading" constant="18" id="X4r-oJ-ess"/>

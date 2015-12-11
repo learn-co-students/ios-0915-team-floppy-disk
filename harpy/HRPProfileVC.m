@@ -329,7 +329,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat customTableCellHeight = self.postsTableview.frame.size.height/3;
+    CGFloat customTableCellHeight = 89;
     
     return customTableCellHeight;
 }
@@ -410,7 +410,7 @@
 - (IBAction)playButtonTapped:(UIButton *)sender {
     
     CGFloat musicPlayerHeight = self.musicPlayerView.frame.size.height;
-    self.tableviewBottom.constant = -musicPlayerHeight;
+    self.tableviewBottom.constant = musicPlayerHeight;
     self.musicPlayerBottom.constant = 0;
     [self.view setNeedsUpdateConstraints];
     [UIView animateWithDuration:0.5

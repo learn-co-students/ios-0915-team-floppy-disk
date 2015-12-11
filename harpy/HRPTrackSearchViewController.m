@@ -15,6 +15,9 @@
 
 @interface HRPTrackSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SPTAudioStreamingDelegate>
 
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *musicviewBottom;
+
 @property (strong, nonatomic) IBOutlet UISearchBar *songSearchBar;
 @property (strong, nonatomic) IBOutlet UITableView *songTableView;
 @property (strong, nonatomic) NSMutableArray *filteredSongArray;

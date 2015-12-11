@@ -152,7 +152,7 @@
                 
                 UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]init];
                 leftButton.action = @selector(profileSecondButtonTapped);
-                leftButton.image = [UIImage imageNamed:@"menu.png"];
+                leftButton.image = [UIImage imageNamed:@"user.png"];
                 leftButton.target = self;
                 leftButton.tintColor = [UIColor whiteColor];
                 self.navigationItem.leftBarButtonItem = leftButton;

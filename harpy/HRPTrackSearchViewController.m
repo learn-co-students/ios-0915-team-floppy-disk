@@ -53,6 +53,10 @@
     self.playerSongLabel.text = @"";
     self.playerArtistLabel.text = @"";
     
+    self.tableviewBottom.constant = 0;
+    self.musicviewBottom.constant = -89;
+    [self.view setNeedsUpdateConstraints];
+    
     self.navigationItem.hidesBackButton = YES;  // We do a custom image for the back button on the post preview VC
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
@@ -289,6 +293,15 @@
 }
 
 - (IBAction)cellPlayButtonTapped:(UIButton *)sender {
+    
+    CGFloat musicPlayerHeight = self.musicView.frame.size.height;
+    self.tableviewBottom.constant = musicPlayerHeight;
+    self.musicviewBottom.constant = 0;
+    [self.view setNeedsUpdateConstraints];
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     } completion:nil];
     
     NSIndexPath *indexPath = [self.songTableView indexPathForCell:(UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview]];
     HRPTrack *trackAtCell = self.filteredSongArray[indexPath.row];

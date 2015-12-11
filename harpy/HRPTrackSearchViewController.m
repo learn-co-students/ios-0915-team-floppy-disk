@@ -50,6 +50,9 @@
     
     self.navigationItem.hidesBackButton = YES;  // We do a custom image for the back button on the post preview VC
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+    
 //    self.navigationController.navigationBar.backIndicatorImage = [UIImage new];
 //    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage new];
 //    
@@ -282,7 +285,7 @@
 
 - (IBAction)cellPlayButtonTapped:(UIButton *)sender {
     
-    NSIndexPath *indexPath = [self.songTableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+    NSIndexPath *indexPath = [self.songTableView indexPathForCell:(UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview]];
     HRPTrack *trackAtCell = self.filteredSongArray[indexPath.row];
     self.playerSongLabel.text = trackAtCell.songTitle;
     self.playerArtistLabel.text = trackAtCell.artistName;
@@ -345,5 +348,8 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)dismissKeyboard {
+    [self.songSearchBar resignFirstResponder];
+}
 
 @end

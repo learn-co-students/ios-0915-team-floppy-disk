@@ -30,10 +30,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *shortBio;
 @property (weak, nonatomic) IBOutlet UITableView *postsTableview;
 @property (nonatomic, strong) NSArray *userPosts;
+@property (nonatomic, strong) NSArray *userFollowing;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic) PFUser *currentUser;
-@property (nonatomic) BOOL isCurrentUser;
 @property (nonatomic) PFObject *userObject;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
 
@@ -85,8 +85,14 @@
 
 - (void)setupFollowersAndFans
 {
-    PFRelation *followingCount = self.user[@"following"];
-    NSLog(@"FOLLOWERS: %@", followingCount);
+    //PFRelation *followingCount = self.user[@"following"];
+    PFRelation *relation = [self.user relationForKey:@"following"];
+    PFQuery *query = [relation query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+         NSLog(@"FOLLOWERS: %@", self.user);
+        self.userFollowing = results;
+        self.followingCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFollowing.count];
+    }];
 }
 - (void)updatePostCount
 {

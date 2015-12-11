@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *postsTableview;
 @property (nonatomic, strong) NSArray *userPosts;
 @property (nonatomic, strong) NSArray *userFollowing;
+@property (nonatomic, strong) NSArray *userFans;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic) PFUser *currentUser;
@@ -93,6 +94,23 @@
         self.userFollowing = results;
         self.followingCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFollowing.count];
     }];
+
+    PFQuery *fansQuery = [PFUser query];
+    [fansQuery whereKey:@"following" equalTo:self.user];
+    [fansQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        // so i think this will return all the users who are following self.user
+        NSLog(@"FANS: %@", objects);
+        self.userFans = objects;
+        self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count];
+    }];
+    
+    
+//    PFRelation *relationFans = [_user relationForKey:@"following"];
+//    PFQuery *queryFans = [relationFans query];
+//    [queryFans whereKey:@"following" equalTo:self.user];
+//    [queryFans findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+//        
+//    }];
 }
 - (void)updatePostCount
 {

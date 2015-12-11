@@ -496,7 +496,7 @@
     return YES;
 }
 
-//spotify login methods
+#pragma login methods
 
 
 -(void)showSafariVCForSpotifyLogin

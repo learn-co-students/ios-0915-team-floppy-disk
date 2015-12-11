@@ -219,11 +219,11 @@
                                     <constraint firstItem="Q2S-E8-x2a" firstAttribute="centerX" secondItem="qqz-ns-WvY" secondAttribute="centerX" id="zRu-9H-Ktk"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2b-0c-iv9" userLabel="Bottom View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2b-0c-iv9" userLabel="Bottom View">
                                 <rect key="frame" x="0.0" y="224" width="414" height="468"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
-                                        <rect key="frame" x="0.0" y="45" width="414" height="379"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-Qg-IsN">
+                                        <rect key="frame" x="0.0" y="1" width="414" height="467"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.5" colorSpace="calibratedRGB"/>
                                         <prototypes>
@@ -326,6 +326,11 @@
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Vq5-Qg-IsN" firstAttribute="leading" secondItem="z2b-0c-iv9" secondAttribute="leading" id="95Y-uo-cqx"/>
+                                    <constraint firstItem="Vq5-Qg-IsN" firstAttribute="centerY" secondItem="z2b-0c-iv9" secondAttribute="centerY" id="WQn-6C-Hth"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vq5-Qg-IsN" secondAttribute="bottom" id="tFX-Dz-EoB"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-Uc-7cS" userLabel="Music Player View">
                                 <rect key="frame" x="0.0" y="692" width="414" height="89"/>
@@ -384,12 +389,17 @@
                         <color key="backgroundColor" red="0.98123324396782841" green="0.98123324396782841" blue="0.98123324396782841" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="qqz-ns-WvY" secondAttribute="trailing" id="8sd-b2-7MG"/>
+                            <constraint firstItem="z2b-0c-iv9" firstAttribute="centerX" secondItem="zOA-Zn-puh" secondAttribute="centerX" id="BbP-Aw-WpK"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="top" secondItem="Pb1-mO-Aqd" secondAttribute="bottom" constant="20" id="DAH-aK-pzd"/>
                             <constraint firstItem="8wm-Uc-7cS" firstAttribute="centerX" secondItem="zOA-Zn-puh" secondAttribute="centerX" id="HiE-84-4iJ"/>
                             <constraint firstItem="EU0-Np-qFi" firstAttribute="top" secondItem="8wm-Uc-7cS" secondAttribute="bottom" constant="-89" id="MwP-7d-KWL"/>
                             <constraint firstItem="8wm-Uc-7cS" firstAttribute="width" secondItem="zOA-Zn-puh" secondAttribute="width" id="Usq-a9-FuL"/>
+                            <constraint firstItem="z2b-0c-iv9" firstAttribute="top" secondItem="qqz-ns-WvY" secondAttribute="bottom" constant="7" id="ZhZ-WB-J52"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="height" secondItem="zOA-Zn-puh" secondAttribute="height" multiplier="0.24" id="lJ0-zA-zog"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="leading" secondItem="zOA-Zn-puh" secondAttribute="leadingMargin" id="tLP-v1-Bku"/>
+                            <constraint firstItem="Vq5-Qg-IsN" firstAttribute="centerX" secondItem="zOA-Zn-puh" secondAttribute="centerX" id="twk-iu-rFJ"/>
+                            <constraint firstItem="z2b-0c-iv9" firstAttribute="bottom" secondItem="EU0-Np-qFi" secondAttribute="top" id="wgz-vz-Mqi"/>
+                            <constraint firstItem="z2b-0c-iv9" firstAttribute="width" secondItem="zOA-Zn-puh" secondAttribute="width" id="xDL-RM-XTz"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

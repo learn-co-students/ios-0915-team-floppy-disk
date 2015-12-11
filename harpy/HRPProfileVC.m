@@ -198,6 +198,7 @@
     [self.activityIndicator startAnimating];
     PFRelation *userPosts = [self.user relationForKey:@"HRPPosts"];
     PFQuery *query = [userPosts query];
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error)
         {

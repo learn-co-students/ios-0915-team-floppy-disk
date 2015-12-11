@@ -17,6 +17,10 @@
 
 @interface HRPProfileVC () <UITableViewDelegate, UITableViewDataSource, SPTAudioStreamingDelegate>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *musicPlayerBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableviewBottom;
+@property (weak, nonatomic) IBOutlet UIView *musicPlayerView;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
 @property (weak, nonatomic) IBOutlet UIButton *followOrEditButton;
 @property (weak, nonatomic) IBOutlet UILabel *postCount;
@@ -405,6 +409,15 @@
 
 - (IBAction)playButtonTapped:(UIButton *)sender {
     
+    CGFloat musicPlayerHeight = self.musicPlayerView.frame.size.height;
+    self.tableviewBottom.constant = -musicPlayerHeight;
+    self.musicPlayerBottom.constant = 0;
+    [self.view setNeedsUpdateConstraints];
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     } completion:nil];
+
     NSLog(@"%@", self.userPosts);
     //button should change to a pause
     UITableViewCell *cell = (UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview];

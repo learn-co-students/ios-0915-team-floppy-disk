@@ -327,16 +327,22 @@
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Vq5-Qg-IsN" firstAttribute="leading" secondItem="z2b-0c-iv9" secondAttribute="leading" id="95Y-uo-cqx"/>
+                                    <constraint firstItem="Vq5-Qg-IsN" firstAttribute="leading" secondItem="z2b-0c-iv9" secondAttribute="leading" id="17d-Hi-Pzl"/>
+                                    <constraint firstItem="Vq5-Qg-IsN" firstAttribute="top" secondItem="z2b-0c-iv9" secondAttribute="top" constant="1" id="TxM-nD-HTe"/>
                                     <constraint firstItem="Vq5-Qg-IsN" firstAttribute="centerY" secondItem="z2b-0c-iv9" secondAttribute="centerY" id="WQn-6C-Hth"/>
                                     <constraint firstAttribute="bottom" secondItem="Vq5-Qg-IsN" secondAttribute="bottom" id="tFX-Dz-EoB"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WQn-6C-Hth"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-Uc-7cS" userLabel="Music Player View">
                                 <rect key="frame" x="0.0" y="692" width="414" height="89"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="47u-G3-Gq2">
-                                        <rect key="frame" x="20" y="18" width="374" height="54"/>
+                                        <rect key="frame" x="18" y="18" width="378" height="54"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Js1-gV-nkQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
@@ -345,7 +351,7 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="FaS-a7-wU2">
-                                                <rect key="frame" x="62" y="0.0" width="312" height="54"/>
+                                                <rect key="frame" x="62" y="0.0" width="316" height="54"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocQ-05-7eN">
                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="18"/>
@@ -378,7 +384,7 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="89" id="ICf-IV-zAl"/>
-                                    <constraint firstItem="47u-G3-Gq2" firstAttribute="width" secondItem="8wm-Uc-7cS" secondAttribute="height" multiplier="4.2" id="YLb-6V-U7Z"/>
+                                    <constraint firstItem="47u-G3-Gq2" firstAttribute="leading" secondItem="8wm-Uc-7cS" secondAttribute="leading" constant="18" id="X4r-oJ-ess"/>
                                     <constraint firstItem="47u-G3-Gq2" firstAttribute="centerY" secondItem="8wm-Uc-7cS" secondAttribute="centerY" id="kB6-aT-Q5R"/>
                                     <constraint firstItem="47u-G3-Gq2" firstAttribute="centerX" secondItem="8wm-Uc-7cS" secondAttribute="centerX" id="sue-k9-gYo"/>
                                     <constraint firstItem="Js1-gV-nkQ" firstAttribute="width" secondItem="8wm-Uc-7cS" secondAttribute="height" multiplier="45:74" id="uch-Lc-deZ"/>
@@ -392,6 +398,7 @@
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="centerX" secondItem="zOA-Zn-puh" secondAttribute="centerX" id="BbP-Aw-WpK"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="top" secondItem="Pb1-mO-Aqd" secondAttribute="bottom" constant="20" id="DAH-aK-pzd"/>
                             <constraint firstItem="8wm-Uc-7cS" firstAttribute="centerX" secondItem="zOA-Zn-puh" secondAttribute="centerX" id="HiE-84-4iJ"/>
+                            <constraint firstItem="Vq5-Qg-IsN" firstAttribute="top" secondItem="Pb1-mO-Aqd" secondAttribute="bottom" constant="205" id="IYc-bm-PPu"/>
                             <constraint firstItem="EU0-Np-qFi" firstAttribute="top" secondItem="8wm-Uc-7cS" secondAttribute="bottom" constant="-89" id="MwP-7d-KWL"/>
                             <constraint firstItem="8wm-Uc-7cS" firstAttribute="width" secondItem="zOA-Zn-puh" secondAttribute="width" id="Usq-a9-FuL"/>
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="top" secondItem="qqz-ns-WvY" secondAttribute="bottom" constant="7" id="ZhZ-WB-J52"/>
@@ -401,6 +408,11 @@
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="bottom" secondItem="EU0-Np-qFi" secondAttribute="top" id="wgz-vz-Mqi"/>
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="width" secondItem="zOA-Zn-puh" secondAttribute="width" id="xDL-RM-XTz"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="IYc-bm-PPu"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="EIy-1h-741">
@@ -426,6 +438,8 @@
                         <outlet property="fansCountLabel" destination="NBs-co-kAi" id="VSh-s3-X6a"/>
                         <outlet property="followOrEditButton" destination="zR0-et-59C" id="BU3-J1-xZv"/>
                         <outlet property="followingCountLabel" destination="BDy-kN-Rnf" id="7fp-hs-2jw"/>
+                        <outlet property="musicPlayerBottom" destination="MwP-7d-KWL" id="9Kf-rY-PG3"/>
+                        <outlet property="musicPlayerView" destination="8wm-Uc-7cS" id="6g4-5K-Lpp"/>
                         <outlet property="playPauseLabel" destination="ocQ-05-7eN" id="Vtd-4M-0QX"/>
                         <outlet property="postCount" destination="WKN-52-CPh" id="690-xW-jxs"/>
                         <outlet property="postsTableview" destination="Vq5-Qg-IsN" id="yOC-22-NSu"/>
@@ -433,6 +447,7 @@
                         <outlet property="settingsButton" destination="3Ig-pX-UYg" id="AgZ-3w-bfa"/>
                         <outlet property="shortBio" destination="ghN-tF-V6Z" id="cAW-T9-5jt"/>
                         <outlet property="songNameLabel" destination="an0-aO-bvy" id="L2G-m5-IgH"/>
+                        <outlet property="tableviewBottom" destination="tFX-Dz-EoB" id="EUD-qo-VXh"/>
                         <outlet property="userAvatar" destination="iBy-4X-gNf" id="wwQ-eL-kIB"/>
                     </connections>
                 </viewController>

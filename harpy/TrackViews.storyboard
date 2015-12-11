@@ -53,10 +53,10 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="eZa-BU-YJr">
                                                             <rect key="frame" x="90" y="0.0" width="300" height="85"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DoE-kv-Rkb">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DoE-kv-Rkb">
                                                                     <rect key="frame" x="0.0" y="0.0" width="63" height="85"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="song title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vy-KX-fV7">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="song title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vy-KX-fV7">
                                                                             <rect key="frame" x="0.0" y="0.0" width="63" height="35"/>
                                                                             <animations/>
                                                                             <constraints>
@@ -66,17 +66,17 @@
                                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="91l-xw-tmg">
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="91l-xw-tmg">
                                                                             <rect key="frame" x="0.0" y="35" width="63" height="50"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAR-oD-DVh">
+                                                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAR-oD-DVh">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="63" height="35"/>
                                                                                     <animations/>
                                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHx-uH-KFG">
+                                                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHx-uH-KFG">
                                                                                     <rect key="frame" x="0.0" y="35" width="63" height="15"/>
                                                                                     <animations/>
                                                                                     <constraints>
@@ -95,10 +95,10 @@
                                                                         <constraint firstAttribute="height" constant="85" id="84w-C5-Em5"/>
                                                                     </constraints>
                                                                 </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ruP-Fg-ZlA">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ruP-Fg-ZlA">
                                                                     <rect key="frame" x="66" y="0.0" width="234" height="85"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7c-kV-oYy">
+                                                                        <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7c-kV-oYy">
                                                                             <rect key="frame" x="0.0" y="0.0" width="234" height="55"/>
                                                                             <animations/>
                                                                             <state key="normal" image="play_filled"/>
@@ -106,7 +106,7 @@
                                                                                 <action selector="cellPlayButtonTapped:" destination="1rH-bZ-uSV" eventType="touchUpInside" id="leH-pI-1mp"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpG-ta-gfa">
+                                                                        <button opaque="NO" tag="6" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpG-ta-gfa">
                                                                             <rect key="frame" x="0.0" y="55" width="234" height="30"/>
                                                                             <animations/>
                                                                             <constraints>
@@ -271,17 +271,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWf-66-W5K">
-                                <rect key="frame" x="0.0" y="219" width="207" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Upload/Take Photo">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="uploadPhotoButtonTapped:" destination="qmp-pb-MEz" eventType="touchUpInside" id="54S-9g-Aeh"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Y0x-Ue-VlP">
                                 <rect key="frame" x="213" y="84" width="197" height="69"/>
                                 <subviews>
@@ -334,11 +323,8 @@
                             <constraint firstItem="2YH-uc-rg9" firstAttribute="top" secondItem="Y0x-Ue-VlP" secondAttribute="bottom" constant="54" id="52t-su-Yhg"/>
                             <constraint firstItem="Y0x-Ue-VlP" firstAttribute="width" secondItem="hmL-Ua-R5A" secondAttribute="width" multiplier="0.95" id="7PF-CD-SSe"/>
                             <constraint firstItem="2YH-uc-rg9" firstAttribute="width" secondItem="Y0x-Ue-VlP" secondAttribute="width" id="C4l-uu-874"/>
-                            <constraint firstItem="zWf-66-W5K" firstAttribute="top" secondItem="hmL-Ua-R5A" secondAttribute="bottom" constant="-60" id="FYX-Lc-m42"/>
                             <constraint firstItem="hmL-Ua-R5A" firstAttribute="leading" secondItem="Jd8-fp-cMY" secondAttribute="leadingMargin" constant="-20" id="SIE-Pd-JTF"/>
                             <constraint firstItem="Y0x-Ue-VlP" firstAttribute="top" secondItem="2ce-r9-Swi" secondAttribute="bottom" constant="20" id="X6C-C3-M5p"/>
-                            <constraint firstItem="zWf-66-W5K" firstAttribute="centerX" secondItem="hmL-Ua-R5A" secondAttribute="centerX" id="beW-gk-pz8"/>
-                            <constraint firstItem="zWf-66-W5K" firstAttribute="width" secondItem="hmL-Ua-R5A" secondAttribute="width" id="fvn-NB-ayT"/>
                             <constraint firstItem="2YH-uc-rg9" firstAttribute="height" secondItem="qQ4-6d-FnU" secondAttribute="height" id="gy7-Cf-fd1"/>
                             <constraint firstItem="hmL-Ua-R5A" firstAttribute="top" secondItem="2ce-r9-Swi" secondAttribute="bottom" constant="8" id="obi-Oy-wsq"/>
                             <constraint firstItem="hmL-Ua-R5A" firstAttribute="width" secondItem="Jd8-fp-cMY" secondAttribute="width" multiplier="0.5" id="qED-bR-4pi"/>

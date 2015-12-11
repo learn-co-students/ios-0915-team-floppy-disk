@@ -252,7 +252,6 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         self.newestLocation = self.locationManager.location;

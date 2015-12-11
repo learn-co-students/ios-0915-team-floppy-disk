@@ -88,6 +88,10 @@
     PFRelation *followingCount = self.user[@"following"];
     NSLog(@"FOLLOWERS: %@", followingCount);
 }
+- (void)updatePostCount
+{
+    self.postCount.text = [NSString stringWithFormat:@"%i", (int)self.userPosts.count];
+}
 - (void)setupUserProfile
 {
     self.userAvatar.clipsToBounds = YES;
@@ -213,6 +217,7 @@
             
             self.userPosts = objects;
             [self.postsTableview reloadData];
+            [self updatePostCount];
             NSLog(@"PARSE POSTS: %@", self.userPosts);
         }
         else

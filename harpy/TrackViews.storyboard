@@ -271,17 +271,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWf-66-W5K">
-                                <rect key="frame" x="0.0" y="219" width="207" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Upload/Take Photo">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="uploadPhotoButtonTapped:" destination="qmp-pb-MEz" eventType="touchUpInside" id="54S-9g-Aeh"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Y0x-Ue-VlP">
                                 <rect key="frame" x="213" y="84" width="197" height="69"/>
                                 <subviews>
@@ -334,11 +323,8 @@
                             <constraint firstItem="2YH-uc-rg9" firstAttribute="top" secondItem="Y0x-Ue-VlP" secondAttribute="bottom" constant="54" id="52t-su-Yhg"/>
                             <constraint firstItem="Y0x-Ue-VlP" firstAttribute="width" secondItem="hmL-Ua-R5A" secondAttribute="width" multiplier="0.95" id="7PF-CD-SSe"/>
                             <constraint firstItem="2YH-uc-rg9" firstAttribute="width" secondItem="Y0x-Ue-VlP" secondAttribute="width" id="C4l-uu-874"/>
-                            <constraint firstItem="zWf-66-W5K" firstAttribute="top" secondItem="hmL-Ua-R5A" secondAttribute="bottom" constant="-60" id="FYX-Lc-m42"/>
                             <constraint firstItem="hmL-Ua-R5A" firstAttribute="leading" secondItem="Jd8-fp-cMY" secondAttribute="leadingMargin" constant="-20" id="SIE-Pd-JTF"/>
                             <constraint firstItem="Y0x-Ue-VlP" firstAttribute="top" secondItem="2ce-r9-Swi" secondAttribute="bottom" constant="20" id="X6C-C3-M5p"/>
-                            <constraint firstItem="zWf-66-W5K" firstAttribute="centerX" secondItem="hmL-Ua-R5A" secondAttribute="centerX" id="beW-gk-pz8"/>
-                            <constraint firstItem="zWf-66-W5K" firstAttribute="width" secondItem="hmL-Ua-R5A" secondAttribute="width" id="fvn-NB-ayT"/>
                             <constraint firstItem="2YH-uc-rg9" firstAttribute="height" secondItem="qQ4-6d-FnU" secondAttribute="height" id="gy7-Cf-fd1"/>
                             <constraint firstItem="hmL-Ua-R5A" firstAttribute="top" secondItem="2ce-r9-Swi" secondAttribute="bottom" constant="8" id="obi-Oy-wsq"/>
                             <constraint firstItem="hmL-Ua-R5A" firstAttribute="width" secondItem="Jd8-fp-cMY" secondAttribute="width" multiplier="0.5" id="qED-bR-4pi"/>

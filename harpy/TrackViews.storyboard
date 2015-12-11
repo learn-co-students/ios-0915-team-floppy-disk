@@ -204,16 +204,10 @@
                             <constraint firstItem="LFm-82-2PK" firstAttribute="top" secondItem="Env-n8-Fgl" secondAttribute="bottom" constant="8" symbolic="YES" id="dmL-jh-lck"/>
                             <constraint firstItem="zWB-xD-fLO" firstAttribute="centerX" secondItem="Ayy-1o-7fT" secondAttribute="centerX" id="ejX-y7-QWx"/>
                             <constraint firstItem="LFm-82-2PK" firstAttribute="top" secondItem="J5h-kQ-Kuh" secondAttribute="bottom" id="iga-ao-z9u"/>
-                            <constraint firstItem="J5h-kQ-Kuh" firstAttribute="bottom" secondItem="zWB-xD-fLO" secondAttribute="bottom" constant="564" id="prd-hJ-rXU"/>
                             <constraint firstItem="J5h-kQ-Kuh" firstAttribute="top" secondItem="zWB-xD-fLO" secondAttribute="bottom" id="rtE-QM-3LM"/>
                             <constraint firstItem="J5h-kQ-Kuh" firstAttribute="width" secondItem="Ayy-1o-7fT" secondAttribute="width" id="xDO-ah-xrw"/>
                             <constraint firstItem="zWB-xD-fLO" firstAttribute="top" secondItem="uuo-XN-5PR" secondAttribute="bottom" id="xIH-UM-RQC"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="prd-hJ-rXU"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="SEARCH SONGS" id="ugX-8d-URQ">
                         <barButtonItem key="leftBarButtonItem" image="left_Arrow" style="plain" id="EQ6-n6-V3w">
@@ -226,6 +220,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="musicView" destination="Env-n8-Fgl" id="muL-TE-sHa"/>
                         <outlet property="musicviewBottom" destination="dmL-jh-lck" id="Zp9-gV-8EV"/>
                         <outlet property="playStatusLabel" destination="FoO-l1-REu" id="tej-ZS-Mij"/>
                         <outlet property="playerArtistLabel" destination="El5-Tw-qTg" id="jDM-iU-zdR"/>
@@ -233,6 +228,7 @@
                         <outlet property="playerSongLabel" destination="otu-iV-Nsu" id="2th-DH-geo"/>
                         <outlet property="songSearchBar" destination="zWB-xD-fLO" id="nkg-kQ-eKI"/>
                         <outlet property="songTableView" destination="J5h-kQ-Kuh" id="oCh-Yx-8Zt"/>
+                        <outlet property="tableviewBottom" destination="iga-ao-z9u" id="SeZ-e0-VYD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAx-ln-BdK" userLabel="First Responder" sceneMemberID="firstResponder"/>

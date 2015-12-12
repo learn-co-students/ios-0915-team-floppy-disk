@@ -11,6 +11,10 @@
 
 @interface HRPPostFeedViewController () <UITableViewDelegate, UITableViewDataSource, SPTAudioStreamingDelegate>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableviewBottom;
+@property (weak, nonatomic) IBOutlet UIStackView *musicPlayView;
+
+
 @property (strong, nonatomic) IBOutlet UIImageView *albumArtView;
 @property (strong, nonatomic) IBOutlet UILabel *playPauseLabel;
 @property (strong, nonatomic) IBOutlet UILabel *songnameLabel;

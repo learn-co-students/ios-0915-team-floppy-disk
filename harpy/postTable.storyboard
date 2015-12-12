@@ -128,10 +128,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="im2-34-ORU">
                                         <rect key="frame" x="0.0" y="583" width="414" height="89"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kQL-gM-n9C">
-                                                <rect key="frame" x="8" y="7" width="128" height="52"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kQL-gM-n9C">
+                                                <rect key="frame" x="8" y="19" width="128" height="52"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EqD-HK-B9R">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EqD-HK-B9R">
                                                         <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
                                                         <animations/>
                                                         <constraints>
@@ -139,24 +139,24 @@
                                                             <constraint firstAttribute="width" constant="52" id="fMU-gu-RAe"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="9eo-QB-XhM">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="9eo-QB-XhM">
                                                         <rect key="frame" x="60" y="0.0" width="68" height="52"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAB-dI-iHX">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAB-dI-iHX">
                                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="17"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Song Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvn-q7-jMF">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvn-q7-jMF">
                                                                 <rect key="frame" x="0.0" y="17" width="66" height="18"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wi1-hD-leU">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wi1-hD-leU">
                                                                 <rect key="frame" x="0.0" y="35" width="68" height="17"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -168,12 +168,18 @@
                                                     </stackView>
                                                 </subviews>
                                                 <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="EqD-HK-B9R" secondAttribute="trailing" constant="76" id="Dgy-id-sFr"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
+                                            <constraint firstItem="kQL-gM-n9C" firstAttribute="leading" secondItem="im2-34-ORU" secondAttribute="leading" constant="8" id="93d-zg-rNl"/>
+                                            <constraint firstItem="kQL-gM-n9C" firstAttribute="centerY" secondItem="im2-34-ORU" secondAttribute="centerY" id="FMZ-Fn-wWz"/>
+                                            <constraint firstAttribute="trailing" secondItem="kQL-gM-n9C" secondAttribute="trailing" constant="278" id="gUN-dX-SuY"/>
                                             <constraint firstAttribute="height" constant="89" id="iZg-dU-A6e"/>
                                         </constraints>
                                         <connections>
@@ -182,6 +188,9 @@
                                     </view>
                                 </subviews>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstItem="im2-34-ORU" firstAttribute="top" secondItem="grq-TW-Y3m" secondAttribute="bottom" id="qaF-ed-dKc"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <animations/>
@@ -205,9 +214,11 @@
                     <connections>
                         <outlet property="albumArtView" destination="EqD-HK-B9R" id="2gC-gM-kbE"/>
                         <outlet property="artistNameLabel" destination="Wi1-hD-leU" id="mC1-nj-RRb"/>
+                        <outlet property="musicPlayView" destination="kQL-gM-n9C" id="yYP-9b-UbZ"/>
                         <outlet property="playPauseLabel" destination="tAB-dI-iHX" id="iSu-KN-nmo"/>
                         <outlet property="postTableView" destination="grq-TW-Y3m" id="4Eu-EF-9Ns"/>
                         <outlet property="songnameLabel" destination="tvn-q7-jMF" id="yiA-4T-mh2"/>
+                        <outlet property="tableviewBottom" destination="qaF-ed-dKc" id="RaN-5X-Mz3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Vi-qe-HQk" userLabel="First Responder" sceneMemberID="firstResponder"/>

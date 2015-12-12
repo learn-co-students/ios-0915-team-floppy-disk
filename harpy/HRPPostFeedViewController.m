@@ -65,7 +65,8 @@
     NSDictionary *postsFromArray = self.postsArray[indexPath.row];
     
     UIButton *playSongButton = (UIButton *)[cell viewWithTag:1];
-    [playSongButton setTitle:@"Play" forState:UIControlStateNormal];
+    //[playSongButton setTitle:@"Play" forState:UIControlStateNormal];
+    [playSongButton setImage:[UIImage imageNamed:@"white_play"] forState:UIControlStateNormal];
     [playSongButton addTarget:self action:@selector(playButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImageView *coverArt = (UIImageView *)[cell viewWithTag:2];
@@ -83,11 +84,11 @@
         }];
     }
     
-    UILabel *likesLabel = (UILabel *)[cell viewWithTag:4];
-    //relation
-    
-    UILabel *commentsLabel = (UILabel *)[cell viewWithTag:5];
-    //commentsLabel.text = self.postsArray[0][@"comments"];
+//    UILabel *likesLabel = (UILabel *)[cell viewWithTag:4];
+//    //relation
+//    
+//    UILabel *commentsLabel = (UILabel *)[cell viewWithTag:5];
+//    //commentsLabel.text = self.postsArray[0][@"comments"];
     
     UILabel *captionLabel = (UILabel *)[cell viewWithTag:6];
     captionLabel.text = postsFromArray[@"caption"];
@@ -203,7 +204,7 @@
                          [self.view layoutIfNeeded];
                      } completion:nil];
     
-    if ([sender.titleLabel.text isEqualToString:@"Play"]) {
+    if (self.player.isPlaying == NO) {
     
         NSIndexPath *indexPath = [self.postTableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
         
@@ -211,21 +212,22 @@
         
         
 
-        PFFile *albumFile = postInView[@"albumArt"];
-        if (albumFile) {
-            [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    if (!error) {
-                        self.albumArtView.image = [UIImage imageWithData:data];
-                    } else {
-                        self.albumArtView.image = [UIImage imageNamed:@"spotify"];
-                    }
-                }];
-            }];
-        }
+//        PFFile *albumFile = postInView[@"albumArt"];
+//        if (albumFile) {
+//            [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+//                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//                    if (!error) {
+//                        self.albumArtView.image = [UIImage imageWithData:data];
+//                    } else {
+//                        self.albumArtView.image = [UIImage imageNamed:@"spotify"];
+//                    }
+//                }];
+//            }];
+//        }
         self.songnameLabel.text = postInView[@"songTitle"];
         self.artistNameLabel.text = postInView[@"artistName"];
         self.playPauseLabel.text = @"Playing";
+        self.albumArtView.image = [UIImage imageNamed:@"white_pause"];
         
         [self handleNewSession];
         NSString *urlString = postInView[@"songURL"];
@@ -234,13 +236,14 @@
         [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
             NSLog(@"%@", error);
             
-            [sender setTitle:@"Stop" forState:UIControlStateNormal];
+            //[sender setTitle:@"Stop" forState:UIControlStateNormal];
+            [sender setImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
             
         }];
-    } else if ([sender.titleLabel.text isEqualToString:@"Stop"]) {
+    } else if (self.player.isPlaying == YES) {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
-        [sender setTitle:@"Play" forState:UIControlStateNormal];
-
+        //[sender setTitle:@"Play" forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"white_play"] forState:UIControlStateNormal];
     }
 
 }
@@ -250,8 +253,10 @@
     
     if ([self.playPauseLabel.text isEqualToString:@"Playing"]) {
         self.playPauseLabel.text = @"Paused";
+        self.albumArtView.image = [UIImage imageNamed:@"white_play"];
     } else if ([self.playPauseLabel.text isEqualToString:@"Paused"]) {
         self.playPauseLabel.text = @"Playing";
+        self.albumArtView.image = [UIImage imageNamed:@"white_pause"];
     }
 }
 

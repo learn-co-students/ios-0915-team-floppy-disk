@@ -439,48 +439,55 @@
 
 - (IBAction)playButtonTapped:(UIButton *)sender {
     
-    CGFloat musicPlayerHeight = self.musicPlayerView.frame.size.height;
-    self.tableviewBottom.constant = musicPlayerHeight;
-    self.musicPlayerBottom.constant = 0;
-    [self.view setNeedsUpdateConstraints];
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         [self.view layoutIfNeeded];
-                     } completion:nil];
+    if (self.player.isPlaying == NO) {
+        CGFloat musicPlayerHeight = self.musicPlayerView.frame.size.height;
+        self.tableviewBottom.constant = musicPlayerHeight;
+        self.musicPlayerBottom.constant = 0;
+        [self.view setNeedsUpdateConstraints];
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             [self.view layoutIfNeeded];
+                         } completion:nil];
 
-    NSLog(@"%@", self.userPosts);
-    //button should change to a pause
-    UITableViewCell *cell = (UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview];
+        NSLog(@"%@", self.userPosts);
+        //button should change to a pause
+        UITableViewCell *cell = (UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview];
+        
+        NSIndexPath *indexpath = [self.postsTableview indexPathForCell: cell];
+        //this is only hitting the first row!!!
+        
+        NSDictionary *postInView = self.userPosts[indexpath.row];
+        
+    //    PFFile *albumFile = postInView[@"albumArt"];
+    //    if (albumFile) {
+    //        [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+    //            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    //                if (!error) {
+    //                    self.coverArtView.image = [UIImage imageWithData:data];
+    //                } else {
+    //                    self.coverArtView.image = [UIImage imageNamed:@"spotify"];
+    //                }
+    //            }];
+    //        }];
+    //    }
+        self.songNameLabel.text = postInView[@"songTitle"];
+        self.artistNameLabel.text = postInView[@"artistName"];
+        self.playPauseLabel.text = @"Playing";
+        self.coverArtView.image = [UIImage imageNamed:@"white_pause"];
+        
+        [self handleNewSession];
+        NSString *urlString = postInView[@"songURL"];
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
+            //do we want option to stop song?
+        }];
+        [sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
     
-    NSIndexPath *indexpath = [self.postsTableview indexPathForCell: cell];
-    //this is only hitting the first row!!!
-    
-    NSDictionary *postInView = self.userPosts[indexpath.row];
-    
-//    PFFile *albumFile = postInView[@"albumArt"];
-//    if (albumFile) {
-//        [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
-//            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//                if (!error) {
-//                    self.coverArtView.image = [UIImage imageWithData:data];
-//                } else {
-//                    self.coverArtView.image = [UIImage imageNamed:@"spotify"];
-//                }
-//            }];
-//        }];
-//    }
-    self.songNameLabel.text = postInView[@"songTitle"];
-    self.artistNameLabel.text = postInView[@"artistName"];
-    self.playPauseLabel.text = @"Playing";
-    self.coverArtView.image = [UIImage imageNamed:@"white_pause"];
-    
-    [self handleNewSession];
-    NSString *urlString = postInView[@"songURL"];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
-        //do we want option to stop song?
-    }];
+    } else if (self.player.isPlaying == YES) {
+        [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+        [sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    }
 }
 - (IBAction)playerViewTapped:(UITapGestureRecognizer *)sender {
     [self.player setIsPlaying:!self.player.isPlaying callback:nil];

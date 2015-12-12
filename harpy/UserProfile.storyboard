@@ -79,7 +79,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-Gq-0cW">
                                                         <rect key="frame" x="138" y="0.0" width="236" height="118"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kol-El-JLY">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kol-El-JLY">
                                                                 <rect key="frame" x="0.0" y="0.0" width="236" height="32"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LTg-MC-nDo">
@@ -173,10 +173,10 @@
                                                     <constraint firstItem="9Zj-md-RCZ" firstAttribute="top" secondItem="bWa-9r-jn4" secondAttribute="top" id="t7Q-49-bjm"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="Glf-Ey-3Vu">
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="center" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="Glf-Ey-3Vu">
                                                 <rect key="frame" x="0.0" y="143" width="374" height="34"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ndr-9U-T52">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ndr-9U-T52">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMC-o8-0dn">

@@ -487,6 +487,8 @@
     } else if (self.player.isPlaying == YES) {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
         [sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        self.playPauseLabel.text = @"Paused";
+        self.coverArtView.image = [UIImage imageNamed:@"white_play"];
     }
 }
 - (IBAction)playerViewTapped:(UITapGestureRecognizer *)sender {

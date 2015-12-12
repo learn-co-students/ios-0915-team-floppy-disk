@@ -283,6 +283,15 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    HRPPostPreviewViewController *destinVC = segue.destinationViewController;
+    NSIndexPath *indexPath = self.songTableView.indexPathForSelectedRow;
+    HRPTrack *track = self.filteredSongArray[indexPath.row];
+    destinVC.track = track;
+    destinVC.post = self.post;
+}
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     HRPPostPreviewViewController *destinVC = segue.destinationViewController;

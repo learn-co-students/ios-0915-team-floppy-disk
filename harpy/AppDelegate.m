@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import "HRPTrackCreator.h"
 #import "HRPTrack.h"
+#import "SKSplashView.h"
 
 @import GoogleMaps;
 
@@ -25,7 +26,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
     
     [[UINavigationBar appearance] setTitleTextAttributes: @{ NSFontAttributeName:
                                                                  [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],

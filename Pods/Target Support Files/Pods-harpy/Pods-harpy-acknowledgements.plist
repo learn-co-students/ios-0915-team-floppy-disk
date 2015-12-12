@@ -99,6 +99,14 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright 2014 Sachin Kesiraju</string>
+			<key>Title</key>
+			<string>SKSplashView</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>https://developer.spotify.com/developer-terms-of-use/</string>
 			<key>Title</key>
 			<string>Spotify-iOS-SDK</string>

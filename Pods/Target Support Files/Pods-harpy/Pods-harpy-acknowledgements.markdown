@@ -70,6 +70,10 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
+## SKSplashView
+
+Copyright 2014 Sachin Kesiraju
+
 ## Spotify-iOS-SDK
 
 https://developer.spotify.com/developer-terms-of-use/

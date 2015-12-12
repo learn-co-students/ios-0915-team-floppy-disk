@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableviewBottom;
 @property (weak, nonatomic) IBOutlet UIStackView *musicPlayView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *musicplayViewBottom;
 
 
 @property (strong, nonatomic) IBOutlet UIImageView *albumArtView;
@@ -188,6 +189,16 @@
 }
 
 - (IBAction)playButtonTapped:(UIButton *)sender {
+    
+    CGFloat musicPlayerHeight = self.musicPlayView.frame.size.height;
+    self.tableviewBottom.constant = musicPlayerHeight;
+    self.musicplayViewBottom.constant = 0;
+    [self.view setNeedsUpdateConstraints];
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     } completion:nil];
+    
     if ([sender.titleLabel.text isEqualToString:@"Play"]) {
     
         NSIndexPath *indexPath = [self.postTableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];

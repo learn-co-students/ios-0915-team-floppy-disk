@@ -307,7 +307,7 @@
     HRPTrack *trackAtCell = self.filteredSongArray[indexPath.row];
     self.playerSongLabel.text = trackAtCell.songTitle;
     self.playerArtistLabel.text = trackAtCell.artistName;
-    self.playerCoverView.image = [UIImage imageWithData:trackAtCell.albumCoverArt];
+    self.playerCoverView.image = [UIImage imageNamed:@"white_pause"];
     self.playStatusLabel.text = @"Playing";
     
     [self handleNewSession];
@@ -319,6 +319,7 @@
         NSLog(@"%@", error);
         
     }];
+    
 }
 
 -(void)cellPostButtonTapped:(UIButton *)sender {
@@ -335,8 +336,10 @@
     
     if ([self.playStatusLabel.text isEqualToString:@"Playing"]) {
         self.playStatusLabel.text = @"Paused";
+        self.playerCoverView.image = [UIImage imageNamed:@"white_play"];
     } else if ([self.playStatusLabel.text isEqualToString:@"Paused"]) {
         self.playStatusLabel.text = @"Playing";
+        self.playerCoverView.image = [UIImage imageNamed:@"white_pause"];
     }
 }
 

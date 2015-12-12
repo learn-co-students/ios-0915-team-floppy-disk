@@ -6,12 +6,14 @@ PODS:
   - ParseUI (1.1.7):
     - Bolts/Tasks (~> 1.3)
     - Parse (~> 1.9)
+  - SKSplashView (0.1.1)
   - Spotify-iOS-SDK (0.12.0)
 
 DEPENDENCIES:
   - GoogleMaps
   - Parse
   - ParseUI
+  - SKSplashView
   - Spotify-iOS-SDK (from `Spotify-iOS-SDK.podspec.json`)
 
 EXTERNAL SOURCES:
@@ -23,6 +25,7 @@ SPEC CHECKSUMS:
   GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
   ParseUI: c2bcdfbb00330e464b5b773266ae221697a3bb7b
+  SKSplashView: 9cca64e4f0eb556b938b41f63879844124f1aa2c
   Spotify-iOS-SDK: 15371134d2b17f5bab26a992043401b59cfbdfb1
 
 COCOAPODS: 0.39.0

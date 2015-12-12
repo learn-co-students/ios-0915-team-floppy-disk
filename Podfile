@@ -9,6 +9,7 @@ target 'harpy' do
    pod 'Spotify-iOS-SDK', :podspec => 'Spotify-iOS-SDK.podspec.json'
    pod 'Parse'
    pod 'ParseUI'
+   pod 'SKSplashView'
 
 end
 

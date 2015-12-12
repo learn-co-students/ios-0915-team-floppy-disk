@@ -276,6 +276,16 @@
     
     UIButton *playTrackButton = (UIButton *)[cell viewWithTag:5];
     [playTrackButton addTarget:self action:@selector(cellPlayButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIImage *buttonImage = playTrackButton.imageView.image;
+    UIImage *playButton = [UIImage imageNamed:@"play"];
+    UIImage *pauseButton = [UIImage imageNamed:@"pause"];
+    NSData *cellButtonData = UIImagePNGRepresentation(buttonImage);
+    NSData *playButtonData = UIImagePNGRepresentation(playButton);
+    NSData *pauseButtonData = UIImagePNGRepresentation(pauseButton);
+    if (playTrackButton.isTouchInside) {
+        if ([cellButtonData isEqual:playButtonData]) {
+        } else if 
+    }
     
     UIButton *postTrackButton = (UIButton *)[cell viewWithTag:6];
     [postTrackButton addTarget:self action:@selector(cellPostButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -294,31 +304,50 @@
 
 - (IBAction)cellPlayButtonTapped:(UIButton *)sender {
     
-    CGFloat musicPlayerHeight = self.musicView.frame.size.height;
-    self.tableviewBottom.constant = musicPlayerHeight;
-    self.musicviewBottom.constant = 0;
-    [self.view setNeedsUpdateConstraints];
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         [self.view layoutIfNeeded];
-                     } completion:nil];
+    UIButton *cellButton = (UIButton *)[self.view viewWithTag:5];
+    UIImage *buttonImage = cellButton.imageView.image;
     
-    NSIndexPath *indexPath = [self.songTableView indexPathForCell:(UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview]];
-    HRPTrack *trackAtCell = self.filteredSongArray[indexPath.row];
-    self.playerSongLabel.text = trackAtCell.songTitle;
-    self.playerArtistLabel.text = trackAtCell.artistName;
-    self.playerCoverView.image = [UIImage imageWithData:trackAtCell.albumCoverArt];
-    self.playStatusLabel.text = @"Playing";
+    UIImage *playButton = [UIImage imageNamed:@"play"];
+    UIImage *pauseButton = [UIImage imageNamed:@"pause"];
     
-    [self handleNewSession];
-    NSString *urlString = [NSString stringWithFormat:trackAtCell.spotifyURI];
-    NSURL *url = [NSURL URLWithString:urlString];
-    //NSURL *url = trackAtCell.spotifyURI;
+    NSData *cellButtonData = UIImagePNGRepresentation(buttonImage);
+    NSData *playButtonData = UIImagePNGRepresentation(playButton);
+    NSData *pauseButtonData = UIImagePNGRepresentation(pauseButton);
     
-    [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
-        NSLog(@"%@", error);
+    if ([cellButtonData isEqual:playButtonData]) {
+        CGFloat musicPlayerHeight = self.musicView.frame.size.height;
+        self.tableviewBottom.constant = musicPlayerHeight;
+        self.musicviewBottom.constant = 0;
+        [self.view setNeedsUpdateConstraints];
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             [self.view layoutIfNeeded];
+                         } completion:nil];
         
-    }];
+        NSIndexPath *indexPath = [self.songTableView indexPathForCell:(UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview]];
+        HRPTrack *trackAtCell = self.filteredSongArray[indexPath.row];
+        self.playerSongLabel.text = trackAtCell.songTitle;
+        self.playerArtistLabel.text = trackAtCell.artistName;
+        self.playerCoverView.image = [UIImage imageWithData:trackAtCell.albumCoverArt];
+        self.playStatusLabel.text = @"Playing";
+        
+        [self handleNewSession];
+        NSString *urlString = [NSString stringWithFormat:trackAtCell.spotifyURI];
+        NSURL *url = [NSURL URLWithString:urlString];
+        //NSURL *url = trackAtCell.spotifyURI;
+        
+        [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
+            NSLog(@"%@", error);
+            
+        }];
+        buttonImage = [UIImage imageWithData:pauseButtonData];
+    } else if ([cellButtonData isEqual:pauseButtonData]) {
+        if ([self.player isPlaying] == YES) {
+            [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+        }
+        buttonImage = [UIImage imageWithData:playButtonData];
+    }
+    
 }
 
 -(void)cellPostButtonTapped:(UIButton *)sender {

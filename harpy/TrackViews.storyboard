@@ -98,7 +98,10 @@
                                                                         <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7c-kV-oYy">
                                                                             <rect key="frame" x="0.0" y="0.0" width="274" height="50"/>
                                                                             <animations/>
-                                                                            <state key="normal" image="play_filled"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="50" id="2Mk-In-GnT"/>
+                                                                            </constraints>
+                                                                            <state key="normal" image="play"/>
                                                                             <connections>
                                                                                 <action selector="cellPlayButtonTapped:" destination="1rH-bZ-uSV" eventType="touchUpInside" id="leH-pI-1mp"/>
                                                                             </connections>
@@ -381,6 +384,6 @@
     </scenes>
     <resources>
         <image name="left_Arrow" width="22" height="16"/>
-        <image name="play_filled" width="32" height="32"/>
+        <image name="play" width="25" height="25"/>
     </resources>
 </document>

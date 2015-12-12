@@ -457,21 +457,22 @@
     
     NSDictionary *postInView = self.userPosts[indexpath.row];
     
-    PFFile *albumFile = postInView[@"albumArt"];
-    if (albumFile) {
-        [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                if (!error) {
-                    self.coverArtView.image = [UIImage imageWithData:data];
-                } else {
-                    self.coverArtView.image = [UIImage imageNamed:@"spotify"];
-                }
-            }];
-        }];
-    }
+//    PFFile *albumFile = postInView[@"albumArt"];
+//    if (albumFile) {
+//        [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+//            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//                if (!error) {
+//                    self.coverArtView.image = [UIImage imageWithData:data];
+//                } else {
+//                    self.coverArtView.image = [UIImage imageNamed:@"spotify"];
+//                }
+//            }];
+//        }];
+//    }
     self.songNameLabel.text = postInView[@"songTitle"];
     self.artistNameLabel.text = postInView[@"artistName"];
     self.playPauseLabel.text = @"Playing";
+    self.coverArtView.image = [UIImage imageNamed:@"white_pause"];
     
     [self handleNewSession];
     NSString *urlString = postInView[@"songURL"];
@@ -486,8 +487,10 @@
     
     if ([self.playPauseLabel.text isEqualToString:@"Playing"]) {
         self.playPauseLabel.text = @"Paused";
+        self.coverArtView.image = [UIImage imageNamed:@"white_play"];
     } else if ([self.playPauseLabel.text isEqualToString:@"Paused"]) {
         self.playPauseLabel.text = @"Playing";
+        self.coverArtView.image = [UIImage imageNamed:@"white_pause"];
     }
     
 }

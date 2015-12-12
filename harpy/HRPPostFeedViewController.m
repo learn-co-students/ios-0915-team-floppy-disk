@@ -83,9 +83,6 @@
         }];
     }
     
-    UIImageView *spotifyLogo = (UIImageView *)[cell viewWithTag:3];
-    spotifyLogo.image = [UIImage imageNamed:@"spotify"];
-    
     UILabel *likesLabel = (UILabel *)[cell viewWithTag:4];
     //relation
     
@@ -98,6 +95,13 @@
     //add cell properties
     UILabel *usernameLabel = (UILabel *)[cell viewWithTag:8];
     UIImageView *profileThumbnail = (UIImageView *)[cell viewWithTag:7];
+    
+    profileThumbnail.clipsToBounds = YES;
+    profileThumbnail.layer.masksToBounds = YES;
+    UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    [profileThumbnail.layer setBorderColor: [ironColor CGColor]];
+    [profileThumbnail.layer setBorderWidth: 1.0];
+    
     for (PFObject *post in self.postsArray) {
         PFRelation *userRelation = [post relationForKey:@"username"];
         PFQuery *postUsername = [userRelation query];

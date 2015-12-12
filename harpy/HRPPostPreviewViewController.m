@@ -13,6 +13,8 @@
 
 @interface HRPPostPreviewViewController () <UITextViewDelegate, UINavigationControllerDelegate>
 
+
+
 @property (strong, nonatomic) IBOutlet UIImageView *albumArtImageView;
 @property (strong, nonatomic) IBOutlet UILabel *songTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *artistNameLabel;
@@ -26,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     if (self.track.spotifyLogo == nil) {
         self.albumArtImageView.image = [UIImage imageWithData:self.track.albumCoverArt];
     } else {

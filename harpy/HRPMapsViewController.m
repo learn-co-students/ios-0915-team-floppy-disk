@@ -152,7 +152,7 @@
                 
                 UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]init];
                 leftButton.action = @selector(profileSecondButtonTapped);
-                leftButton.image = [UIImage imageNamed:@"menu.png"];
+                leftButton.image = [UIImage imageNamed:@"user.png"];
                 leftButton.target = self;
                 leftButton.tintColor = [UIColor whiteColor];
                 self.navigationItem.leftBarButtonItem = leftButton;
@@ -252,7 +252,6 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         self.newestLocation = self.locationManager.location;

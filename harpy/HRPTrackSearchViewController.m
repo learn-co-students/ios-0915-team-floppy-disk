@@ -15,6 +15,11 @@
 
 @interface HRPTrackSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SPTAudioStreamingDelegate>
 
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableviewBottom;
+@property (weak, nonatomic) IBOutlet UIView *musicView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *musicviewBottom;
+
 @property (strong, nonatomic) IBOutlet UISearchBar *songSearchBar;
 @property (strong, nonatomic) IBOutlet UITableView *songTableView;
 @property (strong, nonatomic) NSMutableArray *filteredSongArray;
@@ -47,6 +52,10 @@
     self.playStatusLabel.text = @"";
     self.playerSongLabel.text = @"";
     self.playerArtistLabel.text = @"";
+    
+    self.tableviewBottom.constant = 0;
+    self.musicviewBottom.constant = -89;
+    [self.view setNeedsUpdateConstraints];
     
     self.navigationItem.hidesBackButton = YES;  // We do a custom image for the back button on the post preview VC
     
@@ -234,7 +243,7 @@
 #pragma mark - UITableViewDataSource Methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 95.0;
+    return 89.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -284,6 +293,15 @@
 }
 
 - (IBAction)cellPlayButtonTapped:(UIButton *)sender {
+    
+    CGFloat musicPlayerHeight = self.musicView.frame.size.height;
+    self.tableviewBottom.constant = musicPlayerHeight;
+    self.musicviewBottom.constant = 0;
+    [self.view setNeedsUpdateConstraints];
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     } completion:nil];
     
     NSIndexPath *indexPath = [self.songTableView indexPathForCell:(UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview]];
     HRPTrack *trackAtCell = self.filteredSongArray[indexPath.row];

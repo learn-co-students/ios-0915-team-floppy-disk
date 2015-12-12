@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yYq-zi-t8J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yYq-zi-t8J">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
@@ -15,7 +15,20 @@
                     <view key="view" contentMode="scaleToFill" id="ll1-6Z-EQ4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="harpy" translatesAutoresizingMaskIntoConstraints="NO" id="ykF-bf-aT7">
+                                <rect key="frame" x="108" y="283" width="199" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="nH5-aH-r1G"/>
+                                    <constraint firstAttribute="width" constant="199" id="pz2-1b-obi"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ykF-bf-aT7" firstAttribute="centerY" secondItem="ll1-6Z-EQ4" secondAttribute="centerY" id="4ZH-x0-U6Y"/>
+                            <constraint firstItem="ykF-bf-aT7" firstAttribute="centerX" secondItem="ll1-6Z-EQ4" secondAttribute="centerX" id="fOT-gB-Iwj"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
@@ -24,4 +37,7 @@
             <point key="canvasLocation" x="203" y="209"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="harpy" width="842" height="842"/>
+    </resources>
 </document>

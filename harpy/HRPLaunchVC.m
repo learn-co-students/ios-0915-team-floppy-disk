@@ -10,6 +10,8 @@
 
 @interface HRPLaunchVC ()
 
+@property (strong, nonatomic) IBOutlet UIImageView *logo;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *logoHeight;
 @property (strong, nonatomic) SKSplashView *splashView;
 
 @end
@@ -17,9 +19,9 @@
 @implementation HRPLaunchVC
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    //[super viewDidLoad];
+    NSLog(@"animation did happen");
+
 
     [self introSplash];
 }
@@ -30,16 +32,15 @@
 }
 
 - (void)introSplash {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
-    imageView.image = [UIImage imageNamed:@"background.png"];
-    [self.view addSubview:imageView];
+    
+    NSLog(@"animation did happen");
 
-    SKSplashIcon *twitterSplashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"harpy.png"] animationType:SKIconAnimationTypeBounce];
-    UIColor *twitterColor = [UIColor colorWithRed:0.25098 green:0.6 blue:1.0 alpha:1.0];
-    _splashView = [[SKSplashView alloc] initWithSplashIcon:twitterSplashIcon backgroundColor:twitterColor animationType:SKSplashAnimationTypeNone];
-    _splashView.delegate = self; //Optional -> if you want to receive updates on animation beginning/end
-    _splashView.animationDuration = 3; //Optional -> set animation duration. Default: 1s
-    [self.view addSubview:_splashView];
-    [_splashView startAnimation];
+    CGFloat logoHeight = self.logo.frame.size.height;
+    self.logoHeight.constant = logoHeight +  100;
+    [self.view setNeedsUpdateConstraints];
+    [UIView animateWithDuration:3.0
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     } completion:nil];
 }
 @end

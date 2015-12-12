@@ -59,9 +59,6 @@
     
     self.navigationItem.hidesBackButton = YES;  // We do a custom image for the back button on the post preview VC
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    [self.view addGestureRecognizer:tap];
-    
 //    self.navigationController.navigationBar.backIndicatorImage = [UIImage new];
 //    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage new];
 //    
@@ -283,15 +280,6 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HRPPostPreviewViewController *destinVC = segue.destinationViewController;
-    NSIndexPath *indexPath = self.songTableView.indexPathForSelectedRow;
-    HRPTrack *track = self.filteredSongArray[indexPath.row];
-    destinVC.track = track;
-    destinVC.post = self.post;
-}
-
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     HRPPostPreviewViewController *destinVC = segue.destinationViewController;
@@ -332,6 +320,8 @@
     } else if (self.player.isPlaying == YES) {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
         [sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        self.playStatusLabel.text = @"Paused";
+        self.playerCoverView.image = [UIImage imageNamed:@"white_play"];
     }
 }
 

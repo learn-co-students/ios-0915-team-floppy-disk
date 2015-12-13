@@ -213,11 +213,12 @@
     
     if (indexPath.row == 0)
     {
-        customTableCellHeight = totalCellView/3;
+        customTableCellHeight = totalCellView/4.25;
     }
     if (indexPath.row >= 1)
     {
-        customTableCellHeight = totalCellView - (totalCellView/3);
+        customTableCellHeight = totalCellView - (totalCellView/4.5);
+        customTableCellHeight = customTableCellHeight/4;
     }
     
     return customTableCellHeight;

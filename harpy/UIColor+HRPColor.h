@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor_HRPColor : UIColor
+@interface UIColor (HRPColor)
+
++ (instancetype)ironColor;
 
 @end

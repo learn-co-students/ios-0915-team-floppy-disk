@@ -17,7 +17,6 @@
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchbarUser;
 @property (strong, nonatomic) UISearchBar *searchbarUserInTableView;
-@property (strong, nonatomic) UISearchDisplayController *searchDisplayController;
 @property (weak, nonatomic) IBOutlet UITableView *tableviewUser;
 @property (nonatomic) PFUser *user;
 @property (nonatomic) NSMutableArray *users;
@@ -37,15 +36,8 @@
     self.tableviewUser.delegate = self;
     self.tableviewUser.dataSource = self;
     self.searchbarUser.delegate = self;
+    self.searchbarUserInTableView.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    self.searchbarUserInTableView = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 64)];
-    self.searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchbarUserInTableView contentsController:self];
-    self.searchDisplayController.delegate = self;
-    self.searchDisplayController.searchResultsDataSource = self;
-    
-    self.tableviewUser.tableHeaderView = self.searchbarUserInTableView;
-    
     
     [self.searchbarUser setShowsCancelButton:NO animated:NO];
     [self.searchbarUserInTableView setShowsCancelButton:NO animated:NO]; //May not need

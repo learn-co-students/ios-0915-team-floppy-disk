@@ -123,6 +123,8 @@
         
         PFFile *userAvatarFile = self.user[@"userAvatar"];
         UIImageView *userAvatarView = (UIImageView *)[cell viewWithTag:1];
+        CGFloat cornerRadius = userAvatarView.frame.size.height/2;
+        userAvatarView.layer.cornerRadius = cornerRadius;
         userAvatarView.layer.masksToBounds = YES;
         if (userAvatarFile)
         {
@@ -208,17 +210,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat totalCellView = self.view.frame.size.height;
+    CGFloat totalCellView = self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - 20;
+    
     CGFloat customTableCellHeight = totalCellView/10;
     
     if (indexPath.row == 0)
     {
-        customTableCellHeight = totalCellView/4.25;
+        customTableCellHeight = totalCellView/3;
     }
     if (indexPath.row >= 1)
     {
-        customTableCellHeight = totalCellView - (totalCellView/4.5);
-        customTableCellHeight = customTableCellHeight/4;
+        customTableCellHeight = totalCellView - (totalCellView/3);
+        customTableCellHeight = customTableCellHeight/3;
     }
     
     return customTableCellHeight;

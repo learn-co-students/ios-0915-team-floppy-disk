@@ -144,7 +144,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TTp-Wy-vLZ">
-                                                    <rect key="frame" x="107" y="16" width="65" height="61"/>
+                                                    <rect key="frame" x="120" y="17" width="65" height="61"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yF-58-E0c">
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="18"/>
@@ -153,16 +153,16 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="rFx-xG-gfE">
-                                                            <rect key="frame" x="0.0" y="26" width="65" height="35"/>
+                                                            <rect key="frame" x="0.0" y="26" width="55" height="35"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="real name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ova-pT-BCA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="65" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="55" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="short bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5k-3b-8dq">
-                                                                    <rect key="frame" x="0.0" y="19" width="65" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="19" width="55" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -170,25 +170,29 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="rFx-xG-gfE" firstAttribute="width" secondItem="TTp-Wy-vLZ" secondAttribute="width" id="pRu-yC-nUI"/>
-                                                    </constraints>
                                                 </stackView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yiA-rM-HvQ">
-                                                    <rect key="frame" x="15" y="5" width="84" height="84"/>
+                                                    <rect key="frame" x="8" y="21" width="52" height="52"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="yiA-rM-HvQ" secondAttribute="height" multiplier="1:1" id="UzN-2K-BCh"/>
                                                     </constraints>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OyY-ro-cgf">
+                                                    <rect key="frame" x="8" y="17" width="52" height="8"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="yiA-rM-HvQ" firstAttribute="width" secondItem="ywz-XB-757" secondAttribute="height" multiplier="84:94" id="CFw-Sg-9xB"/>
-                                                <constraint firstItem="TTp-Wy-vLZ" firstAttribute="centerY" secondItem="yiA-rM-HvQ" secondAttribute="centerY" id="JkJ-ru-p34"/>
-                                                <constraint firstItem="yiA-rM-HvQ" firstAttribute="leading" secondItem="ywz-XB-757" secondAttribute="leadingMargin" constant="7" id="bkd-wG-rHv"/>
-                                                <constraint firstItem="TTp-Wy-vLZ" firstAttribute="leading" secondItem="yiA-rM-HvQ" secondAttribute="trailing" constant="8" symbolic="YES" id="cnM-KY-MfA"/>
-                                                <constraint firstItem="yiA-rM-HvQ" firstAttribute="centerY" secondItem="ywz-XB-757" secondAttribute="centerY" id="sZ6-hQ-uTr"/>
+                                                <constraint firstItem="yiA-rM-HvQ" firstAttribute="centerY" secondItem="ywz-XB-757" secondAttribute="centerY" id="6TI-3Y-ilX"/>
+                                                <constraint firstItem="yiA-rM-HvQ" firstAttribute="top" secondItem="ywz-XB-757" secondAttribute="topMargin" constant="13" id="TbT-ju-F0r"/>
+                                                <constraint firstItem="TTp-Wy-vLZ" firstAttribute="leading" secondItem="yiA-rM-HvQ" secondAttribute="trailing" constant="60" id="VS5-6o-78i"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="yiA-rM-HvQ" secondAttribute="leading" id="ldy-CW-Q34"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="yiA-rM-HvQ" secondAttribute="bottom" constant="13" id="oc7-Sm-sJx"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="TTp-Wy-vLZ" firstAttribute="centerY" secondItem="tpU-lz-vgM" secondAttribute="centerY" id="WNQ-hk-Gjd"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -240,12 +244,6 @@
         <!--ProfileVC-->
         <scene sceneID="CG7-sz-vee">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="06l-nn-W0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="qiz-ei-1Vl">
-                    <connections>
-                        <action selector="playerViewTapped:" destination="SCI-8q-kZB" id="09u-ZO-iqL"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <viewController storyboardIdentifier="profileViewController" id="SCI-8q-kZB" customClass="HYPProfileVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A4T-Lv-GyH"/>
@@ -282,25 +280,25 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pF5-Ys-cUb">
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pF5-Ys-cUb">
                                                     <rect key="frame" x="205" y="16" width="193" height="32"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fLX-zd-34o">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fLX-zd-34o">
                                                             <rect key="frame" x="0.0" y="0.0" width="193" height="16"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNo-BE-0kg">
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNo-BE-0kg">
                                                                     <rect key="frame" x="0.0" y="0.0" width="51" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCh-FM-Uya">
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCh-FM-Uya">
                                                                     <rect key="frame" x="71" y="0.0" width="51" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYl-Oh-yGb">
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYl-Oh-yGb">
                                                                     <rect key="frame" x="142" y="0.0" width="51" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -308,22 +306,22 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kUz-O0-3A8">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kUz-O0-3A8">
                                                             <rect key="frame" x="0.0" y="16" width="193" height="16"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVO-VF-pB4">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVO-VF-pB4">
                                                                     <rect key="frame" x="0.0" y="0.0" width="51" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="following" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPz-o3-snt">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="following" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPz-o3-snt">
                                                                     <rect key="frame" x="71" y="0.0" width="51" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fans" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FR0-BG-fnQ">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="fans" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FR0-BG-fnQ">
                                                                     <rect key="frame" x="142" y="0.0" width="51" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -386,24 +384,24 @@
                                                         <constraint firstAttribute="width" secondItem="E3G-5D-IoG" secondAttribute="height" multiplier="1:1" id="wPY-Fn-7SL"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pqo-GX-1wB">
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pqo-GX-1wB">
                                                     <rect key="frame" x="90" y="17" width="55" height="48"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="song title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Keg-Ha-IAc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="song title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Keg-Ha-IAc">
                                                             <rect key="frame" x="0.0" y="0.0" width="55" height="16"/>
                                                             <accessibility key="accessibilityConfiguration" label="1"/>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5f-c6-7lm">
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5f-c6-7lm">
                                                             <rect key="frame" x="0.0" y="16" width="55" height="16"/>
                                                             <accessibility key="accessibilityConfiguration" label="3"/>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPB-U1-TgI">
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPB-U1-TgI">
                                                             <rect key="frame" x="0.0" y="32" width="55" height="16"/>
                                                             <accessibility key="accessibilityConfiguration" label="4"/>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
@@ -459,13 +457,18 @@
                         <outlet property="tableviewUserProfile" destination="AOa-bM-lL0" id="1gg-G2-qIr"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="06l-nn-W0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qiz-ei-1Vl">
+                    <connections>
+                        <action selector="playerViewTapped:" destination="SCI-8q-kZB" id="09u-ZO-iqL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="489" y="1183"/>
         </scene>
         <!--profile-->
         <scene sceneID="z7b-dd-gV5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="doz-VF-5WB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VT0-96-JKS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="profile" image="user" id="YfM-In-Pnt"/>
                     <toolbarItems/>
@@ -479,6 +482,7 @@
                         <segue destination="SCI-8q-kZB" kind="relationship" relationship="rootViewController" id="OxS-p0-MAX"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="doz-VF-5WB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="489" y="315"/>
         </scene>

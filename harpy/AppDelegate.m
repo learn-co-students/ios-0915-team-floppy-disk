@@ -37,6 +37,22 @@
     [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]].translucent = YES;
     [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]].tintColor = [UIColor whiteColor];
     
+    
+//    // iOS 7:
+//    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+//    [[UITableView appearance] setSeparatorInset:UIEdgeInsetsZero];
+//    
+//    [[UITableViewCell appearance] setSeparatorInset:UIEdgeInsetsZero];
+//    
+//    // iOS 8:
+//    if ([UITableView instancesRespondToSelector:@selector(setLayoutMargins:)]) {
+//        
+//        [[UITableView appearance] setLayoutMargins:UIEdgeInsetsZero];
+//        [[UITableViewCell appearance] setLayoutMargins:UIEdgeInsetsZero];
+//        [[UITableViewCell appearance] setPreservesSuperviewLayoutMargins:NO];
+//        
+//    }
+//    
 
     NSLog(@"width is :%f",[[UIScreen mainScreen] bounds].size.width);
     

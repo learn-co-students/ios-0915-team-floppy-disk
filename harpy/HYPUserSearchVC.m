@@ -16,6 +16,7 @@
 @interface HYPUserSearchVC () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchbarUser;
+@property (strong, nonatomic) UISearchBar *searchbarUserInTableView;
 @property (weak, nonatomic) IBOutlet UITableView *tableviewUser;
 @property (nonatomic) PFUser *user;
 @property (nonatomic) NSMutableArray *users;
@@ -41,7 +42,6 @@
     self.parseService = [HRPParseNetworkService sharedService];
     
     [self initializeEmptyUsersArray];
-    
     
     PFQuery *userQuery = [PFUser query];
     userQuery.limit = 20;
@@ -224,18 +224,21 @@
 {
     CGFloat totalCellView = self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - self.searchbarUser.frame.size.height - 20;
     
-    CGFloat customTableCellHeight = totalCellView/4;
+    CGFloat numberOfUserRows = 5;
+    CGFloat customTableCellHeight = totalCellView/numberOfUserRows;
     
     return customTableCellHeight;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self.tableviewUser dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
+    cell.preservesSuperviewLayoutMargins = NO;
+    cell.layoutMargins = UIEdgeInsetsZero;
     PFUser *user = [self.users objectAtIndex:[indexPath row]];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.imageView.image = [UIImage imageNamed:@"periwinkleImage.png"];
-    cell.imageView.layer.cornerRadius =  42.5;
+    cell.imageView.layer.cornerRadius =  cell.imageView.frame.size.height/2;
     [cell.imageView.layer setBorderColor: [[UIColor ironColor] CGColor]];
     [cell.imageView.layer setBorderWidth: 1.0];
     cell.imageView.layer.masksToBounds = YES;
@@ -272,6 +275,42 @@
     
     return cell;
 }
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *sectionHeaderView = [[UIView alloc] initWithFrame:
+                                 CGRectMake(0, 0, tableView.frame.size.width, 50.0)];
+    sectionHeaderView.backgroundColor = [UIColor cyanColor];
+    
+    self.searchbarUserInTableView = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50.0)];
+    self.searchbarUserInTableView.keyboardAppearance = UIKeyboardAppearanceLight;
+    UIImage *whiteColorImage = [self imageWithColor:[UIColor whiteColor]];
+    [[self searchSubviewsForTextFieldIn:self.searchbarUserInTableView] setBackgroundColor:[UIColor whiteColor]];
+    self.searchbarUserInTableView.backgroundImage = whiteColorImage;
+    
+    for (id object in [[[self.searchbarUserInTableView subviews] objectAtIndex:0] subviews])
+    {
+        if ([object isKindOfClass:[UITextField class]])
+        {
+            UITextField *textFieldObject = (UITextField *)object;
+            textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:14.0];
+            textFieldObject.placeholder = @"Type to search";
+            textFieldObject.layer.borderColor = [[UIColor ironColor] CGColor];
+            textFieldObject.layer.borderWidth = 1.0;
+            textFieldObject.layer.cornerRadius = 13;
+            
+            break;
+        }
+    }
+    [[UIBarButtonItem appearanceWhenContainedIn:[self.searchbarUser class], nil] setTintColor:[UIColor darkGrayColor]];
+    
+    [sectionHeaderView addSubview:self.searchbarUserInTableView];
+    
+    return sectionHeaderView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 50.0f;
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -283,7 +322,34 @@
     profileView.user = user;
     [self.navigationController pushViewController:profileView animated:YES];
 }
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if ([tableView respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([tableView respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 
+-(void)viewDidLayoutSubviews {
+    if ([self.tableviewUser respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableviewUser setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([self.tableviewUser respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableviewUser setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 # pragma mark- Navigation methods
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {

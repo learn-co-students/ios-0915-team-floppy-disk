@@ -197,6 +197,8 @@
         else
         {
             UIImageView *userAvatarView = (UIImageView *)[cell viewWithTag:1];
+            CGFloat cornerRadius = userAvatarView.frame.size.height/2;
+            userAvatarView.layer.cornerRadius = cornerRadius;
             userAvatarView.layer.masksToBounds = YES;
             userAvatarView.image = [self imageWithColor:[UIColor whiteColor]];
             

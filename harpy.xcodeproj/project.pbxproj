@@ -23,6 +23,9 @@
 		E90587281C1CC97A00313AB5 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90587271C1CC97A00313AB5 /* main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		E90587321C1CD0C700313AB5 /* HYPUserSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E90587311C1CD0C700313AB5 /* HYPUserSearchVC.m */; settings = {ASSET_TAGS = (); }; };
 		E90587351C1CD5C600313AB5 /* HYPMapsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E90587341C1CD5C600313AB5 /* HYPMapsVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9110FAB1C1D001C00684227 /* HYPProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9110FAA1C1D001C00684227 /* HYPProfileVC.m */; settings = {ASSET_TAGS = (); }; };
+		E9110FAE1C1D0BCA00684227 /* HYPQueryable.m in Sources */ = {isa = PBXBuildFile; fileRef = E9110FAD1C1D0BCA00684227 /* HYPQueryable.m */; settings = {ASSET_TAGS = (); }; };
+		E9110FBA1C1D1E5B00684227 /* UIColor+HRPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E9110FB91C1D1E5B00684227 /* UIColor+HRPColor.m */; settings = {ASSET_TAGS = (); }; };
 		E91B6FDF1C19E7B000FEC1AB /* HRPNetworkAlertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E91B6FDE1C19E7B000FEC1AB /* HRPNetworkAlertVC.m */; settings = {ASSET_TAGS = (); }; };
 		E91B6FE21C19EB0800FEC1AB /* HRPNetworkAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E91B6FE11C19EB0800FEC1AB /* HRPNetworkAlertView.m */; settings = {ASSET_TAGS = (); }; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
@@ -105,6 +108,12 @@
 		E90587311C1CD0C700313AB5 /* HYPUserSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPUserSearchVC.m; sourceTree = "<group>"; };
 		E90587331C1CD5C600313AB5 /* HYPMapsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPMapsVC.h; sourceTree = "<group>"; };
 		E90587341C1CD5C600313AB5 /* HYPMapsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPMapsVC.m; sourceTree = "<group>"; };
+		E9110FA91C1D001C00684227 /* HYPProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPProfileVC.h; sourceTree = "<group>"; };
+		E9110FAA1C1D001C00684227 /* HYPProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPProfileVC.m; sourceTree = "<group>"; };
+		E9110FAC1C1D0BCA00684227 /* HYPQueryable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPQueryable.h; sourceTree = "<group>"; };
+		E9110FAD1C1D0BCA00684227 /* HYPQueryable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPQueryable.m; sourceTree = "<group>"; };
+		E9110FB81C1D1E5B00684227 /* UIColor+HRPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HRPColor.h"; sourceTree = "<group>"; };
+		E9110FB91C1D1E5B00684227 /* UIColor+HRPColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HRPColor.m"; sourceTree = "<group>"; };
 		E91B6FDD1C19E7B000FEC1AB /* HRPNetworkAlertVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPNetworkAlertVC.h; sourceTree = "<group>"; };
 		E91B6FDE1C19E7B000FEC1AB /* HRPNetworkAlertVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPNetworkAlertVC.m; sourceTree = "<group>"; };
 		E91B6FE01C19EB0800FEC1AB /* HRPNetworkAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPNetworkAlertView.h; sourceTree = "<group>"; };
@@ -214,6 +223,12 @@
 			isa = PBXGroup;
 			children = (
 				E90587271C1CC97A00313AB5 /* main.storyboard */,
+				E9110FB81C1D1E5B00684227 /* UIColor+HRPColor.h */,
+				E9110FB91C1D1E5B00684227 /* UIColor+HRPColor.m */,
+				E9110FAC1C1D0BCA00684227 /* HYPQueryable.h */,
+				E9110FAD1C1D0BCA00684227 /* HYPQueryable.m */,
+				E9110FA91C1D001C00684227 /* HYPProfileVC.h */,
+				E9110FAA1C1D001C00684227 /* HYPProfileVC.m */,
 				E90587331C1CD5C600313AB5 /* HYPMapsVC.h */,
 				E90587341C1CD5C600313AB5 /* HYPMapsVC.m */,
 				E90587301C1CD0C700313AB5 /* HYPUserSearchVC.h */,
@@ -553,6 +568,7 @@
 				E91B6FE21C19EB0800FEC1AB /* HRPNetworkAlertView.m in Sources */,
 				E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */,
 				E9F4DE2D1C162B77004396FC /* HRPEditProfileTableVC.m in Sources */,
+				E9110FAE1C1D0BCA00684227 /* HYPQueryable.m in Sources */,
 				3B0EFC4F1C10AE140086545B /* Constants.m in Sources */,
 				E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */,
 				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,
@@ -571,12 +587,14 @@
 				3BAC25251C050D41004C6790 /* HRPPostPreviewViewController.m in Sources */,
 				E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */,
 				3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */,
+				E9110FAB1C1D001C00684227 /* HYPProfileVC.m in Sources */,
 				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
 				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
 				E90587321C1CD0C700313AB5 /* HYPUserSearchVC.m in Sources */,
 				E91B6FDF1C19E7B000FEC1AB /* HRPNetworkAlertVC.m in Sources */,
 				3B0EFCD01C11F0BC0086545B /* HRPPostFeedViewController.m in Sources */,
 				E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */,
+				E9110FBA1C1D1E5B00684227 /* UIColor+HRPColor.m in Sources */,
 				E9F69D4C1C17CE1700E9C784 /* HRPAccountInformationTableVC.m in Sources */,
 				3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */,
 				E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */,

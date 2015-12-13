@@ -1,5 +1,5 @@
 //
-//  HYPProfileVC.h
+//  UIColor+HRPColor.h
 //  harpy
 //
 //  Created by Kiara Robles on 12/12/15.
@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
 
-@interface HYPProfileVC : UIViewController
-
-@property (nonatomic) PFUser *user;
+@interface UIColor_HRPColor : UIColor
 
 @end

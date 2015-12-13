@@ -73,6 +73,8 @@
     }
 }
 
+
+
 #pragma mark - Parse Queries
 
 - (void)retrieveHRPosts
@@ -92,6 +94,18 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    float shadowOffset = (scrollView.contentOffset.y/1);
+    shadowOffset = MIN(MAX(shadowOffset, 0), 1);
+    float shadowRadius = MIN(MAX(shadowOffset, 0), 1);
+    
+    
+    self.navigationController.view.layer.shadowOffset = CGSizeMake(0, shadowOffset);
+    self.navigationController.view.layer.shadowRadius = shadowRadius;
+    self.navigationController.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.navigationController.view.layer.shadowOpacity = 0.20;
 }
 
 #pragma mark - UITableViewDataSource Methods

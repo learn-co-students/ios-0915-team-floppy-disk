@@ -13,10 +13,11 @@
 #import "HRPParseNetworkService.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface HYPUserSearchVC () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+@interface HYPUserSearchVC () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchbarUser;
 @property (strong, nonatomic) UISearchBar *searchbarUserInTableView;
+@property (strong, nonatomic) UISearchDisplayController *searchDisplayController;
 @property (weak, nonatomic) IBOutlet UITableView *tableviewUser;
 @property (nonatomic) PFUser *user;
 @property (nonatomic) NSMutableArray *users;
@@ -38,7 +39,16 @@
     self.searchbarUser.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.searchbarUserInTableView = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 64)];
+    self.searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchbarUserInTableView contentsController:self];
+    self.searchDisplayController.delegate = self;
+    self.searchDisplayController.searchResultsDataSource = self;
+    
+    self.tableviewUser.tableHeaderView = self.searchbarUserInTableView;
+    
+    
     [self.searchbarUser setShowsCancelButton:NO animated:NO];
+    [self.searchbarUserInTableView setShowsCancelButton:NO animated:NO]; //May not need
     self.parseService = [HRPParseNetworkService sharedService];
     
     [self initializeEmptyUsersArray];
@@ -96,6 +106,11 @@
     self.searchbarUser.layer.shadowRadius = shadowRadius;
     self.searchbarUser.layer.shadowColor = [UIColor blackColor].CGColor;
     self.searchbarUser.layer.shadowOpacity = 0.20;
+    
+    self.searchbarUserInTableView.layer.shadowOffset = CGSizeMake(0, shadowOffset);
+    self.searchbarUserInTableView.layer.shadowRadius = shadowRadius;
+    self.searchbarUserInTableView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.searchbarUserInTableView.layer.shadowOpacity = 0.20;
 }
 
 #pragma mark - Setup methods
@@ -279,18 +294,20 @@
 {
     UIView *sectionHeaderView = [[UIView alloc] initWithFrame:
                                  CGRectMake(0, 0, tableView.frame.size.width, 50.0)];
-    sectionHeaderView.backgroundColor = [UIColor cyanColor];
+    
+    UIImage *whiteColorImage = [self imageWithColor:[UIColor whiteColor]];
     
     self.searchbarUserInTableView = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50.0)];
     self.searchbarUserInTableView.keyboardAppearance = UIKeyboardAppearanceLight;
-    UIImage *whiteColorImage = [self imageWithColor:[UIColor whiteColor]];
-    [[self searchSubviewsForTextFieldIn:self.searchbarUserInTableView] setBackgroundColor:[UIColor whiteColor]];
     self.searchbarUserInTableView.backgroundImage = whiteColorImage;
+    [[self searchSubviewsForTextFieldIn:self.searchbarUserInTableView] setBackgroundColor:[UIColor whiteColor]];
+    self.searchbarUserInTableView.text = @"";
     
     for (id object in [[[self.searchbarUserInTableView subviews] objectAtIndex:0] subviews])
     {
         if ([object isKindOfClass:[UITextField class]])
         {
+            self.searchbarUserInTableView.text = @"";
             UITextField *textFieldObject = (UITextField *)object;
             textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:14.0];
             textFieldObject.placeholder = @"Type to search";
@@ -301,6 +318,7 @@
             break;
         }
     }
+    
     [[UIBarButtonItem appearanceWhenContainedIn:[self.searchbarUser class], nil] setTintColor:[UIColor darkGrayColor]];
     
     [sectionHeaderView addSubview:self.searchbarUserInTableView];

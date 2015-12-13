@@ -40,7 +40,6 @@
     self.tableviewUserProfile.delegate = self;
     self.tableviewUserProfile.dataSource = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
     self.parseService = [HRPParseNetworkService sharedService];
     
     self.currentUser = [PFUser currentUser];
@@ -52,6 +51,11 @@
     {
         self.navigationItem.rightBarButtonItem = nil;
     }
+    
+    NSString *usernameString = self.user.username;
+    usernameString = [usernameString uppercaseString];
+    self.navigationItem.title = usernameString;
+    
     [self retrieveHRPosts];
 }
 - (void)didReceiveMemoryWarning
@@ -79,6 +83,7 @@
 
 - (void)retrieveHRPosts
 {
+    self.userPosts = [[NSArray alloc]init];
     PFRelation *userPosts = [self.user relationForKey:@"HRPPosts"];
     PFQuery *query = [userPosts query];
     [query orderByDescending:@"createdAt"];
@@ -116,14 +121,22 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.userPosts.count;
+    if (self.userPosts.count)
+    {
+        NSInteger cellHeader = 1;
+        return self.userPosts.count + cellHeader;
+    }
+    else
+    {
+        NSInteger cellHeader = 1;
+        NSInteger cellsInEmptyUserProfile = 5;
+        return cellsInEmptyUserProfile + cellHeader;
+    }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    
-    NSDictionary *HRPPosts = [self.userPosts objectAtIndex:[indexPath row]];
-    
+
     if (indexPath.row == 0)
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"cellUserHeader" forIndexPath:indexPath];
@@ -135,81 +148,125 @@
             //Change Follow Button
         }
         
-        PFFile *userAvatarFile = self.user[@"userAvatar"];
-        UIImageView *userAvatarView = (UIImageView *)[cell viewWithTag:1];
-        CGFloat cornerRadius = userAvatarView.frame.size.height/2;
-        userAvatarView.layer.cornerRadius = cornerRadius;
-        userAvatarView.layer.masksToBounds = YES;
-        if (userAvatarFile)
+        if (self.userPosts.count >= indexPath.row)
         {
-            [userAvatarFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                if (!error) {
-                    userAvatarView.image = [UIImage imageWithData:data];
-                }
-                else {
-                    NSLog(@"ERROR: %@ %@", error, [error userInfo]);
-                }
+            PFFile *userAvatarFile = self.user[@"userAvatar"];
+            UIImageView *userAvatarView = (UIImageView *)[cell viewWithTag:1];
+            CGFloat cornerRadius = userAvatarView.frame.size.height/2;
+            userAvatarView.layer.cornerRadius = cornerRadius;
+            userAvatarView.layer.masksToBounds = YES;
+            if (userAvatarFile)
+            {
+                [userAvatarFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    if (!error) {
+                        userAvatarView.image = [UIImage imageWithData:data];
+                    }
+                    else {
+                        NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                    }
+                }];
+            }
+        
+            NSString *realNameString = self.user[@"realName"];
+            UILabel *realNameLabel = (UILabel *)[cell viewWithTag:2];
+            realNameLabel.text = realNameString;
+        
+            NSString *shortBioString = self.user[@"shortBio"];
+            UILabel *shortBioLabel = (UILabel *)[cell viewWithTag:3];
+            shortBioLabel.text = shortBioString;
+        
+            UILabel *postsCountLabel = (UILabel *)[cell viewWithTag:4];
+            postsCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userPosts.count];
+        
+            UILabel *followingCountLabel = (UILabel *)[cell viewWithTag:5];
+            PFRelation *relation = [self.user relationForKey:@"following"];
+            PFQuery *query = [relation query];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+                self.userFollowing = results;
+                followingCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFollowing.count];
+            }];
+        
+            UILabel *fansCountLabel = (UILabel *)[cell viewWithTag:6];
+            PFQuery *fansQuery = [PFUser query];
+            [fansQuery whereKey:@"following" equalTo:self.user];
+            [fansQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
+                self.userFans = results;
+                fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count];
             }];
         }
-        
-        NSString *realNameString = self.user[@"realName"];
-        UILabel *realNameLabel = (UILabel *)[cell viewWithTag:2];
-        realNameLabel.text = realNameString;
-        
-        NSString *shortBioString = self.user[@"shortBio"];
-        UILabel *shortBioLabel = (UILabel *)[cell viewWithTag:3];
-        shortBioLabel.text = shortBioString;
-        
-        UILabel *postsCountLabel = (UILabel *)[cell viewWithTag:4];
-        postsCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userPosts.count];
-        
-        UILabel *followingCountLabel = (UILabel *)[cell viewWithTag:5];
-        PFRelation *relation = [self.user relationForKey:@"following"];
-        PFQuery *query = [relation query];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-            self.userFollowing = results;
-            followingCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFollowing.count];
-        }];
-        
-        UILabel *fansCountLabel = (UILabel *)[cell viewWithTag:6];
-        PFQuery *fansQuery = [PFUser query];
-        [fansQuery whereKey:@"following" equalTo:self.user];
-        [fansQuery findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-            self.userFans = results;
-            fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count];
-        }];
+        else
+        {
+            UIImageView *userAvatarView = (UIImageView *)[cell viewWithTag:1];
+            userAvatarView.layer.masksToBounds = YES;
+            userAvatarView.image = [self imageWithColor:[UIColor whiteColor]];
+            
+            UILabel *realNameLabel = (UILabel *)[cell viewWithTag:2];
+            realNameLabel.text = @"";
+            
+            UILabel *shortBioLabel = (UILabel *)[cell viewWithTag:3];
+            shortBioLabel.text = @"";
+            
+            UILabel *postsCountLabel = (UILabel *)[cell viewWithTag:4];
+            postsCountLabel.text = @"";
+            
+            UILabel *followingCountLabel = (UILabel *)[cell viewWithTag:5];
+            followingCountLabel.text = @"";
+
+            UILabel *fansCountLabel = (UILabel *)[cell viewWithTag:6];
+            fansCountLabel.text = @"";
+        }
     }
     if (indexPath.row >= 1)
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"cellPost" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        PFFile *albumArtFile = HRPPosts[@"albumArt"];
-        UIImageView *albumArtView = (UIImageView *)[cell viewWithTag:1];
-        albumArtView.layer.masksToBounds = YES;
-        if (albumArtFile)
+        if (self.userPosts.count >= indexPath.row)
         {
-            [albumArtFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                if (!error) {
-                    albumArtView.image = [UIImage imageWithData:data];
-                }
-                else {
-                    NSLog(@"ERROR: %@ %@", error, [error userInfo]);
-                }
-            }];
+            NSDictionary *HRPPosts = [self.userPosts objectAtIndex:indexPath.row - 1];
+            
+            PFFile *albumArtFile = HRPPosts[@"albumArt"];
+            UIImageView *albumArtView = (UIImageView *)[cell viewWithTag:1];
+            albumArtView.layer.masksToBounds = YES;
+            if (albumArtFile)
+            {
+                [albumArtFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    if (!error) {
+                        albumArtView.image = [UIImage imageWithData:data];
+                    }
+                    else {
+                        NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                    }
+                }];
+            }
+            
+            NSString *songTitleString = HRPPosts[@"songTitle"];
+            UILabel *songTitleLabel = (UILabel *)[cell viewWithTag:2];
+            songTitleLabel.text = songTitleString;
+            
+            NSString *artistNameString = HRPPosts[@"artistName"];
+            UILabel *artistNameLabel = (UILabel *)[cell viewWithTag:3];
+            artistNameLabel.text = artistNameString;
+            
+            NSString *albumNameString = HRPPosts[@"albumName"];
+            UILabel *albumNameLabel = (UILabel *)[cell viewWithTag:4];
+            albumNameLabel.text = albumNameString;
         }
-        
-        NSString *songTitleString = HRPPosts[@"songTitle"];
-        UILabel *songTitleLabel = (UILabel *)[cell viewWithTag:2];
-        songTitleLabel.text = songTitleString;
-        
-        NSString *artistNameString = HRPPosts[@"artistName"];
-        UILabel *artistNameLabel = (UILabel *)[cell viewWithTag:3];
-        artistNameLabel.text = artistNameString;
-        
-        NSString *albumNameString = HRPPosts[@"albumName"];
-        UILabel *albumNameLabel = (UILabel *)[cell viewWithTag:4];
-        albumNameLabel.text = albumNameString;
+        if (self.userPosts.count < indexPath.row)
+        {
+            UIImageView *albumArtView = (UIImageView *)[cell viewWithTag:1];
+            albumArtView.layer.masksToBounds = YES;
+            albumArtView.image = [self imageWithColor:[UIColor whiteColor]];
+            
+            UILabel *songTitleLabel = (UILabel *)[cell viewWithTag:2];
+            songTitleLabel.text = @"";
+            
+            UILabel *artistNameLabel = (UILabel *)[cell viewWithTag:3];
+            artistNameLabel.text = @"";
+            
+            UILabel *albumNameLabel = (UILabel *)[cell viewWithTag:4];
+            albumNameLabel.text = @"";
+        }
     }
     
     return cell;
@@ -227,15 +284,17 @@
     CGFloat totalCellView = self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - 20;
     
     CGFloat customTableCellHeight = totalCellView/10;
+    CGFloat headerCellHeight = totalCellView/3;
+    CGFloat numberOfPostRows = 5;
     
     if (indexPath.row == 0)
     {
-        customTableCellHeight = totalCellView/3;
+        customTableCellHeight = headerCellHeight;
     }
     if (indexPath.row >= 1)
     {
-        customTableCellHeight = totalCellView - (totalCellView/3);
-        customTableCellHeight = customTableCellHeight/3;
+        customTableCellHeight = totalCellView - headerCellHeight;
+        customTableCellHeight = customTableCellHeight/numberOfPostRows;
     }
     
     return customTableCellHeight;
@@ -251,6 +310,23 @@
     self.player = nil;
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Helper
+
+- (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

@@ -20,11 +20,13 @@
 		3BC25DEB1C0E0F3D00A831CE /* postTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */; settings = {ASSET_TAGS = (); }; };
 		3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
+		E90587281C1CC97A00313AB5 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90587271C1CC97A00313AB5 /* main.storyboard */; settings = {ASSET_TAGS = (); }; };
+		E90587321C1CD0C700313AB5 /* HYPUserSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E90587311C1CD0C700313AB5 /* HYPUserSearchVC.m */; settings = {ASSET_TAGS = (); }; };
+		E90587351C1CD5C600313AB5 /* HYPMapsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E90587341C1CD5C600313AB5 /* HYPMapsVC.m */; settings = {ASSET_TAGS = (); }; };
 		E91B6FDF1C19E7B000FEC1AB /* HRPNetworkAlertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E91B6FDE1C19E7B000FEC1AB /* HRPNetworkAlertVC.m */; settings = {ASSET_TAGS = (); }; };
 		E91B6FE21C19EB0800FEC1AB /* HRPNetworkAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E91B6FE11C19EB0800FEC1AB /* HRPNetworkAlertView.m */; settings = {ASSET_TAGS = (); }; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
 		E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */; };
-		E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335C631BFA7EBC002DD9C6 /* Main.storyboard */; };
 		E9335C671BFA7EBC002DD9C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */; };
 		E9335C6A1BFA7EBC002DD9C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */; };
 		E9335C751BFA7EBD002DD9C6 /* harpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C741BFA7EBD002DD9C6 /* harpyTests.m */; };
@@ -98,6 +100,11 @@
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		6DB65EC059DFF1DB09801C30 /* Pods-harpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-harpy/Pods-harpy.release.xcconfig"; sourceTree = "<group>"; };
 		8A0453F870576313A0151B46 /* libPods-harpy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harpy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E90587271C1CC97A00313AB5 /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
+		E90587301C1CD0C700313AB5 /* HYPUserSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPUserSearchVC.h; sourceTree = "<group>"; };
+		E90587311C1CD0C700313AB5 /* HYPUserSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPUserSearchVC.m; sourceTree = "<group>"; };
+		E90587331C1CD5C600313AB5 /* HYPMapsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPMapsVC.h; sourceTree = "<group>"; };
+		E90587341C1CD5C600313AB5 /* HYPMapsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPMapsVC.m; sourceTree = "<group>"; };
 		E91B6FDD1C19E7B000FEC1AB /* HRPNetworkAlertVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPNetworkAlertVC.h; sourceTree = "<group>"; };
 		E91B6FDE1C19E7B000FEC1AB /* HRPNetworkAlertVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPNetworkAlertVC.m; sourceTree = "<group>"; };
 		E91B6FE01C19EB0800FEC1AB /* HRPNetworkAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPNetworkAlertView.h; sourceTree = "<group>"; };
@@ -106,7 +113,6 @@
 		E9335C5B1BFA7EBC002DD9C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E9335C5D1BFA7EBC002DD9C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E9335C641BFA7EBC002DD9C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9335C691BFA7EBC002DD9C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9335C6B1BFA7EBC002DD9C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -204,6 +210,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E905872C1C1CD06D00313AB5 /* TabTest */ = {
+			isa = PBXGroup;
+			children = (
+				E90587271C1CC97A00313AB5 /* main.storyboard */,
+				E90587331C1CD5C600313AB5 /* HYPMapsVC.h */,
+				E90587341C1CD5C600313AB5 /* HYPMapsVC.m */,
+				E90587301C1CD0C700313AB5 /* HYPUserSearchVC.h */,
+				E90587311C1CD0C700313AB5 /* HYPUserSearchVC.m */,
+			);
+			name = TabTest;
+			sourceTree = "<group>";
+		};
 		E9335C4E1BFA7EBC002DD9C6 = {
 			isa = PBXGroup;
 			children = (
@@ -256,13 +274,13 @@
 				E9EE0EB91BFFCB4000C4F1DE /* Spotify */,
 				E938012E1BFCEF6C004CC8A2 /* Maps */,
 				E938012D1BFCEF58004CC8A2 /* Login */,
+				E905872C1C1CD06D00313AB5 /* TabTest */,
 				E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */,
 				3BAC251A1BFF87EF004C6790 /* HRPTempTableViewController.h */,
 				3BAC251B1BFF87EF004C6790 /* HRPTempTableViewController.m */,
 				3BAC251D1BFF8810004C6790 /* HRPTempViewController.h */,
 				3BAC251E1BFF8810004C6790 /* HRPTempViewController.m */,
 				E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */,
-				E9335C631BFA7EBC002DD9C6 /* Main.storyboard */,
 			);
 			path = harpy;
 			sourceTree = "<group>";
@@ -461,10 +479,10 @@
 				E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */,
 				E9C902991C1C94D40008B883 /* LaunchScreen.storyboard in Resources */,
 				E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */,
+				E90587281C1CC97A00313AB5 /* main.storyboard in Resources */,
 				E9FA65461C0901BB008DDE69 /* loading.gif in Resources */,
 				E976148E1C0A6648003B3C5B /* SF-UI-Display-Semibold.otf in Resources */,
 				E976148D1C0A6646003B3C5B /* SF-UI-Display-Regular.otf in Resources */,
-				E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */,
 				3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,6 +562,7 @@
 				E9F69D4F1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m in Sources */,
 				E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */,
 				E9F4DE301C163745004396FC /* HRPSettingsTableVC.m in Sources */,
+				E90587351C1CD5C600313AB5 /* HYPMapsVC.m in Sources */,
 				E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */,
 				E9FA64D41C039E43008DDE69 /* HRPManagerViewController.m in Sources */,
 				3BAC251F1BFF8810004C6790 /* HRPTempViewController.m in Sources */,
@@ -554,6 +573,7 @@
 				3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */,
 				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
 				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
+				E90587321C1CD0C700313AB5 /* HYPUserSearchVC.m in Sources */,
 				E91B6FDF1C19E7B000FEC1AB /* HRPNetworkAlertVC.m in Sources */,
 				3B0EFCD01C11F0BC0086545B /* HRPPostFeedViewController.m in Sources */,
 				E9FA64DB1C03BD90008DDE69 /* HRPProfileVC.m in Sources */,
@@ -588,14 +608,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E9335C631BFA7EBC002DD9C6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E9335C641BFA7EBC002DD9C6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

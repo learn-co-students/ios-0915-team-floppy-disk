@@ -218,7 +218,7 @@
     
     //this controls the map size on the view
     CGFloat h = self.topLayoutGuide.length;
-    CGRect rect = CGRectMake(0, h, self.view.bounds.size.width, self.view.bounds.size.height);
+    CGRect rect = CGRectMake(0, h, self.view.bounds.size.width, self.view.bounds.size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - 20);
     self.mapView = [GMSMapView mapWithFrame:rect camera:camera];
     
     [self.view insertSubview:self.mapView atIndex:0];

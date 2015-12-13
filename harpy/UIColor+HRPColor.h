@@ -11,5 +11,8 @@
 @interface UIColor (HRPColor)
 
 + (instancetype)ironColor;
++ (instancetype)crailColor;
++ (instancetype)seanceColor;
++ (instancetype)spyroDiscoDance;
 
 @end

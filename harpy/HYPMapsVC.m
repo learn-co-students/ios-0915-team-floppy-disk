@@ -9,6 +9,7 @@
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 #import "HYPMapsVC.h"
+#import "UIColor+HRPColor.h"
 #import <Parse/Parse.h>
 #import "CLLocationManager+Shared.h"
 #import <MapKit/MapKit.h>
@@ -91,7 +92,7 @@
                      NSLog(@"postCoordinate %f, %f", postCoordinate.latitude, postCoordinate.longitude);
                      
                      GMSMarker *marker = [[GMSMarker alloc] init];
-                     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+                     marker.icon = [GMSMarker markerImageWithColor:[UIColor spyroDiscoDance]];
                      marker.position = postCoordinate;
                      marker.map = self.mapView;
                  }

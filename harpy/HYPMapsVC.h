@@ -15,8 +15,4 @@
 
 @interface HYPMapsVC : UIViewController <CLLocationManagerDelegate>
 
-@property (nonatomic) CLLocation *currentLocation;
-@property (nonatomic, strong) CLLocation* location;
-@property (nonatomic,strong) CLLocationManager *locationManager;
-
 @end

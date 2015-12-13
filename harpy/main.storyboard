@@ -111,7 +111,7 @@
         <!--USER SEARCH-->
         <scene sceneID="Mp3-Ss-R3b">
             <objects>
-                <viewController id="6PK-1r-4Pt" customClass="HRPUserSearchVC" sceneMemberID="viewController">
+                <viewController id="6PK-1r-4Pt" customClass="HYPUserSearchVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l4R-q7-BsL"/>
                         <viewControllerLayoutGuide type="bottom" id="0EB-jq-VHy"/>
@@ -127,10 +127,9 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4OD-tm-b0O">
-                                <rect key="frame" x="0.0" y="124" width="414" height="612"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4OD-tm-b0O">
+                                <rect key="frame" x="0.0" y="124" width="414" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="95" id="tpU-lz-vgM">
                                         <rect key="frame" x="0.0" y="28" width="414" height="95"/>
@@ -139,16 +138,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yiA-rM-HvQ">
-                                                    <rect key="frame" x="15" y="4" width="85" height="85"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="85" id="A69-Xe-7rO"/>
-                                                        <constraint firstAttribute="width" secondItem="yiA-rM-HvQ" secondAttribute="height" multiplier="1:1" id="UzN-2K-BCh"/>
-                                                        <constraint firstAttribute="width" constant="85" id="wAt-OQ-Ykb"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TTp-Wy-vLZ">
-                                                    <rect key="frame" x="108" y="16" width="295" height="61"/>
+                                                    <rect key="frame" x="107" y="16" width="65" height="61"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yF-58-E0c">
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="18"/>
@@ -157,16 +148,16 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="rFx-xG-gfE">
-                                                            <rect key="frame" x="0.0" y="26" width="295" height="35"/>
+                                                            <rect key="frame" x="0.0" y="26" width="65" height="35"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="real name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ova-pT-BCA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="65" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="short bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5k-3b-8dq">
-                                                                    <rect key="frame" x="0.0" y="19" width="295" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="19" width="65" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -178,17 +169,21 @@
                                                         <constraint firstItem="rFx-xG-gfE" firstAttribute="width" secondItem="TTp-Wy-vLZ" secondAttribute="width" id="pRu-yC-nUI"/>
                                                     </constraints>
                                                 </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yiA-rM-HvQ">
+                                                    <rect key="frame" x="15" y="5" width="84" height="84"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="yiA-rM-HvQ" secondAttribute="height" multiplier="1:1" id="UzN-2K-BCh"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="yiA-rM-HvQ" firstAttribute="width" secondItem="ywz-XB-757" secondAttribute="height" multiplier="84:94" id="CFw-Sg-9xB"/>
                                                 <constraint firstItem="TTp-Wy-vLZ" firstAttribute="centerY" secondItem="yiA-rM-HvQ" secondAttribute="centerY" id="JkJ-ru-p34"/>
                                                 <constraint firstItem="yiA-rM-HvQ" firstAttribute="leading" secondItem="ywz-XB-757" secondAttribute="leadingMargin" constant="7" id="bkd-wG-rHv"/>
                                                 <constraint firstItem="TTp-Wy-vLZ" firstAttribute="leading" secondItem="yiA-rM-HvQ" secondAttribute="trailing" constant="8" symbolic="YES" id="cnM-KY-MfA"/>
                                                 <constraint firstItem="yiA-rM-HvQ" firstAttribute="centerY" secondItem="ywz-XB-757" secondAttribute="centerY" id="sZ6-hQ-uTr"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="TTp-Wy-vLZ" firstAttribute="width" secondItem="tpU-lz-vgM" secondAttribute="height" multiplier="31:10" id="VpD-SY-FHh"/>
-                                        </constraints>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -204,20 +199,13 @@
                             <constraint firstItem="eb0-YD-TX8" firstAttribute="bottom" secondItem="4OD-tm-b0O" secondAttribute="top" id="pas-6A-4Tl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="USER SEARCH" id="uaX-RG-ASi">
-                        <barButtonItem key="leftBarButtonItem" image="left_Arrow" id="BZm-KP-Kqe">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="backButtonTapped:" destination="6PK-1r-4Pt" id="EI4-a7-QFT"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="USER SEARCH" id="uaX-RG-ASi"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="userSearchBar" destination="eb0-YD-TX8" id="T3c-lo-6gR"/>
-                        <outlet property="userTableView" destination="4OD-tm-b0O" id="fyJ-ch-p83"/>
+                        <outlet property="searchbarUser" destination="eb0-YD-TX8" id="ybM-n0-Ruc"/>
+                        <outlet property="tableviewUser" destination="4OD-tm-b0O" id="I5y-AP-fqs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AjU-Eb-d46" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -482,7 +470,6 @@
     <resources>
         <image name="cog" width="18" height="18"/>
         <image name="default_marker" width="22" height="39"/>
-        <image name="left_Arrow" width="22" height="16"/>
         <image name="mapview" width="10" height="14"/>
         <image name="search" width="20" height="20"/>
         <image name="user" width="18" height="20"/>

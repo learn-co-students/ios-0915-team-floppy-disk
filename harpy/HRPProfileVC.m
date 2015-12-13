@@ -103,14 +103,6 @@
         self.userFans = objects;
         self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count];
     }];
-    
-    
-//    PFRelation *relationFans = [_user relationForKey:@"following"];
-//    PFQuery *queryFans = [relationFans query];
-//    [queryFans whereKey:@"following" equalTo:self.user];
-//    [queryFans findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-//        
-//    }];
 }
 - (void)updatePostCount
 {

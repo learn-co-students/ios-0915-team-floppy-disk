@@ -385,7 +385,7 @@
                                     </imageView>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="qnj-WM-0Is" firstAttribute="centerY" secondItem="8wm-Uc-7cS" secondAttribute="centerY" id="8PA-XS-VHO"/>
                                     <constraint firstItem="47u-G3-Gq2" firstAttribute="centerX" secondItem="8wm-Uc-7cS" secondAttribute="centerX" id="KfI-7j-4PJ"/>

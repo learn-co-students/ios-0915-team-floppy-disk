@@ -190,6 +190,14 @@
     self.userAvatar.image = self.userImage;
     
     [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    if (self.userAvatar != nil)
+    {
+        PFUser *currentuser = [PFUser currentUser];
+        NSData *selectedImage = UIImageJPEGRepresentation(self.userImage, 1);
+        PFFile *imageFile = [PFFile fileWithName:@"image" data:selectedImage];
+        currentuser[@"userAvatar"] = imageFile;
+    }
 }
 
 #pragma mark - Action Methods

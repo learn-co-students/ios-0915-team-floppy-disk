@@ -242,7 +242,12 @@
 #pragma mark - UITableViewDataSource Methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 89.0;
+    CGFloat totalCellView = self.songTableView.frame.size.height;
+    CGFloat numberOfPostRows = 5;
+    
+    CGFloat customTableCellHeight = totalCellView/numberOfPostRows;
+    
+    return customTableCellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

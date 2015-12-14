@@ -121,6 +121,8 @@
     self.userAvatar.clipsToBounds = YES;
     self.userAvatar.layer.masksToBounds = YES;
     
+    NSLog(@"[[UIScreen mainScreen] bounds].size.height: %f", [[UIScreen mainScreen] bounds].size.height);
+    
     if ([[UIScreen mainScreen] bounds].size.width == 375.0f)
     {
         self.userAvatar.layer.cornerRadius = 54;
@@ -129,9 +131,14 @@
     {
         self.userAvatar.layer.cornerRadius = 59;
     }
-    else
+    else if ([[UIScreen mainScreen] bounds].size.width == 320.0f)
     {
-        self.userAvatar.layer.cornerRadius = 45;
+        self.userAvatar.layer.cornerRadius = 38;
+        
+        if ([[UIScreen mainScreen] bounds].size.height == 568.0f)
+        {
+            self.userAvatar.layer.cornerRadius = 45;
+        }
     }
     
     UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
@@ -344,6 +351,11 @@
 {
     CGFloat totalCellView = self.postsTableview.frame.size.height;
     CGFloat numberOfPostRows = 5;
+    
+    if ([[UIScreen mainScreen] bounds].size.width == 320.0f)
+    {
+        numberOfPostRows = 3;
+    }
     
     CGFloat customTableCellHeight = totalCellView/numberOfPostRows;
     

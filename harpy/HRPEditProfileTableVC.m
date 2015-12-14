@@ -77,7 +77,25 @@
             [self.userAvatar addGestureRecognizer:tapGesture];
             
             self.userAvatar.image = [UIImage imageNamed:@"periwinkleImage.png"];
-            self.userAvatar.layer.cornerRadius =  self.userAvatar.frame.size.height/2;
+            
+            if ([[UIScreen mainScreen] bounds].size.width == 375.0f)
+            {
+                self.userAvatar.layer.cornerRadius = 54;
+            }
+            else if ([[UIScreen mainScreen] bounds].size.width == 414.0f)
+            {
+                self.userAvatar.layer.cornerRadius = 59;
+            }
+            else if ([[UIScreen mainScreen] bounds].size.width == 320.0f)
+            {
+                self.userAvatar.layer.cornerRadius = 38;
+                
+                if ([[UIScreen mainScreen] bounds].size.height == 568.0f)
+                {
+                    self.userAvatar.layer.cornerRadius = 45;
+                }
+            }
+            
             [self.userAvatar.layer setBorderColor: [ironColor CGColor]];
             [self.userAvatar.layer setBorderWidth: 1.0];
             self.userAvatar.layer.masksToBounds = YES;

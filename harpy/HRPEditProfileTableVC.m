@@ -244,6 +244,7 @@
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
     self.navigationItem.titleView = self.activityIndicator;
     [self.activityIndicator startAnimating];
+    
     [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {

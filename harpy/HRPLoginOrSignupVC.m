@@ -571,18 +571,9 @@
     user.password = self.passwordConfirm.text;
     user.email = self.email.text;
     
-/* UNCOMMENT THESE LINE WHEN TESTING SPOTIFY LOGINS */
-    SPTAuth *auth = [SPTAuth defaultInstance];
-    SPTSession *session = auth.session;
-    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, NSString *object) {
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            user[@"spotifyCanonical"] = object;
-            auth.sessionUserDefaultsKey = object;
-        }];
-    }];
-    
+
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        
+                
         NSString *userMessage = @"Registration was successful";
         if (succeeded)
         {
@@ -595,6 +586,39 @@
             userMessage = error.localizedDescription;
         }
     }];
+
+    
+//    SPTAuth *auth = [SPTAuth defaultInstance];
+//    SPTSession *session = auth.session;
+//
+//    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, NSString *object) {
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//            
+//            NSString *spotifyCanonical = object;
+//            user[@"spotifyCanonical"] = spotifyCanonical;
+//            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                if (succeeded)
+//                {
+//                    auth.sessionUserDefaultsKey = object;
+//                    
+//                    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//                        
+//                        NSString *userMessage = @"Registration was successful";
+//                        if (succeeded)
+//                        {
+//                            NSLog(@"CREATED: %@", user);
+//                            [self showCreateProfileView];
+//                            NSLog(@"SENT: to showCreateProfileView");
+//                        }
+//                        else
+//                        {
+//                            userMessage = error.localizedDescription;
+//                        }
+//                    }];
+//                }
+//            }];
+//        }];
+//    }];
 }
 
 #pragma mark - Alert Controller Methods
@@ -653,7 +677,8 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Is this correct?" message:message preferredStyle:(UIAlertControllerStyleActionSheet)];
     UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         NSLog(@"EMAIL: is confirmed.");
-        [self alertControllerSpotifyVerify];
+        [self createParseUser];
+        //[self alertControllerSpotifyVerify];
     }];
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
         
@@ -675,46 +700,46 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
--(void)alertControllerSpotifyVerify
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Do you have a Spotify account?" preferredStyle:(UIAlertControllerStyleActionSheet)];
-    UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-        self.spotifyPremium = YES;
-        //[self createParseUser]; // DELETE THESE LINE WHEN TESTING SPOTIFY CALL BACKS
-        [self spotifyLoginPopup];
-    }];
-    UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-        self.spotifyPremium = NO;
-        [self spotifySignupPopup];
-        
-                SPTAuth *auth = [SPTAuth defaultInstance];
-                if (auth.session && [auth.session isValid])
-                {
-                    [self createParseUser];
-                    [self showCreateProfileView];
-                }
-    }];
-    [alert addAction:yes];
-    [alert addAction:no];
-    [self presentViewController:alert animated:YES completion:nil];
-}
+//-(void)alertControllerSpotifyVerify
+//{
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Do you have a Spotify account?" preferredStyle:(UIAlertControllerStyleActionSheet)];
+//    UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+//        self.spotifyPremium = YES;
+//        [self createParseUser];
+//  //      [self spotifyLoginPopup];
+//    }];
+//    UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+//        self.spotifyPremium = NO;
+//    //    [self spotifySignupPopup];
+//        
+//                SPTAuth *auth = [SPTAuth defaultInstance];
+//                if (auth.session && [auth.session isValid])
+//                {
+//                    [self createParseUser];
+//                    [self showCreateProfileView];
+//                }
+//    }];
+//    [alert addAction:yes];
+//    [alert addAction:no];
+//    [self presentViewController:alert animated:YES completion:nil];
+//}
 
-# pragma mark - Spotify
-
--(void)spotifyLoginPopup
-{
-    [HRPLoginRedirect launchSpotifyFromViewController:self];
-}
-
--(void)spotifySignupPopup
-{
-    
-    NSURL *spotifyURL = [NSURL URLWithString:@"https://www.spotify.com/signup/"];
-    
-    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:spotifyURL];
-    [self presentViewController:safariVC animated:YES];
-}
-
+//# pragma mark - Spotify
+//
+//-(void)spotifyLoginPopup
+//{
+//    [HRPLoginRedirect launchSpotifyFromViewController:self];
+//}
+//
+//-(void)spotifySignupPopup
+//{
+//    
+//    NSURL *spotifyURL = [NSURL URLWithString:@"https://www.spotify.com/signup/"];
+//    
+//    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:spotifyURL];
+//    [self presentViewController:safariVC animated:YES];
+//}
+//
 -(void)loginCompleted:(NSNotification *)notification
 {
     [self dismissViewControllerAnimated:YES];
@@ -722,25 +747,25 @@
     SPTAuth *auth = [SPTAuth defaultInstance];
     if (auth.session && [auth.session isValid])
     {
-        //[self createParseUser];
+        [self createParseUser];
         [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogInNotificationName object:nil];
         
         [self showCreateProfileView];
     }
 }
-
--(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
-{
-    
-}
-
--(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
-{
-    
-}
--(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
-{
-    
-}
+//
+//-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
+//{
+//    
+//}
+//
+//-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
+//{
+//    
+//}
+//-(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
+//{
+//    
+//}
 
 @end

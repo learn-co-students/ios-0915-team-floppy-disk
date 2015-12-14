@@ -389,32 +389,35 @@
         [fanRelation addObject: currentUser];
         
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (error != nil)
-            {
-                NSLog(@"followers saved!!!!!!!!!");
-                [self.followOrEditButton setTitle:@"Unfollow" forState:UIControlStateNormal];
-                self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count + 1];
-                [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                    if (error != nil)
-                    {
-                        NSLog(@"followers saved!!!!!!!!!");
-                    }
-                    else
-                    {
-                        NSLog(@"ERROR: %@ %@", error, [error userInfo]);
-                    }
-                }];
-            }
-            else
-            {
-                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
-            }
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                if (error != nil)
+                {
+                    NSLog(@"followers saved!!!!!!!!!");
+                    [self.followOrEditButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+                    self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count + 1];
+                    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                        if (error != nil)
+                        {
+                            NSLog(@"followers saved!!!!!!!!!");
+                        }
+                        else
+                        {
+                            NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                        }
+                    }];
+                }
+                else
+                {
+                    NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                }
+            }];
         }];
     }
     else if ([self.followOrEditButton.titleLabel.text isEqual: @"Edit Profile"])
     {
-        HRPEditProfileTableVC *editProfileView = [[HRPEditProfileTableVC alloc] init];
-        [self presentViewController:editProfileView animated:YES completion:nil];
+        HRPEditProfileTableVC *editProfileView = [self.storyboard instantiateViewControllerWithIdentifier:@"editProfileTableVC"];
+        [self.navigationController pushViewController:editProfileView animated:YES];
+//        [self presentViewController:editProfileView animated:YES completion:nil];
     }
     else if ([self.followOrEditButton.titleLabel.text isEqual: @"Unfollow"])
     {
@@ -427,26 +430,28 @@
         [fanRelation removeObject:currentUser];
         
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (error != nil)
-            {
-                NSLog(@"follower deleted!!!!!!!!!");
-                [self.followOrEditButton setTitle:@"Follow" forState:UIControlStateNormal];
-                self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count - 1];
-                [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                    if (error != nil)
-                    {
-                        NSLog(@"fan deleted!!!!!!!!!");
-                    }
-                    else
-                    {
-                        NSLog(@"ERROR: %@ %@", error, [error userInfo]);
-                    }
-                }];
-            }
-            else
-            {
-                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
-            }
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                if (error != nil)
+                {
+                    NSLog(@"follower deleted!!!!!!!!!");
+                    [self.followOrEditButton setTitle:@"Follow" forState:UIControlStateNormal];
+                    self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count - 1];
+                    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                        if (error != nil)
+                        {
+                            NSLog(@"fan deleted!!!!!!!!!");
+                        }
+                        else
+                        {
+                            NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                        }
+                    }];
+                }
+                else
+                {
+                    NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                }
+            }];
         }];
     }
 }

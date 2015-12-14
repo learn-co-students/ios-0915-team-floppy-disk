@@ -124,7 +124,6 @@
                                 <rect key="frame" x="0.0" y="124" width="414" height="612"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="95" id="m8I-1j-ZRe">
                                         <rect key="frame" x="0.0" y="28" width="414" height="95"/>

@@ -120,12 +120,12 @@
 }
 -(void) setupTableViewUI
 {
-    self.userSearchBar.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.userSearchBar.keyboardAppearance = UIKeyboardAppearanceLight;
     
-    UIImage *whiteColorImage = [self imageWithColor:[UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1.0]];
-    self.userTableView.backgroundColor = [UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1.0];
+    UIImage *whiteColorImage = [self imageWithColor:[UIColor whiteColor]];
+    self.userTableView.backgroundColor = [UIColor whiteColor];
     
-    UIColor *desertStormColor = [UIColor colorWithHue:0 saturation:0 brightness:0.97 alpha:1];
+    UIColor *desertStormColor = [UIColor colorWithHue:0 saturation:0 brightness:0.99 alpha:1];
     self.view.backgroundColor = desertStormColor;
     [[self searchSubviewsForTextFieldIn:self.userSearchBar] setBackgroundColor:[UIColor whiteColor]];
     self.userSearchBar.backgroundImage = whiteColorImage;

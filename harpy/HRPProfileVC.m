@@ -354,7 +354,7 @@
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
     
-    if ([self.player isPlaying] == YES) {
+    if (self.player.isPlaying == YES) {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
     }
     self.player = nil;

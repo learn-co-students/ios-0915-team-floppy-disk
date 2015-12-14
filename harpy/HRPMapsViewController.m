@@ -96,19 +96,19 @@
     SPTAuth *auth = [SPTAuth defaultInstance];
     
     if (auth.session == nil) {
-        NSLog(@"STATEMENT 3 TRUE");
+        NSLog(@"STATEMENT 1 TRUE");
         [self openLogInPage];
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
     }
     else if ([auth.session isValid])
     {
-        NSLog(@"STATEMENT 1 TRUE");
+        NSLog(@"STATEMENT 2 TRUE");
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
     }
     else if (![auth.session isValid] && auth.hasTokenRefreshService) {
-        NSLog(@"STATEMENT 2 TRUE");
+        NSLog(@"STATEMENT 3 TRUE");
         [self renewTokenAndSegue];
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];

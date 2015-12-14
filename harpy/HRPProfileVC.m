@@ -342,7 +342,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat customTableCellHeight = 89;
+    CGFloat totalCellView = self.postsTableview.frame.size.height;
+    CGFloat numberOfPostRows = 5;
+    
+    CGFloat customTableCellHeight = totalCellView/numberOfPostRows;
     
     return customTableCellHeight;
 }

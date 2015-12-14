@@ -47,40 +47,49 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Gu-IZ-obB">
-                                                    <rect key="frame" x="8" y="12" width="112" height="48"/>
+                                                    <rect key="frame" x="8" y="8" width="362" height="85"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ckb-wR-WKR">
-                                                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                             <animations/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="ckb-wR-WKR" secondAttribute="height" multiplier="1:1" id="jZq-qL-iN5"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="eZa-BU-YJr">
-                                                            <rect key="frame" x="53" y="0.0" width="59" height="48"/>
+                                                            <rect key="frame" x="90" y="0.0" width="272" height="85"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DoE-kv-Rkb">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="48"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="272" height="85"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="song title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vy-KX-fV7">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="59" height="17"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="272" height="54"/>
                                                                             <animations/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="54" id="XjW-T4-5gc"/>
+                                                                                <constraint firstAttribute="height" constant="54" id="j1r-uG-Fg5"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="14"/>
                                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
+                                                                            <variation key="default">
+                                                                                <mask key="constraints">
+                                                                                    <exclude reference="XjW-T4-5gc"/>
+                                                                                </mask>
+                                                                            </variation>
                                                                         </label>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="91l-xw-tmg">
-                                                                            <rect key="frame" x="0.0" y="17" width="59" height="31"/>
+                                                                            <rect key="frame" x="0.0" y="54" width="272" height="31"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAR-oD-DVh">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="15"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="272" height="15"/>
                                                                                     <animations/>
                                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHx-uH-KFG">
-                                                                                    <rect key="frame" x="0.0" y="16" width="59" height="15"/>
+                                                                                    <rect key="frame" x="0.0" y="16" width="272" height="15"/>
                                                                                     <animations/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="15" id="Wlv-s1-Lds"/>
@@ -94,9 +103,6 @@
                                                                         </stackView>
                                                                     </subviews>
                                                                     <animations/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="85" id="84w-C5-Em5"/>
-                                                                    </constraints>
                                                                 </stackView>
                                                             </subviews>
                                                             <animations/>
@@ -105,11 +111,11 @@
                                                     <animations/>
                                                 </stackView>
                                                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7c-kV-oYy">
-                                                    <rect key="frame" x="358" y="12" width="40" height="47"/>
+                                                    <rect key="frame" x="378" y="39" width="20" height="24"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="47" id="2Mk-In-GnT"/>
-                                                        <constraint firstAttribute="width" constant="40" id="kBV-pn-iXI"/>
+                                                        <constraint firstAttribute="height" constant="24" id="2Mk-In-GnT"/>
+                                                        <constraint firstAttribute="width" constant="20" id="kBV-pn-iXI"/>
                                                     </constraints>
                                                     <state key="normal" image="play"/>
                                                     <connections>
@@ -119,10 +125,11 @@
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstItem="p7c-kV-oYy" firstAttribute="centerY" secondItem="1Gu-IZ-obB" secondAttribute="centerY" id="Cq5-ui-jbB"/>
-                                                <constraint firstItem="ckb-wR-WKR" firstAttribute="width" secondItem="tD8-Om-UFP" secondAttribute="height" multiplier="45:74" id="NO5-v7-VUm"/>
-                                                <constraint firstItem="1Gu-IZ-obB" firstAttribute="centerY" secondItem="tD8-Om-UFP" secondAttribute="centerY" constant="-3.5" id="lZm-0o-RUq"/>
+                                                <constraint firstItem="1Gu-IZ-obB" firstAttribute="top" secondItem="tD8-Om-UFP" secondAttribute="topMargin" id="83g-O2-dfo"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="1Gu-IZ-obB" secondAttribute="bottom" constant="7" id="ajz-Wo-nMb"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="p7c-kV-oYy" secondAttribute="trailing" constant="8" id="qq6-fB-8v1"/>
+                                                <constraint firstItem="1Gu-IZ-obB" firstAttribute="centerY" secondItem="p7c-kV-oYy" secondAttribute="centerY" id="uQZ-ds-JVl"/>
+                                                <constraint firstItem="p7c-kV-oYy" firstAttribute="leading" secondItem="DoE-kv-Rkb" secondAttribute="trailing" constant="8" id="v6k-Mn-uJX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>

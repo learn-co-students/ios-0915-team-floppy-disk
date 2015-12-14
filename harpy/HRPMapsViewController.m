@@ -62,9 +62,9 @@
     
     
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-
+    
     self.title = @"HARPY";
-
+    
     self.locationManager = [CLLocationManager sharedManager];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.delegate = self;
@@ -83,7 +83,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionUpdatedNotification:) name:@"sessionUpdated" object:nil];
     
     [self.mapView.bottomAnchor constraintEqualToAnchor:self.postSongButton.topAnchor].active = YES;
-
+    
     HRPPostPreviewViewController *newView = [[HRPPostPreviewViewController alloc]init];
     newView.delegate = self;
     
@@ -114,9 +114,9 @@
         [self queryForHRPosts];
     }
     
-//    [super viewDidAppear:animated];
-//    [self.locationManager startUpdatingLocation];
-//    [self queryForHRPosts];
+    //    [super viewDidAppear:animated];
+    //    [self.locationManager startUpdatingLocation];
+    //    [self queryForHRPosts];
 }
 
 #pragma mark - Parse Geopoints
@@ -125,9 +125,9 @@
 {
     if (self.currentLocation)
     {
-//        CLLocationDegrees latitude = 40.786091;
-//        CLLocationDegrees longitude = -73.968285;
-//        CLLocationCoordinate2D test = CLLocationCoordinate2DMake(latitude, longitude);
+        //        CLLocationDegrees latitude = 40.786091;
+        //        CLLocationDegrees longitude = -73.968285;
+        //        CLLocationCoordinate2D test = CLLocationCoordinate2DMake(latitude, longitude);
         CLLocationCoordinate2D currentCoordinate = [self.currentLocation coordinate];
         PFGeoPoint *currentUserGeoPoint = [PFGeoPoint geoPointWithLatitude:currentCoordinate.latitude longitude:currentCoordinate.longitude];
         
@@ -141,63 +141,63 @@
         [self.activityIndicator startAnimating];
         
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-        {
-            [self.activityIndicator stopAnimating];
-
-            if (!error)
-            {
-                [self.modalView removeFromSuperview];
-                
-                UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
-                label.backgroundColor = [UIColor clearColor];
-                label.textColor = [UIColor whiteColor];
-                label.font = [UIFont boldSystemFontOfSize:18];
-                label.text = @"HARPY";
-                label.textAlignment = NSTextAlignmentCenter;
-                self.navigationItem.titleView = label;
-                
-                UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]init];
-                leftButton.action = @selector(profileSecondButtonTapped);
-                leftButton.image = [UIImage imageNamed:@"user.png"];
-                leftButton.target = self;
-                leftButton.tintColor = [UIColor whiteColor];
-                self.navigationItem.leftBarButtonItem = leftButton;
-                
-                UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]init];
-                rightButton.action = @selector(sendToUserSearch);
-                rightButton.image = [UIImage imageNamed:@"search.png"];
-                rightButton.tintColor = [UIColor whiteColor];
-                rightButton.target = self;
-
-                self.navigationItem.rightBarButtonItem = rightButton;
-                
-                self.parsePosts = objects;
-                NSLog(@"THERE ARE %lu PARSE POSTS.", self.parsePosts.count);
-                
-                for (NSUInteger i = 0; i < self.parsePosts.count; i++)
-                {
-                    NSDictionary *HRPPosts = self.parsePosts[i];
-                    NSLog(@"POSTED SONG: %@", HRPPosts[@"songTitle"]);
-                    
-                    PFGeoPoint *HRPGeoPoint = HRPPosts[@"locationGeoPoint"];
-                    NSLog(@"geoPointString %f, %f", HRPGeoPoint.latitude, HRPGeoPoint.longitude);
-                    
-                    CLLocationCoordinate2D postCoordinate = CLLocationCoordinate2DMake(HRPGeoPoint.latitude, HRPGeoPoint.longitude);
-                    NSLog(@"postCoordinate %f, %f", postCoordinate.latitude, postCoordinate.longitude);
-                    
-                    GMSMarker *marker = [[GMSMarker alloc] init];
-                    marker.icon = [GMSMarker markerImageWithColor:[UIColor colorWithHue:0.56 saturation:0.95 brightness:1 alpha:1]];
-                    marker.position = postCoordinate;
-                    marker.map = self.mapView;
-                }
-            }
-            else if ([error.domain isEqual:PFParseErrorDomain] && error.code == kPFErrorConnectionFailed)
-            {
-//                NSLog(@"Error: %@ %@", error, [error userInfo]);
-                NSLog(@"OH MY GOD THERE WAS AN INTERNET ERRORRRRRRRR");
-                [self alertOfflineView];
-            }
-        }];
+         {
+             [self.activityIndicator stopAnimating];
+             
+             if (!error)
+             {
+                 [self.modalView removeFromSuperview];
+                 
+                 UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
+                 label.backgroundColor = [UIColor clearColor];
+                 label.textColor = [UIColor whiteColor];
+                 label.font = [UIFont boldSystemFontOfSize:18];
+                 label.text = @"HARPY";
+                 label.textAlignment = NSTextAlignmentCenter;
+                 self.navigationItem.titleView = label;
+                 
+                 UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]init];
+                 leftButton.action = @selector(profileSecondButtonTapped);
+                 leftButton.image = [UIImage imageNamed:@"user.png"];
+                 leftButton.target = self;
+                 leftButton.tintColor = [UIColor whiteColor];
+                 self.navigationItem.leftBarButtonItem = leftButton;
+                 
+                 UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]init];
+                 rightButton.action = @selector(sendToUserSearch);
+                 rightButton.image = [UIImage imageNamed:@"search.png"];
+                 rightButton.tintColor = [UIColor whiteColor];
+                 rightButton.target = self;
+                 
+                 self.navigationItem.rightBarButtonItem = rightButton;
+                 
+                 self.parsePosts = objects;
+                 NSLog(@"THERE ARE %lu PARSE POSTS.", self.parsePosts.count);
+                 
+                 for (NSUInteger i = 0; i < self.parsePosts.count; i++)
+                 {
+                     NSDictionary *HRPPosts = self.parsePosts[i];
+                     NSLog(@"POSTED SONG: %@", HRPPosts[@"songTitle"]);
+                     
+                     PFGeoPoint *HRPGeoPoint = HRPPosts[@"locationGeoPoint"];
+                     NSLog(@"geoPointString %f, %f", HRPGeoPoint.latitude, HRPGeoPoint.longitude);
+                     
+                     CLLocationCoordinate2D postCoordinate = CLLocationCoordinate2DMake(HRPGeoPoint.latitude, HRPGeoPoint.longitude);
+                     NSLog(@"postCoordinate %f, %f", postCoordinate.latitude, postCoordinate.longitude);
+                     
+                     GMSMarker *marker = [[GMSMarker alloc] init];
+                     marker.icon = [GMSMarker markerImageWithColor:[UIColor colorWithHue:0.56 saturation:0.95 brightness:1 alpha:1]];
+                     marker.position = postCoordinate;
+                     marker.map = self.mapView;
+                 }
+             }
+             else if ([error.domain isEqual:PFParseErrorDomain] && error.code == kPFErrorConnectionFailed)
+             {
+                 //                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                 NSLog(@"OH MY GOD THERE WAS AN INTERNET ERRORRRRRRRR");
+                 [self alertOfflineView];
+             }
+         }];
     }
 }
 
@@ -378,7 +378,7 @@
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [errorAlerts addAction:okAction];
     
-//    [self presentViewController:errorAlerts animated:YES completion:nil];
+    //    [self presentViewController:errorAlerts animated:YES completion:nil];
     //    [manager stopUpdatingLocation];
     //this prevents further warnings from the alert controller but also doesn't show a map at all in simulator
 }
@@ -407,7 +407,7 @@
 {
     NSLog(@"method entered");
     NSLog(@"button text: %@", self.postSongButton.titleLabel.text);
-        
+    
     if (self.defaultMarkerImage.hidden)
     {
         NSLog(@"marker is hidden");
@@ -476,7 +476,7 @@
         UINavigationController *navController = segue.destinationViewController;
         HRPTrackSearchViewController *destinVC = navController.viewControllers.firstObject;
         destinVC.post = [self postWithCurrentMapPosition];
-     }
+    }
 }
 
 -(void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
@@ -549,7 +549,28 @@
 }
 -(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
 {
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    NSLog(@"auth: %@", auth);
     
+    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, SPTUser *object) {
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            PFUser *currentUser = [PFUser currentUser];
+            
+            currentUser[@"spotifyCanonical"] = object.canonicalUserName;
+            
+            [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded)
+                {
+                    auth.sessionUserDefaultsKey = object.canonicalUserName;
+                }
+                else
+                {
+                    NSLog(@"ERROR: %@", error);
+                }
+            }];
+        }];
+    }];
 }
 -(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
 {

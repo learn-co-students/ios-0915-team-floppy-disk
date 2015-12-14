@@ -33,30 +33,6 @@
     
     SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:loginURL];
     [presentingViewController presentViewController:safariVC animated:YES completion:nil];
-    
-//    SPTAuth *auth = [SPTAuth defaultInstance];
-//    SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
-//        // This is the callback that'll be triggered when auth is completed (or fails).
-//        
-//        if (error != nil)
-//        {
-//            NSLog(@"*** Auth error: %@", error);
-//            return;
-//        }
-//        
-//        
-//        auth.session = session;
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"sessionUpdated" object:self];
-//        
-//    };
-//    
-//    if ([auth canHandleURL:loginURL])
-//    {
-//        [auth handleAuthCallbackWithTriggeredAuthURL:loginURL callback:authCallback];
-//    }
-    
-//    [[UIApplication sharedApplication] performSelector:@selector(openURL:) withObject:loginURL afterDelay:0.1];
-    
 }
 
 @end

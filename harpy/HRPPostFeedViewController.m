@@ -237,13 +237,15 @@
             NSLog(@"%@", error);
             
             //[sender setTitle:@"Stop" forState:UIControlStateNormal];
-            [sender setImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
+            [sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
             
         }];
     } else if (self.player.isPlaying == YES) {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
         //[sender setTitle:@"Play" forState:UIControlStateNormal];
-        [sender setImage:[UIImage imageNamed:@"white_play"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        self.playPauseLabel.text = @"Paused";
+        self.albumArtView.image = [UIImage imageNamed:@"white_play"];
     }
 
 }

@@ -84,11 +84,11 @@
     [SPTUser requestCurrentUserWithAccessToken:auth.session.accessToken callback:^(NSError *error, id object) {
         NSLog(@"%@", object);
     }];
-    PFUser *current = [PFUser currentUser];
-    if (current != nil) {
-        NSString *string = current[@"spotifyCanonical"];
-        auth.sessionUserDefaultsKey = string;
-    }
+//    PFUser *current = [PFUser currentUser];
+//    if (current != nil) {
+//        NSString *string = current[@"spotifyCanonical"];
+//        auth.sessionUserDefaultsKey = string;
+//    }
     
     return YES;
 }
@@ -97,15 +97,11 @@
 {
     SPTAuth *auth = [SPTAuth defaultInstance];
     SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
-        // This is the callback that'll be triggered when auth is completed (or fails).
-            
         if (error != nil)
         {
             NSLog(@"*** Auth error: %@", error);
             return;
         }
-        
-        
         auth.session = session;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"sessionUpdated" object:self];
     
@@ -117,10 +113,6 @@
         return YES;
     }
     return NO;
-    
-    
 }
-
-
 
 @end

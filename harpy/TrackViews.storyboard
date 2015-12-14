@@ -161,7 +161,7 @@
                                         </variation>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="xs5-8q-6Xt">
-                                        <rect key="frame" x="82" y="22" width="68" height="45"/>
+                                        <rect key="frame" x="82" y="22" width="232" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoO-l1-REu">
                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="15"/>
@@ -195,8 +195,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="sGZ-hO-O4p" firstAttribute="leading" secondItem="xs5-8q-6Xt" secondAttribute="trailing" constant="176" id="2zE-v4-c4s"/>
-                                    <constraint firstItem="sGZ-hO-O4p" firstAttribute="leading" secondItem="El5-Tw-qTg" secondAttribute="trailing" constant="162" id="3kX-mR-mKk"/>
+                                    <constraint firstItem="sGZ-hO-O4p" firstAttribute="leading" secondItem="xs5-8q-6Xt" secondAttribute="trailing" constant="12" id="2zE-v4-c4s"/>
                                     <constraint firstItem="pvZ-Bm-5OO" firstAttribute="top" secondItem="Env-n8-Fgl" secondAttribute="top" constant="14" id="CC3-SX-OD4"/>
                                     <constraint firstItem="pvZ-Bm-5OO" firstAttribute="leading" secondItem="Env-n8-Fgl" secondAttribute="leading" constant="13" id="JJg-ct-Xw6"/>
                                     <constraint firstAttribute="height" constant="89" id="XnC-ln-RHu"/>
@@ -206,11 +205,6 @@
                                     <constraint firstItem="pvZ-Bm-5OO" firstAttribute="centerY" secondItem="Env-n8-Fgl" secondAttribute="centerY" id="uch-si-F5M"/>
                                     <constraint firstItem="otu-iV-Nsu" firstAttribute="leading" secondItem="pvZ-Bm-5OO" secondAttribute="trailing" constant="8" id="ugv-hJ-jfI"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="3kX-mR-mKk"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="qg3-vo-Gb5" appends="YES" id="4cj-rQ-fuz"/>
                                 </connections>
@@ -236,6 +230,11 @@
                             <constraint firstItem="J5h-kQ-Kuh" firstAttribute="width" secondItem="Ayy-1o-7fT" secondAttribute="width" id="xDO-ah-xrw"/>
                             <constraint firstItem="zWB-xD-fLO" firstAttribute="top" secondItem="uuo-XN-5PR" secondAttribute="bottom" id="xIH-UM-RQC"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="UfB-VW-T6U"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="SEARCH SONGS" id="ugX-8d-URQ">
                         <barButtonItem key="leftBarButtonItem" image="left_Arrow" style="plain" id="EQ6-n6-V3w">

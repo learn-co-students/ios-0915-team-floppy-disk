@@ -111,7 +111,7 @@
 }
 -(void) setupTableViewUI
 {
-    self.songSearchBar.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.songSearchBar.keyboardAppearance = UIKeyboardAppearanceLight;
     
     UIImage *whiteColorImage = [self imageWithColor:[UIColor whiteColor]];
     self.songTableView.backgroundColor = [UIColor clearColor];

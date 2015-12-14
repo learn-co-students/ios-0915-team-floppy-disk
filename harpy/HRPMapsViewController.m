@@ -58,6 +58,9 @@
     [super viewDidLoad];
     
     
+    NSLog(@"hight:%f width:%f", self.navigationController.navigationBar.frame.size.height, self.navigationController.navigationBar.frame.size.width);
+    
+    
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
     self.title = @"HARPY";

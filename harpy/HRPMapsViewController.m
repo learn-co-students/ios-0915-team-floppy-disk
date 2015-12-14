@@ -125,16 +125,13 @@
 {
     if (self.currentLocation)
     {
-        //        CLLocationDegrees latitude = 40.786091;
-        //        CLLocationDegrees longitude = -73.968285;
-        //        CLLocationCoordinate2D test = CLLocationCoordinate2DMake(latitude, longitude);
         CLLocationCoordinate2D currentCoordinate = [self.currentLocation coordinate];
         PFGeoPoint *currentUserGeoPoint = [PFGeoPoint geoPointWithLatitude:currentCoordinate.latitude longitude:currentCoordinate.longitude];
         
         NSLog(@"CURRENT USER GEOPOINT: %@", currentUserGeoPoint);
         PFQuery *query = [PFQuery queryWithClassName:@"HRPPost"];
         [query whereKey:@"locationGeoPoint" nearGeoPoint:currentUserGeoPoint withinMiles:3.5];
-        query.limit = 10;
+        query.limit = 20;
         
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
         self.navigationItem.titleView = self.activityIndicator;
@@ -308,7 +305,7 @@
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
-    CGFloat coordinateDifference = 2;
+    CGFloat coordinateDifference = 0.002;
     
     CGFloat firstLatitude = coordinate.latitude;
     firstLatitude += coordinateDifference;

@@ -103,7 +103,7 @@
         self.realNameTextField = (UITextField *)[cell viewWithTag:3];
         self.realNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:realNameString attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
         self.realNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-        self.realNameTextField.keyboardAppearance = UIKeyboardAppearanceDark;
+        self.realNameTextField.keyboardAppearance = UIKeyboardAppearanceLight;
         self.realNameTextField.borderStyle = NO;
     }
     if (indexPath.row == 3)
@@ -115,7 +115,7 @@
         self.shortBioTextField = (UITextField *)[cell viewWithTag:4];
         self.shortBioTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:shortBioString attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
         self.shortBioTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-        self.shortBioTextField.keyboardAppearance = UIKeyboardAppearanceDark;
+        self.shortBioTextField.keyboardAppearance = UIKeyboardAppearanceLight;
         self.shortBioTextField.borderStyle = NO;
     }
     if (indexPath.row == 4)

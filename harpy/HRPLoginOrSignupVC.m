@@ -722,7 +722,7 @@
     SPTAuth *auth = [SPTAuth defaultInstance];
     if (auth.session && [auth.session isValid])
     {
-        [self createParseUser];
+        //[self createParseUser];
         [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogInNotificationName object:nil];
         
         [self showCreateProfileView];

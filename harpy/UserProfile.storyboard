@@ -33,7 +33,6 @@
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
         </mutableArray>
         <mutableArray key="SF-UI-Display-Semibold.otf">
             <string>SFUIDisplay-Semibold</string>
@@ -513,29 +512,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="updateAccountCell" id="3J4-wW-wcm">
-                                <rect key="frame" x="0.0" y="149" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3J4-wW-wcm" id="Cdu-LZ-jbx">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Account Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qB8-zJ-lLa">
-                                            <rect key="frame" x="16" y="8" width="382" height="27"/>
-                                            <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="qB8-zJ-lLa" secondAttribute="trailing" constant="8" id="4xL-L4-Hqd"/>
-                                        <constraint firstItem="qB8-zJ-lLa" firstAttribute="leading" secondItem="Cdu-LZ-jbx" secondAttribute="leadingMargin" constant="8" id="WNv-gr-aTq"/>
-                                        <constraint firstItem="qB8-zJ-lLa" firstAttribute="top" secondItem="Cdu-LZ-jbx" secondAttribute="topMargin" id="su2-jX-KVt"/>
-                                        <constraint firstItem="qB8-zJ-lLa" firstAttribute="bottom" secondItem="Cdu-LZ-jbx" secondAttribute="bottomMargin" id="yyB-Gz-V69"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="spacyCell" rowHeight="400" id="25h-M9-2y7">
-                                <rect key="frame" x="0.0" y="193" width="414" height="400"/>
+                                <rect key="frame" x="0.0" y="149" width="414" height="400"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="25h-M9-2y7" id="IUd-HN-xun">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="399"/>
@@ -543,7 +521,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logoutCell" id="zKk-z4-dkB">
-                                <rect key="frame" x="0.0" y="593" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="549" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zKk-z4-dkB" id="Odz-eQ-oFU">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>

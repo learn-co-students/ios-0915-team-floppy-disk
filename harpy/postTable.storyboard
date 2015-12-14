@@ -63,7 +63,7 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTC-qo-lGS">
-                                                            <rect key="frame" x="66" y="32" width="71" height="18"/>
+                                                            <rect key="frame" x="66" y="32" width="70.5" height="18"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -92,7 +92,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="9" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22h" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eM-it-pId">
-                                                            <rect key="frame" x="356" y="35" width="22" height="15"/>
+                                                            <rect key="frame" x="356" y="35" width="22" height="14.5"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -140,7 +140,7 @@
                                         <rect key="frame" x="0.0" y="672" width="414" height="89"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kQL-gM-n9C">
-                                                <rect key="frame" x="8" y="19" width="398" height="52"/>
+                                                <rect key="frame" x="8" y="19" width="302" height="52"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EqD-HK-B9R">
                                                         <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
@@ -151,24 +151,24 @@
                                                         </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="9eo-QB-XhM">
-                                                        <rect key="frame" x="60" y="0.0" width="338" height="52"/>
+                                                        <rect key="frame" x="60" y="0.0" width="242" height="52"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAB-dI-iHX">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45" height="18"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="17.5"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvn-q7-jMF">
-                                                                <rect key="frame" x="0.0" y="18" width="66" height="17"/>
+                                                                <rect key="frame" x="0.0" y="17.5" width="65.5" height="17"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wi1-hD-leU">
-                                                                <rect key="frame" x="0.0" y="35" width="68" height="18"/>
+                                                                <rect key="frame" x="0.0" y="34.5" width="67.5" height="17.5"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -180,15 +180,25 @@
                                                 </subviews>
                                                 <animations/>
                                             </stackView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_spotify" translatesAutoresizingMaskIntoConstraints="NO" id="H6F-ab-Ccq">
+                                                <rect key="frame" x="326" y="33" width="80" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="6mI-0K-dJe"/>
+                                                    <constraint firstAttribute="width" constant="80" id="yEk-cy-6Nm"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="H6F-ab-Ccq" secondAttribute="trailing" constant="8" id="1D9-NX-60a"/>
+                                            <constraint firstAttribute="bottom" secondItem="H6F-ab-Ccq" secondAttribute="bottom" constant="32" id="9Qp-Qe-Ktb"/>
                                             <constraint firstItem="kQL-gM-n9C" firstAttribute="centerY" secondItem="im2-34-ORU" secondAttribute="centerY" id="LR8-iX-vJk"/>
                                             <constraint firstItem="kQL-gM-n9C" firstAttribute="leading" secondItem="im2-34-ORU" secondAttribute="leading" constant="8" id="PLa-U9-23V"/>
+                                            <constraint firstItem="H6F-ab-Ccq" firstAttribute="top" secondItem="im2-34-ORU" secondAttribute="top" constant="33" id="ZU2-dl-OXy"/>
+                                            <constraint firstItem="H6F-ab-Ccq" firstAttribute="leading" secondItem="kQL-gM-n9C" secondAttribute="trailing" constant="16" id="cyx-t3-cMg"/>
                                             <constraint firstAttribute="height" constant="89" id="iZg-dU-A6e"/>
-                                            <constraint firstAttribute="trailing" secondItem="kQL-gM-n9C" secondAttribute="trailing" constant="8" id="yIX-ny-wrf"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="C0f-ss-yGS" appends="YES" id="pz1-gP-W9s"/>
@@ -263,5 +273,6 @@
     <resources>
         <image name="left_Arrow" width="22" height="16"/>
         <image name="play" width="51" height="60"/>
+        <image name="white_spotify" width="3344" height="1010"/>
     </resources>
 </document>

@@ -66,7 +66,7 @@
     
     UIButton *playSongButton = (UIButton *)[cell viewWithTag:1];
     //[playSongButton setTitle:@"Play" forState:UIControlStateNormal];
-    [playSongButton setImage:[UIImage imageNamed:@"white_play"] forState:UIControlStateNormal];
+    [playSongButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
     [playSongButton addTarget:self action:@selector(playButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImageView *coverArt = (UIImageView *)[cell viewWithTag:2];

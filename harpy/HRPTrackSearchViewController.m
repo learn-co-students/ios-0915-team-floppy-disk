@@ -44,6 +44,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.songTableView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
     
+    self.songTableView.backgroundColor = [UIColor whiteColor];
+    
     self.songSearchBar.delegate = self;
     self.songTableView.delegate = self;
     self.songTableView.dataSource = self;
@@ -247,6 +249,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
     
     UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
+    cell.backgroundColor = [UIColor whiteColor];
     
     HRPTrack *track  = self.filteredSongArray[indexPath.row];
     

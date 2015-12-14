@@ -125,6 +125,9 @@
 {
     if (self.currentLocation)
     {
+//        CLLocationDegrees latitude = 40.786091;
+//        CLLocationDegrees longitude = -73.968285;
+//        CLLocationCoordinate2D test = CLLocationCoordinate2DMake(latitude, longitude);
         CLLocationCoordinate2D currentCoordinate = [self.currentLocation coordinate];
         PFGeoPoint *currentUserGeoPoint = [PFGeoPoint geoPointWithLatitude:currentCoordinate.latitude longitude:currentCoordinate.longitude];
         
@@ -183,7 +186,7 @@
                     NSLog(@"postCoordinate %f, %f", postCoordinate.latitude, postCoordinate.longitude);
                     
                     GMSMarker *marker = [[GMSMarker alloc] init];
-                    marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
+                    marker.icon = [GMSMarker markerImageWithColor:[UIColor colorWithHue:0.56 saturation:0.95 brightness:1 alpha:1]];
                     marker.position = postCoordinate;
                     marker.map = self.mapView;
                 }
@@ -305,7 +308,7 @@
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     
-    CGFloat coordinateDifference = 0.002;
+    CGFloat coordinateDifference = 2;
     
     CGFloat firstLatitude = coordinate.latitude;
     firstLatitude += coordinateDifference;

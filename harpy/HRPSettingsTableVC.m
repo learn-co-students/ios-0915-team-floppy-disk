@@ -40,7 +40,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -56,14 +56,10 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (indexPath.row == 2) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"updateAccountCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    if (indexPath.row == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"spacyCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"logoutCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -80,9 +76,9 @@
     {
         customTableCellHeight = totalCellView/8;
     }
-    if (indexPath.row == 3) // SpacerCells
+    if (indexPath.row == 2) // SpacerCells
     {
-        customTableCellHeight = totalCellView - (totalCellView/8 + totalCellView/10*3);
+        customTableCellHeight = totalCellView - (totalCellView/8 + totalCellView/10*2);
     }
     
     return customTableCellHeight;
@@ -94,10 +90,7 @@
     if (indexPath.row == 1) {
         [self performSegueWithIdentifier:@"sendToEditProfile" sender:self];
     }
-    if (indexPath.row == 2) {
-        [self performSegueWithIdentifier:@"sendToAccountInformation" sender:self];
-    }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 3) {
         [self logoutclicked];
     }
 }

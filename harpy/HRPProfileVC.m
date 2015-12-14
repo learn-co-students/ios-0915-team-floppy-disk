@@ -102,15 +102,15 @@
         NSLog(@"FANS: %@", objects);
         self.userFans = objects;
         self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count];
+        
+        for (PFUser *user in self.userFans)
+        {
+            if ([[PFUser currentUser] isEqual:user])
+            {
+                [self.followOrEditButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+            }
+        }
     }];
-    
-    
-//    PFRelation *relationFans = [_user relationForKey:@"following"];
-//    PFQuery *queryFans = [relationFans query];
-//    [queryFans whereKey:@"following" equalTo:self.user];
-//    [queryFans findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-//        
-//    }];
 }
 - (void)updatePostCount
 {
@@ -163,23 +163,6 @@
             imageView.backgroundColor = [UIColor darkGrayColor];
         }
     }
-}
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    //NSLog(@"scrollViewDidScroll");
-    
-    float shadowOffset = (scrollView.contentOffset.y/1);
-    
-    // Make sure that the offset doesn't exceed 3 or drop below 0.5
-    shadowOffset = MIN(MAX(shadowOffset, 0), 1);
-    
-    //Ensure that the shadow radius is between 1 and 3
-    float shadowRadius = MIN(MAX(shadowOffset, 0), 1);
-    
-//    self.stackViewButtons.layer.shadowOffset = CGSizeMake(100, shadowOffset);
-//    self.stackViewButtons.layer.shadowRadius = shadowRadius;
-//    self.stackViewButtons.layer.shadowColor = [UIColor blackColor].CGColor;
-//    self.stackViewButtons.layer.shadowOpacity = 0.20;
 }
 
 #pragma mark - Parse Queries
@@ -385,18 +368,17 @@
     {
         PFUser *currentUser = [PFUser currentUser];
         PFRelation *followingRelation = [currentUser relationForKey:@"following"];
-//        PFObject *object = [PFObject objectWithClassName:@"User"];
-//        object[@"objectId"] = self.user.objectId;
         [followingRelation addObject:self.user];
         
         PFRelation *fanRelation = [self.user relationForKey:@"fans"];
         [fanRelation addObject: currentUser];
         
-
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil)
             {
                 NSLog(@"followers saved!!!!!!!!!");
+                [self.followOrEditButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+                self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count + 1];
                 [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                     if (error != nil)
                     {
@@ -404,13 +386,13 @@
                     }
                     else
                     {
-                        NSLog(@"followers saved!!!!!!!!!");
+                        NSLog(@"ERROR: %@ %@", error, [error userInfo]);
                     }
                 }];
             }
             else
             {
-                NSLog(@"followers saved!!!!!!!!!");
+                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
             }
         }];
     }
@@ -418,6 +400,39 @@
     {
         HRPEditProfileTableVC *editProfileView = [[HRPEditProfileTableVC alloc] init];
         [self presentViewController:editProfileView animated:YES completion:nil];
+    }
+    else if ([self.followOrEditButton.titleLabel.text isEqual: @"Unfollow"])
+    {
+        
+        PFUser *currentUser = [PFUser currentUser];
+        PFRelation *followingRelation = [currentUser relationForKey:@"following"];
+        [followingRelation removeObject:self.user];
+        
+        PFRelation *fanRelation = [self.user relationForKey:@"fans"];
+        [fanRelation removeObject:currentUser];
+        
+        [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (error != nil)
+            {
+                NSLog(@"follower deleted!!!!!!!!!");
+                [self.followOrEditButton setTitle:@"Follow" forState:UIControlStateNormal];
+                self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count - 1];
+                [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (error != nil)
+                    {
+                        NSLog(@"fan deleted!!!!!!!!!");
+                    }
+                    else
+                    {
+                        NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                    }
+                }];
+            }
+            else
+            {
+                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+            }
+        }];
     }
 }
 
@@ -458,18 +473,19 @@
         
         NSDictionary *postInView = self.userPosts[indexpath.row];
         
-    //    PFFile *albumFile = postInView[@"albumArt"];
-    //    if (albumFile) {
-    //        [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
-    //            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-    //                if (!error) {
-    //                    self.coverArtView.image = [UIImage imageWithData:data];
-    //                } else {
-    //                    self.coverArtView.image = [UIImage imageNamed:@"spotify"];
-    //                }
-    //            }];
-    //        }];
-    //    }
+        PFFile *albumFile = postInView[@"albumArt"];
+        if (albumFile) {
+            [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    if (!error) {
+                        self.coverArtView.image = [UIImage imageWithData:data];
+                    } else {
+                        self.coverArtView.image = [UIImage imageNamed:@"spotify"];
+                    }
+                }];
+            }];
+        }
+        
         self.songNameLabel.text = postInView[@"songTitle"];
         self.artistNameLabel.text = postInView[@"artistName"];
         self.playPauseLabel.text = @"Playing";

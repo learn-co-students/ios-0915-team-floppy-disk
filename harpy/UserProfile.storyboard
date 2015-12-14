@@ -296,7 +296,7 @@
                                                                             <subviews>
                                                                                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V77-v1-eq7">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="45"/>
-                                                                                    <state key="normal" image="play_filled"/>
+                                                                                    <state key="normal" image="play"/>
                                                                                     <connections>
                                                                                         <action selector="playButtonTapped:" destination="C0a-CR-bU2" eventType="touchUpInside" id="C04-I1-z64"/>
                                                                                     </connections>
@@ -994,6 +994,6 @@
     <resources>
         <image name="cog" width="18" height="18"/>
         <image name="left_Arrow" width="22" height="16"/>
-        <image name="play_filled" width="32" height="32"/>
+        <image name="play" width="51" height="60"/>
     </resources>
 </document>

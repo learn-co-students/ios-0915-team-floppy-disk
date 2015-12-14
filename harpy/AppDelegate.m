@@ -84,11 +84,11 @@
     [SPTUser requestCurrentUserWithAccessToken:auth.session.accessToken callback:^(NSError *error, id object) {
         NSLog(@"%@", object);
     }];
-//    PFUser *current = [PFUser currentUser];
-//    if (current != nil) {
-//        NSString *string = current[@"spotifyCanonical"];
-//        auth.sessionUserDefaultsKey = string;
-//    }
+    PFUser *current = [PFUser currentUser];
+    if (current != nil) {
+        NSString *string = current[@"spotifyCanonical"];
+        auth.sessionUserDefaultsKey = string;
+    }
     
     return YES;
 }

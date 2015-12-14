@@ -606,7 +606,7 @@
         <!--EDIT PROFILE-->
         <scene sceneID="enX-eO-pZu">
             <objects>
-                <tableViewController id="PXg-Lr-28y" customClass="HRPEditProfileTableVC" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="editProfileTableVC" id="PXg-Lr-28y" customClass="HRPEditProfileTableVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="B2R-tt-wvO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -742,12 +742,6 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="EDIT PROFILE" id="Hb5-bN-QOT">
-                        <barButtonItem key="leftBarButtonItem" image="left_Arrow" id="Mg0-VK-06M">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="backButtonTapped:" destination="PXg-Lr-28y" id="fgh-1S-lmb"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="QDj-sh-f0M">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>

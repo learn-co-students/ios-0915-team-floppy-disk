@@ -401,8 +401,9 @@
     }
     else if ([self.followOrEditButton.titleLabel.text isEqual: @"Edit Profile"])
     {
-        HRPEditProfileTableVC *editProfileView = [[HRPEditProfileTableVC alloc] init];
-        [self presentViewController:editProfileView animated:YES completion:nil];
+//        HRPEditProfileTableVC *editProfileView = [[HRPEditProfileTableVC alloc] init];
+//        [self presentViewController:editProfileView animated:YES completion:nil];
+        [self performSegueWithIdentifier:@"goToEditProfile" sender:self];
     }
     else if ([self.followOrEditButton.titleLabel.text isEqual: @"Unfollow"])
     {

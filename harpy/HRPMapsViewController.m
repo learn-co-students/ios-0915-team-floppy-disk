@@ -97,7 +97,7 @@
     
     if (auth.session == nil) {
         NSLog(@"STATEMENT 3 TRUE");
-        //[self openLogInPage];
+        [self openLogInPage];
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
     }

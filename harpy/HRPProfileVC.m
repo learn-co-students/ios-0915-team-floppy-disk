@@ -476,20 +476,7 @@
         //this is only hitting the first row!!!
         
         NSDictionary *postInView = self.userPosts[indexpath.row];
-        
-        PFFile *albumFile = postInView[@"albumArt"];
-        if (albumFile) {
-            [albumFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    if (!error) {
-                        self.coverArtView.image = [UIImage imageWithData:data];
-                    } else {
-                        self.coverArtView.image = [UIImage imageNamed:@"spotify"];
-                    }
-                }];
-            }];
-        }
-        
+                
         self.songNameLabel.text = postInView[@"songTitle"];
         self.artistNameLabel.text = postInView[@"artistName"];
         self.playPauseLabel.text = @"Playing";

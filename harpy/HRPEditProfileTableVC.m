@@ -29,9 +29,6 @@
 {
     [super viewDidLoad];
     self.currentUser = [PFUser currentUser];
-    
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left_Arrow"] style:UIBarButtonItemStylePlain target:self action:@selector(barButtonBackPressed:)];
-    self.navigationItem.backBarButtonItem = back;
 
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.view.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.98 alpha:1];

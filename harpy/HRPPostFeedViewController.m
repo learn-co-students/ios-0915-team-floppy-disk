@@ -124,7 +124,7 @@
     UILabel *daysLabel = (UILabel *)[cell viewWithTag:9];
     PFObject *postInDictionary = self.postsArray[0];
     NSInteger daysSincePost = [self getDaysSincePost:postInDictionary];
-    daysLabel.text = [NSString stringWithFormat:@"%ldd", daysSincePost];
+    daysLabel.text = [NSString stringWithFormat:@"%ldd", (long)daysSincePost];
     
     
     
@@ -156,7 +156,7 @@
     NSCalendar *calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *gregComps = [calendar components:NSCalendarUnitDay fromDate:start toDate:end options:NSCalendarWrapComponents];
     
-    NSLog(@"DAYS SINCE POST: %ld", [gregComps day]);
+    NSLog(@"DAYS SINCE POST: %ld", (long)[gregComps day]);
     
     return [gregComps day];
 }

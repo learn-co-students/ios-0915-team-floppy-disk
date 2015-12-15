@@ -346,22 +346,22 @@
     self.userName.hidden = NO;
     self.userNameNew.hidden = YES;
     
-    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f)
     {
-        [UIView animateKeyframesWithDuration:1
+        [UIView animateWithDuration:1
                                        delay:0
-                                     options:UIViewAnimationCurveLinear
+                                     options:UIViewAnimationOptionCurveLinear
                                   animations:^{
                                       [self.login  setCenter: CGPointMake(self.view.center.x, (self.login.frame.size.height * 3.83) - 20)];
                                       [self.underline setCenter: CGPointMake(self.view.frame.size.width - (self.view.frame.size.width / 5.6), 0)];
                                   }
                                   completion:nil];
     }
-    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
+    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f)
     {
-        [UIView animateKeyframesWithDuration:1
+        [UIView animateWithDuration:1
                                        delay:0
-                                     options:UIViewAnimationCurveLinear
+                                     options:UIViewAnimationOptionCurveLinear
                                   animations:^{
                                       [self.login  setCenter: CGPointMake(self.view.center.x, (self.login.frame.size.height * 3.83) - 10)];
                                       [self.underline setCenter: CGPointMake(self.view.frame.size.width - (self.view.frame.size.width / 5.8), 0)];
@@ -370,9 +370,9 @@
     }
     else
     {
-        [UIView animateKeyframesWithDuration:1
+        [UIView animateWithDuration:1
                                        delay:0
-                                     options:UIViewAnimationCurveLinear
+                                     options:UIViewAnimationOptionCurveLinear
                                   animations:^{
                                       [self.login  setCenter: CGPointMake(self.view.center.x, (self.login.frame.size.height * 3.83) - 20)];
                                       [self.underline setCenter: CGPointMake(self.view.frame.size.width - (self.view.frame.size.width / 5.3), 0)];

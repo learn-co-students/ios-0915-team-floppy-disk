@@ -169,7 +169,6 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"cell selected at %ld", indexPath.row);
     if(indexPath.row == 1)
     {
         [self onSelectProfileImageButtonTapped];

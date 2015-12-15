@@ -335,11 +335,6 @@
 
 #pragma mark - Overrides
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"cell selected at %ld", indexPath.row);
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat totalCellView = self.postsTableview.frame.size.height;

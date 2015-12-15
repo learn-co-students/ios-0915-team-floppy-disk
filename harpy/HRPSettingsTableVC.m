@@ -81,7 +81,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"cell selected at %ld", indexPath.row);
+    NSLog(@"cell selected at %ld", (long)indexPath.row);
     
     if (indexPath.row == 2) {
         [self logoutclicked];

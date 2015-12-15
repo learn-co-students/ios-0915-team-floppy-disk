@@ -84,28 +84,18 @@
     CGFloat totalCellView = self.view.frame.size.height * 0.768;
     CGFloat customTableCellHeight = totalCellView/10;
     
-    if (indexPath.row == 0 || indexPath.row == 2) // HeaderCell's
+    if (indexPath.row == 0 || indexPath.row == 2)
     {
         customTableCellHeight = totalCellView/8;
     }
-    if (indexPath.row == 6) // SpacerCells
+    if (indexPath.row == 6)
     {
         customTableCellHeight = totalCellView - (totalCellView/8*2 + totalCellView/10*4);
     }
     
     return customTableCellHeight;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"cell selected at %ld", indexPath.row);
-    
-}
 
 #pragma mark - Action Methods
-
-- (IBAction)backButtonTapped:(UIBarButtonItem *)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 @end

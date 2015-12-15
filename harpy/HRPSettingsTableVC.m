@@ -68,11 +68,11 @@
     CGFloat totalCellView = self.view.frame.size.height * 0.768;
     CGFloat customTableCellHeight = totalCellView/10;
     
-    if (indexPath.row == 0) // HeaderCell's
+    if (indexPath.row == 0)
     {
         customTableCellHeight = totalCellView/8;
     }
-    if (indexPath.row == 1) // SpacerCells
+    if (indexPath.row == 1)
     {
         customTableCellHeight = totalCellView - (totalCellView/8 + totalCellView/10);
     }

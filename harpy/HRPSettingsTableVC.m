@@ -40,7 +40,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -52,14 +52,10 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (indexPath.row == 1) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"editProfileCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"spacyCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    if (indexPath.row == 3) {
+    if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"logoutCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -76,9 +72,9 @@
     {
         customTableCellHeight = totalCellView/8;
     }
-    if (indexPath.row == 2) // SpacerCells
+    if (indexPath.row == 1) // SpacerCells
     {
-        customTableCellHeight = totalCellView - (totalCellView/8 + totalCellView/10*2);
+        customTableCellHeight = totalCellView - (totalCellView/8 + totalCellView/10);
     }
     
     return customTableCellHeight;
@@ -87,10 +83,7 @@
 {
     NSLog(@"cell selected at %ld", indexPath.row);
     
-    if (indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"sendToEditProfile" sender:self];
-    }
-    if (indexPath.row == 3) {
+    if (indexPath.row == 2) {
         [self logoutclicked];
     }
 }

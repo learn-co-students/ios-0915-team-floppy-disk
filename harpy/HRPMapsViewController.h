@@ -19,9 +19,6 @@
 
 @property (nonatomic) CLLocation *currentLocation;
 @property (nonatomic, strong) CLLocation* location;
-@property (nonatomic, strong) UINavigationController *navCont;
-
-/// The location manager used to receive location updates.
 @property (nonatomic,strong) CLLocationManager *locationManager;
 
 - (void)queryForHRPosts;

@@ -21,7 +21,7 @@
 #import "HRPUserSearchVC.h"
 @import GoogleMaps;
 
-@interface HRPMapsViewController () <GMSMapViewDelegate, SPTAuthViewDelegate>
+@interface HRPMapsViewController () <GMSMapViewDelegate, SPTAuthViewDelegate, loadNewPostPinsDelegate>
 
 
 @property (nonatomic, strong) GMSMapView *mapView;
@@ -47,29 +47,18 @@
 
 - (void)viewDidLoad
 {
-    
-    
-    self.navCont = self.navigationController;
+    [super viewDidLoad];
+
+    self.title = @"HARPY";
     
     self.navigationItem.leftBarButtonItem.enabled = YES;
     self.navigationItem.rightBarButtonItem.enabled = YES;
     
-    [super viewDidLoad];
-    
-    
-    NSLog(@"hight:%f width:%f", self.navigationController.navigationBar.frame.size.height, self.navigationController.navigationBar.frame.size.width);
-    
-    
-    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    
-    self.title = @"HARPY";
-    
+    [self locationManagerPermissions];
     self.locationManager = [CLLocationManager sharedManager];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.delegate = self;
-    
-    [self locationManagerPermissions];
-    
+
     self.defaultMarkerImage.hidden = YES;
     self.readyToPin = NO;
     
@@ -85,37 +74,28 @@
     
     HRPPostPreviewViewController *newView = [[HRPPostPreviewViewController alloc]init];
     newView.delegate = self;
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"VIEW WILL APPEAR");
     [super viewDidAppear:animated];
     SPTAuth *auth = [SPTAuth defaultInstance];
     
     if (auth.session == nil) {
-        NSLog(@"STATEMENT 1 TRUE");
         [self openLogInPage];
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
     }
     else if ([auth.session isValid])
     {
-        NSLog(@"STATEMENT 2 TRUE");
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
     }
     else if (![auth.session isValid] && auth.hasTokenRefreshService) {
-        NSLog(@"STATEMENT 3 TRUE");
         [self renewTokenAndSegue];
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
     }
-    
-    //    [super viewDidAppear:animated];
-    //    [self.locationManager startUpdatingLocation];
-    //    [self queryForHRPosts];
 }
 
 #pragma mark - Parse Geopoints
@@ -127,7 +107,6 @@
         CLLocationCoordinate2D currentCoordinate = [self.currentLocation coordinate];
         PFGeoPoint *currentUserGeoPoint = [PFGeoPoint geoPointWithLatitude:currentCoordinate.latitude longitude:currentCoordinate.longitude];
         
-        NSLog(@"CURRENT USER GEOPOINT: %@", currentUserGeoPoint);
         PFQuery *query = [PFQuery queryWithClassName:@"HRPPost"];
         [query whereKey:@"locationGeoPoint" nearGeoPoint:currentUserGeoPoint withinMiles:3.5];
         query.limit = 20;
@@ -168,18 +147,13 @@
                  self.navigationItem.rightBarButtonItem = rightButton;
                  
                  self.parsePosts = objects;
-                 NSLog(@"THERE ARE %lu PARSE POSTS.", self.parsePosts.count);
-                 
                  for (NSUInteger i = 0; i < self.parsePosts.count; i++)
                  {
                      NSDictionary *HRPPosts = self.parsePosts[i];
-                     NSLog(@"POSTED SONG: %@", HRPPosts[@"songTitle"]);
                      
                      PFGeoPoint *HRPGeoPoint = HRPPosts[@"locationGeoPoint"];
-                     NSLog(@"geoPointString %f, %f", HRPGeoPoint.latitude, HRPGeoPoint.longitude);
                      
                      CLLocationCoordinate2D postCoordinate = CLLocationCoordinate2DMake(HRPGeoPoint.latitude, HRPGeoPoint.longitude);
-                     NSLog(@"postCoordinate %f, %f", postCoordinate.latitude, postCoordinate.longitude);
                      
                      GMSMarker *marker = [[GMSMarker alloc] init];
                      marker.icon = [GMSMarker markerImageWithColor:[UIColor colorWithHue:0.56 saturation:0.95 brightness:1 alpha:1]];
@@ -189,8 +163,6 @@
              }
              else if ([error.domain isEqual:PFParseErrorDomain] && error.code == kPFErrorConnectionFailed)
              {
-                 //                NSLog(@"Error: %@ %@", error, [error userInfo]);
-                 NSLog(@"OH MY GOD THERE WAS AN INTERNET ERRORRRRRRRR");
                  [self alertOfflineView];
              }
          }];
@@ -237,7 +209,6 @@
         NSUInteger code = [CLLocationManager authorizationStatus];
         if (code == kCLAuthorizationStatusNotDetermined && ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)] || [self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]))
         {
-            // choose one request according to your business.
             if([[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationAlwaysUsageDescription"])
             {
                 [self.locationManager requestAlwaysAuthorization];
@@ -257,28 +228,23 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         self.newestLocation = self.locationManager.location;
-        NSLog(@"FOUND YOU THE FIRST TIME: %@", self.locationManager.location);
         self.currentLocation = self.locationManager.location;
         [self updateMapWithCurrentLocation];
     });
 
     NSTimeInterval locationAge = -[self.newestLocation.timestamp timeIntervalSinceNow];
-    //NSLog(@"locationAge %f", locationAge);
     if (locationAge > 300) // 5 mins in seconds
     {
         CLLocation *compareLocation = self.locationManager.location;
         double distance = [self.newestLocation distanceFromLocation:compareLocation];
-        //NSLog(@"DISTANCE: %f", distance);
         if (distance > 320) // 0.20 miles in meters
         {
             self.newestLocation = self.locationManager.location;
-            //NSLog(@"FOUND YOU AGAIN @: %@", self.locationManager.location);
             self.currentLocation = self.locationManager.location;
             [self updateMapWithCurrentLocation];
         }
         else
         {
-            //NSLog(@"YOU DIDNT MOVE ENOUGH");
             self.newestLocation = self.locationManager.location;
         }
     }
@@ -311,7 +277,6 @@
     
     CGFloat firstLongitude = coordinate.longitude;
     firstLongitude += coordinateDifference;
-    NSLog(@"new latitude: %f, longitude: %f", firstLatitude, firstLongitude);
     
     CLLocationDegrees topLat = firstLatitude;
     CLLocationDegrees topLon = firstLongitude;
@@ -336,7 +301,6 @@
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:17];
     
-    //this controls the map size on the view
     CGFloat h = self.topLayoutGuide.length;
     CGRect rect = CGRectMake(0, h, self.view.bounds.size.width, self.view.bounds.size.height - self.navigationController.navigationBar.frame.size.height - self.postSongButton.frame.size.height - 20);
     self.mapView = [GMSMapView mapWithFrame:rect camera:camera];
@@ -367,16 +331,10 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    NSLog(@"error: %@", error);
-    
     UIAlertController *errorAlerts = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [errorAlerts addAction:okAction];
-    
-    //    [self presentViewController:errorAlerts animated:YES completion:nil];
-    //    [manager stopUpdatingLocation];
-    //this prevents further warnings from the alert controller but also doesn't show a map at all in simulator
 }
 
 #pragma mark - Action Methods
@@ -401,17 +359,12 @@
 }
 - (IBAction)postSongButtonTapped:(id)sender
 {
-    NSLog(@"method entered");
-    NSLog(@"button text: %@", self.postSongButton.titleLabel.text);
-    
     if (self.defaultMarkerImage.hidden)
     {
-        NSLog(@"marker is hidden");
         self.defaultMarkerImage.hidden = NO;
     }
     else
     {
-        NSLog(@"marker is NOT hidden");
         self.defaultMarkerImage.hidden = YES;
     }
     [self changeButtonBackground];
@@ -421,22 +374,12 @@
 {
     CLLocationCoordinate2D coordinates = [self findCoordinatesAtMapCenter];
     
-    NSLog(@"inside the block");
-    
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
     marker.position = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
-    //marker.map = mapView_;
-    //marker.map = self.mapView;
-    NSLog(@"marker in other method: %@", marker);
     
     CGFloat latitude = marker.position.latitude;
     CGFloat longitude = marker.position.longitude;
-    NSLog(@"LAT: %f\nLONG: %F", latitude, longitude);
-    NSLog(@"marker: %@", marker);
-    NSLog(@"marker.icon = %@", marker.icon);
-    NSLog(@"marker.position = (%f, %f)", marker.position.latitude, marker.position.longitude);
-    NSLog(@"marker.map = %@", marker.map);
     
     HRPPost *newPost = [[HRPPost alloc] initWithLatitude:latitude Longitude:longitude];
     
@@ -491,7 +434,6 @@
             postView.postsArray = [NSMutableArray new];
             [postView.postsArray addObject:post];
             [self.navigationController pushViewController:postView animated:YES];
-            //[self presentViewController:postView animated:YES completion:nil];
         }
     }
     return YES;
@@ -500,17 +442,11 @@
 #pragma login methods
 
 
--(void)showSafariVCForSpotifyLogin
-{
-    //safari VC stuff
-}
-
 -(void)sessionUpdatedNotification:(NSNotification *)notification
 {
     SPTAuth *auth = [SPTAuth defaultInstance];
     if (auth.session && [auth.session isValid])
     {
-        //stay on map
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
@@ -522,7 +458,6 @@
     [auth renewSession:auth.session callback:^(NSError *error, SPTSession *session) {
         auth.session = session;
         
-        //stay on map
     }];
 }
 
@@ -546,8 +481,6 @@
 -(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
 {
     SPTAuth *auth = [SPTAuth defaultInstance];
-    NSLog(@"auth: %@", auth);
-    
     [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, SPTUser *object) {
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{

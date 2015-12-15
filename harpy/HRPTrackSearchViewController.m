@@ -134,7 +134,6 @@
             textFieldObject.layer.borderWidth = 1.0;
             textFieldObject.layer.cornerRadius = 13;
             
-            
             break;
         }
     }

@@ -10,7 +10,8 @@
 
 @implementation HRPNetworkAlertView
 
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect
+{
     self.backgroundColor = [UIColor blackColor];
     self.alpha = 0.5;
 }

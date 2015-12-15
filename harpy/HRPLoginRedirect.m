@@ -16,19 +16,16 @@
 #pragma mark - Spotify
 
 + (void)launchSpotifyFromViewController:(UIViewController *)presentingViewController
-{    
-    // Get API key from sharedApplication AppDelegate
+{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *redirectString = @"harpy-app://authorize";
     NSURL *redirectURL = [NSURL URLWithString:redirectString];
     NSString *spotifyClientId = appDelegate.spotifyClientId;
     
-    // Spotify authentication
     [[SPTAuth defaultInstance] setClientID:spotifyClientId];
     [[SPTAuth defaultInstance] setRedirectURL:redirectURL];
     [[SPTAuth defaultInstance] setRequestedScopes:@[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope]];
 
-    // OpenUrl: from sharedApplication AppDelegate
     NSURL *loginURL = [[SPTAuth defaultInstance] loginURL];
     
     SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:loginURL];

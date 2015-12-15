@@ -21,14 +21,10 @@
 }
 
 -(void)createPostForTrack:(HRPTrack *)track withCaption:(NSString *)caption WithCompletion:(void (^)(BOOL success))completion {
-    //******* does not include functionality to add photo to post
-    
-    
-    //set up for parse
+
     PFObject *post = [PFObject objectWithClassName:@"HRPPost"];
     PFUser *currentUser = [PFUser currentUser];
     
-    //setting post properties to track properties
     self.postSongTitle = track.songTitle;
     self.postArtistName = track.artistName;
     self.postAlbumName = track.albumName;
@@ -68,11 +64,6 @@
             [currentUser saveInBackground];
         }
     }];
-    
-//    PFRelation *userRelation = [currentUser relationForKey:@"HRPPosts"];
-//    [userRelation addObject:post];
-//    [currentUser saveInBackground];
-    
 }
 
 @end

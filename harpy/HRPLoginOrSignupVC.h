@@ -11,9 +11,9 @@
 NS_ENUM(NSUInteger, HRPViewControllerTags)
 {
     HRPViewControllerEmailTextFieldTag = 1,
-    HRPViewControllerUsernameTextFieldTag = 2,
-    HRPViewControllerPasswordNewTextFieldTag = 3,
-    HRPViewControllerPasswordConfirmTextFieldTag = 4,
+    HRPViewControllerUsernameTextFieldTag,
+    HRPViewControllerPasswordNewTextFieldTag,
+    HRPViewControllerPasswordConfirmTextFieldTag,
 };
 
 @interface HRPLoginOrSignupVC : UIViewController

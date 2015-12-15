@@ -75,27 +75,11 @@
          }
      }];
 }
+
 - (void)logout
 {
     [PFUser logOutInBackground];
-    SPTAuth *auth = [SPTAuth defaultInstance];
-    SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
-        // This is the callback that'll be triggered when auth is completed (or fails).
-        
-        if (error != nil)
-        {
-            NSLog(@"*** Auth error: %@", error);
-            return;
-        }
-        
-        
-        auth.session = session;
-        //auth.sessionUserDefaultsKey = nil;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"sessionUpdated" object:self];
-        
-    };
 }
-
 
 + (void)getPhotoForUser:(PFUser *)user WithBlock:(void (^)(UIImage *photo))completionBlock
 {
@@ -107,6 +91,5 @@
         }
     }];
 }
-
 
 @end

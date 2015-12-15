@@ -13,13 +13,13 @@
 #import "HRPValidationManager.h"
 #import "UIViewController+PresentViewController.h"
 #import <Spotify/Spotify.h>
-#import <QuartzCore/QuartzCore.h> // Required for boarder color
+#import <QuartzCore/QuartzCore.h>
 #import "Constants.h"
 @import SafariServices;
 
 @interface HRPLoginOrSignupVC () <SPTAuthViewDelegate, UITextFieldDelegate>
 
-@property (nonatomic) BOOL spotifyPremium; // add to parse
+@property (nonatomic) BOOL spotifyPremium;
 @property (nonatomic) UIButton *login;
 @property (nonatomic) UIButton *signup;
 @property (nonatomic) UIGestureRecognizer *tapper;
@@ -32,6 +32,7 @@
 @property (nonatomic) UITextField *textFieldString;
 @property (nonatomic) UITextField *userName;
 @property (nonatomic) UITextField *userNameNew;
+@property (nonatomic) NSString *userMessage;
 
 @property (nonatomic) UIView *underline;
 @property (weak, nonatomic) IBOutlet UIView *underlineView;
@@ -48,17 +49,17 @@
     [super viewDidLoad];
     [self setupSignup];
     [self setupLogin];
-    [self.navigationController setNavigationBarHidden:YES]; // Carries over from other VC's
+    [self.navigationController setNavigationBarHidden:YES];
 
     [self setHiddenStatus];
     
     self.underline = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 55, 0.5)];
     
-    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f)
     {
         [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.5, 0)];
     }
-    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
+    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f)
     {
         [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.5, 0)];
     }
@@ -128,13 +129,13 @@
     int fieldWidth = 275;
     int radius = 20;
 
-    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f)
     {
         fieldHeight = 45;
         fieldWidth = 315;
         radius = 27;
     }
-    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
+    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f)
     {
         fieldHeight = 53;
         fieldWidth = 345;
@@ -153,7 +154,7 @@
     self.signup = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.signup addTarget:self action:@selector(signupButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.signup setTitle:@"SIGN UP" forState:UIControlStateNormal];
-    [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //are these used? (blackColor, StateHighlighted)
+    [self.signup setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     [self setupCommonPropertiesForButton:self.signup withFieldHeight:fieldHeight fieldWidth:fieldWidth andCornerRadius:radius];
 }
@@ -163,7 +164,7 @@
     self.email = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, fieldWidth, fieldHeight + 8)];
     self.email.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"EMAIL" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.email.returnKeyType = UIReturnKeyNext;
-    [self.email setCenter: CGPointMake(self.view.center.x, self.email.center.y + fieldHeight / 2)]; // 15!!
+    [self.email setCenter: CGPointMake(self.view.center.x, self.email.center.y + fieldHeight / 2)];
 }
 
 - (void)setupNewUsernameWithFieldHeight:(int)fieldHeight withFeildWidth:(int)fieldWidth
@@ -171,7 +172,7 @@
     self.userNameNew = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, fieldWidth, fieldHeight + 8)];
     self.userNameNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.userNameNew.returnKeyType = UIReturnKeyNext;
-    [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + fieldHeight * 2.16)]; // 65!!
+    [self.userNameNew setCenter: CGPointMake(self.view.center.x, self.userNameNew.center.y + fieldHeight * 2.16)];
 }
 
 - (void)setupNewPasswordWithFieldHeight:(int)fieldHeight withFeildWidth:(int)fieldWidth
@@ -180,7 +181,7 @@
     self.passwordNew.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"PASSWORD" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.passwordNew.returnKeyType = UIReturnKeyNext;
     self.passwordNew.secureTextEntry = YES;
-    [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + fieldHeight * 3.83)]; // 115!!
+    [self.passwordNew setCenter: CGPointMake(self.view.center.x, self.passwordNew.center.y + fieldHeight * 3.83)];
 }
 
 - (void)setupConfirmPasswordnameWithFieldHeight:(int)fieldHeight withFeildWidth:(int)fieldWidth
@@ -220,7 +221,7 @@
     self.login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.login addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.login setTitle:@"LOG IN" forState:UIControlStateNormal];
-    [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted]; //are these used?
+    [self.login setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     [self setupCommonPropertiesForButton:self.login withFieldHeight:fieldHeight fieldWidth:fieldWidth andCornerRadius:radius];
 }
@@ -231,7 +232,7 @@
     self.userName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"USERNAME" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     self.userName.returnKeyType = UIReturnKeyDone;
     self.userName.returnKeyType = UIReturnKeyDefault;
-    [self.userName setCenter: CGPointMake(self.view.center.x, self.userName.center.y + fieldHeight / 2)]; // !!
+    [self.userName setCenter: CGPointMake(self.view.center.x, self.userName.center.y + fieldHeight / 2)];
 }
 
 - (void)setupPasswordWithFieldHeight:(int)fieldHeight withFeildWidth:(int)fieldWidth
@@ -267,7 +268,7 @@
         textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
         textField.leftViewMode = UITextFieldViewModeAlways;
         
-        textField.delegate = self; // Required for dismissing the keyboard programmatically
+        textField.delegate = self;
         
         [self.inputView addSubview:textField];
     }
@@ -293,7 +294,6 @@
 
 - (IBAction)signUp:(id)sender
 {
-    //self.displayMessage.text = @"SIGN UP TO FIND MUSIC CURATED LOCALLY";
     self.email.hidden = NO;
     self.login.hidden = YES;
     self.password.hidden = YES;
@@ -303,7 +303,7 @@
     self.userName.hidden = YES;
     self.userNameNew.hidden = NO;
     
-    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f)
     {
         [UIView animateKeyframesWithDuration:1
                                        delay:0
@@ -383,10 +383,7 @@
 
 -(void)signupButtonClicked:(UIButton *)sender
 {
-    NSLog(@"CLICKED: signup button");
-    
     BOOL validEmail = [self isTextFieldValid:self.email];
-    // BOOL validUsername = [self isTextFieldValid:self.userNameNew];
     BOOL validPasswordNew = [self isTextFieldValid:self.passwordNew];
     BOOL validPasswordConfirm = [self isTextFieldValid:self.passwordConfirm];
     BOOL validPasswordMatch = [self.passwordNew.text isEqual:self.passwordConfirm.text];
@@ -415,8 +412,6 @@
 
 -(void)loginButtonClicked:(UIButton *)sender
 {
-    NSLog(@"CLICKED: login button");
-    
     NSString *usernameStringLowercased = [self.userName.text lowercaseString];
     
     SPTAuth *auth = [SPTAuth defaultInstance];
@@ -431,8 +426,6 @@
         {
             if (user)
             {
-                NSLog(@"RESULT user %@ is logged in.", user);
-                
                 PFUser *user = [PFUser currentUser];
                 NSString *canonicalUsername = user[@"spotifyCanonical"];
                 auth.sessionUserDefaultsKey = canonicalUsername;
@@ -442,7 +435,8 @@
             }
             else
             {
-                [self alertControllerLoginInvalid];
+                self.userMessage = error.localizedDescription;
+                [self alertControllerParseError];
             }
         }];
 
@@ -450,20 +444,6 @@
 }
 
 #pragma mark - Overrides
-
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    if (self.signup.state == UIControlStateHighlighted)
-//    {
-//        [self.signup setHighlighted:NO];
-//        self.signup.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Semibold" size:10.0];
-//    }
-//    if (self.login.state == UIControlStateHighlighted)
-//    {
-//        [self.login setHighlighted:NO];
-//        self.login.titleLabel.font = [UIFont fontWithName:@"SFUIDisplay-Semibold" size:10.0];
-//    }
-//}
 
 - (void)handleSingleTap:(UITapGestureRecognizer *) sender
 {
@@ -514,8 +494,6 @@
     {
         textField.tag = HRPViewControllerPasswordConfirmTextFieldTag;
     }
-    NSLog(@"textField.tag: %ld", (long)textField.tag);
-    NSLog(@"textField.text: %@", textField.text);
     
     [self isTextFieldValid:textField];
 }
@@ -556,7 +534,6 @@
                 break;
         }
     }
-    NSLog(@"TEST: %@ with tag %ld is %@", textField.text, (long)textField.tag, valid ? @"YES" : @"NO");
     
     return valid;
 }
@@ -570,57 +547,33 @@
     user.password = self.passwordConfirm.text;
     user.email = self.email.text;
     
-
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                
-        NSString *userMessage = @"Registration was successful";
+        self.userMessage = @"Registration was successful";
         if (succeeded)
         {
-            NSLog(@"CREATED: %@", user);
             [self showCreateProfileView];
-            NSLog(@"SENT: to showCreateProfileView");
         }
         else
         {
-            userMessage = error.localizedDescription;
+            self.userMessage = error.localizedDescription;
+            [self alertControllerParseError];
         }
     }];
-
-    
-//    SPTAuth *auth = [SPTAuth defaultInstance];
-//    SPTSession *session = auth.session;
-//
-//    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, NSString *object) {
-//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//            
-//            NSString *spotifyCanonical = object;
-//            user[@"spotifyCanonical"] = spotifyCanonical;
-//            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                if (succeeded)
-//                {
-//                    auth.sessionUserDefaultsKey = object;
-//                    
-//                    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-//                        
-//                        NSString *userMessage = @"Registration was successful";
-//                        if (succeeded)
-//                        {
-//                            NSLog(@"CREATED: %@", user);
-//                            [self showCreateProfileView];
-//                            NSLog(@"SENT: to showCreateProfileView");
-//                        }
-//                        else
-//                        {
-//                            userMessage = error.localizedDescription;
-//                        }
-//                    }];
-//                }
-//            }];
-//        }];
-//    }];
 }
 
 #pragma mark - Alert Controller Methods
+
+-(void)alertControllerParseError
+{
+    NSString *string = self.userMessage;
+    string = [NSString stringWithFormat:@"%@%@",[[string substringToIndex:1] uppercaseString],[string substringFromIndex:1] ];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:string preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *okay = [UIAlertAction actionWithTitle:@"Okay" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
+    }];
+    [alert addAction:okay];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 -(void)alertControllerAllFieldsRequired
 {
@@ -677,7 +630,6 @@
     UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
         NSLog(@"EMAIL: is confirmed.");
         [self createParseUser];
-        //[self alertControllerSpotifyVerify];
     }];
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
         
@@ -699,46 +651,6 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-//-(void)alertControllerSpotifyVerify
-//{
-//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Do you have a Spotify account?" preferredStyle:(UIAlertControllerStyleActionSheet)];
-//    UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-//        self.spotifyPremium = YES;
-//        [self createParseUser];
-//  //      [self spotifyLoginPopup];
-//    }];
-//    UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-//        self.spotifyPremium = NO;
-//    //    [self spotifySignupPopup];
-//        
-//                SPTAuth *auth = [SPTAuth defaultInstance];
-//                if (auth.session && [auth.session isValid])
-//                {
-//                    [self createParseUser];
-//                    [self showCreateProfileView];
-//                }
-//    }];
-//    [alert addAction:yes];
-//    [alert addAction:no];
-//    [self presentViewController:alert animated:YES completion:nil];
-//}
-
-//# pragma mark - Spotify
-//
-//-(void)spotifyLoginPopup
-//{
-//    [HRPLoginRedirect launchSpotifyFromViewController:self];
-//}
-//
-//-(void)spotifySignupPopup
-//{
-//    
-//    NSURL *spotifyURL = [NSURL URLWithString:@"https://www.spotify.com/signup/"];
-//    
-//    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:spotifyURL];
-//    [self presentViewController:safariVC animated:YES];
-//}
-//
 -(void)loginCompleted:(NSNotification *)notification
 {
     [self dismissViewControllerAnimated:YES];
@@ -752,19 +664,5 @@
         [self showCreateProfileView];
     }
 }
-//
-//-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
-//{
-//    
-//}
-//
-//-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
-//{
-//    
-//}
-//-(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
-//{
-//    
-//}
 
 @end

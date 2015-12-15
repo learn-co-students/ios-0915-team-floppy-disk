@@ -15,7 +15,7 @@
 #import "HRPMapsViewController.h"
 #import <Spotify/Spotify.h>
 
-@interface HRPProfileVC () <UITableViewDelegate, UITableViewDataSource, SPTAudioStreamingDelegate>
+@interface HRPProfileVC () <UITableViewDelegate, UITableViewDataSource, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *musicPlayerBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableviewBottom;
@@ -86,11 +86,9 @@
 
 - (void)setupFollowersAndFans
 {
-    //PFRelation *followingCount = self.user[@"following"];
     PFRelation *relation = [self.user relationForKey:@"following"];
     PFQuery *query = [relation query];
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-         NSLog(@"FOLLOWERS: %@", self.user);
         self.userFollowing = results;
         self.followingCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFollowing.count];
     }];
@@ -98,8 +96,6 @@
     PFQuery *fansQuery = [PFUser query];
     [fansQuery whereKey:@"following" equalTo:self.user];
     [fansQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        // so i think this will return all the users who are following self.user
-        NSLog(@"FANS: %@", objects);
         self.userFans = [objects mutableCopy];
         self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count];
         
@@ -120,8 +116,6 @@
 {
     self.userAvatar.clipsToBounds = YES;
     self.userAvatar.layer.masksToBounds = YES;
-    
-    NSLog(@"[[UIScreen mainScreen] bounds].size.height: %f", [[UIScreen mainScreen] bounds].size.height);
     
     if ([[UIScreen mainScreen] bounds].size.width == 375.0f)
     {
@@ -181,7 +175,6 @@
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
-            NSLog(@"USER: %@", objects);
             self.userObject = [objects objectAtIndex:0];
             [self retrieveUserAvatar];
         }
@@ -395,7 +388,7 @@
                 [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                     if (error != nil)
                     {
-                        NSLog(@"followers saved!!!!!!!!!");
+                        //Followers saved
                     }
                     else
                     {
@@ -429,7 +422,7 @@
                 [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                     if (error != nil)
                     {
-                        NSLog(@"fan deleted!!!!!!!!!");
+                        //Fan deleted
                     }
                     else
                     {
@@ -491,12 +484,9 @@
                              [self.view layoutIfNeeded];
                          } completion:nil];
 
-        NSLog(@"%@", self.userPosts);
-        //button should change to a pause
         UITableViewCell *cell = (UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview];
         
         NSIndexPath *indexpath = [self.postsTableview indexPathForCell: cell];
-        //this is only hitting the first row!!!
         
         NSDictionary *postInView = self.userPosts[indexpath.row];
                 
@@ -510,7 +500,7 @@
         NSURL *url = [NSURL URLWithString:urlString];
         
         [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
-            //do we want option to stop song?
+            
         }];
         [sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
     

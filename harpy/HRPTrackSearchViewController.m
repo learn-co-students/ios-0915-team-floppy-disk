@@ -308,7 +308,7 @@
                              [self.view layoutIfNeeded];
                          } completion:nil];
         
-        NSIndexPath *indexPath = [self.songTableView indexPathForCell:(UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview]];
+        NSIndexPath *indexPath = [self.songTableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
         HRPTrack *trackAtCell = self.filteredSongArray[indexPath.row];
         self.playerSongLabel.text = trackAtCell.songTitle;
         self.playerArtistLabel.text = trackAtCell.artistName;

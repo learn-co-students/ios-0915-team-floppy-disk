@@ -479,7 +479,7 @@
                              [self.view layoutIfNeeded];
                          } completion:nil];
 
-        UITableViewCell *cell = (UITableViewCell *)[[[[[sender superview] superview] superview] superview] superview];
+        UITableViewCell *cell = (UITableViewCell *)[[sender superview] superview];
         
         NSIndexPath *indexpath = [self.postsTableview indexPathForCell: cell];
         

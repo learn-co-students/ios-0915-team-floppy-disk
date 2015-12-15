@@ -138,7 +138,7 @@
         }
     }
     
-    [[UIBarButtonItem appearanceWhenContainedIn:[self.songSearchBar class], nil] setTintColor:[UIColor darkGrayColor]];
+    [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[self.songSearchBar class]]].tintColor =[UIColor darkGrayColor];
 }
 
 

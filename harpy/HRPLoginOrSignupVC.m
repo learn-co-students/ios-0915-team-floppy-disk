@@ -306,33 +306,33 @@
     
     if ([[UIScreen mainScreen] bounds].size.width == 375.0f)
     {
-        [UIView animateKeyframesWithDuration:1
-                                       delay:0
-                                     options:UIViewAnimationCurveLinear
-                                  animations:^{
-                                      [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.5, 0)];
-                                  }
-                                  completion:nil];
+        [UIView animateWithDuration:1
+                              delay:0
+                            options:UIViewAnimationOptionCurveLinear
+                         animations:^{
+                             [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.5, 0)];
+                         }
+                         completion:nil];
     }
     else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
     {
-        [UIView animateKeyframesWithDuration:1
-                                       delay:0
-                                     options:UIViewAnimationCurveLinear
-                                  animations:^{
-                                      [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.5, 0)];
-                                  }
-                                  completion:nil];
+        [UIView animateWithDuration:1
+                              delay:0
+                            options:UIViewAnimationOptionCurveLinear
+                         animations:^{
+                             [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.5, 0)];
+                         }
+                         completion:nil];
     }
     else
     {
-        [UIView animateKeyframesWithDuration:1
-                                       delay:0
-                                     options:UIViewAnimationCurveLinear
-                                  animations:^{
-                                      [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.05, 0)];
-                                  }
-                                  completion:nil];
+        [UIView animateWithDuration:1
+                              delay:0
+                            options:UIViewAnimationOptionCurveLinear
+                         animations:^{
+                             [self.underline setCenter: CGPointMake(self.view.frame.size.width / 5.05, 0)];
+                         }
+                         completion:nil];
     }
 }
 

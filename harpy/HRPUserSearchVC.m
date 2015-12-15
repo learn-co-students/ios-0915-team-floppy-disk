@@ -239,7 +239,12 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 95.0;
+    CGFloat totalCellView = self.userTableView.frame.size.height;
+    CGFloat numberOfPostRows = 5;
+    
+    CGFloat customTableCellHeight = totalCellView/numberOfPostRows;
+    
+    return customTableCellHeight;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

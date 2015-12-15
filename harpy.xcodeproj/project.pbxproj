@@ -21,7 +21,6 @@
 		E91B6FE21C19EB0800FEC1AB /* HRPNetworkAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E91B6FE11C19EB0800FEC1AB /* HRPNetworkAlertView.m */; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
 		E9335C5F1BFA7EBC002DD9C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */; };
-		E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335C631BFA7EBC002DD9C6 /* Main.storyboard */; };
 		E9335C671BFA7EBC002DD9C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */; };
 		E9335C6A1BFA7EBC002DD9C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */; };
 		E9335C751BFA7EBD002DD9C6 /* harpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C741BFA7EBD002DD9C6 /* harpyTests.m */; };
@@ -92,7 +91,6 @@
 		E9335C5B1BFA7EBC002DD9C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E9335C5D1BFA7EBC002DD9C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E9335C5E1BFA7EBC002DD9C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E9335C641BFA7EBC002DD9C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9335C691BFA7EBC002DD9C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9335C6B1BFA7EBC002DD9C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -217,20 +215,9 @@
 				3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */,
 				E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */,
 				E93801281BFCEADF004CC8A2 /* Login.storyboard */,
-				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
-				E9FA64DC1C03BD9D008DDE69 /* Profile */,
-				E9EE0EB91BFFCB4000C4F1DE /* Spotify */,
-				E938012E1BFCEF6C004CC8A2 /* Maps */,
-				E938012D1BFCEF58004CC8A2 /* Login */,
-				E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */,
-				3B0EFC4D1C10AE140086545B /* Constants.h */,
-				3B0EFC4E1C10AE140086545B /* Constants.m */,
-				E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */,
-				E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */,
-				E97E73C81C20747700CBDD07 /* CLLocationManager+Shared.h */,
-				E97E73C91C20747700CBDD07 /* CLLocationManager+Shared.m */,
 				E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */,
-				E9335C631BFA7EBC002DD9C6 /* Main.storyboard */,
+				E9335C661BFA7EBC002DD9C6 /* Assets.xcassets */,
+				E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */,
 			);
 			path = harpy;
 			sourceTree = "<group>";
@@ -238,6 +225,12 @@
 		E9335C5A1BFA7EBC002DD9C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3B0EFC4D1C10AE140086545B /* Constants.h */,
+				3B0EFC4E1C10AE140086545B /* Constants.m */,
+				E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */,
+				E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */,
+				E97E73C81C20747700CBDD07 /* CLLocationManager+Shared.h */,
+				E97E73C91C20747700CBDD07 /* CLLocationManager+Shared.m */,
 				E9E211131BFD3E2500739143 /* Keys.plist */,
 				E9335C6B1BFA7EBC002DD9C6 /* Info.plist */,
 				E9FA65451C0901BB008DDE69 /* loading.gif */,
@@ -257,20 +250,6 @@
 				E9335C761BFA7EBD002DD9C6 /* Info.plist */,
 			);
 			path = harpyTests;
-			sourceTree = "<group>";
-		};
-		E938012D1BFCEF58004CC8A2 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Login;
-			sourceTree = "<group>";
-		};
-		E938012E1BFCEF6C004CC8A2 /* Maps */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Maps;
 			sourceTree = "<group>";
 		};
 		E97E73CB1C20765B00CBDD07 /* Model */ = {
@@ -358,20 +337,6 @@
 				3B0EFCCF1C11F0BC0086545B /* HRPPostFeedViewController.m */,
 			);
 			name = Post;
-			sourceTree = "<group>";
-		};
-		E9EE0EB91BFFCB4000C4F1DE /* Spotify */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Spotify;
-			sourceTree = "<group>";
-		};
-		E9FA64DC1C03BD9D008DDE69 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,7 +437,6 @@
 				E9FA65461C0901BB008DDE69 /* loading.gif in Resources */,
 				E976148E1C0A6648003B3C5B /* SF-UI-Display-Semibold.otf in Resources */,
 				E976148D1C0A6646003B3C5B /* SF-UI-Display-Regular.otf in Resources */,
-				E9335C651BFA7EBC002DD9C6 /* Main.storyboard in Resources */,
 				3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,14 +552,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E9335C631BFA7EBC002DD9C6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E9335C641BFA7EBC002DD9C6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E9335C681BFA7EBC002DD9C6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

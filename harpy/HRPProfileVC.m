@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *postsTableview;
 @property (nonatomic, strong) NSArray *userPosts;
 @property (nonatomic, strong) NSArray *userFollowing;
-@property (nonatomic, strong) NSArray *userFans;
+@property (nonatomic, strong) NSMutableArray *userFans;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic) PFUser *currentUser;
@@ -100,7 +100,7 @@
     [fansQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         // so i think this will return all the users who are following self.user
         NSLog(@"FANS: %@", objects);
-        self.userFans = objects;
+        self.userFans = [objects mutableCopy];
         self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count];
         
         for (PFUser *user in self.userFans)
@@ -382,28 +382,6 @@
     
     if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])
     {
-        NSLog(@"THE LABEL CHANGED");
-        [self.followOrEditButton setTitle:@"Unfollow" forState:UIControlStateNormal];
-        self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count +1];
-    }
-    else if ([self.followOrEditButton.titleLabel.text isEqual: @"Edit Profile"])
-    {
-        NSLog(@"THE LABEL DOES NOT NEED TO CHANGE");
-    }
-    else if ([self.followOrEditButton.titleLabel.text isEqual: @"Unfollow"])
-    {
-        NSLog(@"THE LABEL CHANGED");
-        [self.followOrEditButton setTitle:@"Follow" forState:UIControlStateNormal];
-        NSInteger totalFans = self.userFans.count - 1;
-        if (totalFans < 0) {
-            totalFans = 0;
-        }
-        self.fansCountLabel.text = [NSString stringWithFormat:@"%li", (long)totalFans];
-    }
-    
-    
-    if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])
-    {
         PFUser *currentUser = [PFUser currentUser];
         PFRelation *followingRelation = [currentUser relationForKey:@"following"];
         [followingRelation addObject:self.user];
@@ -464,6 +442,24 @@
                 NSLog(@"ERROR: %@ %@", error, [error userInfo]);
             }
         }];
+    }
+    
+    if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])
+    {
+        NSLog(@"THE LABEL CHANGED");
+        [self.followOrEditButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+        self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count + 1];
+    }
+    else if ([self.followOrEditButton.titleLabel.text isEqual: @"Edit Profile"])
+    {
+        NSLog(@"THE LABEL DOES NOT NEED TO CHANGE");
+    }
+    else if ([self.followOrEditButton.titleLabel.text isEqual: @"Unfollow"])
+    {
+        NSLog(@"THE LABEL CHANGED");
+        [self.userFans removeObject:self.currentUser];
+        [self.followOrEditButton setTitle:@"Follow" forState:UIControlStateNormal];
+        self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFollowing.count];
     }
 }
 

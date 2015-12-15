@@ -316,9 +316,8 @@
         self.playStatusLabel.text = @"Playing";
         
         [self handleNewSession];
-        NSString *urlString = [NSString stringWithFormat:trackAtCell.spotifyURI];
+        NSString *urlString = [trackAtCell.spotifyURI absoluteString];
         NSURL *url = [NSURL URLWithString:urlString];
-        //NSURL *url = trackAtCell.spotifyURI;
         
         [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
             NSLog(@"%@", error);

@@ -32,7 +32,6 @@
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
             <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
         </mutableArray>
         <mutableArray key="SF-UI-Display-Semibold.otf">
             <string>SFUIDisplay-Semibold</string>
@@ -525,32 +524,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="editProfileCell" id="3Lr-Cz-usx">
-                                <rect key="frame" x="0.0" y="105" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Lr-Cz-usx" id="QVf-RG-wcE">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkr-FC-Xpk">
-                                            <rect key="frame" x="16" y="8" width="382" height="27"/>
-                                            <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Wkr-FC-Xpk" firstAttribute="leading" secondItem="QVf-RG-wcE" secondAttribute="leadingMargin" constant="8" id="4Bb-yx-dHp"/>
-                                        <constraint firstItem="Wkr-FC-Xpk" firstAttribute="centerX" secondItem="QVf-RG-wcE" secondAttribute="centerX" id="6XF-W4-0Uy"/>
-                                        <constraint firstItem="Wkr-FC-Xpk" firstAttribute="bottom" secondItem="QVf-RG-wcE" secondAttribute="bottomMargin" id="aD2-BJ-kR5"/>
-                                        <constraint firstItem="Wkr-FC-Xpk" firstAttribute="top" secondItem="QVf-RG-wcE" secondAttribute="topMargin" id="wmK-5g-gQO"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="9lL-wb-7Qs" kind="presentation" identifier="sendToEditProfile" id="gtT-ox-Swl"/>
-                                </connections>
-                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="spacyCell" rowHeight="400" id="25h-M9-2y7">
-                                <rect key="frame" x="0.0" y="149" width="414" height="400"/>
+                                <rect key="frame" x="0.0" y="105" width="414" height="400"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="25h-M9-2y7" id="IUd-HN-xun">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="399"/>
@@ -558,7 +533,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logoutCell" id="zKk-z4-dkB">
-                                <rect key="frame" x="0.0" y="549" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="505" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zKk-z4-dkB" id="Odz-eQ-oFU">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -742,6 +717,12 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="EDIT PROFILE" id="Hb5-bN-QOT">
+                        <barButtonItem key="leftBarButtonItem" image="left_Arrow" id="tAa-oq-rGc">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="backButtonTapped:" destination="PXg-Lr-28y" id="SYd-sd-f1G"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="QDj-sh-f0M">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>

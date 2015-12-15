@@ -13,7 +13,7 @@ We're using [Google Maps](https://developers.google.com/maps/documentation/ios-s
 
 * [Amy Joscelyn](https://github.com/amyjoscelyn)
 * [Kiara Robles](https://github.com/kiaraRobles)
-* Olutosin Fashusi
+* [Olutosin Fashusi] (https://github.com/olutosinATflatiron)
 * [Phil Milot](https://github.com/milot31)
 
 ###Demo

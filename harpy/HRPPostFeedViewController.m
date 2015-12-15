@@ -9,7 +9,7 @@
 #import "HRPPostFeedViewController.h"
 #import <Spotify/Spotify.h>
 
-@interface HRPPostFeedViewController () <UITableViewDelegate, UITableViewDataSource, SPTAudioStreamingDelegate>
+@interface HRPPostFeedViewController () <UITableViewDelegate, UITableViewDataSource, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableviewBottom;
 @property (weak, nonatomic) IBOutlet UIStackView *musicPlayView;

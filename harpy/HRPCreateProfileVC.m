@@ -8,7 +8,6 @@
 
 #import "HRPCreateProfileVC.h"
 #import "HRPParseNetworkService.h"
-#import "UIViewController+PresentViewController.h"
 #import "Constants.h"
 
 @interface HRPCreateProfileVC () <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
@@ -120,7 +119,7 @@
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogInNotificationName object:nil];
-    [self dismissViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *) sender

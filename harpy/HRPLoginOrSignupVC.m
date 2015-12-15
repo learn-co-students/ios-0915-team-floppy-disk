@@ -11,7 +11,6 @@
 #import "HRPLoginRedirect.h"
 #import "HRPParseNetworkService.h"
 #import "HRPValidationManager.h"
-#import "UIViewController+PresentViewController.h"
 #import <Spotify/Spotify.h>
 #import <QuartzCore/QuartzCore.h>
 #import "Constants.h"
@@ -654,7 +653,7 @@
 
 -(void)loginCompleted:(NSNotification *)notification
 {
-    [self dismissViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     SPTAuth *auth = [SPTAuth defaultInstance];
     if (auth.session && [auth.session isValid])

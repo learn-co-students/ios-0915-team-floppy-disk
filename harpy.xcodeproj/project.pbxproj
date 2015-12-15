@@ -44,7 +44,6 @@
 		E9F4DE2D1C162B77004396FC /* HRPEditProfileTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F4DE2C1C162B77004396FC /* HRPEditProfileTableVC.m */; };
 		E9F4DE301C163745004396FC /* HRPSettingsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F4DE2F1C163745004396FC /* HRPSettingsTableVC.m */; };
 		E9F69D4C1C17CE1700E9C784 /* HRPAccountInformationTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F69D4B1C17CE1700E9C784 /* HRPAccountInformationTableVC.m */; };
-		E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */; };
 		E9FA64D41C039E43008DDE69 /* HRPManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */; };
 		E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */; };
 		E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */; };
@@ -129,8 +128,6 @@
 		E9F4DE2F1C163745004396FC /* HRPSettingsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSettingsTableVC.m; sourceTree = "<group>"; };
 		E9F69D4A1C17CE1700E9C784 /* HRPAccountInformationTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPAccountInformationTableVC.h; sourceTree = "<group>"; };
 		E9F69D4B1C17CE1700E9C784 /* HRPAccountInformationTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPAccountInformationTableVC.m; sourceTree = "<group>"; };
-		E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PresentViewController.h"; sourceTree = "<group>"; };
-		E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PresentViewController.m"; sourceTree = "<group>"; };
 		E9FA64D21C039E43008DDE69 /* HRPManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPManagerViewController.h; sourceTree = "<group>"; };
 		E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPManagerViewController.m; sourceTree = "<group>"; };
 		E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
@@ -227,8 +224,6 @@
 			children = (
 				3B0EFC4D1C10AE140086545B /* Constants.h */,
 				3B0EFC4E1C10AE140086545B /* Constants.m */,
-				E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */,
-				E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */,
 				E97E73C81C20747700CBDD07 /* CLLocationManager+Shared.h */,
 				E97E73C91C20747700CBDD07 /* CLLocationManager+Shared.m */,
 				E9E211131BFD3E2500739143 /* Keys.plist */,
@@ -528,7 +523,6 @@
 				E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */,
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
 				E97E73CA1C20747700CBDD07 /* CLLocationManager+Shared.m in Sources */,
-				E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -366,7 +366,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="UhN-Hl-qYu">
-                        <barButtonItem key="leftBarButtonItem" image="left_Arrow" style="plain" id="lph-Nk-5D5">
+                        <barButtonItem key="leftBarButtonItem" image="left_Arrow" id="lph-Nk-5D5">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="backButtonTapped:" destination="qmp-pb-MEz" id="xiu-uF-xSX"/>

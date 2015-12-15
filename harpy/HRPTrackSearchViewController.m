@@ -13,7 +13,7 @@
 #import "HRPPostPreviewViewController.h"
 #import <Parse/Parse.h>
 
-@interface HRPTrackSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SPTAudioStreamingDelegate>
+@interface HRPTrackSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate>
 
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableviewBottom;
@@ -138,7 +138,7 @@
         }
     }
     
-    [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[self.songSearchBar class]]].tintColor =[UIColor darkGrayColor];
+    [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[self.songSearchBar class]]].tintColor = [UIColor darkGrayColor];
 }
 
 

@@ -137,7 +137,7 @@
         }
     }
     
-    [[UIBarButtonItem appearanceWhenContainedIn:[self.userSearchBar class], nil] setTintColor:[UIColor darkGrayColor]];
+    [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[self.userSearchBar class]]].tintColor = [UIColor darkGrayColor];
 }
 
 #pragma mark - Helper methods

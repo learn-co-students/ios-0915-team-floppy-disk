@@ -252,7 +252,7 @@
             </objects>
             <point key="canvasLocation" x="913" y="222"/>
         </scene>
-        <!--Post Preview View Controller-->
+        <!--POST SONG-->
         <scene sceneID="0Gg-cr-Grp">
             <objects>
                 <viewController id="qmp-pb-MEz" customClass="HRPPostPreviewViewController" sceneMemberID="viewController">
@@ -304,12 +304,6 @@
                                     <action selector="postTrackButtonTapped:" destination="qmp-pb-MEz" eventType="touchUpInside" id="7bj-nz-yET"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YH-uc-rg9">
-                                <rect key="frame" x="109" y="670" width="197" height="16"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="0.76231317929999998" green="0.035230366200000002" blue="0.027155836480000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wFB-rZ-828">
                                 <rect key="frame" x="20" y="583" width="374" height="73"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -322,12 +316,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="2YH-uc-rg9" firstAttribute="top" secondItem="Y0x-Ue-VlP" secondAttribute="bottom" constant="54" id="52t-su-Yhg"/>
-                            <constraint firstItem="2YH-uc-rg9" firstAttribute="top" secondItem="wFB-rZ-828" secondAttribute="bottom" constant="14" id="5IR-y3-FjG"/>
                             <constraint firstItem="Y0x-Ue-VlP" firstAttribute="width" secondItem="hmL-Ua-R5A" secondAttribute="width" multiplier="0.95" id="7PF-CD-SSe"/>
-                            <constraint firstItem="2YH-uc-rg9" firstAttribute="centerX" secondItem="Jd8-fp-cMY" secondAttribute="centerX" id="BG1-gn-CsL"/>
-                            <constraint firstItem="2YH-uc-rg9" firstAttribute="width" secondItem="Y0x-Ue-VlP" secondAttribute="width" id="C4l-uu-874"/>
-                            <constraint firstItem="2YH-uc-rg9" firstAttribute="centerY" secondItem="Jd8-fp-cMY" secondAttribute="centerY" id="GqE-YH-USB"/>
                             <constraint firstItem="Y0x-Ue-VlP" firstAttribute="top" secondItem="hmL-Ua-R5A" secondAttribute="bottom" constant="13" id="J1W-Uq-iwD"/>
                             <constraint firstItem="jgq-7B-hTN" firstAttribute="top" secondItem="HCg-wB-2HR" secondAttribute="bottom" id="Ni1-G2-dSt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wFB-rZ-828" secondAttribute="trailing" id="Pr0-Qu-RgE"/>
@@ -335,19 +324,14 @@
                             <constraint firstItem="wFB-rZ-828" firstAttribute="width" secondItem="Y0x-Ue-VlP" secondAttribute="width" id="TKi-fz-and"/>
                             <constraint firstAttribute="leadingMargin" secondItem="wFB-rZ-828" secondAttribute="leading" id="Tcs-2j-DYp"/>
                             <constraint firstItem="Y0x-Ue-VlP" firstAttribute="top" secondItem="2ce-r9-Swi" secondAttribute="bottom" constant="20" id="X6C-C3-M5p"/>
-                            <constraint firstItem="2YH-uc-rg9" firstAttribute="top" secondItem="wFB-rZ-828" secondAttribute="bottom" constant="8" symbolic="YES" id="YES-SY-5y0"/>
                             <constraint firstItem="wFB-rZ-828" firstAttribute="top" secondItem="Y0x-Ue-VlP" secondAttribute="bottom" constant="47" id="b9p-b6-MTk"/>
                             <constraint firstAttribute="bottom" secondItem="wFB-rZ-828" secondAttribute="bottom" constant="80" id="evy-Di-V4F"/>
-                            <constraint firstItem="2YH-uc-rg9" firstAttribute="height" secondItem="qQ4-6d-FnU" secondAttribute="height" id="gy7-Cf-fd1"/>
-                            <constraint firstItem="jgq-7B-hTN" firstAttribute="top" secondItem="2YH-uc-rg9" secondAttribute="bottom" constant="50" id="hN8-dH-Tkx"/>
                             <constraint firstItem="HCg-wB-2HR" firstAttribute="centerX" secondItem="Jd8-fp-cMY" secondAttribute="centerX" id="kEH-JA-g7n"/>
                             <constraint firstItem="hmL-Ua-R5A" firstAttribute="width" secondItem="Jd8-fp-cMY" secondAttribute="width" id="kEU-0q-x7K"/>
                             <constraint firstItem="HCg-wB-2HR" firstAttribute="width" secondItem="Jd8-fp-cMY" secondAttribute="width" id="nMi-hm-dEl"/>
                             <constraint firstItem="hmL-Ua-R5A" firstAttribute="top" secondItem="2ce-r9-Swi" secondAttribute="bottom" id="obi-Oy-wsq"/>
                             <constraint firstItem="hmL-Ua-R5A" firstAttribute="width" secondItem="Jd8-fp-cMY" secondAttribute="width" multiplier="0.5" id="qED-bR-4pi"/>
                             <constraint firstItem="Y0x-Ue-VlP" firstAttribute="trailing" secondItem="Jd8-fp-cMY" secondAttribute="trailingMargin" id="rfF-NR-cKT"/>
-                            <constraint firstItem="2YH-uc-rg9" firstAttribute="centerX" secondItem="Y0x-Ue-VlP" secondAttribute="centerX" id="ua0-zd-UpV"/>
-                            <constraint firstItem="2YH-uc-rg9" firstAttribute="width" secondItem="wFB-rZ-828" secondAttribute="width" constant="-177" id="vSQ-gq-XT7"/>
                             <constraint firstItem="Y0x-Ue-VlP" firstAttribute="leading" secondItem="Jd8-fp-cMY" secondAttribute="leadingMargin" id="wjq-WP-Hxp"/>
                         </constraints>
                         <variation key="default">
@@ -356,16 +340,10 @@
                                 <exclude reference="7PF-CD-SSe"/>
                                 <exclude reference="X6C-C3-M5p"/>
                                 <exclude reference="TKi-fz-and"/>
-                                <exclude reference="52t-su-Yhg"/>
-                                <exclude reference="C4l-uu-874"/>
-                                <exclude reference="GqE-YH-USB"/>
-                                <exclude reference="YES-SY-5y0"/>
-                                <exclude reference="gy7-Cf-fd1"/>
-                                <exclude reference="ua0-zd-UpV"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="UhN-Hl-qYu">
+                    <navigationItem key="navigationItem" title="POST SONG" id="UhN-Hl-qYu">
                         <barButtonItem key="leftBarButtonItem" image="left_Arrow" id="lph-Nk-5D5">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -379,7 +357,6 @@
                         <outlet property="albumArtImageView" destination="hmL-Ua-R5A" id="MD3-qc-ndk"/>
                         <outlet property="albumNameLabel" destination="y83-1q-Vj3" id="eTf-yc-imo"/>
                         <outlet property="artistNameLabel" destination="FY1-u9-jg6" id="CNb-6t-dqY"/>
-                        <outlet property="locationLabel" destination="2YH-uc-rg9" id="94z-EL-M6S"/>
                         <outlet property="postCaptionTextView" destination="wFB-rZ-828" id="VBy-ea-0cw"/>
                         <outlet property="songTitleLabel" destination="qQ4-6d-FnU" id="3Ye-ci-VwJ"/>
                     </connections>

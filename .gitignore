@@ -11,7 +11,8 @@
 xcuserdata
 *.xccheckout
 *Keys.plist
-*./Pods
+
+Pods/*
 
 # Build products
 build/

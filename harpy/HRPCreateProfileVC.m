@@ -9,8 +9,9 @@
 #import "HRPCreateProfileVC.h"
 #import "HRPParseNetworkService.h"
 #import "UIViewController+PresentViewController.h"
+#import "Constants.h"
 
-@interface HRPCreateProfileVC () <UIImagePickerControllerDelegate>
+@interface HRPCreateProfileVC () <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *photoButton;
 @property (weak, nonatomic) IBOutlet UIView *inputView;
@@ -30,7 +31,7 @@
 {
     [super viewDidLoad];
     [self setupProfile];
-    [self.navigationController setNavigationBarHidden:YES]; // Carrys over from other VC's
+    [self.navigationController setNavigationBarHidden:YES];
     
     UIImage * buttonImage = [UIImage imageNamed:@"plusPhoto"];
     [self.photoButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
@@ -118,7 +119,8 @@
         NSLog(@"%@", shortBio);
     }
     
-    [self performSegueWithIdentifier:@"sendToMaps" sender:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogInNotificationName object:nil];
+    [self dismissViewControllerAnimated:YES];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *) sender

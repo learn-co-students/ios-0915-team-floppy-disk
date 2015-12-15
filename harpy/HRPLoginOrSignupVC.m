@@ -37,6 +37,7 @@
 @property (nonatomic) UIView *underline;
 @property (weak, nonatomic) IBOutlet UIView *underlineView;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
+@property (atomic, readwrite) SPTAuthViewController *authViewController;
 
 @end
 
@@ -663,6 +664,53 @@
         
         [self showCreateProfileView];
     }
+}
+
+-(void)openLogInPage
+{
+    self.authViewController = [SPTAuthViewController authenticationViewController];
+    self.authViewController.delegate = self;
+    self.authViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.authViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.definesPresentationContext = YES;
+    
+    [self presentViewController:self.authViewController animated:NO completion:nil];
+}
+
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
+{
+    
+}
+-(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
+{
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    NSLog(@"auth: %@", auth);
+    
+    [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, SPTUser *object) {
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            PFUser *currentUser = [PFUser currentUser];
+            
+            currentUser[@"spotifyCanonical"] = object.canonicalUserName;
+            
+            [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded)
+                {
+                    auth.sessionUserDefaultsKey = object.canonicalUserName;
+                }
+                else
+                {
+                    NSLog(@"ERROR: %@", error);
+                }
+            }];
+        }];
+    }];
+}
+-(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
+{
+    [self openLogInPage];
 }
 
 @end

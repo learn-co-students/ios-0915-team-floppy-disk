@@ -10,9 +10,6 @@
 #import <Parse/Parse.h>
 
 @interface HRPPostFeedViewController : UIViewController
-{
-    NSMutableArray *postArray;
-}
 
 @property (strong, nonatomic) NSMutableArray *postsArray;
 

@@ -10,7 +10,6 @@
 #import "HRPLoginOrSignupVC.h"
 #import "HRPLoginRedirect.h"
 #import "HRPParseNetworkService.h"
-#import "HRPSpotifyViewController.h"
 #import "HRPValidationManager.h"
 #import "UIViewController+PresentViewController.h"
 #import <Spotify/Spotify.h>

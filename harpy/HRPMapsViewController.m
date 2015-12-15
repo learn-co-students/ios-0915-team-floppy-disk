@@ -17,7 +17,6 @@
 #import <Parse/Parse.h>
 #import "HRPPostFeedViewController.h"
 #import "HRPPostPreviewViewController.h"
-#import "UINavigationController+StatusBarStyle.h"
 #import "HRPNetworkAlertVC.h"
 #import "HRPUserSearchVC.h"
 @import GoogleMaps;

@@ -44,7 +44,7 @@
     self.parseService = [HRPParseNetworkService sharedService];
     
     [self initializeEmptyUsersArray];
-    
+
     
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
     self.navigationItem.titleView = self.activityIndicator;
@@ -57,13 +57,9 @@
         {
             [self.activityIndicator stopAnimating];
             
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
-            label.backgroundColor = [UIColor clearColor];
-            label.textColor = [UIColor whiteColor];
-            label.font = [UIFont boldSystemFontOfSize:18];
-            label.text = @"USER SEARCH";
-            label.textAlignment = NSTextAlignmentCenter;
-            self.navigationItem.titleView = label;
+            self.navigationItem.titleView = nil;
+            NSString *usernameString = @"USER SEARCH";
+            self.navigationItem.title = usernameString;
             
             NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
             self.users = [objects mutableCopy];

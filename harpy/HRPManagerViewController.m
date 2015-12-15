@@ -56,7 +56,7 @@
 #pragma mark NSNotificationCenter handlers
 
 -(void)handleUserDidLogout:(NSNotification *)notification {
-    
+    NSLog(@"handleUserDidLogout called");
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:LoggedInUserDefaultsKey];
     
     [self showLogIn];
@@ -73,7 +73,7 @@
 #pragma mark Child view controllers
 
 -(void)setEmbeddedViewController:(UIViewController *)controller {
-    
+    NSLog(@"setEmbeddedViewController called");
     if ([self.childViewControllers containsObject:controller]) {
         return;
     }

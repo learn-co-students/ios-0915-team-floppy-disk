@@ -47,6 +47,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self setupSignup];
     [self setupLogin];
     [self.navigationController setNavigationBarHidden:YES];

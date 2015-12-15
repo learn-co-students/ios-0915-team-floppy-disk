@@ -226,7 +226,6 @@
             self.userPosts = objects;
             [self.postsTableview reloadData];
             [self updatePostCount];
-            NSLog(@"PARSE POSTS: %@", self.userPosts);
         }
         else
         {

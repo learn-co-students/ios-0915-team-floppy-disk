@@ -35,6 +35,7 @@
 @property (nonatomic, strong) NSArray *parsePosts;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) CLLocation *newestLocation;
+@property (nonatomic, strong) CLLocation *firstLocation;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *searchButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *profileButton;
 @property (nonatomic) UIView *modalView;
@@ -54,10 +55,10 @@
     self.navigationItem.leftBarButtonItem.enabled = YES;
     self.navigationItem.rightBarButtonItem.enabled = YES;
     
-    [self locationManagerPermissions];
     self.locationManager = [CLLocationManager sharedManager];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.delegate = self;
+    [self locationManagerPermissions];
 
     self.defaultMarkerImage.hidden = YES;
     self.readyToPin = NO;
@@ -74,6 +75,15 @@
     
     HRPPostPreviewViewController *newView = [[HRPPostPreviewViewController alloc]init];
     newView.delegate = self;
+}
+
+-(void)dealloc
+{
+    // for some reason, location manager's delegate property is assign, not weak...
+    // that, plus the fact that we have a singleton instance of the location manager, means that we
+    // can wind up with the location manager trying to talk to a bum instance of this VC.
+    // ugh ugh ugh. so nil-ing it out this way at least fixes up that crash..
+    self.locationManager.delegate = nil;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -96,6 +106,11 @@
         [self.locationManager startUpdatingLocation];
         [self queryForHRPosts];
     }
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [self.mapView clear];
 }
 
 #pragma mark - Parse Geopoints
@@ -225,26 +240,30 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if (!self.newestLocation.timestamp) {
         self.newestLocation = self.locationManager.location;
+        NSLog(@"FOUND YOU THE FIRST TIME: %@", self.locationManager.location);
         self.currentLocation = self.locationManager.location;
         [self updateMapWithCurrentLocation];
-    });
-
+    }
+    
     NSTimeInterval locationAge = -[self.newestLocation.timestamp timeIntervalSinceNow];
+    //NSLog(@"locationAge %f", locationAge);
     if (locationAge > 300) // 5 mins in seconds
     {
         CLLocation *compareLocation = self.locationManager.location;
         double distance = [self.newestLocation distanceFromLocation:compareLocation];
+        //NSLog(@"DISTANCE: %f", distance);
         if (distance > 320) // 0.20 miles in meters
         {
             self.newestLocation = self.locationManager.location;
+            //NSLog(@"FOUND YOU AGAIN @: %@", self.locationManager.location);
             self.currentLocation = self.locationManager.location;
             [self updateMapWithCurrentLocation];
         }
         else
         {
+            //NSLog(@"YOU DIDNT MOVE ENOUGH");
             self.newestLocation = self.locationManager.location;
         }
     }
@@ -253,7 +272,7 @@
 - (void)updateMapWithCurrentLocation
 {
     [self setBounds];
-    [self setCamera];
+    [self createMap];
     
     self.mapView.delegate = self;
     self.mapView.indoorEnabled = NO;
@@ -296,7 +315,7 @@
     self.bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:northEastCoordinate coordinate:southWestCoordinate];
 }
 
-- (void)setCamera
+- (void)createMap
 {
     CLLocationCoordinate2D coordinate = [self.currentLocation coordinate];
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude longitude:coordinate.longitude zoom:17];
@@ -461,6 +480,10 @@
     }];
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 -(void)openLogInPage
 {
     self.authViewController = [SPTAuthViewController authenticationViewController];
@@ -476,7 +499,7 @@
 
 -(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
 {
-    
+    NSLog(@"AUTHVC FAILED : %@",error);
 }
 -(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
 {

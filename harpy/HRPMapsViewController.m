@@ -242,28 +242,23 @@
 {
     if (!self.newestLocation.timestamp) {
         self.newestLocation = self.locationManager.location;
-        NSLog(@"FOUND YOU THE FIRST TIME: %@", self.locationManager.location);
         self.currentLocation = self.locationManager.location;
         [self updateMapWithCurrentLocation];
     }
     
     NSTimeInterval locationAge = -[self.newestLocation.timestamp timeIntervalSinceNow];
-    //NSLog(@"locationAge %f", locationAge);
     if (locationAge > 300) // 5 mins in seconds
     {
         CLLocation *compareLocation = self.locationManager.location;
         double distance = [self.newestLocation distanceFromLocation:compareLocation];
-        //NSLog(@"DISTANCE: %f", distance);
         if (distance > 320) // 0.20 miles in meters
         {
             self.newestLocation = self.locationManager.location;
-            //NSLog(@"FOUND YOU AGAIN @: %@", self.locationManager.location);
             self.currentLocation = self.locationManager.location;
             [self updateMapWithCurrentLocation];
         }
         else
         {
-            //NSLog(@"YOU DIDNT MOVE ENOUGH");
             self.newestLocation = self.locationManager.location;
         }
     }
@@ -473,10 +468,8 @@
 -(void)renewTokenAndSegue
 {
     SPTAuth *auth = [SPTAuth defaultInstance];
-    
     [auth renewSession:auth.session callback:^(NSError *error, SPTSession *session) {
         auth.session = session;
-        
     }];
 }
 

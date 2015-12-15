@@ -45,7 +45,6 @@
     
     [self initializeEmptyUsersArray];
 
-    
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
     self.navigationItem.titleView = self.activityIndicator;
     [self.activityIndicator startAnimating];
@@ -61,9 +60,7 @@
             NSString *usernameString = @"USER SEARCH";
             self.navigationItem.title = usernameString;
             
-            NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
             self.users = [objects mutableCopy];
-            
             [self.userTableView reloadData];
         }
         else
@@ -95,11 +92,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     float shadowOffset = (scrollView.contentOffset.y/1);
-    
-    // Make sure that the offset doesn't exceed 3 or drop below 0.5
     shadowOffset = MIN(MAX(shadowOffset, 0), 1);
-    
-    //Ensure that the shadow radius is between 1 and 3
     float shadowRadius = MIN(MAX(shadowOffset, 0), 1);
     
     self.userSearchBar.layer.shadowOffset = CGSizeMake(0, shadowOffset);

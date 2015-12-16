@@ -193,6 +193,7 @@
     self.passwordConfirm.secureTextEntry = YES;
     [self.passwordConfirm setCenter: CGPointMake(self.view.center.x, self.passwordConfirm.center.y + fieldHeight * 5.5)]; // 165!!
 }
+
 -(void)setupLogin
 {
     int fieldHeight = 30;
@@ -535,7 +536,6 @@
                 break;
         }
     }
-    
     return valid;
 }
 
@@ -683,6 +683,7 @@
 {
     
 }
+
 -(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
 {
     SPTAuth *auth = [SPTAuth defaultInstance];
@@ -708,6 +709,7 @@
         }];
     }];
 }
+
 -(void)authenticationViewControllerDidCancelLogin:(SPTAuthViewController *)authenticationViewController
 {
     [self openLogInPage];

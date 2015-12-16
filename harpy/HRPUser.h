@@ -11,7 +11,7 @@
 
 @interface HRPUser : NSObject
 
-@property (strong,nonatomic) NSString *userID; // Called property objectId by parse
+@property (strong,nonatomic) NSString *userID;
 @property (strong,nonatomic) NSString *userName;
 @property (strong,nonatomic) NSString *password;
 @property (strong,nonatomic) NSString *email;
@@ -26,7 +26,5 @@
 
 -(instancetype)initWithUsername:(NSString *)userName password:(NSString *)password;
 -(instancetype)initWithUserID:(NSString *)userID userName:(NSString *)userName email:(NSString *)email password:(NSString *)password;
-
-
 
 @end

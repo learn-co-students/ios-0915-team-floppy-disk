@@ -81,8 +81,6 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"cell selected at %ld", (long)indexPath.row);
-    
     if (indexPath.row == 2) {
         [self logoutclicked];
     }
@@ -97,8 +95,6 @@
 
 - (void)logoutclicked
 {
-    NSLog(@"CLICKED: logout button");
-    
     [self.parseService logout];
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogOutNotificationName object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];

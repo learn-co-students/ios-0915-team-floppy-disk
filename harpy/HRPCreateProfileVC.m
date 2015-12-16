@@ -148,7 +148,6 @@
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             currentUser[@"userAvatar"] = imageFile;
-            NSLog(@"PARSE: uploaded userAvatar");
         }
         completion();
     }];

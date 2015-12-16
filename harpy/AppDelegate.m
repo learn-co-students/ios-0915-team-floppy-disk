@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Spotify/Spotify.h>
-#import <AVFoundation/AVFoundation.h> // Required for Spotify
+#import <AVFoundation/AVFoundation.h>
 #import <Parse/Parse.h>
 #import <UIKit/UIKit.h>
 #import "HRPTrackCreator.h"

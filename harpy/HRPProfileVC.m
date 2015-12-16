@@ -11,7 +11,7 @@
 #import "HRPEditProfileTableVC.h"
 #import "HRPUser.h"
 #import "PFFile.h"
-#import <QuartzCore/QuartzCore.h> // Needed to round UIImage
+#import <QuartzCore/QuartzCore.h>
 #import "HRPMapsViewController.h"
 #import <Spotify/Spotify.h>
 
@@ -77,6 +77,7 @@
 
     [self retrieveHRPosts];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -180,7 +181,7 @@
         }
         else
         {
-            NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+            //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
         }
     }];
 }
@@ -201,7 +202,7 @@
             }
             else
             {
-                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
             }
         }];
     }
@@ -229,7 +230,7 @@
         }
         else
         {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            //NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
 }
@@ -263,6 +264,7 @@
     
     return circle;
 }
+
 - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize
 {
     UIGraphicsBeginImageContext(newSize);
@@ -271,16 +273,19 @@
     UIGraphicsEndImageContext();
     return newImage;
 }
+
 #pragma mark - UITableViewDataSource Methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.userPosts.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self.postsTableview dequeueReusableCellWithIdentifier:@"postsCell" forIndexPath:indexPath];
@@ -346,9 +351,10 @@
 
 #pragma mark - Naviagation
 
-- (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
-    
-    if (self.player.isPlaying == YES) {
+- (IBAction)backButtonTapped:(UIBarButtonItem *)sender
+{
+    if (self.player.isPlaying == YES)
+    {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
     }
     self.player = nil;
@@ -358,10 +364,8 @@
 
 #pragma mark - Action methods
 
-
 - (IBAction)followOrEditButtonClicked:(id)sender
 {
-    
     if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])
     {
         PFUser *currentUser = [PFUser currentUser];
@@ -381,13 +385,13 @@
                     }
                     else
                     {
-                        NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                        //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
                     }
                 }];
             }
             else
             {
-                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
             }
         }];
     }
@@ -415,13 +419,13 @@
                     }
                     else
                     {
-                        NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                        //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
                     }
                 }];
             }
             else
             {
-                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
             }
         }];
     }
@@ -443,10 +447,12 @@
     }
 }
 
--(void)handleNewSession {
+-(void)handleNewSession
+{
     SPTAuth *auth = [SPTAuth defaultInstance];
     
-    if (self.player == nil) {
+    if (self.player == nil)
+    {
         self.player = [[SPTAudioStreamingController alloc] initWithClientId:auth.clientID];
         self.player.playbackDelegate = self;
         self.player.diskCache = [[SPTDiskCache alloc] initWithCapacity:1024 * 1024 * 64];
@@ -454,14 +460,15 @@
     
     [self.player loginWithSession:auth.session callback:^(NSError *error) {
         if (error) {
-            NSLog(@"ERROR FROM PROFILE VC: SPOTIFY AUTH: %@", error);
+            //NSLog(@"ERROR FROM PROFILE VC: SPOTIFY AUTH: %@", error);
         }
     }];
 }
 
-- (IBAction)playButtonTapped:(UIButton *)sender {
-    
-    if (self.player.isPlaying == NO) {
+- (IBAction)playButtonTapped:(UIButton *)sender
+{
+    if (self.player.isPlaying == NO)
+    {
         CGFloat musicPlayerHeight = self.musicPlayerView.frame.size.height;
         self.tableviewBottom.constant = musicPlayerHeight;
         self.musicPlayerBottom.constant = 0;
@@ -498,7 +505,8 @@
         self.coverArtView.image = [UIImage imageNamed:@"white_play"];
     }
 }
-- (IBAction)playerViewTapped:(UITapGestureRecognizer *)sender {
+- (IBAction)playerViewTapped:(UITapGestureRecognizer *)sender
+{
     [self.player setIsPlaying:!self.player.isPlaying callback:nil];
     
     if ([self.playPauseLabel.text isEqualToString:@"Playing"]) {
@@ -508,7 +516,6 @@
         self.playPauseLabel.text = @"Playing";
         self.coverArtView.image = [UIImage imageNamed:@"white_pause"];
     }
-    
 }
 
 @end

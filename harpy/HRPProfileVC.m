@@ -10,10 +10,8 @@
 #import "HRPParseNetworkService.h"
 #import "HRPEditProfileTableVC.h"
 #import "HRPUser.h"
-#import "PFFile.h"
-#import <QuartzCore/QuartzCore.h>
 #import "HRPMapsViewController.h"
-#import <Spotify/Spotify.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface HRPProfileVC () <UITableViewDelegate, UITableViewDataSource, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate>
 
@@ -30,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *shortBio;
 @property (weak, nonatomic) IBOutlet UITableView *postsTableview;
 @property (nonatomic, strong) NSArray *userPosts;
-@property (nonatomic, strong) NSArray *userFollowing;
+@property (nonatomic, strong) NSMutableArray *userFollowing;
 @property (nonatomic, strong) NSMutableArray *userFans;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
@@ -62,8 +60,9 @@
     self.postsTableview.delegate = self;
     
     self.parseService = [HRPParseNetworkService sharedService];
+    self.currentUser = [PFUser currentUser];
     
-    if (self.user != [PFUser currentUser])
+    if (self.user != self.currentUser)
     {
         self.navigationItem.rightBarButtonItem = nil;
         [self.followOrEditButton setTitle:@"Follow" forState:UIControlStateNormal];
@@ -368,14 +367,13 @@
 {
     if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])
     {
-        PFUser *currentUser = [PFUser currentUser];
-        PFRelation *followingRelation = [currentUser relationForKey:@"following"];
+        PFRelation *followingRelation = [self.currentUser relationForKey:@"following"];
         [followingRelation addObject:self.user];
         
         PFRelation *fanRelation = [self.user relationForKey:@"fans"];
-        [fanRelation addObject: currentUser];
+        [fanRelation addObject: self.currentUser];
         
-        [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil)
             {
                 [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -402,14 +400,13 @@
     }
     else if ([self.followOrEditButton.titleLabel.text isEqual: @"Unfollow"])
     {
-        PFUser *currentUser = [PFUser currentUser];
-        PFRelation *followingRelation = [currentUser relationForKey:@"following"];
+        PFRelation *followingRelation = [self.currentUser relationForKey:@"following"];
         [followingRelation removeObject:self.user];
         
         PFRelation *fanRelation = [self.user relationForKey:@"fans"];
-        [fanRelation removeObject:currentUser];
+        [fanRelation removeObject:self.currentUser];
         
-        [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil)
             {
                 [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -432,8 +429,9 @@
     
     if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])
     {
+        [self.userFans addObject:self.currentUser];
         [self.followOrEditButton setTitle:@"Unfollow" forState:UIControlStateNormal];
-        self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count + 1];
+        self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count];
     }
     else if ([self.followOrEditButton.titleLabel.text isEqual: @"Edit Profile"])
     {
@@ -443,7 +441,7 @@
     {
         [self.userFans removeObject:self.currentUser];
         [self.followOrEditButton setTitle:@"Follow" forState:UIControlStateNormal];
-        self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFollowing.count];
+        self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count];
     }
 }
 

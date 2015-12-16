@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0GJ-KY-fAq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0GJ-KY-fAq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -41,7 +41,7 @@
                                         <rect key="frame" x="0.0" y="92" width="414" height="109"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hdp-aM-CsO" id="tD8-Om-UFP">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="108.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Gu-IZ-obB">
@@ -148,10 +148,10 @@
                                         </variation>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="xs5-8q-6Xt">
-                                        <rect key="frame" x="82" y="22" width="232" height="45"/>
+                                        <rect key="frame" x="82" y="22" width="232" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoO-l1-REu">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="15"/>
+                                                <rect key="frame" x="0.0" y="1" width="45" height="15"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -276,7 +276,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FY1-u9-jg6">
-                                <rect key="frame" x="20" y="506" width="374" height="19"/>
+                                <rect key="frame" x="20" y="505" width="374" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="U0z-Bu-6sR"/>
                                 </constraints>
@@ -285,7 +285,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Album Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y83-1q-Vj3">
-                                <rect key="frame" x="20" y="492" width="374" height="15"/>
+                                <rect key="frame" x="20" y="492" width="374" height="14.5"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -302,7 +302,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wFB-rZ-828">
-                                <rect key="frame" x="20" y="618" width="374" height="80"/>
+                                <rect key="frame" x="20" y="555" width="374" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="V8t-bQ-I41"/>
@@ -319,6 +319,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="qQ4-6d-FnU" secondAttribute="leading" id="FBk-dj-jWq"/>
                             <constraint firstItem="FY1-u9-jg6" firstAttribute="trailing" secondItem="wFB-rZ-828" secondAttribute="trailing" id="Hqs-Hx-asj"/>
                             <constraint firstItem="y83-1q-Vj3" firstAttribute="top" secondItem="qQ4-6d-FnU" secondAttribute="bottom" constant="8" id="IZa-N0-yhd"/>
+                            <constraint firstItem="wFB-rZ-828" firstAttribute="top" secondItem="FY1-u9-jg6" secondAttribute="top" constant="50" id="NWS-Rd-6T5"/>
                             <constraint firstItem="jgq-7B-hTN" firstAttribute="top" secondItem="HCg-wB-2HR" secondAttribute="bottom" id="Ni1-G2-dSt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wFB-rZ-828" secondAttribute="trailing" id="Pr0-Qu-RgE"/>
                             <constraint firstItem="FY1-u9-jg6" firstAttribute="trailing" secondItem="y83-1q-Vj3" secondAttribute="trailing" id="RDN-y0-76J"/>
@@ -326,7 +327,6 @@
                             <constraint firstAttribute="leadingMargin" secondItem="y83-1q-Vj3" secondAttribute="leading" id="UJy-UA-8Ha"/>
                             <constraint firstAttribute="leadingMargin" secondItem="FY1-u9-jg6" secondAttribute="leading" id="eKy-Bw-2Ij"/>
                             <constraint firstItem="HCg-wB-2HR" firstAttribute="top" secondItem="wFB-rZ-828" secondAttribute="bottom" constant="50" id="ehj-kz-RKc"/>
-                            <constraint firstAttribute="bottom" secondItem="wFB-rZ-828" secondAttribute="bottom" constant="38" id="evy-Di-V4F"/>
                             <constraint firstItem="HCg-wB-2HR" firstAttribute="centerX" secondItem="Jd8-fp-cMY" secondAttribute="centerX" id="kEH-JA-g7n"/>
                             <constraint firstItem="hmL-Ua-R5A" firstAttribute="width" secondItem="Jd8-fp-cMY" secondAttribute="width" id="kEU-0q-x7K"/>
                             <constraint firstItem="qQ4-6d-FnU" firstAttribute="top" secondItem="hmL-Ua-R5A" secondAttribute="bottom" constant="15" id="ljf-GN-hLN"/>

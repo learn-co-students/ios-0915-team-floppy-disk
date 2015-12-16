@@ -58,6 +58,7 @@
     self.postsTableview.delegate = self;
     self.postsTableview.dataSource = self;
     self.postsTableview.delegate = self;
+
     
     self.parseService = [HRPParseNetworkService sharedService];
     self.currentUser = [PFUser currentUser];
@@ -89,7 +90,7 @@
     PFRelation *relation = [self.user relationForKey:@"following"];
     PFQuery *query = [relation query];
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-        self.userFollowing = results;
+        self.userFollowing = [results mutableCopy];
         self.followingCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFollowing.count];
     }];
 

@@ -293,7 +293,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-Uc-7cS" userLabel="Music Player View">
-                                <rect key="frame" x="0.0" y="603" width="414" height="89"/>
+                                <rect key="frame" x="0.0" y="692" width="414" height="89"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Js1-gV-nkQ">
                                         <rect key="frame" x="15" y="18" width="54" height="54"/>
@@ -302,7 +302,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="FaS-a7-wU2">
-                                        <rect key="frame" x="77" y="22" width="68" height="45"/>
+                                        <rect key="frame" x="77" y="22" width="237" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocQ-05-7eN">
                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="15"/>
@@ -338,6 +338,7 @@
                                     <constraint firstAttribute="trailing" secondItem="uB2-AM-Cmk" secondAttribute="trailing" constant="12" id="8PY-qj-5BW"/>
                                     <constraint firstItem="Js1-gV-nkQ" firstAttribute="width" secondItem="8wm-Uc-7cS" secondAttribute="height" multiplier="45:74" id="Ebi-bv-OsD"/>
                                     <constraint firstAttribute="height" constant="89" id="ICf-IV-zAl"/>
+                                    <constraint firstItem="uB2-AM-Cmk" firstAttribute="leading" secondItem="FaS-a7-wU2" secondAttribute="trailing" constant="8" id="Snw-ud-zoU"/>
                                     <constraint firstItem="Js1-gV-nkQ" firstAttribute="leading" secondItem="8wm-Uc-7cS" secondAttribute="leading" constant="15" id="bfG-tn-OeD"/>
                                     <constraint firstItem="Js1-gV-nkQ" firstAttribute="centerY" secondItem="FaS-a7-wU2" secondAttribute="centerY" id="d1h-zq-sBn"/>
                                     <constraint firstItem="FaS-a7-wU2" firstAttribute="leading" secondItem="Js1-gV-nkQ" secondAttribute="trailing" constant="8" symbolic="YES" id="fPp-o0-Fiq"/>
@@ -355,7 +356,7 @@
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="centerX" secondItem="zOA-Zn-puh" secondAttribute="centerX" id="BbP-Aw-WpK"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="top" secondItem="Pb1-mO-Aqd" secondAttribute="bottom" constant="20" id="DAH-aK-pzd"/>
                             <constraint firstItem="8wm-Uc-7cS" firstAttribute="centerX" secondItem="zOA-Zn-puh" secondAttribute="centerX" id="HiE-84-4iJ"/>
-                            <constraint firstItem="EU0-Np-qFi" firstAttribute="top" secondItem="8wm-Uc-7cS" secondAttribute="bottom" id="MwP-7d-KWL"/>
+                            <constraint firstItem="EU0-Np-qFi" firstAttribute="top" secondItem="8wm-Uc-7cS" secondAttribute="bottom" constant="-89" id="MwP-7d-KWL"/>
                             <constraint firstItem="8wm-Uc-7cS" firstAttribute="width" secondItem="zOA-Zn-puh" secondAttribute="width" id="Usq-a9-FuL"/>
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="top" secondItem="qqz-ns-WvY" secondAttribute="bottom" constant="7" id="ZhZ-WB-J52"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="height" secondItem="zOA-Zn-puh" secondAttribute="height" multiplier="0.24" id="lJ0-zA-zog"/>

@@ -49,6 +49,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
     self.title = @"HARPY";
     
@@ -473,7 +475,8 @@
     }];
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle{
+-(UIStatusBarStyle) preferredStatusBarStyle
+{
     return UIStatusBarStyleLightContent;
 }
 

@@ -31,12 +31,15 @@
                                                                  [UIFont fontWithName:@"SFUIDisplay-Semibold" size:20.0],
                                                              NSForegroundColorAttributeName:[UIColor whiteColor]
                                                              }];
-
+    
+    // Deprecated setStatusBarStyle method causes this error, but is the simplest way of implementation
+    // "CGContextSaveGState: invalid context 0x0.
+    // If you want to see the backtrace
+    // please set CG_CONTEXT_SHOW_BACKTRACE environmental variable."
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     [UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]].translucent = YES;
     [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[ [UIImagePickerController class] ]].tintColor = [UIColor whiteColor];
-    
-
-    NSLog(@"width is :%f",[[UIScreen mainScreen] bounds].size.width);
     
     if ([[UIScreen mainScreen] bounds].size.width == 375.0f)
     {

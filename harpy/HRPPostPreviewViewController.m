@@ -37,6 +37,10 @@
         self.albumArtImageView.image = self.track.spotifyLogo;
     }
     
+    [self.postCaptionTextView.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
+    [self.postCaptionTextView.layer setBorderWidth: 1.0];
+    self.postCaptionTextView.layer.masksToBounds = YES;
+
     self.songTitleLabel.text = self.track.songTitle;
     self.artistNameLabel.text = self.track.artistName;
     self.albumNameLabel.text = self.track.albumName;

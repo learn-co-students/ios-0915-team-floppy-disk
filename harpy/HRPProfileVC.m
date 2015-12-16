@@ -239,29 +239,24 @@
 
 - (UIView*)createCircleViewWithRadius:(int)radius
 {
-    // circle view
     UIView *circle = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 2 * radius, 2 * radius)];
     circle.layer.cornerRadius = radius;
     circle.layer.masksToBounds = YES;
     
-    // border
     circle.layer.borderColor = [UIColor whiteColor].CGColor;
     circle.layer.borderWidth = 1;
     
-    // gradient background color
     CAGradientLayer *gradientBg = [CAGradientLayer layer];
     gradientBg.frame = circle.frame;
     gradientBg.colors = [NSArray arrayWithObjects:
                          (id)[UIColor redColor].CGColor,
                          (id)[UIColor blackColor].CGColor,
                          nil];
-    // vertical gradient
     gradientBg.locations = [NSArray arrayWithObjects:
                             [NSNumber numberWithFloat:0.0f],
                             [NSNumber numberWithFloat:1.0f],
                             nil];
     
-    // gradient background
     CALayer *layer = circle.layer;
     layer.masksToBounds = YES;
     [layer insertSublayer:gradientBg atIndex:0];
@@ -433,17 +428,15 @@
     
     if ([self.followOrEditButton.titleLabel.text isEqual: @"Follow"])
     {
-        NSLog(@"THE LABEL CHANGED");
         [self.followOrEditButton setTitle:@"Unfollow" forState:UIControlStateNormal];
         self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count + 1];
     }
     else if ([self.followOrEditButton.titleLabel.text isEqual: @"Edit Profile"])
     {
-        NSLog(@"THE LABEL DOES NOT NEED TO CHANGE");
+
     }
     else if ([self.followOrEditButton.titleLabel.text isEqual: @"Unfollow"])
     {
-        NSLog(@"THE LABEL CHANGED");
         [self.userFans removeObject:self.currentUser];
         [self.followOrEditButton setTitle:@"Follow" forState:UIControlStateNormal];
         self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFollowing.count];

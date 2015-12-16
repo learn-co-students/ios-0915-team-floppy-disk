@@ -36,7 +36,8 @@
 
 @implementation HRPTrackSearchViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setupTableViewUI];
     [self.songSearchBar setShowsCancelButton:NO animated:NO];
@@ -59,16 +60,11 @@
     self.musicviewBottom.constant = -89;
     [self.view setNeedsUpdateConstraints];
     
-    self.navigationItem.hidesBackButton = YES;  // We do a custom image for the back button on the post preview VC
-    
-//    self.navigationController.navigationBar.backIndicatorImage = [UIImage new];
-//    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage new];
-//    
-//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left_Arrow"] style:UIBarButtonItemStylePlain target:nil action:nil];
-//    [self.navigationItem.backBarButtonItem setBackButtonTitlePositionAdjustment:UIOffsetMake(-60, 0) forBarMetrics:UIBarMetricsDefault];
+    self.navigationItem.hidesBackButton = YES;
 }
 
-- (void) viewWillAppear:(BOOL)animated {
+- (void) viewWillAppear:(BOOL)animated
+{
     [self.songTableView deselectRowAtIndexPath:[self.songTableView indexPathForSelectedRow] animated:animated];
     [super viewWillAppear:animated];
 }
@@ -90,11 +86,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     float shadowOffset = (scrollView.contentOffset.y/1);
-    
-    // Make sure that the offset doesn't exceed 3 or drop below 0.5
     shadowOffset = MIN(MAX(shadowOffset, 0), 1);
-    
-    //Ensure that the shadow radius is between 1 and 3
     float shadowRadius = MIN(MAX(shadowOffset, 0), 1);
     
     self.songSearchBar.layer.shadowOffset = CGSizeMake(0, shadowOffset);
@@ -141,14 +133,13 @@
     [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[self.songSearchBar class]]].tintColor = [UIColor darkGrayColor];
 }
 
-
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     if ([self.songSearchBar.text isEqualToString:@""]) {
         return self.songArray.count;
     } else {
@@ -171,15 +162,14 @@
     UIGraphicsEndImageContext();
     
     return image;
-
 }
 
 #pragma mark - Search bar methods
 
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
-    if ([searchText isEqualToString:@""]) {
-        
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if ([searchText isEqualToString:@""])
+    {
         [searchBar performSelector: @selector(resignFirstResponder)
                         withObject: nil
                         afterDelay: 0.1];
@@ -208,7 +198,6 @@
             [self.songTableView reloadData];
         }];
     }];
-    
 }
 
 - (UITextField*)searchSubviewsForTextFieldIn:(UIView*)view
@@ -230,8 +219,8 @@
     [searchBar resignFirstResponder];
     
 }
--(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
     searchBar.text = [NSString stringWithFormat:@""];
     self.filteredSongArray = self.songArray;
     [self.songTableView reloadData];
@@ -240,12 +229,8 @@
 
 #pragma mark - UITableViewDataSource Methods
 
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [self dismissKeyboard];
-//}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     CGFloat totalCellView = self.songTableView.frame.size.height;
     CGFloat numberOfPostRows = 5;
     
@@ -292,8 +277,8 @@
     return cell;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     HRPPostPreviewViewController *destinVC = segue.destinationViewController;
     NSIndexPath *indexPath = self.songTableView.indexPathForSelectedRow;
     HRPTrack *track = self.filteredSongArray[indexPath.row];
@@ -301,11 +286,13 @@
     destinVC.post = self.post;
 }
 
-- (IBAction)cellPlayButtonTapped:(UIButton *)sender {
+- (IBAction)cellPlayButtonTapped:(UIButton *)sender
+{
     
     [self dismissKeyboard];
     
-    if (self.player.isPlaying == NO) {
+    if (self.player.isPlaying == NO)
+    {
         CGFloat musicPlayerHeight = self.musicView.frame.size.height;
         self.tableviewBottom.constant = musicPlayerHeight;
         self.musicviewBottom.constant = 0;
@@ -330,7 +317,8 @@
             NSLog(@"%@", error);
         }];
         [sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
-    } else if (self.player.isPlaying == YES) {
+    } else if (self.player.isPlaying == YES)
+    {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
         [sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
         self.playStatusLabel.text = @"Paused";
@@ -338,7 +326,8 @@
     }
 }
 
--(void)cellPostButtonTapped:(UIButton *)sender {
+-(void)cellPostButtonTapped:(UIButton *)sender
+{
     if ([self.player isPlaying] == YES) {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
     }
@@ -346,8 +335,8 @@
 }
 
 
-- (IBAction)playerViewTapped:(UITapGestureRecognizer *)sender {
-    
+- (IBAction)playerViewTapped:(UITapGestureRecognizer *)sender
+{
     [self.player setIsPlaying:!self.player.isPlaying callback:nil];
     
     if ([self.playStatusLabel.text isEqualToString:@"Playing"]) {
@@ -359,10 +348,12 @@
     }
 }
 
--(void)handleNewSession {
+-(void)handleNewSession
+{
     SPTAuth *auth = [SPTAuth defaultInstance];
     
-    if (self.player == nil) {
+    if (self.player == nil)
+    {
         self.player = [[SPTAudioStreamingController alloc] initWithClientId:auth.clientID];
         self.player.playbackDelegate = self;
         self.player.diskCache = [[SPTDiskCache alloc] initWithCapacity:1024 * 1024 * 64];
@@ -372,20 +363,20 @@
         
         NSLog(@"%@", error);
     }];
-    
-    
 }
 
-- (IBAction)cancelButtonTapped:(id)sender {
-    
-    if (self.player.isPlaying == YES) {
+- (IBAction)cancelButtonTapped:(id)sender
+{
+    if (self.player.isPlaying == YES)
+    {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
     }
     self.player = nil;
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)dismissKeyboard {
+-(void)dismissKeyboard
+{
     [self.songSearchBar resignFirstResponder];
 }
 

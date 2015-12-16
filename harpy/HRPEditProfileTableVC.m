@@ -219,11 +219,6 @@
 
 #pragma mark - Action Methods
 
-//- (IBAction)backButtonTapped:(UIBarButtonItem *)sender
-//{
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    
-//}
 - (IBAction)saveButtonPressed:(id)sender
 {
     if (self.ownedImageFile)

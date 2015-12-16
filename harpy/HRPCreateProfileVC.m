@@ -49,7 +49,7 @@
     self.realName = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
     self.realName.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
     self.realName.leftViewMode = UITextFieldViewModeAlways;
-    self.realName.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.realName.keyboardAppearance = UIKeyboardAppearanceLight;
     self.realName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"NAME" attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     self.realName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.realName.textColor = [UIColor blackColor];
@@ -57,7 +57,7 @@
     self.realName.autocorrectionType = UITextAutocorrectionTypeNo;
     self.realName.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
     self.realName.adjustsFontSizeToFitWidth = YES;
-    self.realName.keyboardType = UIKeyboardTypeEmailAddress;
+    self.realName.keyboardType = UIKeyboardTypeDefault;
     self.realName.returnKeyType = UIReturnKeyDone;
     self.realName.returnKeyType = UIReturnKeyDefault;
     self.realName.layer.cornerRadius = 20.0f;
@@ -70,7 +70,7 @@
     self.shortBio = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 275, fieldHeight + 8)];
     self.shortBio.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 20)];
     self.shortBio.leftViewMode = UITextFieldViewModeAlways;
-    self.shortBio.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.shortBio.keyboardAppearance = UIKeyboardAppearanceLight;
     self.shortBio.autocorrectionType = UITextAutocorrectionTypeNo;
     self.shortBio.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"SHORT BIO" attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     self.shortBio.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -78,7 +78,7 @@
     self.shortBio.textAlignment = NSTextAlignmentLeft;
     self.shortBio.font = [UIFont fontWithName:@"SFUIDisplay-Medium" size:14.0];
     self.shortBio.adjustsFontSizeToFitWidth = YES;
-    self.shortBio.keyboardType = UIKeyboardTypeEmailAddress;
+    self.shortBio.keyboardType = UIKeyboardTypeDefault;
     self.shortBio.returnKeyType = UIReturnKeyDone;
     self.shortBio.returnKeyType = UIReturnKeyDefault;
     self.shortBio.layer.borderColor = [[[UIColor darkGrayColor]colorWithAlphaComponent:0.5]CGColor];

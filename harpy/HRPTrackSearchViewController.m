@@ -240,6 +240,11 @@
 
 #pragma mark - UITableViewDataSource Methods
 
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self dismissKeyboard];
+//}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat totalCellView = self.songTableView.frame.size.height;
     CGFloat numberOfPostRows = 5;
@@ -298,6 +303,8 @@
 
 - (IBAction)cellPlayButtonTapped:(UIButton *)sender {
     
+    [self dismissKeyboard];
+    
     if (self.player.isPlaying == NO) {
         CGFloat musicPlayerHeight = self.musicView.frame.size.height;
         self.tableviewBottom.constant = musicPlayerHeight;
@@ -316,7 +323,7 @@
         self.playStatusLabel.text = @"Playing";
         
         [self handleNewSession];
-        NSString *urlString = [trackAtCell.spotifyURI absoluteString];
+        NSString *urlString = [NSString stringWithFormat:trackAtCell.spotifyURI];
         NSURL *url = [NSURL URLWithString:urlString];
         
         [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {

@@ -11,7 +11,7 @@
 #import "HRPPost.h"
 
 
-@interface HRPPostPreviewViewController () <UITextViewDelegate, UINavigationControllerDelegate>
+@interface HRPPostPreviewViewController () <UITextViewDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 
 
 
@@ -25,6 +25,8 @@
 @end
 
 @implementation HRPPostPreviewViewController
+
+#pragma mark - View life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,22 +43,22 @@
     NSString *latLong = [NSString stringWithFormat:@"%f, %f", self.post.latitude, self.post.longitude];
     self.locationLabel.text = latLong;
     
+    self.postCaptionTextView.delegate = self;
 }
 
-
-//- (IBAction)cancelButtonTapped:(UIBarButtonItem *)sender {
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
-
-- (IBAction)uploadPhotoButtonTapped:(UIButton *)sender {
-    //upload photo
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:YES];
+    
+    self.albumArtImageView = nil;
+    self.songTitleLabel = nil;
+    self.artistNameLabel = nil;
+    self.albumNameLabel = nil;
+    self.locationLabel = nil;
+    self.postCaptionTextView = nil;
 }
 
-- (IBAction)addLocationButtonTapped:(UIButton *)sender {
-    //add location to be pinned on map
-}
+#pragma mark - Action methods
 
-//needs to be adjusted in order to take either album art or a picture
 - (IBAction)postTrackButtonTapped:(UIButton *)sender {
     
     [self.post createPostForTrack:self.track withCaption:self.postCaptionTextView.text WithCompletion:^(BOOL success) {
@@ -71,21 +73,27 @@
     
 }
 
--(void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:YES];
-    
-    self.albumArtImageView = nil;
-    self.songTitleLabel = nil;
-    self.artistNameLabel = nil;
-    self.albumNameLabel = nil;
-    self.locationLabel = nil;
-    self.postCaptionTextView = nil;
-}
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - Overrides
+
+- (void)handleSingleTap:(UITapGestureRecognizer *) sender
+{
+    [self.view endEditing:YES];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
 
 @end

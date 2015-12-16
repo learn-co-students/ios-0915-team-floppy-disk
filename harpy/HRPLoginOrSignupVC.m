@@ -199,13 +199,13 @@
     int fieldWidth = 275;
     int radius = 20;
     
-    if ([[UIScreen mainScreen] bounds].size.width == 375.0f) //6
+    if ([[UIScreen mainScreen] bounds].size.width == 375.0f)
     {
         fieldHeight = 45;
         fieldWidth = 315;
         radius = 27;
     }
-    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f) //6s
+    else if ([[UIScreen mainScreen] bounds].size.width == 414.0f)
     {
         fieldHeight = 53;
         fieldWidth = 345;

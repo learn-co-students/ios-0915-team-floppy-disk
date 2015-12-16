@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C1A58203BF13D8D1931530C /* libPods-harpy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0453F870576313A0151B46 /* libPods-harpy.a */; };
 		3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */; };
 		3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A73241BFD24420010A257 /* HRPTrack.m */; };
 		3B0EFC4F1C10AE140086545B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0EFC4E1C10AE140086545B /* Constants.m */; };
@@ -17,6 +16,7 @@
 		3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25281C0CA4F6004C6790 /* HRPPost.m */; };
 		3BC25DEB1C0E0F3D00A831CE /* postTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
+		8E601F7CB6EFFCDBB0089D15 /* libPods-Harpy Music.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E167BB7AD1B9424182BE2DBF /* libPods-Harpy Music.a */; };
 		E91B6FDF1C19E7B000FEC1AB /* HRPNetworkAlertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E91B6FDE1C19E7B000FEC1AB /* HRPNetworkAlertVC.m */; };
 		E91B6FE21C19EB0800FEC1AB /* HRPNetworkAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E91B6FE11C19EB0800FEC1AB /* HRPNetworkAlertView.m */; };
 		E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C5B1BFA7EBC002DD9C6 /* main.m */; };
@@ -35,7 +35,7 @@
 		E976148E1C0A6648003B3C5B /* SF-UI-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */; };
 		E976148F1C0A664A003B3C5B /* SF-UI-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148C1C0A6607003B3C5B /* SF-UI-Display-Heavy.otf */; };
 		E97614901C0A664C003B3C5B /* SF-UI-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148B1C0A6607003B3C5B /* SF-UI-Display-Medium.otf */; };
-		E97E73CA1C20747700CBDD07 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E73C91C20747700CBDD07 /* CLLocationManager+Shared.m */; settings = {ASSET_TAGS = (); }; };
+		E97E73CA1C20747700CBDD07 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E97E73C91C20747700CBDD07 /* CLLocationManager+Shared.m */; };
 		E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C8CAB81C0BB2CA00836B40 /* HRPCreateProfileVC.m */; };
 		E9C902991C1C94D40008B883 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C902981C1C94D40008B883 /* LaunchScreen.storyboard */; };
 		E9E211141BFD3E2500739143 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9E211131BFD3E2500739143 /* Keys.plist */; };
@@ -63,7 +63,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1439F6BDFBB4367B82653AF1 /* Pods-harpy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harpy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-harpy/Pods-harpy.debug.xcconfig"; sourceTree = "<group>"; };
 		3B0A73201BFCD58E0010A257 /* HRPTrackCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPTrackCreator.h; sourceTree = "<group>"; };
 		3B0A73211BFCD58E0010A257 /* HRPTrackCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPTrackCreator.m; sourceTree = "<group>"; };
 		3B0A73231BFD24420010A257 /* HRPTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPTrack.h; sourceTree = "<group>"; };
@@ -80,8 +79,9 @@
 		3BAC25281C0CA4F6004C6790 /* HRPPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPost.m; sourceTree = "<group>"; };
 		3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = postTable.storyboard; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
-		6DB65EC059DFF1DB09801C30 /* Pods-harpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-harpy/Pods-harpy.release.xcconfig"; sourceTree = "<group>"; };
-		8A0453F870576313A0151B46 /* libPods-harpy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harpy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C33673E6E1FC67B0046850B /* Pods-Harpy Music.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Harpy Music.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Harpy Music/Pods-Harpy Music.debug.xcconfig"; sourceTree = "<group>"; };
+		A669C21BA75DCA33C37F59AD /* Pods-Harpy Music.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Harpy Music.release.xcconfig"; path = "Pods/Target Support Files/Pods-Harpy Music/Pods-Harpy Music.release.xcconfig"; sourceTree = "<group>"; };
+		E167BB7AD1B9424182BE2DBF /* libPods-Harpy Music.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Harpy Music.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E91B6FDD1C19E7B000FEC1AB /* HRPNetworkAlertVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPNetworkAlertVC.h; sourceTree = "<group>"; };
 		E91B6FDE1C19E7B000FEC1AB /* HRPNetworkAlertVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPNetworkAlertVC.m; sourceTree = "<group>"; };
 		E91B6FE01C19EB0800FEC1AB /* HRPNetworkAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPNetworkAlertView.h; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C1A58203BF13D8D1931530C /* libPods-harpy.a in Frameworks */,
+				8E601F7CB6EFFCDBB0089D15 /* libPods-Harpy Music.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,8 +161,8 @@
 		2BB797948A4D7924FE59D76C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1439F6BDFBB4367B82653AF1 /* Pods-harpy.debug.xcconfig */,
-				6DB65EC059DFF1DB09801C30 /* Pods-harpy.release.xcconfig */,
+				5C33673E6E1FC67B0046850B /* Pods-Harpy Music.debug.xcconfig */,
+				A669C21BA75DCA33C37F59AD /* Pods-Harpy Music.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -170,7 +170,7 @@
 		C6E06CB9E0DD43AFFCFA67DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8A0453F870576313A0151B46 /* libPods-harpy.a */,
+				E167BB7AD1B9424182BE2DBF /* libPods-Harpy Music.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -458,7 +458,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-harpy/Pods-harpy-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Harpy Music/Pods-Harpy Music-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6B04DF8DF50012F45E9A5542 /* Copy Pods Resources */ = {
@@ -473,7 +473,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-harpy/Pods-harpy-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Harpy Music/Pods-Harpy Music-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		842265E5850C3CE7BAF68C67 /* Check Pods Manifest.lock */ = {
@@ -639,7 +639,7 @@
 		};
 		E9335C7A1BFA7EBD002DD9C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1439F6BDFBB4367B82653AF1 /* Pods-harpy.debug.xcconfig */;
+			baseConfigurationReference = A669C21BA75DCA33C37F59AD /* Pods-Harpy Music.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -655,7 +655,7 @@
 		};
 		E9335C7B1BFA7EBD002DD9C6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DB65EC059DFF1DB09801C30 /* Pods-harpy.release.xcconfig */;
+			baseConfigurationReference = A669C21BA75DCA33C37F59AD /* Pods-Harpy Music.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

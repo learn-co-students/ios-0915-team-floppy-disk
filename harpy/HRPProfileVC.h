@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UIKit/UIView.h>
 #import <Parse/Parse.h>
 #import <Spotify/Spotify.h>
 

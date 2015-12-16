@@ -65,7 +65,7 @@
         }
         else
         {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            //NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
 }
@@ -132,7 +132,6 @@
             textFieldObject.layer.borderWidth = 1.0;
             textFieldObject.layer.cornerRadius = 13;
             
-
             break;
         }
     }
@@ -177,14 +176,13 @@
         [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
             if (!error)
             {
-                NSLog(@"PFUser COUNT: %lu", (unsigned long)objects.count);
                 self.users = [objects mutableCopy];
                 
                 [self.userTableView reloadData];
             }
             else
             {
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                //NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
         }];
     }
@@ -205,9 +203,7 @@
 }
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"searchBarCancelButtonClicked called");
     [searchBar resignFirstResponder];
-    
 }
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
@@ -260,7 +256,7 @@
             }
             else
             {
-                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
             }
         }];
     }

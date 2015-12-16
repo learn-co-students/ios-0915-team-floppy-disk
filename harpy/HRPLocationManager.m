@@ -28,19 +28,19 @@
         {
             if (![CLLocationManager locationServicesEnabled])
             {
-                NSLog(@"location services are disabled");
+                //NSLog(@"location services are disabled");
             }
             if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
             {
-                NSLog(@"location services are blocked by the user");
+                //NSLog(@"location services are blocked by the user");
             }
             if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways)
             {
-                NSLog(@"location services are enabled");
+                //NSLog(@"location services are enabled");
             }
             if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
             {
-                NSLog(@"about to show a dialog requesting permission");
+                //NSLog(@"about to show a dialog requesting permission");
             }
             instance = [[HRPLocationManager alloc] init];
             instance.clLocationManager = [[CLLocationManager alloc] init];
@@ -67,10 +67,10 @@
 {
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
     {
-        NSLog(@"User has denied location services");
+        //NSLog(@"User has denied location services");
     } else
     {
-        NSLog(@"Location manager did fail with error: %@", error.localizedFailureReason);
+        //NSLog(@"Location manager did fail with error: %@", error.localizedFailureReason);
     }
 }
 

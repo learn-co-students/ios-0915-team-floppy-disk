@@ -293,7 +293,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-Uc-7cS" userLabel="Music Player View">
-                                <rect key="frame" x="0.0" y="692" width="414" height="89"/>
+                                <rect key="frame" x="0.0" y="603" width="414" height="89"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Js1-gV-nkQ">
                                         <rect key="frame" x="15" y="18" width="54" height="54"/>
@@ -323,28 +323,6 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="an0-aO-bvy" firstAttribute="leading" secondItem="DrR-Bm-P0J" secondAttribute="leading" id="3Pd-Pq-6Ka"/>
-                                            <constraint firstAttribute="bottom" secondItem="DrR-Bm-P0J" secondAttribute="bottom" id="3QT-x4-Dcb"/>
-                                            <constraint firstItem="ocQ-05-7eN" firstAttribute="top" secondItem="FaS-a7-wU2" secondAttribute="top" id="8rw-io-Aa8"/>
-                                            <constraint firstItem="DrR-Bm-P0J" firstAttribute="top" secondItem="an0-aO-bvy" secondAttribute="bottom" id="Dfz-xG-Rxg"/>
-                                            <constraint firstItem="an0-aO-bvy" firstAttribute="centerY" secondItem="FaS-a7-wU2" secondAttribute="centerY" id="JZK-ak-D72"/>
-                                            <constraint firstItem="ocQ-05-7eN" firstAttribute="leading" secondItem="FaS-a7-wU2" secondAttribute="leading" id="KLG-9w-Ee5"/>
-                                            <constraint firstItem="DrR-Bm-P0J" firstAttribute="bottom" secondItem="FaS-a7-wU2" secondAttribute="bottomMargin" id="KWC-OE-o3V"/>
-                                            <constraint firstItem="an0-aO-bvy" firstAttribute="top" secondItem="FaS-a7-wU2" secondAttribute="top" constant="15" id="PFl-Ez-QmM"/>
-                                            <constraint firstAttribute="trailing" secondItem="ocQ-05-7eN" secondAttribute="trailing" constant="23" id="PRp-Lw-fDQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="DrR-Bm-P0J" secondAttribute="trailing" id="Uol-aY-Lo5"/>
-                                            <constraint firstItem="an0-aO-bvy" firstAttribute="top" secondItem="ocQ-05-7eN" secondAttribute="bottom" id="Woa-Mf-QWy"/>
-                                            <constraint firstItem="ocQ-05-7eN" firstAttribute="top" secondItem="FaS-a7-wU2" secondAttribute="topMargin" id="bHd-3M-WLc"/>
-                                            <constraint firstItem="DrR-Bm-P0J" firstAttribute="leading" secondItem="ocQ-05-7eN" secondAttribute="leading" id="fWm-Df-Egd"/>
-                                            <constraint firstItem="DrR-Bm-P0J" firstAttribute="top" secondItem="FaS-a7-wU2" secondAttribute="top" constant="30" id="hoL-uO-HNc"/>
-                                            <constraint firstItem="DrR-Bm-P0J" firstAttribute="leading" secondItem="FaS-a7-wU2" secondAttribute="leadingMargin" id="hx0-QK-peS"/>
-                                            <constraint firstItem="DrR-Bm-P0J" firstAttribute="centerX" secondItem="FaS-a7-wU2" secondAttribute="centerX" id="nZk-PQ-NpK"/>
-                                            <constraint firstItem="DrR-Bm-P0J" firstAttribute="trailing" secondItem="FaS-a7-wU2" secondAttribute="trailingMargin" id="rIo-gR-scD"/>
-                                            <constraint firstAttribute="trailing" secondItem="an0-aO-bvy" secondAttribute="trailing" constant="2" id="tnG-mh-NhP"/>
-                                            <constraint firstItem="an0-aO-bvy" firstAttribute="leading" secondItem="ocQ-05-7eN" secondAttribute="leading" id="wAz-Tf-WiB"/>
-                                            <constraint firstItem="ocQ-05-7eN" firstAttribute="leading" secondItem="FaS-a7-wU2" secondAttribute="leadingMargin" id="x4K-ny-9Ir"/>
-                                        </constraints>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_spotify" translatesAutoresizingMaskIntoConstraints="NO" id="uB2-AM-Cmk">
                                         <rect key="frame" x="322" y="33" width="80" height="24"/>
@@ -377,7 +355,7 @@
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="centerX" secondItem="zOA-Zn-puh" secondAttribute="centerX" id="BbP-Aw-WpK"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="top" secondItem="Pb1-mO-Aqd" secondAttribute="bottom" constant="20" id="DAH-aK-pzd"/>
                             <constraint firstItem="8wm-Uc-7cS" firstAttribute="centerX" secondItem="zOA-Zn-puh" secondAttribute="centerX" id="HiE-84-4iJ"/>
-                            <constraint firstItem="EU0-Np-qFi" firstAttribute="top" secondItem="8wm-Uc-7cS" secondAttribute="bottom" constant="-89" id="MwP-7d-KWL"/>
+                            <constraint firstItem="EU0-Np-qFi" firstAttribute="top" secondItem="8wm-Uc-7cS" secondAttribute="bottom" id="MwP-7d-KWL"/>
                             <constraint firstItem="8wm-Uc-7cS" firstAttribute="width" secondItem="zOA-Zn-puh" secondAttribute="width" id="Usq-a9-FuL"/>
                             <constraint firstItem="z2b-0c-iv9" firstAttribute="top" secondItem="qqz-ns-WvY" secondAttribute="bottom" constant="7" id="ZhZ-WB-J52"/>
                             <constraint firstItem="qqz-ns-WvY" firstAttribute="height" secondItem="zOA-Zn-puh" secondAttribute="height" multiplier="0.24" id="lJ0-zA-zog"/>

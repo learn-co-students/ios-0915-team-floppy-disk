@@ -10,6 +10,7 @@ target 'harpy' do
    pod 'Parse'
    pod 'ParseUI'
    pod 'SKSplashView'
+   pod 'ChameleonFramework'
 
 end
 

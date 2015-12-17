@@ -125,43 +125,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eb0-YD-TX8">
-                                <rect key="frame" x="0.0" y="64" width="414" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="oad-XW-WOU"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4OD-tm-b0O">
-                                <rect key="frame" x="0.0" y="124" width="414" height="563"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="95" id="tpU-lz-vgM">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="95"/>
+                                        <rect key="frame" x="0.0" y="92" width="414" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="center" tableViewCell="tpU-lz-vgM" id="ywz-XB-757">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TTp-Wy-vLZ">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TTp-Wy-vLZ">
                                                     <rect key="frame" x="120" y="17" width="65" height="61"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yF-58-E0c">
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yF-58-E0c">
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="18"/>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="rFx-xG-gfE">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="rFx-xG-gfE">
                                                             <rect key="frame" x="0.0" y="26" width="55" height="35"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="real name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ova-pT-BCA">
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="real name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ova-pT-BCA">
                                                                     <rect key="frame" x="0.0" y="0.0" width="55" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="short bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5k-3b-8dq">
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="short bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5k-3b-8dq">
                                                                     <rect key="frame" x="0.0" y="19" width="55" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -177,17 +170,21 @@
                                                         <constraint firstAttribute="width" secondItem="yiA-rM-HvQ" secondAttribute="height" multiplier="1:1" id="UzN-2K-BCh"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OyY-ro-cgf">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OyY-ro-cgf">
                                                     <rect key="frame" x="8" y="17" width="52" height="8"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="OyY-ro-cgf" firstAttribute="top" secondItem="TTp-Wy-vLZ" secondAttribute="top" id="61A-kM-Uvk"/>
                                                 <constraint firstItem="yiA-rM-HvQ" firstAttribute="centerY" secondItem="ywz-XB-757" secondAttribute="centerY" id="6TI-3Y-ilX"/>
+                                                <constraint firstItem="OyY-ro-cgf" firstAttribute="leading" secondItem="yiA-rM-HvQ" secondAttribute="leading" id="RBk-97-gOF"/>
                                                 <constraint firstItem="yiA-rM-HvQ" firstAttribute="top" secondItem="ywz-XB-757" secondAttribute="topMargin" constant="13" id="TbT-ju-F0r"/>
                                                 <constraint firstItem="TTp-Wy-vLZ" firstAttribute="leading" secondItem="yiA-rM-HvQ" secondAttribute="trailing" constant="60" id="VS5-6o-78i"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="yiA-rM-HvQ" secondAttribute="leading" id="ldy-CW-Q34"/>
+                                                <constraint firstItem="OyY-ro-cgf" firstAttribute="trailing" secondItem="yiA-rM-HvQ" secondAttribute="trailing" id="nR8-qD-9Uq"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yiA-rM-HvQ" secondAttribute="bottom" constant="13" id="oc7-Sm-sJx"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OyY-ro-cgf" secondAttribute="bottom" constant="61" id="pyY-DH-xws"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
@@ -199,13 +196,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="eb0-YD-TX8" firstAttribute="centerX" secondItem="bhQ-MT-uAJ" secondAttribute="centerX" id="1VK-4t-ifD"/>
-                            <constraint firstItem="eb0-YD-TX8" firstAttribute="trailing" secondItem="4OD-tm-b0O" secondAttribute="trailing" id="IdS-cw-MEU"/>
                             <constraint firstItem="4OD-tm-b0O" firstAttribute="bottom" secondItem="0EB-jq-VHy" secondAttribute="top" id="N2x-oN-0N0"/>
-                            <constraint firstItem="eb0-YD-TX8" firstAttribute="leading" secondItem="bhQ-MT-uAJ" secondAttribute="leadingMargin" constant="-20" id="egb-Tp-Fe1"/>
-                            <constraint firstItem="eb0-YD-TX8" firstAttribute="leading" secondItem="4OD-tm-b0O" secondAttribute="leading" id="nyX-Gq-efr"/>
-                            <constraint firstItem="eb0-YD-TX8" firstAttribute="top" secondItem="l4R-q7-BsL" secondAttribute="bottom" id="oaW-ac-tWB"/>
-                            <constraint firstItem="eb0-YD-TX8" firstAttribute="bottom" secondItem="4OD-tm-b0O" secondAttribute="top" id="pas-6A-4Tl"/>
+                            <constraint firstItem="4OD-tm-b0O" firstAttribute="top" secondItem="l4R-q7-BsL" secondAttribute="bottom" id="mVb-v4-a3k"/>
+                            <constraint firstAttribute="trailing" secondItem="4OD-tm-b0O" secondAttribute="trailing" id="nuu-4N-XAs"/>
+                            <constraint firstItem="4OD-tm-b0O" firstAttribute="leading" secondItem="bhQ-MT-uAJ" secondAttribute="leading" id="tna-LE-GiM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="USER SEARCH" id="uaX-RG-ASi"/>
@@ -213,7 +207,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="searchbarUser" destination="eb0-YD-TX8" id="ybM-n0-Ruc"/>
                         <outlet property="tableviewUser" destination="4OD-tm-b0O" id="I5y-AP-fqs"/>
                     </connections>
                 </viewController>

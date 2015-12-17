@@ -15,7 +15,6 @@
 
 @interface HYPUserSearchVC () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate>
 
-@property (strong, nonatomic) IBOutlet UISearchBar *searchbarUser;
 @property (strong, nonatomic) UISearchBar *searchbarUserInTableView;
 @property (weak, nonatomic) IBOutlet UITableView *tableviewUser;
 @property (nonatomic) PFUser *user;
@@ -35,10 +34,8 @@
     
     self.tableviewUser.delegate = self;
     self.tableviewUser.dataSource = self;
-    self.searchbarUser.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    [self.searchbarUser setShowsCancelButton:NO animated:NO];
+
     self.parseService = [HRPParseNetworkService sharedService];
     
     [self initializeEmptyUsersArray];
@@ -92,11 +89,6 @@
     shadowOffset = MIN(MAX(shadowOffset, 0), 1);
     float shadowRadius = MIN(MAX(shadowOffset, 0), 1);
     
-    self.searchbarUser.layer.shadowOffset = CGSizeMake(0, shadowOffset);
-    self.searchbarUser.layer.shadowRadius = shadowRadius;
-    self.searchbarUser.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.searchbarUser.layer.shadowOpacity = 0.20;
-    
     self.searchbarUserInTableView.layer.shadowOffset = CGSizeMake(0, shadowOffset);
     self.searchbarUserInTableView.layer.shadowRadius = shadowRadius;
     self.searchbarUserInTableView.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -111,30 +103,9 @@
 }
 -(void) setupTableViewUI
 {
-    self.searchbarUser.keyboardAppearance = UIKeyboardAppearanceLight;
-    
     UIImage *whiteColorImage = [self imageWithColor:[UIColor whiteColor]];
     self.tableviewUser.backgroundColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
-    [[self searchSubviewsForTextFieldIn:self.searchbarUser] setBackgroundColor:[UIColor whiteColor]];
-    self.searchbarUser.backgroundImage = whiteColorImage;
-    [self.view bringSubviewToFront:self.searchbarUser];
-    
-    for (id object in [[[self.searchbarUser subviews] objectAtIndex:0] subviews])
-    {
-        if ([object isKindOfClass:[UITextField class]])
-        {
-            UITextField *textFieldObject = (UITextField *)object;
-            textFieldObject.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:14.0];
-            textFieldObject.placeholder = @"Type to search";
-            textFieldObject.layer.borderColor = [[UIColor ironColor] CGColor];
-            textFieldObject.layer.borderWidth = 1.0;
-            textFieldObject.layer.cornerRadius = 13;
-        
-            break;
-        }
-    }
-    [[UIBarButtonItem appearanceWhenContainedIn:[self.searchbarUser class], nil] setTintColor:[UIColor darkGrayColor]];
 }
 
 #pragma mark - Helper methods
@@ -227,7 +198,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat totalCellView = self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - self.searchbarUser.frame.size.height - 20;
+    CGFloat totalCellView = self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - 20;
     
     CGFloat numberOfUserRows = 5;
     CGFloat customTableCellHeight = totalCellView/numberOfUserRows;
@@ -310,8 +281,6 @@
             break;
         }
     }
-    
-    [[UIBarButtonItem appearanceWhenContainedIn:[self.searchbarUser class], nil] setTintColor:[UIColor darkGrayColor]];
     
     [sectionHeaderView addSubview:self.searchbarUserInTableView];
     

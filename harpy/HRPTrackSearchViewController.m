@@ -277,6 +277,14 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.player.isPlaying == YES)
+    {
+        [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+    }
+    self.player = nil;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     HRPPostPreviewViewController *destinVC = segue.destinationViewController;

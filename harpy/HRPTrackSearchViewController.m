@@ -166,17 +166,8 @@
 
 #pragma mark - Search bar methods
 
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    if ([searchText isEqualToString:@""])
-    {
-        [searchBar performSelector: @selector(resignFirstResponder)
-                        withObject: nil
-                        afterDelay: 0.1];
-        
-        self.filteredSongArray = self.songArray;
-        [self.songTableView reloadData];
-    }
+-(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    NSString *searchText = searchBar.text;
     
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
     self.navigationItem.titleView = self.activityIndicator;

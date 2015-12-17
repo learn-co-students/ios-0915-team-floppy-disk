@@ -43,6 +43,7 @@
 		E938012C1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E938012B1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.m */; };
 		E93801311BFD1703004CC8A2 /* HRPParseNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */; };
 		E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801331BFD1764004CC8A2 /* HRPUser.m */; };
+		E944AA7A1C23206500660E9A /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E944AA791C23206500660E9A /* CustomButton.m */; settings = {ASSET_TAGS = (); }; };
 		E976148D1C0A6646003B3C5B /* SF-UI-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E97614891C0A6607003B3C5B /* SF-UI-Display-Regular.otf */; };
 		E976148E1C0A6648003B3C5B /* SF-UI-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */; };
 		E976148F1C0A664A003B3C5B /* SF-UI-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148C1C0A6607003B3C5B /* SF-UI-Display-Heavy.otf */; };
@@ -147,6 +148,8 @@
 		E93801301BFD1703004CC8A2 /* HRPParseNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPParseNetworkService.m; sourceTree = "<group>"; };
 		E93801321BFD1764004CC8A2 /* HRPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPUser.h; sourceTree = "<group>"; };
 		E93801331BFD1764004CC8A2 /* HRPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPUser.m; sourceTree = "<group>"; };
+		E944AA781C23206500660E9A /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
+		E944AA791C23206500660E9A /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		E97614891C0A6607003B3C5B /* SF-UI-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Regular.otf"; sourceTree = "<group>"; };
 		E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Semibold.otf"; sourceTree = "<group>"; };
 		E976148B1C0A6607003B3C5B /* SF-UI-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Medium.otf"; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				E90587341C1CD5C600313AB5 /* HYPMapsVC.m */,
 				E90587301C1CD0C700313AB5 /* HYPUserSearchVC.h */,
 				E90587311C1CD0C700313AB5 /* HYPUserSearchVC.m */,
+				E944AA781C23206500660E9A /* CustomButton.h */,
+				E944AA791C23206500660E9A /* CustomButton.m */,
 			);
 			name = TabTest;
 			sourceTree = "<group>";
@@ -565,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B0A73251BFD24420010A257 /* HRPTrack.m in Sources */,
+				E944AA7A1C23206500660E9A /* CustomButton.m in Sources */,
 				E91B6FE21C19EB0800FEC1AB /* HRPNetworkAlertView.m in Sources */,
 				E9FA651E1C056C55008DDE69 /* HRPUserSearchVC.m in Sources */,
 				E9F4DE2D1C162B77004396FC /* HRPEditProfileTableVC.m in Sources */,

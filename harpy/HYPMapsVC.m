@@ -12,6 +12,7 @@
 #import "UIColor+HRPColor.h"
 #import <Parse/Parse.h>
 #import "CLLocationManager+Shared.h"
+#import "CustomButton.h"
 #import <MapKit/MapKit.h>
 @import GoogleMaps;
 
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *defaultMarkerImage;
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (strong, nonatomic) GMSMarker *defaultMarker;
+@property (nonatomic, strong) UIButton* postSongButton;
 @property (nonatomic, assign) BOOL readyToPin;
 @property (nonatomic, assign) BOOL scrollGestures;
 @property (nonatomic, strong) GMSCoordinateBounds *bounds;
@@ -44,6 +46,8 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.delegate = self;
     
+    self.defaultMarkerImage.hidden = YES;
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionUpdatedNotification:) name:@"sessionUpdated" object:nil];
     
     self.mapView.settings.scrollGestures = YES;
@@ -52,7 +56,46 @@
     [self locationManagerPermissions];
     [self.locationManager startUpdatingLocation];
     [self queryForHRPosts];
+    
+    
+    UIButton *button = [CustomButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [self imageWithColor:[UIColor colorWithHue:0 saturation:0 brightness:1 alpha:1]];
+    //[button setImage:whiteColor forState:UIControlStateNormal];
+    //[button setBackgroundImage:image forState:UIControlStateNormal];
+    button.frame = CGRectMake(252, 380, 60, 60);
+    button.clipsToBounds = YES;
+    button.layer.cornerRadius = 60/2.0f;
+    button.layer.borderColor = [UIColor grayColor].CGColor;
+    button.layer.borderWidth = 2.0f;
+
+//    button.layer.masksToBounds = NO;
+//    
+//    button.layer.shadowColor = [UIColor grayColor].CGColor;
+//    button.layer.shadowOpacity = 0.5;
+//    button.layer.shadowRadius = 5;
+//    button.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    
+    [self.view addSubview:button];
 }
+
+
+- (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -110,6 +153,26 @@
 }
 
 #pragma mark - Action Methods
+
+- (IBAction)postSongButtonTapped:(id)sender
+{
+    if (self.defaultMarkerImage.hidden)
+    {
+        self.defaultMarkerImage.hidden = NO;
+    }
+    else
+    {
+        self.defaultMarkerImage.hidden = YES;
+    }
+}
+
+
+-(void)roundButtonDidTap:(UIButton*)tappedButton{
+    
+    NSLog(@"roundButtonDidTap Method Called");
+    
+}
+
 
 #pragma mark - CLLocationManagerDelegate
 

@@ -36,11 +36,9 @@
     self.tableviewUser.delegate = self;
     self.tableviewUser.dataSource = self;
     self.searchbarUser.delegate = self;
-    self.searchbarUserInTableView.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self.searchbarUser setShowsCancelButton:NO animated:NO];
-    [self.searchbarUserInTableView setShowsCancelButton:NO animated:NO]; //May not need
     self.parseService = [HRPParseNetworkService sharedService];
     
     [self initializeEmptyUsersArray];
@@ -290,6 +288,8 @@
     UIImage *whiteColorImage = [self imageWithColor:[UIColor whiteColor]];
     
     self.searchbarUserInTableView = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50.0)];
+    self.searchbarUserInTableView.delegate = self;
+    [self.searchbarUserInTableView setShowsCancelButton:NO animated:NO];
     self.searchbarUserInTableView.keyboardAppearance = UIKeyboardAppearanceLight;
     self.searchbarUserInTableView.backgroundImage = whiteColorImage;
     [[self searchSubviewsForTextFieldIn:self.searchbarUserInTableView] setBackgroundColor:[UIColor whiteColor]];

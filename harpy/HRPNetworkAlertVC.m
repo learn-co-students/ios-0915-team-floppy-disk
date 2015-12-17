@@ -17,7 +17,8 @@
 
 @implementation HRPNetworkAlertVC
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
@@ -26,7 +27,8 @@
     [self.view addSubview:self.alertView];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
 }
 

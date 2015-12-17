@@ -24,7 +24,6 @@
 {
     [super viewDidLoad];
     
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserDidLogout:) name:UserDidLogOutNotificationName object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUserDidLogin:) name:UserDidLogInNotificationName object:nil];
     
@@ -37,48 +36,51 @@
     }
 }
 
-#pragma mark Send to designated view controller
--(void)showLogIn {
+#pragma mark - Send to Designated View Controller
+
+-(void)showLogIn
+{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:LogInViewControllerStoryboardID];
     
     [self setEmbeddedViewController:viewController];
 }
 
--(void)showHome {
+-(void)showHome
+{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Map" bundle:nil];
     UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:HomeViewControllerStoryboardID];
     
     [self setEmbeddedViewController:viewController];
 }
 
-
 #pragma mark NSNotificationCenter handlers
 
--(void)handleUserDidLogout:(NSNotification *)notification {
-    NSLog(@"handleUserDidLogout called");
+-(void)handleUserDidLogout:(NSNotification *)notification
+{
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:LoggedInUserDefaultsKey];
     
     [self showLogIn];
 }
 
--(void)handleUserDidLogin:(NSNotification *)notification {
-    
+-(void)handleUserDidLogin:(NSNotification *)notification
+{
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:LoggedInUserDefaultsKey];
     
     [self showHome];
 }
 
-
 #pragma mark Child view controllers
 
--(void)setEmbeddedViewController:(UIViewController *)controller {
-    NSLog(@"setEmbeddedViewController called");
-    if ([self.childViewControllers containsObject:controller]) {
+-(void)setEmbeddedViewController:(UIViewController *)controller
+{
+    if ([self.childViewControllers containsObject:controller])
+    {
         return;
     }
     
-    for (UIViewController *vc in self.childViewControllers) {
+    for (UIViewController *vc in self.childViewControllers)
+    {
         [vc willMoveToParentViewController:nil];
         
         if (vc.isViewLoaded) {
@@ -88,7 +90,8 @@
         [vc removeFromParentViewController];
     }
     
-    if (!controller) {
+    if (!controller)
+    {
         return;
     }
     
@@ -96,7 +99,5 @@
     [self.containerView addSubview:controller.view];
     [controller didMoveToParentViewController:self];
 }
-
-
 
 @end

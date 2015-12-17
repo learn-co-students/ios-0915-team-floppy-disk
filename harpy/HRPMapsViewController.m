@@ -234,7 +234,7 @@
                 [self.locationManager  requestWhenInUseAuthorization];
             } else
             {
-                NSLog(@"Info.plist does not contain NSLocationAlwaysUsageDescription or NSLocationWhenInUseUsageDescription");
+                //NSLog(@"Info.plist does not contain NSLocationAlwaysUsageDescription or NSLocationWhenInUseUsageDescription");
             }
         }
     }

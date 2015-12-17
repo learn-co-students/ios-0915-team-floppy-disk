@@ -255,7 +255,7 @@
 
             
             [self dismissViewControllerAnimated:YES completion:^{
-                NSLog(@"save user with new image success!");
+                //NSLog(@"save user with new image success!");
             }];
         }
     }];

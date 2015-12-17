@@ -96,6 +96,4 @@
     return customTableCellHeight;
 }
 
-#pragma mark - Action Methods
-
 @end

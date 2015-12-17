@@ -77,8 +77,6 @@
     }
 }
 
-
-
 #pragma mark - Parse Queries
 
 - (void)retrieveHRPosts

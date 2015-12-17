@@ -208,17 +208,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self.tableviewUser dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
-    cell.preservesSuperviewLayoutMargins = NO;
-    cell.layoutMargins = UIEdgeInsetsZero;
     PFUser *user = [self.users objectAtIndex:[indexPath row]];
+    
+    UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.imageView.image = [UIImage imageNamed:@"periwinkleImage.png"];
-    cell.imageView.layer.cornerRadius =  cell.imageView.frame.size.height/2;
-    [cell.imageView.layer setBorderColor: [[UIColor ironColor] CGColor]];
+    cell.imageView.layer.cornerRadius =  42.5;
+    [cell.imageView.layer setBorderColor: [ironColor CGColor]];
     [cell.imageView.layer setBorderWidth: 1.0];
     cell.imageView.layer.masksToBounds = YES;
     PFFile *imageFile = [user objectForKey:@"userAvatar"];
+    
     if (imageFile)
     {
         [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {

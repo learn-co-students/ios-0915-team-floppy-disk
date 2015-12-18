@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1rk-sK-M4k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1rk-sK-M4k">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -31,7 +31,6 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_marker" translatesAutoresizingMaskIntoConstraints="NO" id="yRa-kE-mpk">
                                 <rect key="frame" x="196" y="358" width="22" height="39"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="Ktn-XM-y05"/>
                                     <constraint firstAttribute="width" secondItem="yRa-kE-mpk" secondAttribute="height" multiplier="22:39" id="qjX-Q1-P6m"/>
@@ -39,7 +38,6 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cey-M4-euM">
                                 <rect key="frame" x="0.0" y="678" width="414" height="58"/>
-                                <animations/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Semibold" family="SF UI Display" pointSize="15"/>
                                 <state key="normal" title="POST A SONG">
@@ -50,7 +48,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -114,7 +111,6 @@
                         <subviews>
                             <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-PT-vpe">
                                 <rect key="frame" x="0.0" y="64" width="414" height="60"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="oKG-6l-OLq"/>
                                 </constraints>
@@ -122,19 +118,17 @@
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8bJ-AT-u0b">
                                 <rect key="frame" x="0.0" y="124" width="414" height="612"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="95" id="m8I-1j-ZRe">
                                         <rect key="frame" x="0.0" y="28" width="414" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="center" tableViewCell="m8I-1j-ZRe" id="QYb-hY-E8K">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="94.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qdj-aQ-Kht">
                                                     <rect key="frame" x="15" y="4" width="85" height="85"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="85" id="1DF-tb-AnK"/>
                                                         <constraint firstAttribute="width" secondItem="Qdj-aQ-Kht" secondAttribute="height" multiplier="1:1" id="GxI-7l-pVI"/>
@@ -145,8 +139,7 @@
                                                     <rect key="frame" x="108" y="16" width="295" height="61"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8N-uP-1Bf">
-                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="18"/>
-                                                            <animations/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="165" height="18"/>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -156,30 +149,25 @@
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="real name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lk1-xG-zqZ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="295" height="16"/>
-                                                                    <animations/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="short bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esU-2D-JtO">
                                                                     <rect key="frame" x="0.0" y="19" width="295" height="16"/>
-                                                                    <animations/>
                                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <animations/>
                                                         </stackView>
                                                     </subviews>
-                                                    <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="U8N-uP-1Bf" secondAttribute="trailing" constant="230" id="1qc-wV-x9v"/>
+                                                        <constraint firstAttribute="trailing" secondItem="U8N-uP-1Bf" secondAttribute="trailing" constant="130" id="1qc-wV-x9v"/>
                                                         <constraint firstItem="f32-9V-OPa" firstAttribute="width" secondItem="ieZ-zH-wyh" secondAttribute="width" id="Nxe-94-p3v"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="ieZ-zH-wyh" firstAttribute="centerY" secondItem="Qdj-aQ-Kht" secondAttribute="centerY" id="1da-jm-bKa"/>
                                                 <constraint firstItem="Qdj-aQ-Kht" firstAttribute="centerY" secondItem="QYb-hY-E8K" secondAttribute="centerY" id="Ebb-aE-bPc"/>
@@ -187,7 +175,6 @@
                                                 <constraint firstItem="ieZ-zH-wyh" firstAttribute="leading" secondItem="Qdj-aQ-Kht" secondAttribute="trailing" constant="8" symbolic="YES" id="tyf-0s-L9s"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstItem="ieZ-zH-wyh" firstAttribute="width" secondItem="m8I-1j-ZRe" secondAttribute="height" multiplier="31:10" id="QS7-PQ-EaK"/>
                                         </constraints>
@@ -195,7 +182,6 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="mp4-PT-vpe" firstAttribute="top" secondItem="6hZ-Au-I0f" secondAttribute="bottom" id="24x-Qh-iNg"/>
@@ -252,7 +238,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hyc-SK-Smo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

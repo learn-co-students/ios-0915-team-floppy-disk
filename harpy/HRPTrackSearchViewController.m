@@ -278,6 +278,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if (self.player.isPlaying == YES)
+    {
+        [self.player setIsPlaying:!self.player.isPlaying callback:nil];
+    }
+    self.player = nil;
+    
     HRPPostPreviewViewController *destinVC = segue.destinationViewController;
     NSIndexPath *indexPath = self.songTableView.indexPathForSelectedRow;
     HRPTrack *track = self.filteredSongArray[indexPath.row];

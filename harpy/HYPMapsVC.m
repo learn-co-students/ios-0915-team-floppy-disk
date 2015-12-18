@@ -12,6 +12,7 @@
 #import "UIColor+HRPColor.h"
 #import <Parse/Parse.h>
 #import <ChameleonFramework/Chameleon.h>
+#import <CoreImage/CoreImage.h>
 #import "CLLocationManager+Shared.h"
 #import "CustomButton.h"
 #import <MapKit/MapKit.h>
@@ -58,29 +59,44 @@
     [self.locationManager startUpdatingLocation];
     [self queryForHRPosts];
     
+    UIView *shadow = [[UIView alloc] init];
+    [shadow setBackgroundColor:[UIColor grayColor]];
+    shadow.alpha = 0.35;
+    shadow.frame = CGRectMake(252, 381, 100, 100);
+    shadow.clipsToBounds = YES;
+    shadow.layer.cornerRadius = 100/2.0f;
+    //[self.view addSubview:shadow];
+    
+    //Get a UIImage from the UIView
+    UIGraphicsBeginImageContext(shadow.bounds.size);
+    [shadow.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //Blur the UIImage with a CIFilter
+    CIImage *imageToBlur = [CIImage imageWithCGImage:viewImage.CGImage];
+    CIFilter *gaussianBlurFilter = [CIFilter filterWithName: @"CIGaussianBlur"];
+    [gaussianBlurFilter setValue:imageToBlur forKey: @"inputImage"];
+    [gaussianBlurFilter setValue:[NSNumber numberWithFloat: 0.803] forKey: @"inputRadius"];
+    CIImage *resultImage = [gaussianBlurFilter valueForKey: @"outputImage"];
+    UIImage *endImage = [[UIImage alloc] initWithCIImage:resultImage];
+    
+    //Place the UIImage in a UIImageView
+    UIImageView *newView = [[UIImageView alloc] init];
+    newView.frame = CGRectMake(249, 378, 65, 65);
+    newView.image = endImage;
+    [self.view addSubview:newView];
     
     UIButton *button = [CustomButton buttonWithType:UIButtonTypeCustom];
-    //UIColor *customFlatWhiteColor = [(UIColor *)[UIColor colorWithHue:0.0 saturation:0.0 brightness:1.0 alpha:1.0] flatten];
-    
     UIImage *image = [self imageWithColor:FlatWhite];
-    
     [button setBackgroundImage:image forState:UIControlStateNormal];
-    button.frame = CGRectMake(252, 380, 60, 60);
+    button.frame = CGRectMake(252, 380, 59, 59);
     button.clipsToBounds = YES;
     button.layer.cornerRadius = 60/2.0f;
-//    button.layer.borderColor = customFlatWhiteColor.CGColor;
-//    button.layer.borderWidth = 2.0f;
-
-//    button.layer.masksToBounds = NO;
-//    
-//    button.layer.shadowColor = [UIColor grayColor].CGColor;
-//    button.layer.shadowOpacity = 0.5;
-//    button.layer.shadowRadius = 5;
-//    button.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-    
+    [[button layer] setBorderWidth:1.0f];
+    [[button layer] setBorderColor:[UIColor flatWhiteColor].CGColor];
     [self.view addSubview:button];
 }
-
 
 - (UIImage *)imageWithColor:(UIColor *)color
 {
@@ -90,7 +106,6 @@
     
     CGContextSetFillColorWithColor(context, [color CGColor]);
     CGContextFillRect(context, rect);
-    
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

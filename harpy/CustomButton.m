@@ -34,30 +34,7 @@
 
 - (void)setupView
 {
-    self.layer.cornerRadius = 10;
-    self.layer.borderWidth = 1.0;
-    self.layer.borderColor = [UIColor colorWithRed:167.0/255.0 green:140.0/255.0 blue:98.0/255.0 alpha:0.25].CGColor;
-    self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowRadius = 1;
-    [self clearHighlightView];
-    
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.layer.bounds;
-    gradient.cornerRadius = 10;
-    gradient.colors = [NSArray arrayWithObjects:
-                       (id)[UIColor colorWithWhite:1.0f alpha:1.0f].CGColor,
-                       (id)[UIColor colorWithWhite:1.0f alpha:0.0f].CGColor,
-                       (id)[UIColor colorWithWhite:0.0f alpha:0.0f].CGColor,
-                       (id)[UIColor colorWithWhite:0.0f alpha:0.4f].CGColor,
-                       nil];
-    float height = gradient.frame.size.height;
-    gradient.locations = [NSArray arrayWithObjects:
-                          [NSNumber numberWithFloat:0.0f],
-                          [NSNumber numberWithFloat:0.2*30/height],
-                          [NSNumber numberWithFloat:1.0-0.1*30/height],
-                          [NSNumber numberWithFloat:1.0f],
-                          nil];
-    [self.layer addSublayer:gradient];}
+}
 
 - (void)highlightView
 {
@@ -79,6 +56,8 @@
     }
     [super setHighlighted:highlighted];
 }
+
+
 
 
 @end

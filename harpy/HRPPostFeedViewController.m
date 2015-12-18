@@ -110,32 +110,53 @@
     
     UILabel *daysLabel = (UILabel *)[cell viewWithTag:9];
     PFObject *postInDictionary = self.postsArray[0];
-    NSInteger daysSincePost = [self getDaysSincePost:postInDictionary];
-    daysLabel.text = [NSString stringWithFormat:@"%ldd", (long)daysSincePost];
+    NSString *timeSincePost = [self getDaysSincePost:postInDictionary];
+    
+    daysLabel.text = timeSincePost;
     
     return cell;
 }
 
--(NSInteger)getDaysSincePost:(PFObject *)post {
+-(NSString *)getDaysSincePost:(PFObject *)post {
     
     NSDate *date = [post createdAt];
     
+    NSLog(@"%@", date);
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *stringFromDate = [formatter stringFromDate:date];
 
     NSDateFormatter *currentFormat = [[NSDateFormatter alloc]init];
-    [currentFormat setDateFormat:@"yyyy-MM-dd"];
+    [currentFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *currentDate = [currentFormat stringFromDate:[NSDate date]];
     
     NSDateFormatter *diffFormat = [[NSDateFormatter alloc]init];
-    [diffFormat setDateFormat:@"yyyy-MM-dd"];
+    [diffFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *start = [diffFormat dateFromString:stringFromDate];
     NSDate *end = [diffFormat dateFromString:currentDate];
     NSCalendar *calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *gregComps = [calendar components:NSCalendarUnitDay fromDate:start toDate:end options:NSCalendarWrapComponents];
+    NSDateComponents *dayComps = [calendar components:NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:start toDate:end options:NSCalendarWrapComponents];
     
-    return [gregComps day];
+    NSInteger daysSince = [dayComps day];
+    NSInteger hoursSince = [dayComps hour];
+    NSInteger minutesSince = [dayComps minute];
+    NSInteger secondsSince = [dayComps second];
+    
+    NSString *timeSince = @"";
+    
+    if (daysSince >= 1) {
+        timeSince = [NSString stringWithFormat:@"%lid", daysSince];
+    } else if (daysSince < 1 && hoursSince >= 1) {
+        timeSince = [NSString stringWithFormat:@"%lih", hoursSince];
+    } else if (hoursSince < 1 && minutesSince >= 1) {
+        timeSince = [NSString stringWithFormat:@"%lim", minutesSince];
+    } else if (minutesSince < 1) {
+        timeSince = [NSString stringWithFormat:@"%lis", secondsSince];
+    }
+    
+    return timeSince;
+
 }
 
 -(void)getUserProfilePictureForUser:(NSString *)user WithCompletion:(void (^)(NSData *imageData))completion{

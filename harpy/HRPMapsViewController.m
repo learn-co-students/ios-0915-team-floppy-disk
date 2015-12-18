@@ -14,6 +14,7 @@
 #import "HRPTrackSearchViewController.h"
 #import "HRPPost.h"
 #import <MapKit/MapKit.h>
+#import <ChameleonFramework/Chameleon.h>
 #import <Parse/Parse.h>
 #import "HRPPostFeedViewController.h"
 #import "HRPPostPreviewViewController.h"

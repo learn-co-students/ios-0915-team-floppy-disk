@@ -11,6 +11,7 @@
 #import "HYPMapsVC.h"
 #import "UIColor+HRPColor.h"
 #import <Parse/Parse.h>
+#import <ChameleonFramework/Chameleon.h>
 #import "CLLocationManager+Shared.h"
 #import "CustomButton.h"
 #import <MapKit/MapKit.h>
@@ -59,14 +60,16 @@
     
     
     UIButton *button = [CustomButton buttonWithType:UIButtonTypeCustom];
-    UIImage *image = [self imageWithColor:[UIColor colorWithHue:0 saturation:0 brightness:1 alpha:1]];
-    //[button setImage:whiteColor forState:UIControlStateNormal];
-    //[button setBackgroundImage:image forState:UIControlStateNormal];
+    //UIColor *customFlatWhiteColor = [(UIColor *)[UIColor colorWithHue:0.0 saturation:0.0 brightness:1.0 alpha:1.0] flatten];
+    
+    UIImage *image = [self imageWithColor:FlatWhite];
+    
+    [button setBackgroundImage:image forState:UIControlStateNormal];
     button.frame = CGRectMake(252, 380, 60, 60);
     button.clipsToBounds = YES;
     button.layer.cornerRadius = 60/2.0f;
-    button.layer.borderColor = [UIColor grayColor].CGColor;
-    button.layer.borderWidth = 2.0f;
+//    button.layer.borderColor = customFlatWhiteColor.CGColor;
+//    button.layer.borderWidth = 2.0f;
 
 //    button.layer.masksToBounds = NO;
 //    

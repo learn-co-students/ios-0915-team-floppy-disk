@@ -1,5 +1,8 @@
 PODS:
   - Bolts/Tasks (1.5.0)
+  - ChameleonFramework (2.0.6):
+    - ChameleonFramework/Default (= 2.0.6)
+  - ChameleonFramework/Default (2.0.6)
   - GoogleMaps (1.10.5)
   - Parse (1.9.1):
     - Bolts/Tasks (>= 1.4.0)
@@ -10,6 +13,7 @@ PODS:
   - Spotify-iOS-SDK (0.12.0)
 
 DEPENDENCIES:
+  - ChameleonFramework
   - GoogleMaps
   - Parse
   - ParseUI
@@ -22,6 +26,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
+  ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
   GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
   ParseUI: c2bcdfbb00330e464b5b773266ae221697a3bb7b

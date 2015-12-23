@@ -321,11 +321,11 @@
         [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-        [sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
+        //[sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
     } else if (self.player.isPlaying == YES)
     {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
-        [sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        //[sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
         self.playStatusLabel.text = @"Paused";
         self.playerCoverView.image = [UIImage imageNamed:@"white_play"];
     }

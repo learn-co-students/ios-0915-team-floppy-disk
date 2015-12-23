@@ -328,6 +328,11 @@
     
     UIButton *playSongButton = (UIButton *)[cell viewWithTag:5];
     [playSongButton addTarget:self action:@selector(playButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    NSURL *currentSong = self.player.currentTrackURI;
+    if ([HRPPosts[@"spotifyURL"] isEqual:currentSong]) {
+        //[playSongButton setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
+    }
+    
     
     return cell;
 }
@@ -466,6 +471,7 @@
 
 - (IBAction)playButtonTapped:(UIButton *)sender
 {
+    
     if (self.player.isPlaying == NO)
     {
         CGFloat musicPlayerHeight = self.musicPlayerView.frame.size.height;
@@ -493,13 +499,15 @@
         NSURL *url = [NSURL URLWithString:urlString];
         
         [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
-            
+
         }];
-        [sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
+        
+        //[sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
+
     
     } else if (self.player.isPlaying == YES) {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
-        [sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        //[sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
         self.playPauseLabel.text = @"Paused";
         self.coverArtView.image = [UIImage imageNamed:@"white_play"];
     }

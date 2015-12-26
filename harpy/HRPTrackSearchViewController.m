@@ -12,6 +12,7 @@
 #import "HRPTrackCreator.h"
 #import "HRPPostPreviewViewController.h"
 #import <Parse/Parse.h>
+#import "HRPPlayerEnabledTableViewCell.h"
 
 @interface HRPTrackSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate>
 
@@ -231,39 +232,44 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
+    HRPPlayerEnabledTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"trackCell" forIndexPath:indexPath];
     
     UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
     cell.backgroundColor = [UIColor whiteColor];
     
     HRPTrack *track  = self.filteredSongArray[indexPath.row];
     
-    UILabel *songNameLabel = (UILabel *)[cell viewWithTag:1];
-    songNameLabel.text = track.songTitle;
-    songNameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:15.0];
+    //[cell setCellDetailsFromTrack:track];
     
-    UILabel *artistNameLabel = (UILabel *)[cell viewWithTag:2];
-    artistNameLabel.text = track.artistName;
-    artistNameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
-    
-    UILabel *albumLabel = (UILabel *)[cell viewWithTag:3];
-    albumLabel.text = track.albumName;
-    albumLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
-    
-    UIImageView *coverArt = (UIImageView *)[cell viewWithTag:4];
+//    UILabel *songNameLabel = (UILabel *)[cell viewWithTag:1];
+    cell.songNameLabel.text = track.songTitle;
+    cell.songNameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:15.0];
+//    
+//    UILabel *artistNameLabel = (UILabel *)[cell viewWithTag:2];
+    cell.artistNameLabel.text = track.artistName;
+    cell.artistNameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
+//
+//    UILabel *albumLabel = (UILabel *)[cell viewWithTag:3];
+    cell.albumLabel.text = track.albumName;
+    cell.albumLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
+
+//    [cell.coverArt.layer setBorderColor:[ironColor CGColor]];
+//    UIImageView *coverArt = (UIImageView *)[cell viewWithTag:4];
     if (track.spotifyLogo == nil) {
-        coverArt.image = [UIImage imageWithData:track.albumCoverArt];
-        [coverArt.layer setBorderColor: [ironColor CGColor]];
+        cell.coverArt.image = [UIImage imageWithData:track.albumCoverArt];
+        [cell.coverArt.layer setBorderColor: [ironColor CGColor]];
     } else {
-        coverArt.image = track.spotifyLogo;
-        [coverArt.layer setBorderColor: [ironColor CGColor]];
+        cell.coverArt.image = track.spotifyLogo;
+        [cell.coverArt.layer setBorderColor: [ironColor CGColor]];
     }
     
-    UIButton *playTrackButton = (UIButton *)[cell viewWithTag:5];
-    [playTrackButton addTarget:self action:@selector(cellPlayButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *postTrackButton = (UIButton *)[cell viewWithTag:6];
-    [postTrackButton addTarget:self action:@selector(cellPostButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *playTrackButton = (UIButton *)[cell viewWithTag:5];
+    [cell.playTrackButton addTarget:self action:@selector(cellPlayButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+//    if (self.player.isPlaying) {
+//        if ([self.player.currentTrackURI isEqual:track.spotifyURI]) {
+//            [playTrackButton setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
+//        }
+//    }
     
     return cell;
 }
@@ -321,11 +327,11 @@
         [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
             NSLog(@"%@", error);
         }];
-        //[sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
     } else if (self.player.isPlaying == YES)
     {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];
-        //[sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
         self.playStatusLabel.text = @"Paused";
         self.playerCoverView.image = [UIImage imageNamed:@"white_play"];
     }

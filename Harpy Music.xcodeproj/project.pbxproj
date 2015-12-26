@@ -15,6 +15,7 @@
 		3BAC25251C050D41004C6790 /* HRPPostPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */; };
 		3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25281C0CA4F6004C6790 /* HRPPost.m */; };
 		3BC25DEB1C0E0F3D00A831CE /* postTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */; };
+		3BD6ADC01C2B40250058C0BE /* HRPPlayerEnabledTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD6ADBF1C2B40240058C0BE /* HRPPlayerEnabledTableViewCell.m */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
 		8E601F7CB6EFFCDBB0089D15 /* libPods-Harpy Music.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E167BB7AD1B9424182BE2DBF /* libPods-Harpy Music.a */; };
 		E91B6FDF1C19E7B000FEC1AB /* HRPNetworkAlertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E91B6FDE1C19E7B000FEC1AB /* HRPNetworkAlertVC.m */; };
@@ -78,6 +79,8 @@
 		3BAC25271C0CA4F6004C6790 /* HRPPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPPost.h; sourceTree = "<group>"; };
 		3BAC25281C0CA4F6004C6790 /* HRPPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPost.m; sourceTree = "<group>"; };
 		3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = postTable.storyboard; sourceTree = "<group>"; };
+		3BD6ADBE1C2B40240058C0BE /* HRPPlayerEnabledTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPPlayerEnabledTableViewCell.h; sourceTree = "<group>"; };
+		3BD6ADBF1C2B40240058C0BE /* HRPPlayerEnabledTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPlayerEnabledTableViewCell.m; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		5C33673E6E1FC67B0046850B /* Pods-Harpy Music.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Harpy Music.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Harpy Music/Pods-Harpy Music.debug.xcconfig"; sourceTree = "<group>"; };
 		A669C21BA75DCA33C37F59AD /* Pods-Harpy Music.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Harpy Music.release.xcconfig"; path = "Pods/Target Support Files/Pods-Harpy Music/Pods-Harpy Music.release.xcconfig"; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 			children = (
 				E91B6FE01C19EB0800FEC1AB /* HRPNetworkAlertView.h */,
 				E91B6FE11C19EB0800FEC1AB /* HRPNetworkAlertView.m */,
+				3BD6ADBE1C2B40240058C0BE /* HRPPlayerEnabledTableViewCell.h */,
+				3BD6ADBF1C2B40240058C0BE /* HRPPlayerEnabledTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -522,6 +527,7 @@
 				3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */,
 				E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */,
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
+				3BD6ADC01C2B40250058C0BE /* HRPPlayerEnabledTableViewCell.m in Sources */,
 				E97E73CA1C20747700CBDD07 /* CLLocationManager+Shared.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,
 			);

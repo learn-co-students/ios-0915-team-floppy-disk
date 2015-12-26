@@ -37,7 +37,7 @@
                                 <rect key="frame" x="0.0" y="108" width="414" height="628"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackCell" rowHeight="109" id="Hdp-aM-CsO">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackCell" rowHeight="109" id="Hdp-aM-CsO" customClass="HRPPlayerEnabledTableViewCell">
                                         <rect key="frame" x="0.0" y="92" width="414" height="109"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hdp-aM-CsO" id="tD8-Om-UFP">
@@ -119,6 +119,8 @@
                                             <constraint firstItem="ckb-wR-WKR" firstAttribute="leading" secondItem="Hdp-aM-CsO" secondAttribute="leading" constant="8" id="2V0-V8-kcZ"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="coverArt" destination="ckb-wR-WKR" id="uKD-3a-R98"/>
+                                            <outlet property="playTrackButton" destination="p7c-kV-oYy" id="eFm-bi-rNK"/>
                                             <segue destination="qmp-pb-MEz" kind="show" id="kRo-lC-QyE"/>
                                         </connections>
                                     </tableViewCell>

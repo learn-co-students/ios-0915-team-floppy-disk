@@ -38,6 +38,9 @@
     }
 }
 
+//-(void)prepareForReuse {
+//    [self.playTrackButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+//}
 
 
 

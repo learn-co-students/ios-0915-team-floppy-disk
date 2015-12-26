@@ -239,22 +239,15 @@
     
     HRPTrack *track  = self.filteredSongArray[indexPath.row];
     
-    //[cell setCellDetailsFromTrack:track];
-    
-//    UILabel *songNameLabel = (UILabel *)[cell viewWithTag:1];
     cell.songNameLabel.text = track.songTitle;
     cell.songNameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:15.0];
-//    
-//    UILabel *artistNameLabel = (UILabel *)[cell viewWithTag:2];
+
     cell.artistNameLabel.text = track.artistName;
     cell.artistNameLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
-//
-//    UILabel *albumLabel = (UILabel *)[cell viewWithTag:3];
+
     cell.albumLabel.text = track.albumName;
     cell.albumLabel.font = [UIFont fontWithName:@"SFUIDisplay-Regular" size:12.0];
 
-//    [cell.coverArt.layer setBorderColor:[ironColor CGColor]];
-//    UIImageView *coverArt = (UIImageView *)[cell viewWithTag:4];
     if (track.spotifyLogo == nil) {
         cell.coverArt.image = [UIImage imageWithData:track.albumCoverArt];
         [cell.coverArt.layer setBorderColor: [ironColor CGColor]];
@@ -263,13 +256,7 @@
         [cell.coverArt.layer setBorderColor: [ironColor CGColor]];
     }
     
-//    UIButton *playTrackButton = (UIButton *)[cell viewWithTag:5];
     [cell.playTrackButton addTarget:self action:@selector(cellPlayButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-//    if (self.player.isPlaying) {
-//        if ([self.player.currentTrackURI isEqual:track.spotifyURI]) {
-//            [playTrackButton setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
-//        }
-//    }
     
     return cell;
 }
@@ -326,8 +313,13 @@
         
         [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
             NSLog(@"%@", error);
+            if (self.player.isPlaying) {
+                if ([self.player.currentTrackURI isEqual:url]) {
+                    [sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
+                }
+            }
         }];
-        [sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
+        
     } else if (self.player.isPlaying == YES)
     {
         [self.player setIsPlaying:!self.player.isPlaying callback:nil];

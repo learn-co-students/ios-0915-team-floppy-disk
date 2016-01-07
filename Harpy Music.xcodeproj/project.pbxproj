@@ -179,7 +179,6 @@
 			children = (
 				3BD6AE451C3ED9500058C0BE /* SystemConfiguration.framework */,
 				E9F3F0541C319637002248EA /* StoreKit.framework */,
-                69f3d83d4dc0fb09cecad66e143bbfcaa515f2e6
 				E167BB7AD1B9424182BE2DBF /* libPods-Harpy Music.a */,
 			);
 			name = Frameworks;

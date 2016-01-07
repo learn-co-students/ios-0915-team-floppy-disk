@@ -127,6 +127,7 @@
 		E9E211151BFD76B700739143 /* HRPValidationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPValidationManager.h; sourceTree = "<group>"; };
 		E9E211161BFD76B700739143 /* HRPValidationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPValidationManager.m; sourceTree = "<group>"; };
 		E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
+		E9F3F0541C319637002248EA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E9F4DE2B1C162B77004396FC /* HRPEditProfileTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPEditProfileTableVC.h; sourceTree = "<group>"; };
 		E9F4DE2C1C162B77004396FC /* HRPEditProfileTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPEditProfileTableVC.m; sourceTree = "<group>"; };
 		E9F4DE2E1C163745004396FC /* HRPSettingsTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSettingsTableVC.h; sourceTree = "<group>"; };
@@ -177,6 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				3BD6AE451C3ED9500058C0BE /* SystemConfiguration.framework */,
+				E9F3F0541C319637002248EA /* StoreKit.framework */,
+                69f3d83d4dc0fb09cecad66e143bbfcaa515f2e6
 				E167BB7AD1B9424182BE2DBF /* libPods-Harpy Music.a */,
 			);
 			name = Frameworks;
@@ -396,6 +399,11 @@
 					E9335C561BFA7EBC002DD9C6 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = K5325KADLR;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					E9335C6F1BFA7EBD002DD9C6 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -653,12 +661,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = harpy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blockchainme.haprymusic;
 				PRODUCT_NAME = "Harpy Music";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -669,12 +679,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = harpy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blockchainme.haprymusic;
 				PRODUCT_NAME = "Harpy Music";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

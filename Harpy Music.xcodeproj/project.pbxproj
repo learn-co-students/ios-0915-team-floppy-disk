@@ -41,7 +41,6 @@
 		E9E211141BFD3E2500739143 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9E211131BFD3E2500739143 /* Keys.plist */; };
 		E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E211161BFD76B700739143 /* HRPValidationManager.m */; };
 		E9EE0EB81BFFCB0100C4F1DE /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9EE0EB71BFFCB0100C4F1DE /* Manager.storyboard */; };
-		E9F3F0551C319637002248EA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F3F0541C319637002248EA /* StoreKit.framework */; };
 		E9F4DE2D1C162B77004396FC /* HRPEditProfileTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F4DE2C1C162B77004396FC /* HRPEditProfileTableVC.m */; };
 		E9F4DE301C163745004396FC /* HRPSettingsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F4DE2F1C163745004396FC /* HRPSettingsTableVC.m */; };
 		E9F69D4C1C17CE1700E9C784 /* HRPAccountInformationTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F69D4B1C17CE1700E9C784 /* HRPAccountInformationTableVC.m */; };
@@ -147,7 +146,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E601F7CB6EFFCDBB0089D15 /* libPods-Harpy Music.a in Frameworks */,
-				E9F3F0551C319637002248EA /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +391,7 @@
 						DevelopmentTeam = K5325KADLR;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

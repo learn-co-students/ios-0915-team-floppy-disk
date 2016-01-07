@@ -16,11 +16,12 @@
 
 @property (strong, nonatomic) IBOutlet UISearchBar *userSearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *userTableView;
-@property(nonatomic) UIScrollViewIndicatorStyle indicatorStyle;
+@property (nonatomic) UIScrollViewIndicatorStyle indicatorStyle;
 @property (nonatomic) PFUser *user;
 @property (nonatomic) NSMutableArray *users;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) HRPParseNetworkService *parseService;
+@property (nonatomic) UIView *modalView;
 
 @end
 
@@ -44,30 +45,7 @@
     self.parseService = [HRPParseNetworkService sharedService];
     
     [self initializeEmptyUsersArray];
-
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
-    self.navigationItem.titleView = self.activityIndicator;
-    [self.activityIndicator startAnimating];
-    PFQuery *userQuery = [PFUser query];
-    userQuery.limit = 19;
-    [userQuery orderByDescending:@"createdAt"];
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
-        if (!error)
-        {
-            [self.activityIndicator stopAnimating];
-            
-            self.navigationItem.titleView = nil;
-            NSString *usernameString = @"USER SEARCH";
-            self.navigationItem.title = usernameString;
-            
-            self.users = [objects mutableCopy];
-            [self.userTableView reloadData];
-        }
-        else
-        {
-            //NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    [self loadNewestUsers];
 }
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -106,6 +84,38 @@
 -(void)initializeEmptyUsersArray
 {
     self.users = [NSMutableArray new];
+}
+- (void)loadNewestUsers
+{
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    self.navigationItem.titleView = self.activityIndicator;
+    [self.activityIndicator startAnimating];
+    PFQuery *userQuery = [PFUser query];
+    userQuery.limit = 19;
+    [userQuery orderByDescending:@"createdAt"];
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
+        if (!error)
+        {
+            [self.activityIndicator stopAnimating];
+            [self.modalView removeFromSuperview];
+            self.navigationItem.rightBarButtonItem = nil;
+            
+            self.navigationItem.titleView = nil;
+            NSString *usernameString = @"USER SEARCH";
+            self.navigationItem.title = usernameString;
+            
+            self.users = [objects mutableCopy];
+            [self.userTableView reloadData];
+        }
+        else if ([error.domain isEqual:PFParseErrorDomain] && error.code == kPFErrorConnectionFailed)
+        {
+            [self alertOfflineView];
+        }
+        else
+        {
+            //NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 -(void) setupTableViewUI
 {
@@ -173,12 +183,27 @@
         PFQuery *userQuery = [PFUser query];
         searchText = [searchText lowercaseString];
         [userQuery whereKey:@"username" hasPrefix:searchText];
+        
+        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+        self.navigationItem.titleView = self.activityIndicator;
+        [self.activityIndicator startAnimating];
+        
         [userQuery findObjectsInBackgroundWithBlock:^(NSArray * __nullable objects, NSError * __nullable error) {
             if (!error)
             {
+                [self.activityIndicator stopAnimating];
+                [self.modalView removeFromSuperview];
+                
+                NSString *usernameString = @"USER SEARCH";
+                self.navigationItem.title = usernameString;
+                
                 self.users = [objects mutableCopy];
                 
                 [self.userTableView reloadData];
+            }
+            else if ([error.domain isEqual:PFParseErrorDomain] && error.code == kPFErrorConnectionFailed)
+            {
+                [self alertOfflineView];
             }
             else
             {
@@ -291,6 +316,38 @@
 
 - (IBAction)backButtonTapped:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)alertOfflineView
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:18];
+    label.text = @"OFFLINE";
+    label.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = label;
+    
+    UIImage *backButtonHomeImage = [[UIImage imageNamed:@"left_Arrow"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonHomeImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    if (self.modalView == nil)
+    {
+        self.modalView = [[UIView alloc] initWithFrame:self.navigationController.view.bounds];
+        self.modalView.opaque = NO;
+        self.modalView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
+        [self.view addSubview:self.modalView];
+        
+        UIImage* image = [UIImage imageNamed:@"refresh.png"];
+        CGRect frameimg = CGRectMake(0, 0, 20, 20);
+        UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
+        [someButton setBackgroundImage:image forState:UIControlStateNormal];
+        [someButton addTarget:self action:@selector(loadNewestUsers)
+             forControlEvents:UIControlEventTouchUpInside];
+        [someButton setShowsTouchWhenHighlighted:NO];
+        UIBarButtonItem *rightbutton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
+        self.navigationItem.rightBarButtonItem = rightbutton;
+    }
 }
 
 @end

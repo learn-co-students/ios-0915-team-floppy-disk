@@ -15,6 +15,8 @@
 		3BAC25251C050D41004C6790 /* HRPPostPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */; };
 		3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25281C0CA4F6004C6790 /* HRPPost.m */; };
 		3BC25DEB1C0E0F3D00A831CE /* postTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */; };
+		3BD6AE461C3ED9500058C0BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD6AE451C3ED9500058C0BE /* SystemConfiguration.framework */; };
+		3BD6AE491C3EDA580058C0BE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD6AE481C3EDA580058C0BE /* Reachability.m */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
 		8E601F7CB6EFFCDBB0089D15 /* libPods-Harpy Music.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E167BB7AD1B9424182BE2DBF /* libPods-Harpy Music.a */; };
 		E91B6FDF1C19E7B000FEC1AB /* HRPNetworkAlertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E91B6FDE1C19E7B000FEC1AB /* HRPNetworkAlertVC.m */; };
@@ -78,6 +80,9 @@
 		3BAC25271C0CA4F6004C6790 /* HRPPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPPost.h; sourceTree = "<group>"; };
 		3BAC25281C0CA4F6004C6790 /* HRPPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPost.m; sourceTree = "<group>"; };
 		3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = postTable.storyboard; sourceTree = "<group>"; };
+		3BD6AE451C3ED9500058C0BE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3BD6AE471C3EDA580058C0BE /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		3BD6AE481C3EDA580058C0BE /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		5C33673E6E1FC67B0046850B /* Pods-Harpy Music.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Harpy Music.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Harpy Music/Pods-Harpy Music.debug.xcconfig"; sourceTree = "<group>"; };
 		A669C21BA75DCA33C37F59AD /* Pods-Harpy Music.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Harpy Music.release.xcconfig"; path = "Pods/Target Support Files/Pods-Harpy Music/Pods-Harpy Music.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BD6AE461C3ED9500058C0BE /* SystemConfiguration.framework in Frameworks */,
 				8E601F7CB6EFFCDBB0089D15 /* libPods-Harpy Music.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +176,7 @@
 		C6E06CB9E0DD43AFFCFA67DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3BD6AE451C3ED9500058C0BE /* SystemConfiguration.framework */,
 				E167BB7AD1B9424182BE2DBF /* libPods-Harpy Music.a */,
 			);
 			name = Frameworks;
@@ -234,6 +241,8 @@
 				E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */,
 				E976148B1C0A6607003B3C5B /* SF-UI-Display-Medium.otf */,
 				E976148C1C0A6607003B3C5B /* SF-UI-Display-Heavy.otf */,
+				3BD6AE471C3EDA580058C0BE /* Reachability.h */,
+				3BD6AE481C3EDA580058C0BE /* Reachability.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -523,6 +532,7 @@
 				E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */,
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
 				E97E73CA1C20747700CBDD07 /* CLLocationManager+Shared.m in Sources */,
+				3BD6AE491C3EDA580058C0BE /* Reachability.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -645,7 +655,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = harpy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blockchainme.haprymusic;
 				PRODUCT_NAME = "Harpy Music";
@@ -661,7 +671,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = harpy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blockchainme.haprymusic;
 				PRODUCT_NAME = "Harpy Music";

@@ -505,6 +505,9 @@
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             PFUser *currentUser = [PFUser currentUser];
             
+            NSLog(@"%@", object.canonicalUserName);
+
+            
             currentUser[@"spotifyCanonical"] = object.canonicalUserName;
             
             [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

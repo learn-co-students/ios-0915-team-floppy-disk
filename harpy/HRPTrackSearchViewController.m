@@ -12,6 +12,7 @@
 #import "HRPTrackCreator.h"
 #import "HRPPostPreviewViewController.h"
 #import <Parse/Parse.h>
+#import "Reachability.h"
 
 @interface HRPTrackSearchViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate>
 
@@ -29,8 +30,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *playerSongLabel;
 @property (strong, nonatomic) IBOutlet UILabel *playerArtistLabel;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic) UIView *modalView;
+
 
 @property (strong, nonatomic) SPTAudioStreamingController *player;
+
+@property (nonatomic) Reachability *hostReachability;
+@property (nonatomic) Reachability *internetReachability;
+@property (nonatomic) Reachability *wifiReachability;
 
 @end
 
@@ -39,6 +46,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+# pragma reachability
+    //simulator has bug where it wont update when network is retored.  Double check on phone to be sure
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkForReachability) name:kReachabilityChangedNotification object:nil];
+    NSString *remoteHostName = @"www.google.com";
+    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
+    [self.hostReachability startNotifier];
+    
+    
     [self setupTableViewUI];
     [self.songSearchBar setShowsCancelButton:NO animated:NO];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
@@ -383,6 +399,42 @@
 -(void)dismissKeyboard
 {
     [self.songSearchBar resignFirstResponder];
+}
+
+# pragma reachability
+
+-(void)checkForReachability {
+    
+    NSLog(@"\n\n\n\n\n\n\n\n\n\n  WHATS UP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    
+    
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+    if (internetStatus != NotReachable) {
+        if (self.modalView != nil) {
+            self.modalView = nil;
+        }
+    }
+    else {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectFromString(@"{{0,0},{100,44}}")];
+        label.backgroundColor = [UIColor clearColor];
+        label.textColor = [UIColor whiteColor];
+        label.font = [UIFont boldSystemFontOfSize:18];
+        label.text = @"OFFLINE";
+        label.textAlignment = NSTextAlignmentCenter;
+        self.navigationItem.titleView = label;
+        
+        if (self.modalView == nil)
+        {
+            self.modalView = [[UIView alloc] initWithFrame:self.navigationController.view.bounds];
+            self.modalView.opaque = NO;
+            self.modalView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
+            [self.view addSubview:self.modalView];    }
+    }
+}
+    
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
 }
 
 @end

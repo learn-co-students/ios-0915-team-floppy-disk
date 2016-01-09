@@ -335,7 +335,7 @@
         NSURL *url = [NSURL URLWithString:urlString];
         
         [self.player playURIs:@[ url ] fromIndex:0 callback:^(NSError *error) {
-            NSLog(@"%@", error);
+            //NSLog(@"%@", error);
         }];
         //[sender setImage:[UIImage imageNamed:@"black_stop"] forState:UIControlStateNormal];
     } else if (self.player.isPlaying == YES)
@@ -382,7 +382,7 @@
     
     [self.player loginWithSession:auth.session callback:^(NSError *error) {
         
-        NSLog(@"%@", error);
+        //NSLog(@"%@", error);
     }];
 }
 
@@ -405,7 +405,7 @@
 
 -(void)checkForReachability {
     
-    NSLog(@"\n\n\n\n\n\n\n\n\n\n  WHATS UP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    //NSLog(@"\n\n\n\n\n\n\n\n\n\n  WHATS UP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     
     
     Reachability *reachability = [Reachability reachabilityForInternetConnection];

@@ -80,9 +80,9 @@
     auth.redirectURL = [NSURL URLWithString:@"harpy-app://authorize"];
     auth.tokenSwapURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/swap"];
     auth.tokenRefreshURL = [NSURL URLWithString:@"https://ios-0915-floppy-disk.herokuapp.com/refresh"];
-    NSLog(@"%@", auth.session.accessToken);
+    //NSLog(@"%@", auth.session.accessToken);
     [SPTUser requestCurrentUserWithAccessToken:auth.session.accessToken callback:^(NSError *error, id object) {
-        NSLog(@"%@", object);
+        //NSLog(@"%@", object);
     }];
     PFUser *current = [PFUser currentUser];
     if (current != nil) {
@@ -99,7 +99,7 @@
     SPTAuthCallback authCallback = ^(NSError *error, SPTSession *session) {
         if (error != nil)
         {
-            NSLog(@"*** Auth error: %@", error);
+            //NSLog(@"*** Auth error: %@", error);
             return;
         }
         auth.session = session;

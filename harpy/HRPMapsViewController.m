@@ -495,7 +495,7 @@
 
 -(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didFailToLogin:(NSError *)error
 {
-    NSLog(@"AUTHVC FAILED : %@",error);
+    //NSLog(@"AUTHVC FAILED : %@",error);
 }
 -(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
 {
@@ -505,9 +505,8 @@
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             PFUser *currentUser = [PFUser currentUser];
             
-            NSLog(@"%@", object.canonicalUserName);
+            //NSLog(@"%@", object.canonicalUserName);
 
-            
             currentUser[@"spotifyCanonical"] = object.canonicalUserName;
             
             [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -517,7 +516,7 @@
                 }
                 else
                 {
-                    NSLog(@"ERROR: %@", error);
+                    //NSLog(@"ERROR: %@", error);
                 }
             }];
         }];

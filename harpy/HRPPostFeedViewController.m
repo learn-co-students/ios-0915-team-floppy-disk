@@ -121,7 +121,7 @@
     
     NSDate *date = [post createdAt];
     
-    NSLog(@"%@", date);
+    //NSLog(@"%@", date);
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];

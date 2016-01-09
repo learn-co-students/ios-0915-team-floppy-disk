@@ -629,7 +629,7 @@
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Is this correct?" message:message preferredStyle:(UIAlertControllerStyleActionSheet)];
     UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *action) {
-        NSLog(@"EMAIL: is confirmed.");
+        //NSLog(@"EMAIL: is confirmed.");
         [self createParseUser];
     }];
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
@@ -687,7 +687,7 @@
 -(void)authenticationViewController:(SPTAuthViewController *)authenticationViewController didLoginWithSession:(SPTSession *)session
 {
     SPTAuth *auth = [SPTAuth defaultInstance];
-    NSLog(@"auth: %@", auth);
+    //NSLog(@"auth: %@", auth);
     
     [SPTUser requestCurrentUserWithAccessToken:session.accessToken callback:^(NSError *error, SPTUser *object) {
         
@@ -703,7 +703,7 @@
                 }
                 else
                 {
-                    NSLog(@"ERROR: %@", error);
+                    //NSLog(@"ERROR: %@", error);
                 }
             }];
         }];

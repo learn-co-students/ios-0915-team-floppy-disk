@@ -102,7 +102,7 @@
 }
 -(void)createProfileButtonClicked:(UIButton *)sender
 {
-    NSLog(@"CLICKED:create profile button");
+    //NSLog(@"CLICKED:create profile button");
     
     if (![self.realName.text isEqualToString:@""])
     {
@@ -115,7 +115,7 @@
     {
         [[PFUser currentUser] setObject:self.shortBio.text forKey:@"shortBio"];
         NSString *shortBio = [[PFUser currentUser] objectForKey:@"shortBio"];
-        NSLog(@"%@", shortBio);
+        //NSLog(@"%@", shortBio);
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogInNotificationName object:nil];

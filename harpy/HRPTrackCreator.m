@@ -19,7 +19,7 @@
     
     [SPTSearch performSearchWithQuery:formattedTrack queryType:SPTQueryTypeTrack offset:0 accessToken:nil callback:^(NSError *error, SPTListPage *results) {
         
-        NSLog(@"performSearchWithQuery happened!!");
+        //NSLog(@"performSearchWithQuery happened!!");
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             

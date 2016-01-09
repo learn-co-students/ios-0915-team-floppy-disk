@@ -43,7 +43,7 @@
         else if ([error.domain isEqual: @"Parse"] && error.code == (int)101)
         {
             completionHandler(nil, error);
-             NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+             //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
         }
     }];
 }
@@ -70,7 +70,7 @@
          {
              [[NSOperationQueue mainQueue]addOperationWithBlock:^{
                  completionHandler(nil, error);
-                 NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                 //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
              }];
          }
      }];

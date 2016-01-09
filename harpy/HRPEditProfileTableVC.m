@@ -107,7 +107,7 @@
                 }
                 else
                 {
-                    NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                    //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
                 }
             }];
         }
